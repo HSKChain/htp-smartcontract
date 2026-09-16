@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "tools": {
+    "foundry": {
+      "version": "1.5.1",
+      "commit": "b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2"
+    },
+    "solc": {
+      "configVersion": "0.8.36",
+      "longVersion": "0.8.36+commit.8a079791"
+    },
+    "node": "22.14.0",
+    "npm": "11.11.0",
+    "slither": "0.11.5"
+  },
+  "compiler": {
+    "evmVersion": "cancun",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": false,
+    "bytecodeHash": "ipfs",
+    "cborMetadata": true,
+    "useLiteralContent": true,
+    "buildInfo": true,
+    "ast": true,
+    "remappings": [
+      "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+      "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+      "forge-std/=lib/forge-std/src/"
+    ]
+  },
+  "dependencies": [
+    {
+      "name": "OpenZeppelin Contracts",
+      "version": "5.6.1",
+      "commit": "5fd1781b1454fd1ef8e722282f86f9293cacf256",
+      "path": "contracts/lib/openzeppelin-contracts",
+      "license": "MIT",
+      "licenseFile": "contracts/lib/openzeppelin-contracts/LICENSE"
+    },
+    {
+      "name": "OpenZeppelin Contracts Upgradeable",
+      "version": "5.6.1",
+      "commit": "7bf4727aacdbfaa0f36cbd664654d0c9e1dc52bf",
+      "path": "contracts/lib/openzeppelin-contracts-upgradeable",
+      "license": "MIT",
+      "licenseFile": "contracts/lib/openzeppelin-contracts-upgradeable/LICENSE"
+    },
+    {
+      "name": "forge-std",
+      "version": "1.16.2",
+      "commit": "bf647bd6046f2f7da30d0c2bf435e5c76a780c1b",
+      "path": "contracts/lib/forge-std",
+      "license": "MIT OR Apache-2.0",
+      "licenseFile": "contracts/lib/forge-std/LICENSE-MIT"
+    }
+  ]
+}
