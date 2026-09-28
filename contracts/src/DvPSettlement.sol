@@ -52,7 +52,7 @@ struct DvPRegistries {
 /// @notice On-chain DvP settlement orchestrator (signatures, state, adapter transfers).
 contract DvPSettlement is AccessControl, ReentrancyGuard, IDvPSettlement {
     bytes32 private constant CURRENT_STATE_VALIDATOR_FACTORY_CODE_HASH =
-        0xb5516aff06a7a9f303f8b8e53314e1f1256047747d728155f4733c779c902127;
+        0xce284db0d0ff97364fb3455f66c07ce33efa22d454b92d5a85fcc4d6a9ec32f9;
     bytes4 private constant ALLOWANCE_SELECTOR = 0xdd62ed3e;
     bytes4 private constant BALANCE_OF_SELECTOR = 0x70a08231;
     bytes4 private constant TRANSFER_FROM_SELECTOR = 0x23b872dd;

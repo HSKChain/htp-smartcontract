@@ -52,21 +52,21 @@ contract DvPConstructorTest is Test {
     function testValidatorFactoryCodeHashMatchesReviewedLiteral() public view {
         assertEq(
             address(currentStateValidatorFactory).codehash,
-            0xb5516aff06a7a9f303f8b8e53314e1f1256047747d728155f4733c779c902127
+            0xce284db0d0ff97364fb3455f66c07ce33efa22d454b92d5a85fcc4d6a9ec32f9
         );
     }
 
     function testReferenceIntegrityCodeHashMatchesReviewedLiteral() public view {
         assertEq(
             vm.computeCreateAddress(address(currentStateValidatorFactory), 1).codehash,
-            0x620b98f11361a4bacd813d365d250f021b27568c8094e39bdf0fd3a17a284e9c
+            0xde202537a4ce39d21eb536c4d61dfca34da1ea3ac747b3a1a381a6862061cce5
         );
     }
 
     function testStrictFailureMapperCodeHashMatchesReviewedLiteral() public view {
         assertEq(
             vm.computeCreateAddress(address(currentStateValidatorFactory), 2).codehash,
-            0xa3edd3c270dafc75bf98d1e7e53fe1e03cae42e5bbc655328f922447ae8ef583
+            0xf5d19d60dd027bef3ab96820bd9f00cbcfe26aa8821314b5b501d42d63db60ee
         );
     }
 

@@ -26,10 +26,11 @@ abstract contract BridgeFungibleUpgradeable is Initializable, ContextUpgradeable
     event CrosschainFungibleTransferSent(bytes32 indexed sendId, address indexed from, bytes to, uint256 amount);
     event CrosschainFungibleTransferReceived(bytes32 indexed receiveId, bytes from, address indexed to, uint256 amount);
 
-    function __BridgeFungible_init() internal onlyInitializing {}
+    function __BridgeFungible_init() internal onlyInitializing {
+    }
 
-    function __BridgeFungible_init_unchained() internal onlyInitializing {}
-
+    function __BridgeFungible_init_unchained() internal onlyInitializing {
+    }
     /**
      * @dev Transfer `amount` tokens to a crosschain receiver.
      *
@@ -51,7 +52,9 @@ abstract contract BridgeFungibleUpgradeable is Initializable, ContextUpgradeable
         bytes memory chain = InteroperableAddress.formatV1(chainType, chainReference, hex"");
 
         bytes32 sendId = _sendMessageToCounterpart(
-            chain, abi.encode(InteroperableAddress.formatEvmV1(block.chainid, from), addr, amount), new bytes[](0)
+            chain,
+            abi.encode(InteroperableAddress.formatEvmV1(block.chainid, from), addr, amount),
+            new bytes[](0)
         );
 
         emit CrosschainFungibleTransferSent(sendId, from, to, amount);
@@ -61,17 +64,11 @@ abstract contract BridgeFungibleUpgradeable is Initializable, ContextUpgradeable
 
     /// @inheritdoc ERC7786Recipient
     function _processMessage(
-        address,
-        /*gateway*/
+        address /*gateway*/,
         bytes32 receiveId,
-        bytes calldata,
-        /*sender*/
+        bytes calldata /*sender*/,
         bytes calldata payload
-    )
-        internal
-        virtual
-        override
-    {
+    ) internal virtual override {
         // split payload
         (bytes memory from, bytes memory toBinary, uint256 amount) = abi.decode(payload, (bytes, bytes, uint256));
         address to = address(bytes20(toBinary));

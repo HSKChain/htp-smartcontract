@@ -46,7 +46,9 @@ abstract contract BridgeFungible is Context, CrosschainLinked {
         bytes memory chain = InteroperableAddress.formatV1(chainType, chainReference, hex"");
 
         bytes32 sendId = _sendMessageToCounterpart(
-            chain, abi.encode(InteroperableAddress.formatEvmV1(block.chainid, from), addr, amount), new bytes[](0)
+            chain,
+            abi.encode(InteroperableAddress.formatEvmV1(block.chainid, from), addr, amount),
+            new bytes[](0)
         );
 
         emit CrosschainFungibleTransferSent(sendId, from, to, amount);
@@ -56,17 +58,11 @@ abstract contract BridgeFungible is Context, CrosschainLinked {
 
     /// @inheritdoc ERC7786Recipient
     function _processMessage(
-        address,
-        /*gateway*/
+        address /*gateway*/,
         bytes32 receiveId,
-        bytes calldata,
-        /*sender*/
+        bytes calldata /*sender*/,
         bytes calldata payload
-    )
-        internal
-        virtual
-        override
-    {
+    ) internal virtual override {
         // split payload
         (bytes memory from, bytes memory toBinary, uint256 amount) = abi.decode(payload, (bytes, bytes, uint256));
         address to = address(bytes20(toBinary));
