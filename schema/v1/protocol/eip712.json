@@ -1,0 +1,35 @@
+{
+  "domain": {
+    "name": "HTP DvP Settlement",
+    "version": "deployment major version"
+  },
+  "generatedFrom": "contracts/src/libraries/HTPHashing.sol",
+  "schemaVersion": 1,
+  "types": [
+    {
+      "constant": "EIP712_DOMAIN_TYPEHASH",
+      "typeHash": "0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f",
+      "typeString": "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
+    },
+    {
+      "constant": "FIRM_QUOTE_TYPEHASH",
+      "typeHash": "0x79db216dea763a9d67ad7df5570a388d4055c6ac896752086982d5db82bb597b",
+      "typeString": "FirmQuote(uint32 schemaVersion,bytes32 rfqIdHash,bytes32 quoteIdHash,uint32 quoteVersion,address quotingMaker,address requester,uint8 requesterType,bytes32 assetVersionId,uint8 requesterSide,address assetToken,address settlementToken,uint8 assetClass,bytes32 priceTermsHash,bytes priceData,bytes32 principalCalculatorConfigId,bytes32 principalCalculatorConfigHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,bytes32 marketRuleConfigId,bytes32 marketRuleConfigHash,uint256 minExecutableQuantity,uint256 maxExecutableQuantity,uint256 stepQuantity,uint64 feePolicyEpoch,bytes32 feeVersionId,bytes32 matchedScopeHash,bytes32 feeConstraintHash,uint256 quoteNonce,uint64 expiresAt)"
+    },
+    {
+      "constant": "TRADE_INTENT_TYPEHASH",
+      "typeHash": "0x429c13810b4c3568e1aefcbe3de0f4e734fc4b55b80765dd6098d9938edea269",
+      "typeString": "TradeIntent(uint32 schemaVersion,bytes32 tradeIdHash,bytes32 quoteHash,bytes32 snapshotHash,address requester,uint8 requesterType,address quotingMaker,bytes32 assetVersionId,uint8 requesterSide,address buyer,address seller,address assetToken,address settlementToken,uint256 executedQuantity,uint8 assetClass,bytes32 priceTermsHash,bytes priceData,bytes32 principalCalculatorConfigId,bytes32 principalCalculatorConfigHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,bytes32 marketRuleConfigId,bytes32 marketRuleConfigHash,uint256 cashPrincipal,uint256 buyerFee,uint256 sellerFee,uint256 buyerDebit,uint256 sellerCredit,uint256 collectorCredit,address collector,uint64 feePolicyEpoch,bytes32 feeVersionId,bytes32 matchedScopeHash,bytes32 feeConstraintHash,uint8 roundingMode,uint256 tradeNonce,uint64 deadline)"
+    },
+    {
+      "constant": "NONCE_CANCELLATION_TYPEHASH",
+      "typeHash": "0x44a03a985507f64ac9f00742e8c5297127bec731fe64b299f3bee7edd1a5e9eb",
+      "typeString": "NonceCancellation(address signer,uint8 nonceType,uint256 nonce,uint64 deadline)"
+    },
+    {
+      "constant": "TRADE_TERMS_SNAPSHOT_TYPEHASH",
+      "typeHash": "0xccbdc80b52327f570e3875de104245bc6d4532cdfb655431ec7f858d8bf2f920",
+      "typeString": "TradeTermsSnapshot(uint32 schemaVersion,bytes32 tradeIdHash,bytes32 quoteHash,uint256 chainId,address dvpContract,address requester,uint8 requesterType,address quotingMaker,uint8 requesterSide,address buyer,address seller,bytes32 assetVersionId,address assetToken,address settlementToken,uint8 assetDecimals,uint8 settlementTokenDecimals,uint256 executedQuantity,uint8 assetClass,bytes32 priceTermsHash,bytes priceData,bytes32 principalCalculatorConfigId,bytes32 principalCalculatorConfigHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,bytes32 marketRuleConfigId,bytes32 marketRuleConfigHash,uint256 cashPrincipal,uint256 buyerFee,uint256 sellerFee,uint256 buyerDebit,uint256 sellerCredit,uint256 collectorCredit,address collector,uint64 feePolicyEpoch,bytes32 feeVersionId,bytes32 matchedScopeHash,bytes32 feeConstraintHash,uint8 roundingMode,uint256 makerQuoteNonce,uint256 requesterTradeNonce,uint64 quoteExpiresAt,uint64 tradeDeadline,uint64 createdAt)"
+    }
+  ]
+}

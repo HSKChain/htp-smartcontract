@@ -1,0 +1,799 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "activateAdapter",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "deprecateAdapter",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "exemptRetiredDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getAdapter",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "adapter",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "interfaceVersion",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "codeHash",
+                "type": "bytes32"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "enum TokenStandard",
+                    "name": "tokenStandard",
+                    "type": "uint8"
+                  },
+                  {
+                    "internalType": "enum RestrictionMode",
+                    "name": "restrictionMode",
+                    "type": "uint8"
+                  },
+                  {
+                    "internalType": "enum PrecheckMethod",
+                    "name": "precheckMethod",
+                    "type": "uint8"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "transferLegMask",
+                    "type": "uint256"
+                  }
+                ],
+                "internalType": "struct AdapterCapabilities",
+                "name": "capabilities",
+                "type": "tuple"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "capabilityHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "providerHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct AdapterConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum AdapterStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct AdapterRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "capabilityHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getCurrentAdapter",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "adapter",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "interfaceVersion",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "codeHash",
+                "type": "bytes32"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "enum TokenStandard",
+                    "name": "tokenStandard",
+                    "type": "uint8"
+                  },
+                  {
+                    "internalType": "enum RestrictionMode",
+                    "name": "restrictionMode",
+                    "type": "uint8"
+                  },
+                  {
+                    "internalType": "enum PrecheckMethod",
+                    "name": "precheckMethod",
+                    "type": "uint8"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "transferLegMask",
+                    "type": "uint256"
+                  }
+                ],
+                "internalType": "struct AdapterCapabilities",
+                "name": "capabilities",
+                "type": "tuple"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "capabilityHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "providerHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct AdapterConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum AdapterStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct AdapterRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDependentDvp",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "retiredExempt",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDependentDvpCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "isAdapterActive",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "pauseAdapter",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "schemaVersion",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "adapterConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "revision",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "adapter",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "interfaceVersion",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "codeHash",
+            "type": "bytes32"
+          },
+          {
+            "components": [
+              {
+                "internalType": "enum TokenStandard",
+                "name": "tokenStandard",
+                "type": "uint8"
+              },
+              {
+                "internalType": "enum RestrictionMode",
+                "name": "restrictionMode",
+                "type": "uint8"
+              },
+              {
+                "internalType": "enum PrecheckMethod",
+                "name": "precheckMethod",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint256",
+                "name": "transferLegMask",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct AdapterCapabilities",
+            "name": "capabilities",
+            "type": "tuple"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "capabilityHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "providerHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "replacesId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "configHash",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct AdapterConfig",
+        "name": "config",
+        "type": "tuple"
+      }
+    ],
+    "name": "registerAdapter",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "registerDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "unpauseAdapter",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "capabilityHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "adapter",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "schemaVersion",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "revision",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "interfaceVersion",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "codeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum TokenStandard",
+        "name": "tokenStandard",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum RestrictionMode",
+        "name": "restrictionMode",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum PrecheckMethod",
+        "name": "precheckMethod",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "transferLegMask",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "providerHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "replacesId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "AdapterRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum AdapterStatus",
+        "name": "oldStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum AdapterStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "AdapterStatusChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "capabilityHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "oldAdapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAdapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "CurrentAdapterChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRetiredExempted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  }
+]

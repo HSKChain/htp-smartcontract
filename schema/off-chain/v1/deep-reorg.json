@@ -1,0 +1,59 @@
+{
+  "boundaryOnly": true,
+  "negative": [
+    {
+      "before": {
+        "history": [
+          "0x0000000000000000000000000000000000000000000000000000000000000d01",
+          "0x0000000000000000000000000000000000000000000000000000000000000d02"
+        ]
+      },
+      "expectedError": "HISTORY_DELETE_FORBIDDEN",
+      "name": "deleteHistoricalSettlement",
+      "operation": {
+        "appendCorrectionRecord": "0x0000000000000000000000000000000000000000000000000000000000000d03",
+        "deleteHistoryIds": [
+          "0x0000000000000000000000000000000000000000000000000000000000000d01"
+        ]
+      }
+    },
+    {
+      "before": {
+        "history": [
+          "0x0000000000000000000000000000000000000000000000000000000000000d01",
+          "0x0000000000000000000000000000000000000000000000000000000000000d02"
+        ]
+      },
+      "expectedError": "CORRECTION_RECORD_REQUIRED",
+      "name": "missingCorrectionAppend",
+      "operation": {
+        "appendCorrectionRecord": null,
+        "deleteHistoryIds": []
+      }
+    }
+  ],
+  "positive": [
+    {
+      "before": {
+        "history": [
+          "0x0000000000000000000000000000000000000000000000000000000000000d01",
+          "0x0000000000000000000000000000000000000000000000000000000000000d02"
+        ]
+      },
+      "expected": {
+        "history": [
+          "0x0000000000000000000000000000000000000000000000000000000000000d01",
+          "0x0000000000000000000000000000000000000000000000000000000000000d02",
+          "0x0000000000000000000000000000000000000000000000000000000000000d03"
+        ]
+      },
+      "name": "appendCorrectionPreservesHistory",
+      "operation": {
+        "appendCorrectionRecord": "0x0000000000000000000000000000000000000000000000000000000000000d03",
+        "deleteHistoryIds": []
+      }
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "candidate"
+}

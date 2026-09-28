@@ -1,0 +1,2254 @@
+[
+  {
+    "inputs": [],
+    "name": "adapterRegistry",
+    "outputs": [
+      {
+        "internalType": "contract IAdapterRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "assetVersionRegistry",
+    "outputs": [
+      {
+        "internalType": "contract IAssetVersionRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum NonceType",
+        "name": "nonceType",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      }
+    ],
+    "name": "cancelNonce",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "signer",
+            "type": "address"
+          },
+          {
+            "internalType": "enum NonceType",
+            "name": "nonceType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint64",
+            "name": "deadline",
+            "type": "uint64"
+          }
+        ],
+        "internalType": "struct NonceCancellation",
+        "name": "cancellation",
+        "type": "tuple"
+      },
+      {
+        "internalType": "bytes",
+        "name": "signature",
+        "type": "bytes"
+      }
+    ],
+    "name": "cancelNonceBySig",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "deploymentVersionHash",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "domainSeparatorV4",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "eligibilityRegistry",
+    "outputs": [
+      {
+        "internalType": "contract IEligibilityRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "feeRegistry",
+    "outputs": [
+      {
+        "internalType": "contract IFeeRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "signer",
+        "type": "address"
+      },
+      {
+        "internalType": "enum NonceType",
+        "name": "nonceType",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      }
+    ],
+    "name": "getNonceStatus",
+    "outputs": [
+      {
+        "internalType": "enum NonceStatus",
+        "name": "status",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "globalPaused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "marketRuleRegistry",
+    "outputs": [
+      {
+        "internalType": "contract IMarketRuleRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "participantRegistry",
+    "outputs": [
+      {
+        "internalType": "contract IParticipantRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "pauseGlobal",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "rfqIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "quoteIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "quoteVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "address",
+                "name": "quotingMaker",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+              },
+              {
+                "internalType": "enum ParticipantType",
+                "name": "requesterType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RequesterSide",
+                "name": "requesterSide",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "assetToken",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "priceTermsHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes",
+                "name": "priceData",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "minExecutableQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxExecutableQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "stepQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "feePolicyEpoch",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "matchedScopeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeConstraintHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteNonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "expiresAt",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct FirmQuote",
+            "name": "firmQuote",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tradeIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "quoteHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "snapshotHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+              },
+              {
+                "internalType": "enum ParticipantType",
+                "name": "requesterType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "quotingMaker",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RequesterSide",
+                "name": "requesterSide",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "buyer",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "seller",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "assetToken",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "executedQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "priceTermsHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes",
+                "name": "priceData",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "cashPrincipal",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "buyerFee",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "sellerFee",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "buyerDebit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "sellerCredit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "collectorCredit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "collector",
+                "type": "address"
+              },
+              {
+                "internalType": "uint64",
+                "name": "feePolicyEpoch",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "matchedScopeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeConstraintHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RoundingMode",
+                "name": "roundingMode",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint256",
+                "name": "tradeNonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "deadline",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct TradeIntent",
+            "name": "tradeIntent",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tradeIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "quoteHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "dvpContract",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+              },
+              {
+                "internalType": "enum ParticipantType",
+                "name": "requesterType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "quotingMaker",
+                "type": "address"
+              },
+              {
+                "internalType": "enum RequesterSide",
+                "name": "requesterSide",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "buyer",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "seller",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "assetToken",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "uint8",
+                "name": "assetDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "settlementTokenDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint256",
+                "name": "executedQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "priceTermsHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes",
+                "name": "priceData",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "cashPrincipal",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "buyerFee",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "sellerFee",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "buyerDebit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "sellerCredit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "collectorCredit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "collector",
+                "type": "address"
+              },
+              {
+                "internalType": "uint64",
+                "name": "feePolicyEpoch",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "matchedScopeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeConstraintHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RoundingMode",
+                "name": "roundingMode",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint256",
+                "name": "makerQuoteNonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "requesterTradeNonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "quoteExpiresAt",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "tradeDeadline",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "createdAt",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct TradeTermsSnapshot",
+            "name": "snapshot",
+            "type": "tuple"
+          },
+          {
+            "internalType": "bytes",
+            "name": "quotingMakerSignature",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bytes",
+            "name": "requesterSignature",
+            "type": "bytes"
+          },
+          {
+            "components": [
+              {
+                "internalType": "bool",
+                "name": "usePermit",
+                "type": "bool"
+              },
+              {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "deadline",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct PermitData",
+            "name": "assetPermit",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "bool",
+                "name": "usePermit",
+                "type": "bool"
+              },
+              {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "deadline",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct PermitData",
+            "name": "settlementPermit",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct SettlementParams",
+        "name": "params",
+        "type": "tuple"
+      }
+    ],
+    "name": "preCheck",
+    "outputs": [
+      {
+        "internalType": "enum Decision",
+        "name": "decision",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes4",
+        "name": "reason",
+        "type": "bytes4"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "principalCalculatorRegistry",
+    "outputs": [
+      {
+        "internalType": "contract IPrincipalCalculatorRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "retire",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "retired",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "rfqIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "quoteIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "quoteVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "address",
+                "name": "quotingMaker",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+              },
+              {
+                "internalType": "enum ParticipantType",
+                "name": "requesterType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RequesterSide",
+                "name": "requesterSide",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "assetToken",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "priceTermsHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes",
+                "name": "priceData",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "minExecutableQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxExecutableQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "stepQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "feePolicyEpoch",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "matchedScopeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeConstraintHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteNonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "expiresAt",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct FirmQuote",
+            "name": "firmQuote",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tradeIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "quoteHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "snapshotHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+              },
+              {
+                "internalType": "enum ParticipantType",
+                "name": "requesterType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "quotingMaker",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RequesterSide",
+                "name": "requesterSide",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "buyer",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "seller",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "assetToken",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "executedQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "priceTermsHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes",
+                "name": "priceData",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "cashPrincipal",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "buyerFee",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "sellerFee",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "buyerDebit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "sellerCredit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "collectorCredit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "collector",
+                "type": "address"
+              },
+              {
+                "internalType": "uint64",
+                "name": "feePolicyEpoch",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "matchedScopeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeConstraintHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RoundingMode",
+                "name": "roundingMode",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint256",
+                "name": "tradeNonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "deadline",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct TradeIntent",
+            "name": "tradeIntent",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tradeIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "quoteHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "dvpContract",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+              },
+              {
+                "internalType": "enum ParticipantType",
+                "name": "requesterType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "quotingMaker",
+                "type": "address"
+              },
+              {
+                "internalType": "enum RequesterSide",
+                "name": "requesterSide",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "buyer",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "seller",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "assetToken",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "uint8",
+                "name": "assetDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "settlementTokenDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint256",
+                "name": "executedQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "priceTermsHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes",
+                "name": "priceData",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "cashPrincipal",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "buyerFee",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "sellerFee",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "buyerDebit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "sellerCredit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "collectorCredit",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "collector",
+                "type": "address"
+              },
+              {
+                "internalType": "uint64",
+                "name": "feePolicyEpoch",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "matchedScopeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeConstraintHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RoundingMode",
+                "name": "roundingMode",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint256",
+                "name": "makerQuoteNonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "requesterTradeNonce",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "quoteExpiresAt",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "tradeDeadline",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "createdAt",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct TradeTermsSnapshot",
+            "name": "snapshot",
+            "type": "tuple"
+          },
+          {
+            "internalType": "bytes",
+            "name": "quotingMakerSignature",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bytes",
+            "name": "requesterSignature",
+            "type": "bytes"
+          },
+          {
+            "components": [
+              {
+                "internalType": "bool",
+                "name": "usePermit",
+                "type": "bool"
+              },
+              {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "deadline",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct PermitData",
+            "name": "assetPermit",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "bool",
+                "name": "usePermit",
+                "type": "bool"
+              },
+              {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "deadline",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct PermitData",
+            "name": "settlementPermit",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct SettlementParams",
+        "name": "params",
+        "type": "tuple"
+      }
+    ],
+    "name": "settle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "settlementTokenRegistry",
+    "outputs": [
+      {
+        "internalType": "contract ISettlementTokenRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "unpauseGlobal",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "quoteHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "usedQuoteHash",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "snapshotHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "usedSnapshotHash",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "tradeIdHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "usedTradeIdHash",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "tradeIdHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "snapshotHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "collector",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "settlementToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "buyerFee",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "sellerFee",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "collectorCredit",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "matchedScopeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "deploymentVersionHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "FeeCollected",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "GlobalPaused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "GlobalUnpaused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "signer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "enum NonceType",
+        "name": "nonceType",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      }
+    ],
+    "name": "NonceCancelled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "signer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "enum NonceType",
+        "name": "nonceType",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "tradeIdHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "NonceConsumed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "Retired",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "tradeIdHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "quoteHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "snapshotHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ParticipantType",
+        "name": "requesterType",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum RequesterSide",
+        "name": "requesterSide",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "requester",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "quotingMaker",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "seller",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "assetToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "settlementToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "executedQuantity",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum AssetClass",
+        "name": "assetClass",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "priceTermsHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "principalCalculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "principalCalculatorConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "adapterConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "settlementTokenConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "settlementTokenConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "marketRuleConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "marketRuleConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "cashPrincipal",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "buyerFee",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "sellerFee",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "buyerDebit",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "sellerCredit",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "matchedScopeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "makerQuoteNonce",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "requesterTradeNonce",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "deploymentVersionHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "SettlementExecuted",
+    "type": "event"
+  }
+]

@@ -1,0 +1,683 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "calculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "activatePrincipalCalculator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "calculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "deprecatePrincipalCalculator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "exemptRetiredDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum AssetClass",
+        "name": "assetClass",
+        "type": "uint8"
+      }
+    ],
+    "name": "getCurrentPrincipalCalculator",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "calculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "calculator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "interfaceVersion",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "codeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct PrincipalCalculatorConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum CalculatorStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct PrincipalCalculatorRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDependentDvp",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "retiredExempt",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDependentDvpCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "calculatorConfigId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getPrincipalCalculator",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "calculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "calculator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "interfaceVersion",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "codeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct PrincipalCalculatorConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum CalculatorStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct PrincipalCalculatorRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "calculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum AssetClass",
+        "name": "expectedAssetClass",
+        "type": "uint8"
+      }
+    ],
+    "name": "isPrincipalCalculatorConfigActive",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "calculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "pausePrincipalCalculator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "registerDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "schemaVersion",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "calculatorConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "revision",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum AssetClass",
+            "name": "assetClass",
+            "type": "uint8"
+          },
+          {
+            "internalType": "address",
+            "name": "calculator",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "interfaceVersion",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "codeHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "replacesId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "configHash",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct PrincipalCalculatorConfig",
+        "name": "config",
+        "type": "tuple"
+      }
+    ],
+    "name": "registerPrincipalCalculator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "calculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "unpausePrincipalCalculator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "enum AssetClass",
+        "name": "assetClass",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "oldCalculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newCalculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "CurrentPrincipalCalculatorChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRetiredExempted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "calculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "enum AssetClass",
+        "name": "assetClass",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "calculator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "schemaVersion",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "revision",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "interfaceVersion",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "codeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "replacesId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "PrincipalCalculatorRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "calculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum CalculatorStatus",
+        "name": "oldStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum CalculatorStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "PrincipalCalculatorStatusChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  }
+]

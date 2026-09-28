@@ -1,0 +1,2792 @@
+{
+  "generatedFrom": "contracts/src/types/HTPTypes.sol AST",
+  "schemaVersion": 1,
+  "structs": [
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "enum",
+          "name": "tokenStandard",
+          "solidityType": "TokenStandard"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "enum",
+          "name": "restrictionMode",
+          "solidityType": "RestrictionMode"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "enum",
+          "name": "precheckMethod",
+          "solidityType": "PrecheckMethod"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "transferLegMask",
+          "solidityType": "uint256"
+        }
+      ],
+      "headByteLength": 128,
+      "name": "AdapterCapabilities"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "adapterConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "revision",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "chainId",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "adapter",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "interfaceVersion",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "codeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "AdapterCapabilities",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "struct",
+          "name": "capabilities",
+          "solidityType": "AdapterCapabilities"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "capabilityHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 384,
+          "kind": "elementary",
+          "name": "providerHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 416,
+          "kind": "elementary",
+          "name": "replacesId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 448,
+          "kind": "elementary",
+          "name": "configHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 480,
+      "name": "AdapterConfig"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "AdapterConfig",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "struct",
+          "name": "config",
+          "solidityType": "AdapterConfig"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 480,
+          "kind": "enum",
+          "name": "status",
+          "solidityType": "AdapterStatus"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 512,
+          "kind": "elementary",
+          "name": "exists",
+          "solidityType": "bool"
+        }
+      ],
+      "headByteLength": 544,
+      "name": "AdapterRecord"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "economicAssetIdHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "assetVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "chainId",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "versionNo",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "assetToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "enum",
+          "name": "tokenStandard",
+          "solidityType": "TokenStandard"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "enum",
+          "name": "tokenDeploymentKind",
+          "solidityType": "TokenDeploymentKind"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "elementary",
+          "name": "assetDecimals",
+          "solidityType": "uint8"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "tokenCodeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "elementary",
+          "name": "implementation",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "implementationCodeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 384,
+          "kind": "enum",
+          "name": "assetPermitCapability",
+          "solidityType": "PermitCapability"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 416,
+          "kind": "enum",
+          "name": "assetClass",
+          "solidityType": "AssetClass"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 448,
+          "kind": "elementary",
+          "name": "principalCalculatorConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 480,
+          "kind": "elementary",
+          "name": "principalCalculatorConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 512,
+          "kind": "elementary",
+          "name": "adapterConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 544,
+          "kind": "elementary",
+          "name": "adapterConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 576,
+          "kind": "enum",
+          "name": "restrictionMode",
+          "solidityType": "RestrictionMode"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 608,
+          "kind": "elementary",
+          "name": "settlementToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 640,
+          "kind": "elementary",
+          "name": "settlementTokenConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 672,
+          "kind": "elementary",
+          "name": "settlementTokenConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 704,
+          "kind": "elementary",
+          "name": "dvpContract",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 736,
+          "kind": "elementary",
+          "name": "deploymentVersionHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 768,
+          "kind": "elementary",
+          "name": "replacesAssetVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 800,
+          "kind": "elementary",
+          "name": "configHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 832,
+      "name": "AssetVersionConfig"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "AssetVersionConfig",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "struct",
+          "name": "config",
+          "solidityType": "AssetVersionConfig"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 832,
+          "kind": "enum",
+          "name": "status",
+          "solidityType": "AssetVersionStatus"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 864,
+          "kind": "elementary",
+          "name": "exists",
+          "solidityType": "bool"
+        }
+      ],
+      "headByteLength": 896,
+      "name": "AssetVersionRecord"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "cleanPricePerUnit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "accruedInterestPerUnit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "settlementDate",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "sourceHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 128,
+      "name": "BondPriceTerms"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "wallet",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "assetVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "enum",
+          "name": "decision",
+          "solidityType": "Decision"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "validFrom",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "validUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "kycDecisionVersion",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "permissionVersion",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "evidenceHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 256,
+      "name": "EligibilityInput"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "eligibilityKey",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "wallet",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "assetVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "enum",
+          "name": "decision",
+          "solidityType": "Decision"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "validFrom",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "validUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "kycDecisionVersion",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "permissionVersion",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "elementary",
+          "name": "recordVersion",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "paused",
+          "solidityType": "bool"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "elementary",
+          "name": "revoked",
+          "solidityType": "bool"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "evidenceHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 384,
+      "name": "EligibilityRecord"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "feeVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "revision",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "chainId",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "feePolicyEpoch",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "enum",
+          "name": "scopeType",
+          "solidityType": "ScopeType"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "scopeKeyHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "matchedScopeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint16",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "elementary",
+          "name": "investorRateBps",
+          "solidityType": "uint16"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "investorHasCap",
+          "solidityType": "bool"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "elementary",
+          "name": "investorCapAmount",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint16",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "makerRateBps",
+          "solidityType": "uint16"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 384,
+          "kind": "elementary",
+          "name": "makerHasCap",
+          "solidityType": "bool"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 416,
+          "kind": "elementary",
+          "name": "makerCapAmount",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 448,
+          "kind": "enum",
+          "name": "roundingMode",
+          "solidityType": "RoundingMode"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 480,
+          "kind": "elementary",
+          "name": "settlementToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 512,
+          "kind": "elementary",
+          "name": "settlementTokenConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 544,
+          "kind": "elementary",
+          "name": "settlementTokenConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 576,
+          "kind": "elementary",
+          "name": "collector",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 608,
+          "kind": "elementary",
+          "name": "validFrom",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 640,
+          "kind": "elementary",
+          "name": "validUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 672,
+          "kind": "elementary",
+          "name": "feeConstraintHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 704,
+          "kind": "elementary",
+          "name": "replacesFeeVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 736,
+          "kind": "elementary",
+          "name": "configHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 768,
+      "name": "FeeConfig"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "feePolicyEpoch",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "chainId",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "quoteValidFrom",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "quoteValidUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "settlementValidUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "configHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 224,
+      "name": "FeePolicyEpochConfig"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "FeePolicyEpochConfig",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "struct",
+          "name": "config",
+          "solidityType": "FeePolicyEpochConfig"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "enum",
+          "name": "status",
+          "solidityType": "FeePolicyEpochStatus"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "elementary",
+          "name": "isSealed",
+          "solidityType": "bool"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "exists",
+          "solidityType": "bool"
+        }
+      ],
+      "headByteLength": 320,
+      "name": "FeePolicyEpochRecord"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "FeeConfig",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "struct",
+          "name": "config",
+          "solidityType": "FeeConfig"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 768,
+          "kind": "enum",
+          "name": "status",
+          "solidityType": "FeeVersionStatus"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 800,
+          "kind": "elementary",
+          "name": "exists",
+          "solidityType": "bool"
+        }
+      ],
+      "headByteLength": 832,
+      "name": "FeeVersionRecord"
+    },
+    {
+      "dynamic": true,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "rfqIdHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "quoteIdHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "quoteVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "quotingMaker",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "requester",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "enum",
+          "name": "requesterType",
+          "solidityType": "ParticipantType"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "assetVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "enum",
+          "name": "requesterSide",
+          "solidityType": "RequesterSide"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "assetToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "elementary",
+          "name": "settlementToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "enum",
+          "name": "assetClass",
+          "solidityType": "AssetClass"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 384,
+          "kind": "elementary",
+          "name": "priceTermsHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes",
+          "dynamic": true,
+          "headOffset": 416,
+          "kind": "elementary",
+          "name": "priceData",
+          "solidityType": "bytes"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 448,
+          "kind": "elementary",
+          "name": "principalCalculatorConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 480,
+          "kind": "elementary",
+          "name": "principalCalculatorConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 512,
+          "kind": "elementary",
+          "name": "adapterConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 544,
+          "kind": "elementary",
+          "name": "adapterConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 576,
+          "kind": "elementary",
+          "name": "settlementTokenConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 608,
+          "kind": "elementary",
+          "name": "settlementTokenConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 640,
+          "kind": "elementary",
+          "name": "marketRuleConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 672,
+          "kind": "elementary",
+          "name": "marketRuleConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 704,
+          "kind": "elementary",
+          "name": "minExecutableQuantity",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 736,
+          "kind": "elementary",
+          "name": "maxExecutableQuantity",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 768,
+          "kind": "elementary",
+          "name": "stepQuantity",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 800,
+          "kind": "elementary",
+          "name": "feePolicyEpoch",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 832,
+          "kind": "elementary",
+          "name": "feeVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 864,
+          "kind": "elementary",
+          "name": "matchedScopeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 896,
+          "kind": "elementary",
+          "name": "feeConstraintHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 928,
+          "kind": "elementary",
+          "name": "quoteNonce",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 960,
+          "kind": "elementary",
+          "name": "expiresAt",
+          "solidityType": "uint64"
+        }
+      ],
+      "headByteLength": 992,
+      "name": "FirmQuote"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "navPerUnit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "navDate",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "navSourceHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 96,
+      "name": "FundPriceTerms"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "marketRuleConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "revision",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "chainId",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "assetVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "settlementToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "settlementTokenConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "settlementTokenConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "elementary",
+          "name": "minCashPrincipal",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "minExecutableQuantity",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "elementary",
+          "name": "quantityStep",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "priceTick",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 384,
+          "kind": "elementary",
+          "name": "priceDecimals",
+          "solidityType": "uint8"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 416,
+          "kind": "elementary",
+          "name": "quantityDecimals",
+          "solidityType": "uint8"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 448,
+          "kind": "elementary",
+          "name": "quoteValidFrom",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 480,
+          "kind": "elementary",
+          "name": "quoteValidUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 512,
+          "kind": "elementary",
+          "name": "settlementValidUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 544,
+          "kind": "elementary",
+          "name": "replacesConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 576,
+          "kind": "elementary",
+          "name": "configHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 608,
+      "name": "MarketRuleConfig"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "MarketRuleConfig",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "struct",
+          "name": "config",
+          "solidityType": "MarketRuleConfig"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 608,
+          "kind": "enum",
+          "name": "status",
+          "solidityType": "MarketRuleStatus"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 640,
+          "kind": "elementary",
+          "name": "isSealed",
+          "solidityType": "bool"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 672,
+          "kind": "elementary",
+          "name": "paused",
+          "solidityType": "bool"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 704,
+          "kind": "elementary",
+          "name": "exists",
+          "solidityType": "bool"
+        }
+      ],
+      "headByteLength": 736,
+      "name": "MarketRuleRecord"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "signer",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "enum",
+          "name": "nonceType",
+          "solidityType": "NonceType"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "nonce",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "deadline",
+          "solidityType": "uint64"
+        }
+      ],
+      "headByteLength": 128,
+      "name": "NonceCancellation"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "wallet",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "participantIdHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "enum",
+          "name": "participantType",
+          "solidityType": "ParticipantType"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "validUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "evidenceHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 160,
+      "name": "ParticipantInput"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "wallet",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "participantIdHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "enum",
+          "name": "participantType",
+          "solidityType": "ParticipantType"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "enum",
+          "name": "status",
+          "solidityType": "ParticipantStatus"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "validUntil",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "version",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "evidenceHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 224,
+      "name": "ParticipantRecord"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "usePermit",
+          "solidityType": "bool"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "owner",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "token",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "value",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "deadline",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "v",
+          "solidityType": "uint8"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "r",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "s",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 256,
+      "name": "PermitData"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "calculatorConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "revision",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "chainId",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "enum",
+          "name": "assetClass",
+          "solidityType": "AssetClass"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "calculator",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "interfaceVersion",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "codeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "elementary",
+          "name": "replacesId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "configHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 320,
+      "name": "PrincipalCalculatorConfig"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "PrincipalCalculatorConfig",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "struct",
+          "name": "config",
+          "solidityType": "PrincipalCalculatorConfig"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "enum",
+          "name": "status",
+          "solidityType": "CalculatorStatus"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "exists",
+          "solidityType": "bool"
+        }
+      ],
+      "headByteLength": 384,
+      "name": "PrincipalCalculatorRecord"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "provider",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes4",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "selector",
+          "solidityType": "bytes4"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "codeHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 96,
+      "name": "RestrictionProvider"
+    },
+    {
+      "dynamic": true,
+      "fields": [
+        {
+          "abiType": "RestrictionProvider[]",
+          "dynamic": true,
+          "headOffset": 0,
+          "kind": "array",
+          "name": "providers",
+          "solidityType": "RestrictionProvider[]"
+        }
+      ],
+      "headByteLength": 32,
+      "name": "RestrictionProviderSet"
+    },
+    {
+      "dynamic": true,
+      "fields": [
+        {
+          "abiType": "FirmQuote",
+          "dynamic": true,
+          "headOffset": 0,
+          "kind": "struct",
+          "name": "firmQuote",
+          "solidityType": "FirmQuote"
+        },
+        {
+          "abiType": "TradeIntent",
+          "dynamic": true,
+          "headOffset": 32,
+          "kind": "struct",
+          "name": "tradeIntent",
+          "solidityType": "TradeIntent"
+        },
+        {
+          "abiType": "TradeTermsSnapshot",
+          "dynamic": true,
+          "headOffset": 64,
+          "kind": "struct",
+          "name": "snapshot",
+          "solidityType": "TradeTermsSnapshot"
+        },
+        {
+          "abiType": "bytes",
+          "dynamic": true,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "quotingMakerSignature",
+          "solidityType": "bytes"
+        },
+        {
+          "abiType": "bytes",
+          "dynamic": true,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "requesterSignature",
+          "solidityType": "bytes"
+        },
+        {
+          "abiType": "PermitData",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "struct",
+          "name": "assetPermit",
+          "solidityType": "PermitData"
+        },
+        {
+          "abiType": "PermitData",
+          "dynamic": false,
+          "headOffset": 416,
+          "kind": "struct",
+          "name": "settlementPermit",
+          "solidityType": "PermitData"
+        }
+      ],
+      "headByteLength": 672,
+      "name": "SettlementParams"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "configId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "revision",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "chainId",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "settlementToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "enum",
+          "name": "tokenDeploymentKind",
+          "solidityType": "TokenDeploymentKind"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "settlementTokenDecimals",
+          "solidityType": "uint8"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "tokenCodeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "elementary",
+          "name": "implementation",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "implementationCodeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "elementary",
+          "name": "adapterConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "adapterConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 384,
+          "kind": "enum",
+          "name": "permitCapability",
+          "solidityType": "PermitCapability"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 416,
+          "kind": "elementary",
+          "name": "replacesConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 448,
+          "kind": "elementary",
+          "name": "configHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 480,
+      "name": "SettlementTokenConfig"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "SettlementTokenConfig",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "struct",
+          "name": "config",
+          "solidityType": "SettlementTokenConfig"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 480,
+          "kind": "enum",
+          "name": "status",
+          "solidityType": "SettlementTokenStatus"
+        },
+        {
+          "abiType": "bool",
+          "dynamic": false,
+          "headOffset": 512,
+          "kind": "elementary",
+          "name": "exists",
+          "solidityType": "bool"
+        }
+      ],
+      "headByteLength": 544,
+      "name": "SettlementTokenRecord"
+    },
+    {
+      "dynamic": false,
+      "fields": [
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "unitPrice",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "priceAsOf",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "referenceMarketHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "priceSourceHash",
+          "solidityType": "bytes32"
+        }
+      ],
+      "headByteLength": 128,
+      "name": "StockPriceTerms"
+    },
+    {
+      "dynamic": true,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "tradeIdHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "quoteHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "snapshotHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "requester",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "enum",
+          "name": "requesterType",
+          "solidityType": "ParticipantType"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "elementary",
+          "name": "quotingMaker",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "assetVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "enum",
+          "name": "requesterSide",
+          "solidityType": "RequesterSide"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "buyer",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "elementary",
+          "name": "seller",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "assetToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 384,
+          "kind": "elementary",
+          "name": "settlementToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 416,
+          "kind": "elementary",
+          "name": "executedQuantity",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 448,
+          "kind": "enum",
+          "name": "assetClass",
+          "solidityType": "AssetClass"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 480,
+          "kind": "elementary",
+          "name": "priceTermsHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes",
+          "dynamic": true,
+          "headOffset": 512,
+          "kind": "elementary",
+          "name": "priceData",
+          "solidityType": "bytes"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 544,
+          "kind": "elementary",
+          "name": "principalCalculatorConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 576,
+          "kind": "elementary",
+          "name": "principalCalculatorConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 608,
+          "kind": "elementary",
+          "name": "adapterConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 640,
+          "kind": "elementary",
+          "name": "adapterConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 672,
+          "kind": "elementary",
+          "name": "settlementTokenConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 704,
+          "kind": "elementary",
+          "name": "settlementTokenConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 736,
+          "kind": "elementary",
+          "name": "marketRuleConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 768,
+          "kind": "elementary",
+          "name": "marketRuleConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 800,
+          "kind": "elementary",
+          "name": "cashPrincipal",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 832,
+          "kind": "elementary",
+          "name": "buyerFee",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 864,
+          "kind": "elementary",
+          "name": "sellerFee",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 896,
+          "kind": "elementary",
+          "name": "buyerDebit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 928,
+          "kind": "elementary",
+          "name": "sellerCredit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 960,
+          "kind": "elementary",
+          "name": "collectorCredit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 992,
+          "kind": "elementary",
+          "name": "collector",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 1024,
+          "kind": "elementary",
+          "name": "feePolicyEpoch",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 1056,
+          "kind": "elementary",
+          "name": "feeVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 1088,
+          "kind": "elementary",
+          "name": "matchedScopeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 1120,
+          "kind": "elementary",
+          "name": "feeConstraintHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 1152,
+          "kind": "enum",
+          "name": "roundingMode",
+          "solidityType": "RoundingMode"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 1184,
+          "kind": "elementary",
+          "name": "tradeNonce",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 1216,
+          "kind": "elementary",
+          "name": "deadline",
+          "solidityType": "uint64"
+        }
+      ],
+      "headByteLength": 1248,
+      "name": "TradeIntent"
+    },
+    {
+      "dynamic": true,
+      "fields": [
+        {
+          "abiType": "uint32",
+          "dynamic": false,
+          "headOffset": 0,
+          "kind": "elementary",
+          "name": "schemaVersion",
+          "solidityType": "uint32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 32,
+          "kind": "elementary",
+          "name": "tradeIdHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 64,
+          "kind": "elementary",
+          "name": "quoteHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 96,
+          "kind": "elementary",
+          "name": "chainId",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 128,
+          "kind": "elementary",
+          "name": "dvpContract",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 160,
+          "kind": "elementary",
+          "name": "requester",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 192,
+          "kind": "enum",
+          "name": "requesterType",
+          "solidityType": "ParticipantType"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 224,
+          "kind": "elementary",
+          "name": "quotingMaker",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 256,
+          "kind": "enum",
+          "name": "requesterSide",
+          "solidityType": "RequesterSide"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 288,
+          "kind": "elementary",
+          "name": "buyer",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 320,
+          "kind": "elementary",
+          "name": "seller",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 352,
+          "kind": "elementary",
+          "name": "assetVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 384,
+          "kind": "elementary",
+          "name": "assetToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 416,
+          "kind": "elementary",
+          "name": "settlementToken",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 448,
+          "kind": "elementary",
+          "name": "assetDecimals",
+          "solidityType": "uint8"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 480,
+          "kind": "elementary",
+          "name": "settlementTokenDecimals",
+          "solidityType": "uint8"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 512,
+          "kind": "elementary",
+          "name": "executedQuantity",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 544,
+          "kind": "enum",
+          "name": "assetClass",
+          "solidityType": "AssetClass"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 576,
+          "kind": "elementary",
+          "name": "priceTermsHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes",
+          "dynamic": true,
+          "headOffset": 608,
+          "kind": "elementary",
+          "name": "priceData",
+          "solidityType": "bytes"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 640,
+          "kind": "elementary",
+          "name": "principalCalculatorConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 672,
+          "kind": "elementary",
+          "name": "principalCalculatorConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 704,
+          "kind": "elementary",
+          "name": "adapterConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 736,
+          "kind": "elementary",
+          "name": "adapterConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 768,
+          "kind": "elementary",
+          "name": "settlementTokenConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 800,
+          "kind": "elementary",
+          "name": "settlementTokenConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 832,
+          "kind": "elementary",
+          "name": "marketRuleConfigId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 864,
+          "kind": "elementary",
+          "name": "marketRuleConfigHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 896,
+          "kind": "elementary",
+          "name": "cashPrincipal",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 928,
+          "kind": "elementary",
+          "name": "buyerFee",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 960,
+          "kind": "elementary",
+          "name": "sellerFee",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 992,
+          "kind": "elementary",
+          "name": "buyerDebit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 1024,
+          "kind": "elementary",
+          "name": "sellerCredit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 1056,
+          "kind": "elementary",
+          "name": "collectorCredit",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "address",
+          "dynamic": false,
+          "headOffset": 1088,
+          "kind": "elementary",
+          "name": "collector",
+          "solidityType": "address"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 1120,
+          "kind": "elementary",
+          "name": "feePolicyEpoch",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 1152,
+          "kind": "elementary",
+          "name": "feeVersionId",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 1184,
+          "kind": "elementary",
+          "name": "matchedScopeHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "bytes32",
+          "dynamic": false,
+          "headOffset": 1216,
+          "kind": "elementary",
+          "name": "feeConstraintHash",
+          "solidityType": "bytes32"
+        },
+        {
+          "abiType": "uint8",
+          "dynamic": false,
+          "headOffset": 1248,
+          "kind": "enum",
+          "name": "roundingMode",
+          "solidityType": "RoundingMode"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 1280,
+          "kind": "elementary",
+          "name": "makerQuoteNonce",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint256",
+          "dynamic": false,
+          "headOffset": 1312,
+          "kind": "elementary",
+          "name": "requesterTradeNonce",
+          "solidityType": "uint256"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 1344,
+          "kind": "elementary",
+          "name": "quoteExpiresAt",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 1376,
+          "kind": "elementary",
+          "name": "tradeDeadline",
+          "solidityType": "uint64"
+        },
+        {
+          "abiType": "uint64",
+          "dynamic": false,
+          "headOffset": 1408,
+          "kind": "elementary",
+          "name": "createdAt",
+          "solidityType": "uint64"
+        }
+      ],
+      "headByteLength": 1440,
+      "name": "TradeTermsSnapshot"
+    }
+  ]
+}

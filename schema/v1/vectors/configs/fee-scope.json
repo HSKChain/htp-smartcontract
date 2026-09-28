@@ -1,0 +1,39 @@
+{
+  "typeString": "FeeScope(uint64 feePolicyEpoch,uint8 scopeType,bytes32 scopeKeyHash)",
+  "typeHash": "0x3e68b714359796c92f052a4b03965163c93aef8ea11a90b1f1a29d10be2ea88f",
+  "priority": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "feePolicyEpoch": "7",
+  "scopes": [
+    {
+      "scopeType": 5,
+      "scopeKeyHash": "0xa1421a5caa47ea05360cbc0daf6605b6316cb7d099be0e5fee8e69ad6fe25ab2",
+      "matchedScopeHash": "0xf3b89e35fb08387e5b0aec59820139c4570d7a1e89bd9807e0f2e2cd294c69ce"
+    },
+    {
+      "scopeType": 4,
+      "scopeKeyHash": "0x0000000000000000000000000000000000000000000000000000000000000101",
+      "matchedScopeHash": "0xd4e6470f7837a4ceefd92155637f64132acf51a4987e4804620632aa4938da54"
+    },
+    {
+      "scopeType": 3,
+      "scopeKeyHash": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "matchedScopeHash": "0x3f298c5625295e988ed9d6c3ebe8c527af6fd1cdd3caf42a2eb0cee0850fe977"
+    },
+    {
+      "scopeType": 2,
+      "scopeKeyHash": "0x0000000000000000000000000000000000000000000000000000000000007a69",
+      "matchedScopeHash": "0xc901ba22961324ae81d73666d65b1f4447ceace8138d44840d1e8d05c594a070"
+    },
+    {
+      "scopeType": 1,
+      "scopeKeyHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "matchedScopeHash": "0xffca2031947e302e5369292b5924cb916f8c61acedfb2ebe06fe669babcc29f8"
+    }
+  ]
+}

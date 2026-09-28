@@ -1,0 +1,88 @@
+{
+  "boundaryOnly": true,
+  "negative": [
+    {
+      "attemptedAt": "1780000001",
+      "callerSelectedScope": null,
+      "evidence": {
+        "deprecatedAt": "1780000000",
+        "feeConstraintHash": "0x0000000000000000000000000000000000000000000000000000000000000b02",
+        "feePolicyEpoch": "7",
+        "feeVersionId": "0x0000000000000000000000000000000000000000000000000000000000000b01",
+        "resolverScope": "ASSET_VERSION",
+        "signedAt": "1779999999"
+      },
+      "expectedError": "DEPRECATED_GENERATE_FORBIDDEN",
+      "name": "deprecatedNewGenerate",
+      "operation": "GENERATE",
+      "status": "DEPRECATED"
+    },
+    {
+      "attemptedAt": "1780000001",
+      "callerSelectedScope": null,
+      "evidence": {
+        "deprecatedAt": "1780000000",
+        "feeConstraintHash": "0x0000000000000000000000000000000000000000000000000000000000000b02",
+        "feePolicyEpoch": "7",
+        "feeVersionId": "0x0000000000000000000000000000000000000000000000000000000000000b01",
+        "resolverScope": "ASSET_VERSION",
+        "signedAt": "1779999999"
+      },
+      "expectedError": "DEPRECATED_SIGN_FORBIDDEN",
+      "name": "deprecatedNewSign",
+      "operation": "SIGN",
+      "status": "DEPRECATED"
+    },
+    {
+      "attemptedAt": "1780000001",
+      "callerSelectedScope": null,
+      "evidence": {
+        "deprecatedAt": "1780000000",
+        "feeConstraintHash": "0x0000000000000000000000000000000000000000000000000000000000000b02",
+        "feePolicyEpoch": "7",
+        "feeVersionId": "0x0000000000000000000000000000000000000000000000000000000000000b01",
+        "resolverScope": "ASSET_VERSION",
+        "signedAt": "1779999999"
+      },
+      "expectedError": "DEPRECATED_BROADCAST_FORBIDDEN",
+      "name": "deprecatedNewBroadcast",
+      "operation": "BROADCAST",
+      "status": "DEPRECATED"
+    },
+    {
+      "attemptedAt": "1779999000",
+      "callerSelectedScope": "GLOBAL",
+      "evidence": {
+        "deprecatedAt": "1780000000",
+        "feeConstraintHash": "0x0000000000000000000000000000000000000000000000000000000000000b02",
+        "feePolicyEpoch": "7",
+        "feeVersionId": "0x0000000000000000000000000000000000000000000000000000000000000b01",
+        "resolverScope": "ASSET_VERSION",
+        "signedAt": "1779999999"
+      },
+      "expectedError": "CALLER_SCOPE_SELECTION_FORBIDDEN",
+      "name": "callerSelectedResolverScope",
+      "operation": "GENERATE",
+      "status": "ACTIVE"
+    }
+  ],
+  "positive": [
+    {
+      "callerSelectedScope": null,
+      "evidence": {
+        "deprecatedAt": "1780000000",
+        "feeConstraintHash": "0x0000000000000000000000000000000000000000000000000000000000000b02",
+        "feePolicyEpoch": "7",
+        "feeVersionId": "0x0000000000000000000000000000000000000000000000000000000000000b01",
+        "resolverScope": "ASSET_VERSION",
+        "signedAt": "1779999999"
+      },
+      "expected": "success",
+      "name": "signedBeforeDeprecationEvidence",
+      "operation": "SETTLE",
+      "status": "DEPRECATED"
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "candidate"
+}

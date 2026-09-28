@@ -1,0 +1,3378 @@
+{
+  "errors": [
+    {
+      "inputs": [],
+      "name": "AccessControlBadConfirmation",
+      "selector": "0x6697b232",
+      "signature": "AccessControlBadConfirmation()",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "neededRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AccessControlUnauthorizedAccount",
+      "selector": "0xe2517d3f",
+      "signature": "AccessControlUnauthorizedAccount(address,bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "AdapterCapabilitiesInvalid",
+      "selector": "0xea10bc1e",
+      "signature": "AdapterCapabilitiesInvalid()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "AdapterCapabilitiesMismatch",
+      "selector": "0x8e791b52",
+      "signature": "AdapterCapabilitiesMismatch()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AdapterCapabilityHashMismatch",
+      "selector": "0xd5ffb06d",
+      "signature": "AdapterCapabilityHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AdapterCodeHashMismatch",
+      "selector": "0xd2be4e63",
+      "signature": "AdapterCodeHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AdapterInactive",
+      "selector": "0x79ad8b65",
+      "signature": "AdapterInactive(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AdapterInterfaceMismatch",
+      "selector": "0x6349813b",
+      "signature": "AdapterInterfaceMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "provided",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maximum",
+          "type": "uint256"
+        }
+      ],
+      "name": "AdapterProviderCallGasOutOfRange",
+      "selector": "0xcde73e8b",
+      "signature": "AdapterProviderCallGasOutOfRange(uint256,uint256)",
+      "sources": [
+        "src/adapters/ERC1404Adapter.sol",
+        "src/adapters/UsdyRestrictedAdapter.sol",
+        "src/libraries/ProtocolSecurityLimits.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AdapterProviderHashMismatch",
+      "selector": "0xa18fe9b6",
+      "signature": "AdapterProviderHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes4",
+          "name": "probeSelector",
+          "type": "bytes4"
+        }
+      ],
+      "name": "AdapterProviderInterfaceMissing",
+      "selector": "0xcf437a7e",
+      "signature": "AdapterProviderInterfaceMissing(address,bytes4)",
+      "sources": [
+        "src/adapters/ERC1404Adapter.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AdapterReturnMalformed",
+      "selector": "0xeefb8fa9",
+      "signature": "AdapterReturnMalformed(bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        }
+      ],
+      "name": "AddressEmptyCode",
+      "selector": "0x9996b315",
+      "signature": "AddressEmptyCode(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "buyerFee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sellerFee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "cashPrincipal",
+          "type": "uint256"
+        }
+      ],
+      "name": "AggregateFeeExceedsPrincipal",
+      "selector": "0xd663b84e",
+      "signature": "AggregateFeeExceedsPrincipal(uint256,uint256,uint256)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "totalBps",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maximumBps",
+          "type": "uint256"
+        }
+      ],
+      "name": "AggregateFeeRateOutOfRange",
+      "selector": "0x23d53e6c",
+      "signature": "AggregateFeeRateOutOfRange(uint256,uint256)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AssetAdapterCapabilitiesInvalid",
+      "selector": "0x8324c43f",
+      "signature": "AssetAdapterCapabilitiesInvalid(bytes32)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "expected",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "actual",
+          "type": "uint256"
+        }
+      ],
+      "name": "AssetDecimalsMismatch",
+      "selector": "0x8e3054e6",
+      "signature": "AssetDecimalsMismatch(address,uint8,uint256)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPCurrentStateValidator.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "assetDecimals",
+          "type": "uint8"
+        }
+      ],
+      "name": "AssetDecimalsOutOfRange",
+      "selector": "0xf53c1b2b",
+      "signature": "AssetDecimalsOutOfRange(uint8)",
+      "sources": [
+        "src/calculators/BondPrincipalCalculator.sol",
+        "src/calculators/FundPrincipalCalculator.sol",
+        "src/calculators/StockPrincipalCalculator.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "AssetTokenAlreadyRegistered",
+      "selector": "0x58288786",
+      "signature": "AssetTokenAlreadyRegistered(address)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AssetVersionIdMismatch",
+      "selector": "0xc2a7c7a5",
+      "signature": "AssetVersionIdMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AssetVersionImplementationChanged",
+      "selector": "0xd0e7c4e0",
+      "signature": "AssetVersionImplementationChanged(bytes32)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AssetVersionInactive",
+      "selector": "0xecbad3e4",
+      "signature": "AssetVersionInactive(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expected",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "actual",
+          "type": "uint256"
+        }
+      ],
+      "name": "BalanceDeltaMismatch",
+      "selector": "0xa85d8b3a",
+      "signature": "BalanceDeltaMismatch(address,address,uint256,uint256)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "cleanPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "accruedInterest",
+          "type": "uint256"
+        }
+      ],
+      "name": "BondFullPriceOverflow",
+      "selector": "0x6fa55cf5",
+      "signature": "BondFullPriceOverflow(uint256,uint256)",
+      "sources": [
+        "src/calculators/BondPrincipalCalculator.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum AssetClass",
+          "name": "expected",
+          "type": "uint8"
+        },
+        {
+          "internalType": "enum AssetClass",
+          "name": "actual",
+          "type": "uint8"
+        }
+      ],
+      "name": "CalculatorAssetClassMismatch",
+      "selector": "0x1e6061eb",
+      "signature": "CalculatorAssetClassMismatch(uint8,uint8)",
+      "sources": [
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "CalculatorCodeHashMismatch",
+      "selector": "0x47657b33",
+      "signature": "CalculatorCodeHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "calculatorConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "CalculatorInactive",
+      "selector": "0xc3873134",
+      "signature": "CalculatorInactive(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "CalculatorInterfaceMismatch",
+      "selector": "0xb0a969e9",
+      "signature": "CalculatorInterfaceMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "calculatorConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "CalculatorReturnMalformed",
+      "selector": "0xc5898939",
+      "signature": "CalculatorReturnMalformed(bytes32)",
+      "sources": [
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "calculatorConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "CalculatorStaticCallFailed",
+      "selector": "0xfc8875d7",
+      "signature": "CalculatorStaticCallFailed(bytes32)",
+      "sources": [
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "CashConservationMismatch",
+      "selector": "0x7828438f",
+      "signature": "CashConservationMismatch()",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "CashPrincipalZero",
+      "selector": "0x643dbbf1",
+      "signature": "CashPrincipalZero()",
+      "sources": [
+        "src/calculators/BondPrincipalCalculator.sol",
+        "src/calculators/FundPrincipalCalculator.sol",
+        "src/calculators/StockPrincipalCalculator.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigAlreadyExists",
+      "selector": "0x8a4075b3",
+      "signature": "ConfigAlreadyExists(bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "expected",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "actual",
+          "type": "uint256"
+        }
+      ],
+      "name": "ConfigChainMismatch",
+      "selector": "0x2fe3cb86",
+      "signature": "ConfigChainMismatch(uint256,uint256)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigHashMismatch",
+      "selector": "0xe9e3909f",
+      "signature": "ConfigHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigIdMismatch",
+      "selector": "0x48993d10",
+      "signature": "ConfigIdMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigNotFound",
+      "selector": "0x24abf045",
+      "signature": "ConfigNotFound(bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "latestConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigNotLatest",
+      "selector": "0xb2c48885",
+      "signature": "ConfigNotLatest(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "expectedConfigHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigReferenceMismatch",
+      "selector": "0x231c19ee",
+      "signature": "ConfigReferenceMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigReplacesMismatch",
+      "selector": "0x73a95b5e",
+      "signature": "ConfigReplacesMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "subject",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "revision",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigRevisionAlreadyExists",
+      "selector": "0xb1332215",
+      "signature": "ConfigRevisionAlreadyExists(bytes32,uint32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "subject",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "expected",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "actual",
+          "type": "uint32"
+        }
+      ],
+      "name": "ConfigRevisionMismatch",
+      "selector": "0xa2a5ddd1",
+      "signature": "ConfigRevisionMismatch(bytes32,uint32,uint32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "expectedSubject",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actualSubject",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ConfigSubjectMismatch",
+      "selector": "0x7a45f92c",
+      "signature": "ConfigSubjectMismatch(bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "ContractNotPaused",
+      "selector": "0xdcdde9dd",
+      "signature": "ContractNotPaused()",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "ContractPaused",
+      "selector": "0xab35696f",
+      "signature": "ContractPaused()",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DependentDvpAlreadyRegistered",
+      "selector": "0xc490df7a",
+      "signature": "DependentDvpAlreadyRegistered(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DependentDvpAlreadyRetiredExempt",
+      "selector": "0x441a7584",
+      "signature": "DependentDvpAlreadyRetiredExempt(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "limit",
+          "type": "uint256"
+        }
+      ],
+      "name": "DependentDvpLimitReached",
+      "selector": "0x69b0f252",
+      "signature": "DependentDvpLimitReached(uint256)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DependentDvpNotPaused",
+      "selector": "0xa0dcd45b",
+      "signature": "DependentDvpNotPaused(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DependentDvpNotRegistered",
+      "selector": "0x4941d125",
+      "signature": "DependentDvpNotRegistered(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DependentDvpNotRetired",
+      "selector": "0x83b54524",
+      "signature": "DependentDvpNotRetired(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DependentDvpStatusMalformed",
+      "selector": "0xf1c28ea9",
+      "signature": "DependentDvpStatusMalformed(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DvpDeploymentVersionMalformed",
+      "selector": "0x6f1d7830",
+      "signature": "DvpDeploymentVersionMalformed(address)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "DvpDeploymentVersionMismatch",
+      "selector": "0xea5a4529",
+      "signature": "DvpDeploymentVersionMismatch(address,bytes32,bytes32)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DvpInterfaceMismatch",
+      "selector": "0x4dfe1d2a",
+      "signature": "DvpInterfaceMismatch(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "DvpRetired",
+      "selector": "0xd60b2884",
+      "signature": "DvpRetired(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "eligibilityKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "EligibilityAssetVersionMismatch",
+      "selector": "0x1a850b68",
+      "signature": "EligibilityAssetVersionMismatch(bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "eligibilityKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "EligibilityExpired",
+      "selector": "0xf3d222fb",
+      "signature": "EligibilityExpired(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "EligibilityKeyMismatch",
+      "selector": "0xd650cff4",
+      "signature": "EligibilityKeyMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "eligibilityKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "EligibilityNotFound",
+      "selector": "0x7e5d33b6",
+      "signature": "EligibilityNotFound(bytes32)",
+      "sources": [
+        "src/registry/EligibilityRegistry.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "eligibilityKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "EligibilityNotPassed",
+      "selector": "0x80085849",
+      "signature": "EligibilityNotPassed(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "eligibilityKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "EligibilityPausedOrRevoked",
+      "selector": "0x94700525",
+      "signature": "EligibilityPausedOrRevoked(bytes32)",
+      "sources": [
+        "src/registry/EligibilityRegistry.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "eligibilityKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "expectedVersion",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "actualVersion",
+          "type": "uint64"
+        }
+      ],
+      "name": "EligibilityVersionConflict",
+      "selector": "0xd99f9815",
+      "signature": "EligibilityVersionConflict(bytes32,uint64,uint64)",
+      "sources": [
+        "src/registry/EligibilityRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "ERC1967InvalidImplementation",
+      "selector": "0x4c9c8ce3",
+      "signature": "ERC1967InvalidImplementation(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "ERC1967NonPayable",
+      "selector": "0xb398979f",
+      "signature": "ERC1967NonPayable()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "EvidenceHashRequired",
+      "selector": "0x4bec068f",
+      "signature": "EvidenceHashRequired()",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "selector",
+          "type": "bytes4"
+        }
+      ],
+      "name": "ExternalCallFailed",
+      "selector": "0xd4937b6b",
+      "signature": "ExternalCallFailed(bytes4)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPSignedPayloadValidator.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "FailedCall",
+      "selector": "0xd6bda275",
+      "signature": "FailedCall()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum ParticipantType",
+          "name": "participantType",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bool",
+          "name": "hasCap",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "capAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "FeeCapNotCanonical",
+      "selector": "0x511105fb",
+      "signature": "FeeCapNotCanonical(uint8,bool,uint256)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "supplied",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "recomputed",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FeeConstraintHashMismatch",
+      "selector": "0xb70b63fd",
+      "signature": "FeeConstraintHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPCurrentStateValidator.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "supplied",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "recomputed",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FeeMatchedScopeHashMismatch",
+      "selector": "0xde0e21a1",
+      "signature": "FeeMatchedScopeHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "FeeOverflow",
+      "selector": "0x8181adca",
+      "signature": "FeeOverflow()",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        }
+      ],
+      "name": "FeePolicyEpochAlreadyExists",
+      "selector": "0xea72008b",
+      "signature": "FeePolicyEpochAlreadyExists(uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "supplied",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "recomputed",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FeePolicyEpochConfigHashMismatch",
+      "selector": "0xc5bf00b5",
+      "signature": "FeePolicyEpochConfigHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "stored",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "recomputed",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FeePolicyEpochExpectedHashMismatch",
+      "selector": "0x234e365c",
+      "signature": "FeePolicyEpochExpectedHashMismatch(bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        }
+      ],
+      "name": "FeePolicyEpochNotFound",
+      "selector": "0x67179c4e",
+      "signature": "FeePolicyEpochNotFound(uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        }
+      ],
+      "name": "FeePolicyEpochNotSealed",
+      "selector": "0xeb511448",
+      "signature": "FeePolicyEpochNotSealed(uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "internalType": "enum FeePolicyEpochStatus",
+          "name": "status",
+          "type": "uint8"
+        }
+      ],
+      "name": "FeePolicyEpochNotServiceable",
+      "selector": "0xbaf93b73",
+      "signature": "FeePolicyEpochNotServiceable(uint64,uint8)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "currentTime",
+          "type": "uint64"
+        }
+      ],
+      "name": "FeePolicyEpochOutsideQuoteWindow",
+      "selector": "0x799b4e76",
+      "signature": "FeePolicyEpochOutsideQuoteWindow(uint64,uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        }
+      ],
+      "name": "FeePolicyEpochSealed",
+      "selector": "0xcea26e81",
+      "signature": "FeePolicyEpochSealed(uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "expected",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "actual",
+          "type": "uint64"
+        }
+      ],
+      "name": "FeePolicyEpochSequenceMismatch",
+      "selector": "0xa81fe7bc",
+      "signature": "FeePolicyEpochSequenceMismatch(uint64,uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "earliestTime",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "currentTime",
+          "type": "uint64"
+        }
+      ],
+      "name": "FeePolicyEpochTransitionTooEarly",
+      "selector": "0xaf0dcee9",
+      "signature": "FeePolicyEpochTransitionTooEarly(uint64,uint64,uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum ParticipantType",
+          "name": "participantType",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint16",
+          "name": "rateBps",
+          "type": "uint16"
+        }
+      ],
+      "name": "FeeRateOutOfRange",
+      "selector": "0x90e8852c",
+      "signature": "FeeRateOutOfRange(uint8,uint16)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FeeResolverNoMatch",
+      "selector": "0x45ffe073",
+      "signature": "FeeResolverNoMatch(uint64,bytes32)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "feeVersionId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FeeSnapshotMismatch",
+      "selector": "0x6eb3d67b",
+      "signature": "FeeSnapshotMismatch(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "validFrom",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "validUntil",
+          "type": "uint64"
+        }
+      ],
+      "name": "FeeValidityOutsideEpoch",
+      "selector": "0x1c6a829d",
+      "signature": "FeeValidityOutsideEpoch(uint64,uint64,uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "required",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "actual",
+          "type": "uint256"
+        }
+      ],
+      "name": "InsufficientAllowance",
+      "selector": "0x91beda24",
+      "signature": "InsufficientAllowance(address,address,uint256,uint256)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "required",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "actual",
+          "type": "uint256"
+        }
+      ],
+      "name": "InsufficientBalance",
+      "selector": "0x861da4bd",
+      "signature": "InsufficientBalance(address,address,uint256,uint256)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "actual",
+          "type": "uint8"
+        }
+      ],
+      "name": "InvalidAssetClass",
+      "selector": "0x5267040a",
+      "signature": "InvalidAssetClass(uint8)",
+      "sources": [
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "date",
+          "type": "uint32"
+        }
+      ],
+      "name": "InvalidCalendarDate",
+      "selector": "0x4f3037ec",
+      "signature": "InvalidCalendarDate(uint32)",
+      "sources": [
+        "src/calculators/BondPrincipalCalculator.sol",
+        "src/calculators/FundPrincipalCalculator.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidChainOrContract",
+      "selector": "0x30c51757",
+      "signature": "InvalidChainOrContract(uint256,address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPCurrentStateValidator.sol",
+        "src/validation/DvPCurrentStateValidatorFactory.sol",
+        "src/validation/DvPSignedPayloadValidator.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidConfigIdentity",
+      "selector": "0x0135237e",
+      "signature": "InvalidConfigIdentity()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidDependentDvp",
+      "selector": "0x94e4740b",
+      "signature": "InvalidDependentDvp(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidDeploymentVersion",
+      "selector": "0xa9a3e469",
+      "signature": "InvalidDeploymentVersion()",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "registry",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidDvpRegistry",
+      "selector": "0x971892a4",
+      "signature": "InvalidDvpRegistry(address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidDvpValidator",
+      "selector": "0x71eb0836",
+      "signature": "InvalidDvpValidator(address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPCurrentStateValidator.sol",
+        "src/validation/DvPCurrentStateValidatorFactory.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "factory",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidDvpValidatorFactory",
+      "selector": "0x306abad9",
+      "signature": "InvalidDvpValidatorFactory(address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidEligibilityInput",
+      "selector": "0x3ec68a81",
+      "signature": "InvalidEligibilityInput()",
+      "sources": [
+        "src/registry/EligibilityRegistry.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidFeeConfig",
+      "selector": "0x5601467a",
+      "signature": "InvalidFeeConfig()",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum ParticipantType",
+          "name": "participantType",
+          "type": "uint8"
+        }
+      ],
+      "name": "InvalidFeeParticipantType",
+      "selector": "0xce66013b",
+      "signature": "InvalidFeeParticipantType(uint8)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "quoteValidFrom",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "quoteValidUntil",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "settlementValidUntil",
+          "type": "uint64"
+        }
+      ],
+      "name": "InvalidFeePolicyEpochValidity",
+      "selector": "0x515f31b0",
+      "signature": "InvalidFeePolicyEpochValidity(uint64,uint64,uint64)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum ScopeType",
+          "name": "scopeType",
+          "type": "uint8"
+        }
+      ],
+      "name": "InvalidFeeScope",
+      "selector": "0x3598a30e",
+      "signature": "InvalidFeeScope(uint8)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum ScopeType",
+          "name": "scopeType",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "scopeKeyHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "InvalidFeeScopeKey",
+      "selector": "0xf2d34e1f",
+      "signature": "InvalidFeeScopeKey(uint8,bytes32)",
+      "sources": [
+        "src/registry/FeeRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidImplementation",
+      "selector": "0x0c760937",
+      "signature": "InvalidImplementation(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidInitialization",
+      "selector": "0xf92ee8a9",
+      "signature": "InvalidInitialization()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidMarketRule",
+      "selector": "0x159806cf",
+      "signature": "InvalidMarketRule()",
+      "sources": [
+        "src/registry/MarketRuleRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum NonceType",
+          "name": "nonceType",
+          "type": "uint8"
+        }
+      ],
+      "name": "InvalidNonceType",
+      "selector": "0x0341382c",
+      "signature": "InvalidNonceType(uint8)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidParticipantInput",
+      "selector": "0x65f68021",
+      "signature": "InvalidParticipantInput()",
+      "sources": [
+        "src/registry/ParticipantRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum ParticipantType",
+          "name": "participantType",
+          "type": "uint8"
+        }
+      ],
+      "name": "InvalidParticipantType",
+      "selector": "0xb22cdb5e",
+      "signature": "InvalidParticipantType(uint8)",
+      "sources": [
+        "src/registry/ParticipantRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "validUntil",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "currentTime",
+          "type": "uint64"
+        }
+      ],
+      "name": "InvalidParticipantValidity",
+      "selector": "0x87ebcdaa",
+      "signature": "InvalidParticipantValidity(uint64,uint64)",
+      "sources": [
+        "src/registry/ParticipantRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum PermitCapability",
+          "name": "capability",
+          "type": "uint8"
+        }
+      ],
+      "name": "InvalidPermitCapability",
+      "selector": "0xdde7aaad",
+      "signature": "InvalidPermitCapability(uint8)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidQuantityRange",
+      "selector": "0x2d7e8237",
+      "signature": "InvalidQuantityRange()",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidQuantityStep",
+      "selector": "0xdd5180bf",
+      "signature": "InvalidQuantityStep()",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "dependency",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidRegistryDependency",
+      "selector": "0x8d0ba3a1",
+      "signature": "InvalidRegistryDependency(address)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "InvalidRestrictionProviderOrder",
+      "selector": "0x69ae562b",
+      "signature": "InvalidRestrictionProviderOrder(uint256)",
+      "sources": [
+        "src/adapters/ERC1404Adapter.sol",
+        "src/adapters/UnrestrictedERC20Adapter.sol",
+        "src/adapters/UsdyRestrictedAdapter.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidRoleHolder",
+      "selector": "0x0009798a",
+      "signature": "InvalidRoleHolder(bytes32,address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "actual",
+          "type": "uint32"
+        }
+      ],
+      "name": "InvalidSchemaVersion",
+      "selector": "0xd668558f",
+      "signature": "InvalidSchemaVersion(uint32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "field",
+          "type": "bytes32"
+        }
+      ],
+      "name": "InvalidSettlementParams",
+      "selector": "0x5154db5e",
+      "signature": "InvalidSettlementParams(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPSignedPayloadValidator.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "InvalidSettlementTimeWindow",
+      "selector": "0xc7f2f589",
+      "signature": "InvalidSettlementTimeWindow()",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "signer",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidSignature",
+      "selector": "0xd855c4f4",
+      "signature": "InvalidSignature(address)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPSignedPayloadValidator.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum TokenDeploymentKind",
+          "name": "kind",
+          "type": "uint8"
+        }
+      ],
+      "name": "InvalidTokenDeploymentKind",
+      "selector": "0xb21eac0e",
+      "signature": "InvalidTokenDeploymentKind(uint8)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "LastDefaultAdminCannotBeRemoved",
+      "selector": "0xa33e72b5",
+      "signature": "LastDefaultAdminCannotBeRemoved(address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "MarketRuleAlreadySealed",
+      "selector": "0x5ecfbd5a",
+      "signature": "MarketRuleAlreadySealed(bytes32)",
+      "sources": [
+        "src/registry/MarketRuleRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "cashPrincipal",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minimum",
+          "type": "uint256"
+        }
+      ],
+      "name": "MarketRuleMinimumPrincipalViolation",
+      "selector": "0xbdd5caf7",
+      "signature": "MarketRuleMinimumPrincipalViolation(bytes32,uint256,uint256)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "MarketRuleNotSealed",
+      "selector": "0x4f25a6e0",
+      "signature": "MarketRuleNotSealed(bytes32)",
+      "sources": [
+        "src/registry/MarketRuleRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "enum MarketRuleStatus",
+          "name": "status",
+          "type": "uint8"
+        }
+      ],
+      "name": "MarketRuleNotServiceable",
+      "selector": "0xcf2b271b",
+      "signature": "MarketRuleNotServiceable(bytes32,uint8)",
+      "sources": [
+        "src/registry/MarketRuleRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "currentTime",
+          "type": "uint64"
+        }
+      ],
+      "name": "MarketRuleOutsideQuoteWindow",
+      "selector": "0xf385b618",
+      "signature": "MarketRuleOutsideQuoteWindow(bytes32,uint64)",
+      "sources": [
+        "src/registry/MarketRuleRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "MarketRulePaused",
+      "selector": "0xbf4936aa",
+      "signature": "MarketRulePaused(bytes32)",
+      "sources": [
+        "src/registry/MarketRuleRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "quotedPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "priceTick",
+          "type": "uint256"
+        }
+      ],
+      "name": "MarketRulePriceTickViolation",
+      "selector": "0x26009692",
+      "signature": "MarketRulePriceTickViolation(bytes32,uint256,uint256)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "MarketRuleQuantityViolation",
+      "selector": "0x83ec0619",
+      "signature": "MarketRuleQuantityViolation(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "MarketRuleSnapshotMismatch",
+      "selector": "0x14a42c1e",
+      "signature": "MarketRuleSnapshotMismatch(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "earliestTime",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "currentTime",
+          "type": "uint64"
+        }
+      ],
+      "name": "MarketRuleTransitionTooEarly",
+      "selector": "0x59c15f73",
+      "signature": "MarketRuleTransitionTooEarly(bytes32,uint64,uint64)",
+      "sources": [
+        "src/registry/MarketRuleRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "NoDependentDvpRegistered",
+      "selector": "0x8a15aa3a",
+      "signature": "NoDependentDvpRegistered()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "signer",
+          "type": "address"
+        },
+        {
+          "internalType": "enum NonceType",
+          "name": "nonceType",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum NonceStatus",
+          "name": "status",
+          "type": "uint8"
+        }
+      ],
+      "name": "NonceUnavailable",
+      "selector": "0xf59a03df",
+      "signature": "NonceUnavailable(address,uint8,uint256,uint8)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "NotInitializing",
+      "selector": "0xd7e6bcf8",
+      "signature": "NotInitializing()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        }
+      ],
+      "name": "ParticipantIdentityImmutable",
+      "selector": "0x33366396",
+      "signature": "ParticipantIdentityImmutable(address)",
+      "sources": [
+        "src/registry/ParticipantRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        }
+      ],
+      "name": "ParticipantInactive",
+      "selector": "0xfe1042c2",
+      "signature": "ParticipantInactive(address)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        }
+      ],
+      "name": "ParticipantNotFound",
+      "selector": "0xd0560018",
+      "signature": "ParticipantNotFound(address)",
+      "sources": [
+        "src/registry/ParticipantRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        }
+      ],
+      "name": "ParticipantPermanentlyRevoked",
+      "selector": "0x8fd5ab81",
+      "signature": "ParticipantPermanentlyRevoked(address)",
+      "sources": [
+        "src/registry/ParticipantRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum ParticipantType",
+          "name": "requesterType",
+          "type": "uint8"
+        }
+      ],
+      "name": "ParticipantRelationshipInvalid",
+      "selector": "0xffb6443d",
+      "signature": "ParticipantRelationshipInvalid(uint8)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        },
+        {
+          "internalType": "enum ParticipantStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "internalType": "enum ParticipantStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        }
+      ],
+      "name": "ParticipantStateTransitionInvalid",
+      "selector": "0x07fa8172",
+      "signature": "ParticipantStateTransitionInvalid(address,uint8,uint8)",
+      "sources": [
+        "src/registry/ParticipantRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        },
+        {
+          "internalType": "uint64",
+          "name": "expectedVersion",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "actualVersion",
+          "type": "uint64"
+        }
+      ],
+      "name": "ParticipantVersionConflict",
+      "selector": "0x42f4764b",
+      "signature": "ParticipantVersionConflict(address,uint64,uint64)",
+      "sources": [
+        "src/registry/ParticipantRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "field",
+          "type": "bytes32"
+        }
+      ],
+      "name": "PermitFieldMismatch",
+      "selector": "0x70a87a6c",
+      "signature": "PermitFieldMismatch(address,bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "required",
+          "type": "uint256"
+        }
+      ],
+      "name": "PermitSimulationRequired",
+      "selector": "0xc856379c",
+      "signature": "PermitSimulationRequired(address,address,uint256)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "PermitUnsupported",
+      "selector": "0xf5eff427",
+      "signature": "PermitUnsupported(address)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum AssetClass",
+          "name": "assetClass",
+          "type": "uint8"
+        }
+      ],
+      "name": "PriceDataMalformed",
+      "selector": "0xab1fb6d2",
+      "signature": "PriceDataMalformed(uint8)",
+      "sources": [
+        "src/calculators/BondPrincipalCalculator.sol",
+        "src/calculators/FundPrincipalCalculator.sol",
+        "src/calculators/StockPrincipalCalculator.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "quoteHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "QuoteAlreadyExecuted",
+      "selector": "0x75dc6cf6",
+      "signature": "QuoteAlreadyExecuted(bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "QuoteHashMismatch",
+      "selector": "0xe8f8234c",
+      "signature": "QuoteHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPSignedPayloadValidator.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        }
+      ],
+      "name": "ReasonCodeRequired",
+      "selector": "0x4704a717",
+      "signature": "ReasonCodeRequired(uint8)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "ReentrancyGuardReentrantCall",
+      "selector": "0x3ee5aeb5",
+      "signature": "ReentrancyGuardReentrantCall()",
+      "sources": [
+        "src/DvPSettlement.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "RetiredContract",
+      "selector": "0xf2012cd1",
+      "signature": "RetiredContract()",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "bits",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "SafeCastOverflowedUintDowncast",
+      "selector": "0x6dfcc650",
+      "signature": "SafeCastOverflowedUintDowncast(uint8,uint256)",
+      "sources": [
+        "src/calculators/BondPrincipalCalculator.sol",
+        "src/calculators/FundPrincipalCalculator.sol",
+        "src/calculators/StockPrincipalCalculator.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "sellerFee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "cashPrincipal",
+          "type": "uint256"
+        }
+      ],
+      "name": "SellerFeeExceedsPrincipal",
+      "selector": "0x2967f125",
+      "signature": "SellerFeeExceedsPrincipal(uint256,uint256)",
+      "sources": [
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "SettlementAdapterCapabilitiesInvalid",
+      "selector": "0x91973fda",
+      "signature": "SettlementAdapterCapabilitiesInvalid(bytes32)",
+      "sources": [
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "expected",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "actual",
+          "type": "uint256"
+        }
+      ],
+      "name": "SettlementTokenDecimalsMismatch",
+      "selector": "0xd23275cf",
+      "signature": "SettlementTokenDecimalsMismatch(address,uint8,uint256)",
+      "sources": [
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPCurrentStateValidator.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "SettlementTokenImplementationChanged",
+      "selector": "0x76b8511a",
+      "signature": "SettlementTokenImplementationChanged(bytes32)",
+      "sources": [
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "SettlementTokenInactive",
+      "selector": "0xc1831f12",
+      "signature": "SettlementTokenInactive(bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "deadline",
+          "type": "uint64"
+        }
+      ],
+      "name": "SignatureExpired",
+      "selector": "0xfcd4a11f",
+      "signature": "SignatureExpired(uint64)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "snapshotHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "SnapshotAlreadyExecuted",
+      "selector": "0x0ef7c78f",
+      "signature": "SnapshotAlreadyExecuted(bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "SnapshotHashMismatch",
+      "selector": "0xdaab6f12",
+      "signature": "SnapshotHashMismatch(bytes32,bytes32)",
+      "sources": [
+        "src/types/HTPErrors.sol",
+        "src/validation/DvPSignedPayloadValidator.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "expected",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "actual",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TokenCodeHashMismatch",
+      "selector": "0xdb03a16e",
+      "signature": "TokenCodeHashMismatch(address,bytes32,bytes32)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol",
+        "src/validation/StrictSettlementFailureMapper.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "enum TokenDeploymentKind",
+          "name": "declared",
+          "type": "uint8"
+        }
+      ],
+      "name": "TokenDeploymentKindMismatch",
+      "selector": "0xbf318df8",
+      "signature": "TokenDeploymentKindMismatch(address,uint8)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum TokenDeploymentKind",
+          "name": "kind",
+          "type": "uint8"
+        },
+        {
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "implementationCodeHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TokenImplementationBaselineInvalid",
+      "selector": "0x21dd509c",
+      "signature": "TokenImplementationBaselineInvalid(uint8,address,bytes32)",
+      "sources": [
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "tradeIdHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TradeAlreadyExecuted",
+      "selector": "0xd8f6883f",
+      "signature": "TradeAlreadyExecuted(bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "restrictionCode",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "reasonHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TransferRestricted",
+      "selector": "0x675873e9",
+      "signature": "TransferRestricted(bytes32,uint256,bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint8",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "newStatus",
+          "type": "uint8"
+        }
+      ],
+      "name": "UnauthorizedStateTransition",
+      "selector": "0x797ae61e",
+      "signature": "UnauthorizedStateTransition(bytes32,uint8,uint8)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "UnsupportedTokenBehavior",
+      "selector": "0x1afdd5c5",
+      "signature": "UnsupportedTokenBehavior(address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "UpgradeableImplementationForbidden",
+      "selector": "0x55a99f94",
+      "signature": "UpgradeableImplementationForbidden(address)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/types/HTPErrors.sol"
+      ]
+    },
+    {
+      "inputs": [],
+      "name": "UUPSUnauthorizedCallContext",
+      "selector": "0xe07c8dba",
+      "signature": "UUPSUnauthorizedCallContext()",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "slot",
+          "type": "bytes32"
+        }
+      ],
+      "name": "UUPSUnsupportedProxiableUUID",
+      "selector": "0xaa1d49a4",
+      "signature": "UUPSUnsupportedProxiableUUID(bytes32)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ]
+    }
+  ],
+  "generatedFrom": "compiled production ABI (contracts/src targets only; inherited dependency ABI retained)",
+  "schemaVersion": 1
+}

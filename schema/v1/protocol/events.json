@@ -1,0 +1,2482 @@
+{
+  "events": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "capabilityHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "adapter",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "schemaVersion",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "revision",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "interfaceVersion",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "codeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum TokenStandard",
+          "name": "tokenStandard",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum RestrictionMode",
+          "name": "restrictionMode",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum PrecheckMethod",
+          "name": "precheckMethod",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "transferLegMask",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "providerHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "replacesId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AdapterRegistered",
+      "signature": "AdapterRegistered(uint256,bytes32,bytes32,address,uint32,uint32,bytes32,bytes32,uint8,uint8,uint8,uint256,bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/interfaces/IAdapterRegistry.sol",
+        "src/registry/AdapterRegistry.sol"
+      ],
+      "topic0": "0x122780b981e58872670ab9f040e77097f023094586d0811c82b5ee22a2ba7c82"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum AdapterStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum AdapterStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "AdapterStatusChanged",
+      "signature": "AdapterStatusChanged(uint256,bytes32,uint8,uint8,uint8,bytes32,address)",
+      "sources": [
+        "src/interfaces/IAdapterRegistry.sol",
+        "src/registry/AdapterRegistry.sol"
+      ],
+      "topic0": "0xe1317d54c1629b2df318c1b00461f27a1c97a82f2b5c78520ccf3ee55daaece3"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "economicAssetIdHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "assetToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "schemaVersion",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "versionNo",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum TokenStandard",
+          "name": "tokenStandard",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum TokenDeploymentKind",
+          "name": "tokenDeploymentKind",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "assetDecimals",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "tokenCodeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "implementationCodeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum PermitCapability",
+          "name": "assetPermitCapability",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum AssetClass",
+          "name": "assetClass",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "principalCalculatorConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "principalCalculatorConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "adapterConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum RestrictionMode",
+          "name": "restrictionMode",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "settlementToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "settlementTokenConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "settlementTokenConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "dvpContract",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "deploymentVersionHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "replacesAssetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AssetVersionRegistered",
+      "signature": "AssetVersionRegistered(uint256,bytes32,bytes32,address,uint32,uint32,uint8,uint8,uint8,bytes32,address,bytes32,uint8,uint8,bytes32,bytes32,bytes32,bytes32,uint8,address,bytes32,bytes32,address,bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/interfaces/IAssetVersionRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol"
+      ],
+      "topic0": "0x100773d51fab64b1962f8e4e5966207b6779560f02b61810ce0f40a1fc2f3fc4"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum AssetVersionStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum AssetVersionStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "AssetVersionStatusChanged",
+      "signature": "AssetVersionStatusChanged(uint256,bytes32,uint8,uint8,uint8,bytes32,address)",
+      "sources": [
+        "src/interfaces/IAssetVersionRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol"
+      ],
+      "topic0": "0xacd570cc1f9b1adf354695ff52dad2a12da252063b50ae008ac406b16481a03c"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "capabilityHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "oldAdapterConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdapterConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "CurrentAdapterChanged",
+      "signature": "CurrentAdapterChanged(uint256,bytes32,bytes32,bytes32,address)",
+      "sources": [
+        "src/interfaces/IAdapterRegistry.sol",
+        "src/registry/AdapterRegistry.sol"
+      ],
+      "topic0": "0xd350bc5a64342d5ab48b2cf142e372ad54c4bc2beb346f2918771d36dbf72d7f"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "assetToken",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "oldAssetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAssetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "CurrentAssetVersionChanged",
+      "signature": "CurrentAssetVersionChanged(uint256,address,bytes32,bytes32,address)",
+      "sources": [
+        "src/interfaces/IAssetVersionRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol"
+      ],
+      "topic0": "0xd157739353c04f85851db8d9a21abf57ad97bdbf36ee2ddaadca4707546cbbdd"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "oldConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "CurrentMarketRuleChanged",
+      "signature": "CurrentMarketRuleChanged(uint256,bytes32,bytes32,bytes32,address)",
+      "sources": [
+        "src/interfaces/IMarketRuleRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol"
+      ],
+      "topic0": "0x0252a6f6dcbb81798c19792ad8ba8f50ef855da03122f0dcd5714ac1f1683e85"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "enum AssetClass",
+          "name": "assetClass",
+          "type": "uint8"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "oldCalculatorConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newCalculatorConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "CurrentPrincipalCalculatorChanged",
+      "signature": "CurrentPrincipalCalculatorChanged(uint256,uint8,bytes32,bytes32,address)",
+      "sources": [
+        "src/interfaces/IPrincipalCalculatorRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol"
+      ],
+      "topic0": "0x36ba3c02378da74815d54790dba93acefa41916a606cd7bd95c8ef2f7b7cc63c"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "settlementToken",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "oldConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "CurrentSettlementTokenChanged",
+      "signature": "CurrentSettlementTokenChanged(uint256,address,bytes32,bytes32,address)",
+      "sources": [
+        "src/interfaces/ISettlementTokenRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol"
+      ],
+      "topic0": "0x889e523162d8a3688a6463aa19df3a3d9ff57ce27df84b02a197a0b599d9486f"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "DependentDvpRegistered",
+      "signature": "DependentDvpRegistered(uint256,address,bytes32,address)",
+      "sources": [
+        "src/interfaces/IAdapterRegistry.sol",
+        "src/interfaces/IAssetVersionRegistry.sol",
+        "src/interfaces/IEligibilityRegistry.sol",
+        "src/interfaces/IFeeRegistry.sol",
+        "src/interfaces/IParticipantRegistry.sol",
+        "src/interfaces/IPrincipalCalculatorRegistry.sol",
+        "src/interfaces/ISettlementTokenRegistry.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPEvents.sol"
+      ],
+      "topic0": "0x9ac7fdd43f547f43c6f6abcc66e02cf4da63194b1c98ef48a7065b7d03ba74aa"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "dvp",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "DependentDvpRetiredExempted",
+      "signature": "DependentDvpRetiredExempted(uint256,address,bytes32,address)",
+      "sources": [
+        "src/interfaces/IAdapterRegistry.sol",
+        "src/interfaces/IAssetVersionRegistry.sol",
+        "src/interfaces/IEligibilityRegistry.sol",
+        "src/interfaces/IFeeRegistry.sol",
+        "src/interfaces/IParticipantRegistry.sol",
+        "src/interfaces/IPrincipalCalculatorRegistry.sol",
+        "src/interfaces/ISettlementTokenRegistry.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol",
+        "src/types/HTPEvents.sol"
+      ],
+      "topic0": "0xadf89ce9a4d219c14de12d19ebdcff85702f5a3f5ed8e425ee2651fa93b226c5"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "eligibilityKey",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "oldRecordVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "newRecordVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "EligibilityRevoked",
+      "signature": "EligibilityRevoked(uint256,bytes32,bytes32,uint64,uint64,bytes32,address)",
+      "sources": [
+        "src/interfaces/IEligibilityRegistry.sol",
+        "src/registry/EligibilityRegistry.sol"
+      ],
+      "topic0": "0x6b2bb16a1ae0046858881e2083dfa02598d7bbfdc2de45dfa33147832834648f"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "eligibilityKey",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum Decision",
+          "name": "decision",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "validFrom",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "validUntil",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "kycDecisionVersion",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "permissionVersion",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "oldRecordVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "newRecordVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "paused",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "revoked",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "EligibilityUpdated",
+      "signature": "EligibilityUpdated(uint256,bytes32,address,bytes32,uint8,uint64,uint64,bytes32,bytes32,uint64,uint64,bool,bool,bytes32,address)",
+      "sources": [
+        "src/interfaces/IEligibilityRegistry.sol",
+        "src/registry/EligibilityRegistry.sol"
+      ],
+      "topic0": "0xa6a4f8b5d76c3387b8f06563aa5de030eba0c89e781590acab232ae79c93628a"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "tradeIdHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "snapshotHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "collector",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "settlementToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "buyerFee",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sellerFee",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "collectorCredit",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "feeVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "matchedScopeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "deploymentVersionHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FeeCollected",
+      "signature": "FeeCollected(uint256,bytes32,bytes32,address,address,uint256,uint256,uint256,uint64,bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/interfaces/IDvPSettlement.sol"
+      ],
+      "topic0": "0xbc3cb3ef76421eeef50f0a68e293ddd9c094e8a104394fe59ca13c21c9ef778b"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "quoteValidFrom",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "quoteValidUntil",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "settlementValidUntil",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "FeePolicyEpochCreated",
+      "signature": "FeePolicyEpochCreated(uint256,uint64,uint64,uint64,uint64,bytes32,address)",
+      "sources": [
+        "src/interfaces/IFeeRegistry.sol",
+        "src/registry/FeeRegistry.sol"
+      ],
+      "topic0": "0x7d43dc3c6f3d57c8ffce1061fccada9efed53bdd2532405eea0827729c901898"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "FeePolicyEpochSealed",
+      "signature": "FeePolicyEpochSealed(uint256,uint64,bytes32,address)",
+      "sources": [
+        "src/interfaces/IFeeRegistry.sol",
+        "src/registry/FeeRegistry.sol"
+      ],
+      "topic0": "0x0daad8c916c273bb2765cceaaafb26c77b79e38cd65cded0d97e8da85c251394"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum FeePolicyEpochStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum FeePolicyEpochStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "FeePolicyEpochStatusChanged",
+      "signature": "FeePolicyEpochStatusChanged(uint256,uint64,uint8,uint8,bytes32,address)",
+      "sources": [
+        "src/interfaces/IFeeRegistry.sol",
+        "src/registry/FeeRegistry.sol"
+      ],
+      "topic0": "0xf9d1ca1c9e871ddeaacba2df9f4251811de55de3ab43c351952aaaf3be3bd6f9"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "feeVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "matchedScopeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "schemaVersion",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "revision",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ScopeType",
+          "name": "scopeType",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "scopeKeyHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "investorRateBps",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "investorHasCap",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "investorCapAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "makerRateBps",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "makerHasCap",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "makerCapAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum RoundingMode",
+          "name": "roundingMode",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "settlementToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "settlementTokenConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "settlementTokenConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "collector",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "validFrom",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "validUntil",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "feeConstraintHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "replacesFeeVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FeeVersionRegistered",
+      "signature": "FeeVersionRegistered(uint256,bytes32,uint64,bytes32,uint32,uint32,uint8,bytes32,uint16,bool,uint256,uint16,bool,uint256,uint8,address,bytes32,bytes32,address,uint64,uint64,bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/interfaces/IFeeRegistry.sol",
+        "src/registry/FeeRegistry.sol"
+      ],
+      "topic0": "0x41e5bd04365f1b62c24eca3db64a849b5d2cfbcb80ee6b1d2b39dd5fd0dba36c"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "feeVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum FeeVersionStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum FeeVersionStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "FeeVersionStatusChanged",
+      "signature": "FeeVersionStatusChanged(uint256,bytes32,uint64,uint8,uint8,uint8,bytes32,address)",
+      "sources": [
+        "src/interfaces/IFeeRegistry.sol",
+        "src/registry/FeeRegistry.sol"
+      ],
+      "topic0": "0x153dc82feef2c8ab13b7fa9eacad96bf7d19c84ce29014b2eea80c1bf30c14ee"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "GlobalPaused",
+      "signature": "GlobalPaused(uint256,uint8,bytes32,address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/interfaces/IDvPSettlement.sol"
+      ],
+      "topic0": "0x05cbcd4aa0f9ab63e2d15d59e5680bb5c39daed0e9144192f33ef387e5538e3a"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "GlobalUnpaused",
+      "signature": "GlobalUnpaused(uint256,uint8,bytes32,address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/interfaces/IDvPSettlement.sol"
+      ],
+      "topic0": "0x9f7c8dbf3e1af0fde48b3f4920a5b35dbb367792f7406cd588de9b0c7e5bd395"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "version",
+          "type": "uint64"
+        }
+      ],
+      "name": "Initialized",
+      "signature": "Initialized(uint64)",
+      "sources": [
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ],
+      "topic0": "0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "marketRuleConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "paused",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "MarketRulePauseChanged",
+      "signature": "MarketRulePauseChanged(uint256,bytes32,bool,uint8,bytes32,address)",
+      "sources": [
+        "src/interfaces/IMarketRuleRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol"
+      ],
+      "topic0": "0x5c61658f68be70d812cca534901aaeee8d6dc591bdf2dd5b6275cd4c57d90cb3"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "marketRuleConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "revision",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "replacesConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "MarketRuleRegistered",
+      "signature": "MarketRuleRegistered(uint256,bytes32,bytes32,uint32,bytes32,bytes32,address)",
+      "sources": [
+        "src/interfaces/IMarketRuleRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol"
+      ],
+      "topic0": "0xf0f5381da12338bec988f66b1777d4cb8916693cdeaefb75a5062376fb823acf"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "marketRuleConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "MarketRuleSealed",
+      "signature": "MarketRuleSealed(uint256,bytes32,bytes32,address)",
+      "sources": [
+        "src/interfaces/IMarketRuleRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol"
+      ],
+      "topic0": "0x9c5f8e7fe41f3b9d5152b2502f00cccf7c5247a765316857dc3a7606beee7be2"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "marketRuleConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum MarketRuleStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum MarketRuleStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "MarketRuleStatusChanged",
+      "signature": "MarketRuleStatusChanged(uint256,bytes32,bytes32,uint8,uint8,bytes32,address)",
+      "sources": [
+        "src/interfaces/IMarketRuleRegistry.sol",
+        "src/registry/MarketRuleRegistry.sol"
+      ],
+      "topic0": "0x752fb3dc3fcecaecf388aff53e6d5d7769ec999d948a729a05059eebbe5f164e"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "signer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "enum NonceType",
+          "name": "nonceType",
+          "type": "uint8"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        }
+      ],
+      "name": "NonceCancelled",
+      "signature": "NonceCancelled(uint256,address,uint8,uint256)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/interfaces/IDvPSettlement.sol"
+      ],
+      "topic0": "0x56dd9c0fade8d5511484e464d4f4ab8ebdb74119f4b1ed6d4695398ca395063c"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "signer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "enum NonceType",
+          "name": "nonceType",
+          "type": "uint8"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "tradeIdHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "NonceConsumed",
+      "signature": "NonceConsumed(uint256,address,uint8,uint256,bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/interfaces/IDvPSettlement.sol"
+      ],
+      "topic0": "0x253572b7b25b7d1befe55ca30e0018e6b2ca7b2af47ffca61b96e12bab481154"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "participantIdHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "oldVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "newVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "ParticipantRevoked",
+      "signature": "ParticipantRevoked(uint256,address,bytes32,uint64,uint64,bytes32,address)",
+      "sources": [
+        "src/interfaces/IParticipantRegistry.sol",
+        "src/registry/ParticipantRegistry.sol"
+      ],
+      "topic0": "0x6363cc6ae09e0546f1bc70159852ce136b37aeb71450dc5b1e11cf1c004865fb"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "participantIdHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ParticipantType",
+          "name": "participantType",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ParticipantStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ParticipantStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "validUntil",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "oldVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "newVersion",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "ParticipantUpdated",
+      "signature": "ParticipantUpdated(uint256,address,bytes32,uint8,uint8,uint8,uint64,uint64,uint64,bytes32,address)",
+      "sources": [
+        "src/interfaces/IParticipantRegistry.sol",
+        "src/registry/ParticipantRegistry.sol"
+      ],
+      "topic0": "0x4226b5f55070d7385655a2b35a6f097d50c4e0d0cb44840baa7ff505d5348305"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "calculatorConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "enum AssetClass",
+          "name": "assetClass",
+          "type": "uint8"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "calculator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "schemaVersion",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "revision",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "interfaceVersion",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "codeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "replacesId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "PrincipalCalculatorRegistered",
+      "signature": "PrincipalCalculatorRegistered(uint256,bytes32,uint8,address,uint32,uint32,bytes32,bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/interfaces/IPrincipalCalculatorRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol"
+      ],
+      "topic0": "0x7fef648451b23e8b21feab8b32105e09bf952649ea49682bb2692532dbc939b1"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "calculatorConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum CalculatorStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum CalculatorStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "PrincipalCalculatorStatusChanged",
+      "signature": "PrincipalCalculatorStatusChanged(uint256,bytes32,uint8,uint8,uint8,bytes32,address)",
+      "sources": [
+        "src/interfaces/IPrincipalCalculatorRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol"
+      ],
+      "topic0": "0xada25fb531456a36e530352f04105287a1b1c97de6d199cdc22fd33d7eb1dcd2"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "Retired",
+      "signature": "Retired(uint256,uint8,bytes32,address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/interfaces/IDvPSettlement.sol"
+      ],
+      "topic0": "0x69838c30c8194db09771e579ce69ae2e9e45e0721a25ff26ad686f0f153fab5f"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "previousAdminRole",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdminRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RoleAdminChanged",
+      "signature": "RoleAdminChanged(bytes32,bytes32,bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ],
+      "topic0": "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleGranted",
+      "signature": "RoleGranted(bytes32,address,address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ],
+      "topic0": "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleRevoked",
+      "signature": "RoleRevoked(bytes32,address,address)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ],
+      "topic0": "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "tradeIdHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "quoteHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "snapshotHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "assetVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ParticipantType",
+          "name": "requesterType",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum RequesterSide",
+          "name": "requesterSide",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "requester",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "quotingMaker",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "assetToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "settlementToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "executedQuantity",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum AssetClass",
+          "name": "assetClass",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "priceTermsHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "principalCalculatorConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "principalCalculatorConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "adapterConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "settlementTokenConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "settlementTokenConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "marketRuleConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "marketRuleConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "cashPrincipal",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "buyerFee",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sellerFee",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "buyerDebit",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sellerCredit",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "feePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "feeVersionId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "matchedScopeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "makerQuoteNonce",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "requesterTradeNonce",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "deploymentVersionHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "SettlementExecuted",
+      "signature": "SettlementExecuted(uint256,bytes32,bytes32,bytes32,bytes32,uint8,uint8,address,address,address,address,address,address,uint256,uint8,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,uint256,uint256,uint256,uint256,uint256,uint64,bytes32,bytes32,uint256,uint256,bytes32)",
+      "sources": [
+        "src/DvPSettlement.sol",
+        "src/interfaces/IDvPSettlement.sol"
+      ],
+      "topic0": "0xc9457f6d356e369010df2937ea1e29fb6a71d9addf457036c5706596a9dbc296"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "settlementToken",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "adapterConfigId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "schemaVersion",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "revision",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum TokenDeploymentKind",
+          "name": "tokenDeploymentKind",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "settlementTokenDecimals",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "tokenCodeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "implementationCodeHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "adapterConfigHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum PermitCapability",
+          "name": "permitCapability",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "configHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "replacesConfigId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "SettlementTokenRegistered",
+      "signature": "SettlementTokenRegistered(uint256,bytes32,address,bytes32,uint32,uint32,uint8,uint8,bytes32,address,bytes32,bytes32,uint8,bytes32,bytes32)",
+      "sources": [
+        "src/interfaces/ISettlementTokenRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol"
+      ],
+      "topic0": "0xce3ade8d36ba0fe6a488b4bab5da00ab5a7fe4a7ecec04b51f586e86dbb09b6d"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "configId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum SettlementTokenStatus",
+          "name": "oldStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum SettlementTokenStatus",
+          "name": "newStatus",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum ReasonCode",
+          "name": "reason",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "evidenceHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "actor",
+          "type": "address"
+        }
+      ],
+      "name": "SettlementTokenStatusChanged",
+      "signature": "SettlementTokenStatusChanged(uint256,bytes32,uint8,uint8,uint8,bytes32,address)",
+      "sources": [
+        "src/interfaces/ISettlementTokenRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol"
+      ],
+      "topic0": "0xe1b8c21abb81d397041eb0e62cdb31dac23a5bbedc292fd758e0eec1b49b719c"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "Upgraded",
+      "signature": "Upgraded(address)",
+      "sources": [
+        "src/interfaces/IAdapterRegistry.sol",
+        "src/interfaces/IAssetVersionRegistry.sol",
+        "src/interfaces/IEligibilityRegistry.sol",
+        "src/interfaces/IFeeRegistry.sol",
+        "src/interfaces/IParticipantRegistry.sol",
+        "src/interfaces/IPrincipalCalculatorRegistry.sol",
+        "src/interfaces/ISettlementTokenRegistry.sol",
+        "src/registry/AdapterRegistry.sol",
+        "src/registry/AssetVersionRegistry.sol",
+        "src/registry/EligibilityRegistry.sol",
+        "src/registry/FeeRegistry.sol",
+        "src/registry/LinearConfigRegistryBase.sol",
+        "src/registry/MarketRuleRegistry.sol",
+        "src/registry/ParticipantRegistry.sol",
+        "src/registry/PrincipalCalculatorRegistry.sol",
+        "src/registry/SettlementTokenRegistry.sol",
+        "src/registry/UUPSRegistryBase.sol"
+      ],
+      "topic0": "0xbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b"
+    }
+  ],
+  "generatedFrom": "compiled production ABI (contracts/src targets only; inherited dependency ABI retained)",
+  "schemaVersion": 1
+}

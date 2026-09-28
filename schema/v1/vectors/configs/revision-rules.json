@@ -1,0 +1,28 @@
+{
+  "linearRevisionRules": {
+    "firstRevision": 1,
+    "negative": [
+      "revision gap",
+      "duplicate revision",
+      "wrong replaces ID",
+      "non-latest transition"
+    ],
+    "nextRevision": "latestRevision + 1",
+    "replaces": "previous config ID; zero only for revision 1"
+  },
+  "schemaVersion": 1,
+  "status": "candidate",
+  "tokenDeploymentKind": {
+    "direct": {
+      "implementation": "0x0000000000000000000000000000000000000000",
+      "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "value": 1
+    },
+    "erc1967Proxy": {
+      "implementation": "0x000000000000000000000000000000000000c002",
+      "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000000a02",
+      "tokenCodeHash": "0x0000000000000000000000000000000000000000000000000000000000000a01",
+      "value": 2
+    }
+  }
+}

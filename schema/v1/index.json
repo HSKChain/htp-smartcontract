@@ -1,0 +1,131 @@
+{
+  "files": [
+    {
+      "kind": "abi",
+      "path": "abi/IAdapterRegistry.json",
+      "sha256": "5e57421702411b9e0931c00276801dac0cd35bc109934aa51c805c17e7d8b068"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IAssetAdapter.json",
+      "sha256": "bcfd1f52aceb6742f8fc701927434a15ec6b998bd5454ff0202abcd6beb317f3"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IAssetVersionRegistry.json",
+      "sha256": "303b1465f91f09452d86a3896ca579c3cc007f6d738fe9a44b6f4370314c80d7"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IDvPCurrentStateValidator.json",
+      "sha256": "83a7aa550ce2682bd63a3b23d47b64aa1a782712892f983318f078cd34ab7af6"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IDvPCurrentStateValidatorFactory.json",
+      "sha256": "c11e63289d30ce3e5e5e1de3e5bea62af7ca50b3e44aaed20a789d3ddaa59d44"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IDvPGovernanceView.json",
+      "sha256": "285b616043d92021e33e5699493862288eaad833b60b16e4be5b62a3e3569498"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IDvPSettlement.json",
+      "sha256": "4a74643b6c8635ae96e51c8ad5502629a7056c8e757f0ba31bc7f70ebf7844a8"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IDvPSignedPayloadValidator.json",
+      "sha256": "dab8e2a8486aff6883a84fb3fc727f6320c2d18dfb783a738f97a8cb9f0e5163"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IEligibilityRegistry.json",
+      "sha256": "785da83a88f799ced6806492b71d895c1306f0522a56d8b9c5307bd534319050"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IFeeRegistry.json",
+      "sha256": "4355e214c9e72cf1b9e0b3e2911410dfd179b2fbc28d89c9a5437c2fe8a48b43"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IMarketRuleRegistry.json",
+      "sha256": "d956fc148efabce28a6a3f20e11814790b6af18a119fe7651147c5b310c8962b"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IParticipantRegistry.json",
+      "sha256": "bd24ee942e14580871299671087555e397a38f90b7cbe8544ff1bcf0823c4e92"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IPrincipalCalculator.json",
+      "sha256": "b74d84b7049751fe08b3d7e200e10caeca95cfa2c0bf515ef0b538bfc7beea7e"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/IPrincipalCalculatorRegistry.json",
+      "sha256": "ff858e7ee7229239c726c5af076de788f6b68701297e9d4ab3b0a530b4a32124"
+    },
+    {
+      "kind": "abi",
+      "path": "abi/ISettlementTokenRegistry.json",
+      "sha256": "9c8f866c543ec783c6ff7d30ab7ecdfc7420312b09fdaeed1d5309ff0f3f0b94"
+    },
+    {
+      "kind": "manifest",
+      "path": "manifest.json",
+      "sha256": "997957a9b74868efb4fc8964bb43f44636917000462ca8f1709cfc9cb005a3d0"
+    },
+    {
+      "kind": "document",
+      "path": "protocol/configs.json",
+      "sha256": "efebe7b7e116c75b2469f579afdc8c1ecc492912181e559c860fdbb7b2f5d9d6"
+    },
+    {
+      "kind": "document",
+      "path": "protocol/eip712.json",
+      "sha256": "28070a87df4849f2df0601e904984a13c4f79ed0f3d7780c2e607d5b6e9db43b"
+    },
+    {
+      "kind": "document",
+      "path": "protocol/errors.json",
+      "sha256": "af4c33ad75b15e3a0378a98157677940ca2488f7e28d9ffb5146bcee94493cb4"
+    },
+    {
+      "kind": "document",
+      "path": "protocol/events.json",
+      "sha256": "9e4e3c4b8a54906c65415ed9970e473dda7f8b5c30cded74e65c355eb87757f8"
+    },
+    {
+      "kind": "document",
+      "path": "protocol/interface-versions.json",
+      "sha256": "d583cde2ca8c0bf9259b313b70d0455ec62dc919f1e515ee903bec6a327f799e"
+    },
+    {
+      "kind": "document",
+      "path": "protocol/roles.json",
+      "sha256": "af5e07da31ef16237f121359c1de22a8e7e7328dffe496cd5cd67a7d02c220af"
+    },
+    {
+      "kind": "document",
+      "path": "types/enums.json",
+      "sha256": "85136f9b1714f55352f7df59a331c9a25c96326fbf996629e9126da013108025"
+    },
+    {
+      "kind": "document",
+      "path": "types/layouts.json",
+      "sha256": "1036f1ba96cd2da22fdb07039fc27b280b45cdf98b6ea70d3703500b6ad13c79"
+    },
+    {
+      "kind": "document",
+      "path": "types/structs.json",
+      "sha256": "5b57700a58276741ca679990c3be8f14203a14321e76248a9797d8df54efe189"
+    }
+  ],
+  "generatedFrom": "packages/schema-tools SchemaModel",
+  "schemaVersion": 1
+}

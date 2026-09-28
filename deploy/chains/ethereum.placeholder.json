@@ -1,0 +1,84 @@
+{
+  "$schema": "../config.schema.json",
+  "configVersion": "1.0.0",
+  "deploymentVersion": "0.0.0",
+  "expectedFirstCreateNonce": null,
+  "mode": "CHAIN_PLACEHOLDER",
+  "usage": "NOT_DEPLOYABLE",
+  "environment": "PLACEHOLDER",
+  "network": {
+    "name": "Ethereum",
+    "chainId": null
+  },
+  "securityLimits": {
+    "adapterProviderCallGasMax": 100000,
+    "calculatorStaticcallGas": 100000,
+    "registryImplementationStaticcallGas": 200000,
+    "registryReadStaticcallGas": 300000,
+    "tokenViewStaticcallGas": 30000,
+    "tokenWriteCallGas": 100000,
+    "eip1271MaxChecksPerSettlement": 2,
+    "eip1271GasPolicy": "FORWARD_REMAINING_GAS_EIP150",
+    "maxDependentDvps": 32
+  },
+  "roles": {
+    "deployer": null,
+    "defaultAdmin": null,
+    "governance": null,
+    "upgrader": null,
+    "pauser": null,
+    "executor": null,
+    "configurer": null
+  },
+  "deploymentInputs": {
+    "tokens": {
+      "assetToken": null,
+      "assetDecimals": null,
+      "settlementToken": null,
+      "settlementTokenDecimals": null,
+      "erc1404Token": null,
+      "usdyToken": null
+    },
+    "providers": {
+      "usdyBlocklist": null,
+      "usdyAllowlist": null,
+      "usdySanctionsList": null,
+      "providerCallGas": null
+    },
+    "participants": {
+      "maker": null,
+      "requester": null
+    },
+    "collector": null,
+    "economicAssetIdHash": null,
+    "schedule": {
+      "quoteValidFrom": null,
+      "quoteValidUntil": null,
+      "settlementValidUntil": null
+    },
+    "fee": {
+      "investorRateBps": null,
+      "investorHasCap": null,
+      "investorCapAmount": null,
+      "makerRateBps": null,
+      "makerHasCap": null,
+      "makerCapAmount": null
+    },
+    "marketRule": {
+      "minCashPrincipal": null,
+      "minExecutableQuantity": null,
+      "quantityStep": null,
+      "priceTick": null,
+      "priceDecimals": null,
+      "quantityDecimals": null
+    },
+    "evidenceHash": null
+  },
+  "externalPolicy": {
+    "approvalStatus": "UNAPPROVED",
+    "rpcUrls": null,
+    "finalityConfirmations": null,
+    "gasPolicy": null,
+    "transactionType": null
+  }
+}

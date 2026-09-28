@@ -1,0 +1,88 @@
+{
+  "amountVectors": "vectors/fees/amounts-v1.json",
+  "epochBoundaries": [
+    {
+      "quote": true,
+      "settlement": true,
+      "status": "ACTIVE"
+    },
+    {
+      "quote": false,
+      "settlement": true,
+      "status": "LEGACY_SERVING"
+    },
+    {
+      "quote": false,
+      "settlement": false,
+      "status": "CLOSED"
+    },
+    {
+      "quote": false,
+      "settlement": "only already-snapshotted TCB",
+      "status": "DEPRECATED_FEE_VERSION"
+    }
+  ],
+  "resolution": [
+    {
+      "configuredScopes": [
+        "ASSET_VERSION"
+      ],
+      "expected": "success",
+      "expectedScope": "ASSET_VERSION",
+      "fallbacksSkipped": 0,
+      "name": "asset_versionHit"
+    },
+    {
+      "configuredScopes": [
+        "INSTRUMENT"
+      ],
+      "expected": "success",
+      "expectedScope": "INSTRUMENT",
+      "fallbacksSkipped": 1,
+      "name": "instrumentHit"
+    },
+    {
+      "configuredScopes": [
+        "ASSET_CLASS"
+      ],
+      "expected": "success",
+      "expectedScope": "ASSET_CLASS",
+      "fallbacksSkipped": 2,
+      "name": "asset_classHit"
+    },
+    {
+      "configuredScopes": [
+        "CHAIN"
+      ],
+      "expected": "success",
+      "expectedScope": "CHAIN",
+      "fallbacksSkipped": 3,
+      "name": "chainHit"
+    },
+    {
+      "configuredScopes": [
+        "GLOBAL"
+      ],
+      "expected": "success",
+      "expectedScope": "GLOBAL",
+      "fallbacksSkipped": 4,
+      "name": "globalHit"
+    },
+    {
+      "configuredScopes": [],
+      "expected": "error",
+      "expectedError": "FeeResolverNoMatch",
+      "name": "noMatch"
+    }
+  ],
+  "resolverPriority": [
+    "ASSET_VERSION",
+    "INSTRUMENT",
+    "ASSET_CLASS",
+    "CHAIN",
+    "GLOBAL"
+  ],
+  "rolloverInvariant": "exactly one ACTIVE epoch after rollover",
+  "schemaVersion": 1,
+  "status": "candidate"
+}

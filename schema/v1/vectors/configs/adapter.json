@@ -1,0 +1,79 @@
+{
+  "capabilities": {
+    "typeString": "AdapterCapabilities(uint8 tokenStandard,uint8 restrictionMode,uint8 precheckMethod,uint256 transferLegMask)",
+    "typeHash": "0xf85baca9ce5e4101f103b6fa00c9b13964ae97b89f0c7452f251d704d66f2a23",
+    "input": {
+      "tokenStandard": 1,
+      "restrictionMode": 2,
+      "precheckMethod": 3,
+      "transferLegMask": "14"
+    },
+    "hash": "0x152063e52bb5922fd31769b05858b799d3603b488d6a5c64f177daf11189aa22",
+    "mutations": {
+      "tokenStandard": "0xf632907fe01735db9c117abd0e8d4e6236c594186de894e015d709ecfe968402",
+      "restrictionMode": "0x3958bd854b5e17d1f5a5e9e657a75f3331c17d066f2345c294f35df2117e647b",
+      "precheckMethod": "0x097ca7402548f039f3b4352fb35ffca6e95069cf282817005c39ae904af99b94",
+      "transferLegMask": "0xac6fa05519cab8a1c07d70c3d54f0d42951e786ec9dee8942a02bc061e54b771"
+    }
+  },
+  "providerSet": {
+    "typeString": "RestrictionProviderSet(RestrictionProvider[] providers)RestrictionProvider(address provider,bytes4 selector,bytes32 codeHash)",
+    "typeHash": "0x2b7b25b133d1be94d38cd4782d4278e95dc256384c5c241670c6b5387c4e76c5",
+    "input": {
+      "providers": [
+        {
+          "provider": "0x000000000000000000000000000000000000e001",
+          "selector": "0x01020304",
+          "codeHash": "0x0000000000000000000000000000000000000000000000000000000000000801"
+        },
+        {
+          "provider": "0x000000000000000000000000000000000000e002",
+          "selector": "0x05060708",
+          "codeHash": "0x0000000000000000000000000000000000000000000000000000000000000802"
+        }
+      ]
+    },
+    "hash": "0x96298c997293e6def5721fe524fa1d21ad5a4e65a3b7a93e8001494e23685d43",
+    "mutations": {
+      "provider": "0xac5c2f6220cdda476c23a4ae7d6a4c037fc8460ee172f7f84ddb20bc488c451b",
+      "selector": "0x41b712f2bb5e0972da89231952619d7aa43df4ddf1799543f6f16e0208dbab83",
+      "codeHash": "0x5423ef7e1dd78679d7f065028cb236b58878a204595aa3f0736d92fcf55344f4"
+    }
+  },
+  "config": {
+    "typeString": "AdapterConfig(uint32 schemaVersion,bytes32 adapterConfigId,uint32 revision,uint256 chainId,address adapter,bytes32 interfaceVersion,bytes32 codeHash,AdapterCapabilities capabilities,bytes32 capabilityHash,bytes32 providerHash,bytes32 replacesId)AdapterCapabilities(uint8 tokenStandard,uint8 restrictionMode,uint8 precheckMethod,uint256 transferLegMask)",
+    "typeHash": "0xba944c8340e5a1a26aaa234ff1eabe41a59efdefcb5252c64736e09813b63d24",
+    "input": {
+      "schemaVersion": 1,
+      "adapterConfigId": "0x3432fb32089eac8af610b2a9f6f6fa6cc95f1f9baca25badc2cbd7a611c1d49b",
+      "revision": 1,
+      "chainId": "31337",
+      "adapter": "0x000000000000000000000000000000000000e101",
+      "interfaceVersion": "0x0000000000000000000000000000000000000000000000000000000000000803",
+      "codeHash": "0x0000000000000000000000000000000000000000000000000000000000000804",
+      "capabilities": {
+        "tokenStandard": 1,
+        "restrictionMode": 2,
+        "precheckMethod": 3,
+        "transferLegMask": "14"
+      },
+      "capabilityHash": "0x152063e52bb5922fd31769b05858b799d3603b488d6a5c64f177daf11189aa22",
+      "providerHash": "0x96298c997293e6def5721fe524fa1d21ad5a4e65a3b7a93e8001494e23685d43",
+      "replacesId": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "hash": "0xafd135ca78e477a323d956fc561cb6d7dbbbc134268766a998827e2e082ca00b",
+    "mutations": {
+      "schemaVersion": "0x1e5094dd5c52e19f11ac56bede93c6273adcdb5a854ed6574b542cf03e5ca09a",
+      "adapterConfigId": "0xc00186ea399bb49a3353e855cdfde4efb595c0233e62f8e3206d254d312d0ce5",
+      "revision": "0xd2944986515ee7af4138dede557014826dd151e65cba7724991bb420327831eb",
+      "chainId": "0xc4334a79cf099cf94d15e6dfd0e29f2ddfbd662e2281e6034e5fc1d98a337ebf",
+      "adapter": "0xba93c7c81bedddc88363e7c13d963f28afd1460a5b0c8f9f4dacd11b8272a09c",
+      "interfaceVersion": "0x77b37458621e4d5a87b22c67da6c8aebd22325be84e7d246ea07b3392b630cb1",
+      "codeHash": "0x375da827a0ab308ed655b90a67d8e3b11a9f123db223a000e98b45d43b492c96",
+      "capabilities": "0x3095e024d27edadd68d671e1780519be91de29d699c4b407474a4003e6044d13",
+      "capabilityHash": "0x412f30d3dc5763a16437d0a8f3775f7b0244b967001efc80aa60bf6e6f5cb591",
+      "providerHash": "0x991ee08f7d193a94a65831c9710dbb5cc0c8b8c27dd4a81308aba65298ef8645",
+      "replacesId": "0x1938b99422010ff89b2711870c12b63e6a5194cd36a06394013b272f04439cee"
+    }
+  }
+}

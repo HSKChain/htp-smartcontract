@@ -1,0 +1,37 @@
+{
+  "typeString": "SettlementTokenConfig(uint32 schemaVersion,bytes32 configId,uint32 revision,uint256 chainId,address settlementToken,uint8 tokenDeploymentKind,uint8 settlementTokenDecimals,bytes32 tokenCodeHash,address implementation,bytes32 implementationCodeHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,uint8 permitCapability,bytes32 replacesConfigId)",
+  "typeHash": "0xe09fa6312d5216a62ad15e65f0e06c0e85af11ebba4329ea78f4b33599b92240",
+  "input": {
+    "schemaVersion": 1,
+    "configId": "0x93a9f7e8cc087fd5094f4e896464b19fc0eb27f721df6ed7946a19a38dc8139b",
+    "revision": 1,
+    "chainId": "31337",
+    "settlementToken": "0x000000000000000000000000000000000000c001",
+    "tokenDeploymentKind": 2,
+    "settlementTokenDecimals": 6,
+    "tokenCodeHash": "0x0000000000000000000000000000000000000000000000000000000000000a01",
+    "implementation": "0x000000000000000000000000000000000000c002",
+    "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000000a02",
+    "adapterConfigId": "0x3432fb32089eac8af610b2a9f6f6fa6cc95f1f9baca25badc2cbd7a611c1d49b",
+    "adapterConfigHash": "0x0000000000000000000000000000000000000000000000000000000000000a03",
+    "permitCapability": 2,
+    "replacesConfigId": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "hash": "0x8081973707c52c088f1e79243b119ee528646da59d75df2d908afbc534479470",
+  "mutations": {
+    "schemaVersion": "0x01d22fce0cc833ee1aa7c162a9014fea6922fa4cb66977bccc07adf3da5a6a20",
+    "configId": "0xd3f312994bdad540ea7be50a434f8ea7db5627bec5d87e755fd4760f343afd12",
+    "revision": "0xa67f52872c8480dbdcd8bf128f9dcbb664a531840ef10578bf7862d5c9702695",
+    "chainId": "0x422aed2b2985d9078b34fd31e1ad38f53091e80a4123017507f5f10b1c2bbcc9",
+    "settlementToken": "0x74c7cceb57f2f78e455a79002647fe093d70225515add39c7c1b05b57bf7b6c6",
+    "tokenDeploymentKind": "0x2eff99509163095db1d09cd1f5bd8de132f61be8076c71ddeb1bddf607a7f5d9",
+    "settlementTokenDecimals": "0x81c4a18043accbc2f89f8c30f0ff9426b26a2fae0a9ed2e02ab64a804bb450da",
+    "tokenCodeHash": "0xff0ec9dd996fe2ce4a4ab3d60a3b99444d1ee9a9e48ea86d9e84c66eeff76a40",
+    "implementation": "0xf522b6a6a55f5b2611677de86bdfb6abc5ff16343ff560d14a7a24e4affb44f7",
+    "implementationCodeHash": "0xa38d3db5bf047aa010431fbe636eb09d74cfed6fbba306e47fcb997b5fb6a82c",
+    "adapterConfigId": "0xcb272de350eea6e6955c5aa6b00e00415147abf13af43518d933783aa6937b55",
+    "adapterConfigHash": "0x912eb554be6ec719c994e0d4080a6d25d3c20b0c3656a16a2198e85fff8fef79",
+    "permitCapability": "0x1f64db33337c256c5dcc1a4365c472d2d0d24af1b3e354f7e0658cf90849a93b",
+    "replacesConfigId": "0xefbfd4a6dfb5aa6cfad8a8b0a07df44ce12b8e362cfdd3c353fe82af80227eb4"
+  }
+}

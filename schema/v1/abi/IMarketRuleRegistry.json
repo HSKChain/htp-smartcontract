@@ -1,0 +1,810 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "activateMarketRule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "closeMarketRule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "exemptRetiredDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getCurrentMarketRule",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "minCashPrincipal",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "minExecutableQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quantityStep",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "priceTick",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint8",
+                "name": "priceDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "quantityDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint64",
+                "name": "quoteValidFrom",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "quoteValidUntil",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "settlementValidUntil",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct MarketRuleConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum MarketRuleStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "isSealed",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "paused",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct MarketRuleRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getMarketRule",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "marketRuleConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "minCashPrincipal",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "minExecutableQuantity",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quantityStep",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "priceTick",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint8",
+                "name": "priceDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "quantityDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint64",
+                "name": "quoteValidFrom",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "quoteValidUntil",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "settlementValidUntil",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct MarketRuleConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum MarketRuleStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "isSealed",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "paused",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct MarketRuleRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint64",
+        "name": "quoteCreatedAt",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "quoteExpiresAt",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "tradeDeadline",
+        "type": "uint64"
+      }
+    ],
+    "name": "isMarketRuleServiceable",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "pauseMarketRule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "registerDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "schemaVersion",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "marketRuleConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "revision",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "assetVersionId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "settlementToken",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "settlementTokenConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "settlementTokenConfigHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "minCashPrincipal",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "minExecutableQuantity",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "quantityStep",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "priceTick",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint8",
+            "name": "priceDecimals",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "quantityDecimals",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint64",
+            "name": "quoteValidFrom",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "quoteValidUntil",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "settlementValidUntil",
+            "type": "uint64"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "replacesConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "configHash",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct MarketRuleConfig",
+        "name": "config",
+        "type": "tuple"
+      }
+    ],
+    "name": "registerMarketRule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "sealMarketRule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "unpauseMarketRule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "oldConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "CurrentMarketRuleChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "marketRuleConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "paused",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "MarketRulePauseChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "marketRuleConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "revision",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "replacesConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "MarketRuleRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "marketRuleConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "MarketRuleSealed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "marketRuleConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum MarketRuleStatus",
+        "name": "oldStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum MarketRuleStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "MarketRuleStatusChanged",
+    "type": "event"
+  }
+]

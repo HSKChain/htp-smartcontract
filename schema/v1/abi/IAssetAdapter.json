@@ -1,0 +1,130 @@
+[
+  {
+    "inputs": [],
+    "name": "capabilities",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum TokenStandard",
+            "name": "tokenStandard",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum RestrictionMode",
+            "name": "restrictionMode",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum PrecheckMethod",
+            "name": "precheckMethod",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "transferLegMask",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct AdapterCapabilities",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "capabilityHash",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "interfaceVersion",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "enum TransferLeg",
+        "name": "leg",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "contextHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "preCheck",
+    "outputs": [
+      {
+        "internalType": "enum Decision",
+        "name": "decision",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "restrictionCode",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "reasonHash",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "providerHash",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

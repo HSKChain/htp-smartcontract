@@ -1,0 +1,42 @@
+{
+  "generatedFrom": "contracts/src/libraries/Roles.sol",
+  "roles": [
+    {
+      "name": "DEFAULT_ADMIN_ROLE",
+      "ownership": "onchain",
+      "preimage": null,
+      "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "GOVERNANCE_ROLE",
+      "ownership": "onchain",
+      "preimage": "GOVERNANCE_ROLE",
+      "value": "0x71840dc4906352362b0cdaf79870196c8e42acafade72d5d5a6d59291253ceb1"
+    },
+    {
+      "name": "UPGRADER_ROLE",
+      "ownership": "onchain",
+      "preimage": "UPGRADER_ROLE",
+      "value": "0x189ab7a9244df0848122154315af71fe140f3db0fe014031783b0946b8c9d2e3"
+    },
+    {
+      "name": "PAUSER_ROLE",
+      "ownership": "onchain",
+      "preimage": "PAUSER_ROLE",
+      "value": "0x65d7a28e3265b37a6474929f336521b332c1681b933f6cb9f3376673440d862a"
+    },
+    {
+      "name": "EXECUTOR_ROLE",
+      "ownership": "onchain",
+      "preimage": "EXECUTOR_ROLE",
+      "value": "0xd8aa0f3194971a2a116679f7c2090f6939c8d4e01a2a8d7e41d55e5351469e63"
+    },
+    {
+      "name": "CONFIGURER_ROLE",
+      "ownership": "onchain",
+      "preimage": "CONFIGURER_ROLE",
+      "value": "0xf45c97b23e2beeefda80e1ce5cb3e234aa7b6888ad5cbabb75bfd654dd8e102d"
+    }
+  ],
+  "schemaVersion": 1
+}

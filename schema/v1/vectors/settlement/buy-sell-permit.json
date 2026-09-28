@@ -1,0 +1,131 @@
+{
+  "cases": [
+    {
+      "amounts": {
+        "buyerDebit": "1002000",
+        "buyerFee": "2000",
+        "cashPrincipal": "1000000",
+        "collectorCredit": "3500",
+        "sellerCredit": "998500",
+        "sellerFee": "1500"
+      },
+      "buyer": "0x000000000000000000000000000000000000b002",
+      "name": "buy",
+      "requester": "0x000000000000000000000000000000000000b002",
+      "requesterSide": "BUY",
+      "seller": "0x000000000000000000000000000000000000b001"
+    },
+    {
+      "amounts": {
+        "buyerDebit": "1002000",
+        "buyerFee": "2000",
+        "cashPrincipal": "1000000",
+        "collectorCredit": "3500",
+        "sellerCredit": "998500",
+        "sellerFee": "1500"
+      },
+      "buyer": "0x000000000000000000000000000000000000b002",
+      "name": "sell",
+      "requester": "0x000000000000000000000000000000000000b001",
+      "requesterSide": "SELL",
+      "seller": "0x000000000000000000000000000000000000b001"
+    },
+    {
+      "amounts": {
+        "buyerDebit": "1020",
+        "buyerFee": "20",
+        "cashPrincipal": "1000",
+        "collectorCredit": "1020",
+        "sellerCredit": "0",
+        "sellerFee": "1000"
+      },
+      "expected": "success",
+      "expectedTransferLegs": [
+        "ASSET",
+        "SETTLEMENT_BUYER_DEBIT",
+        "SETTLEMENT_TO_COLLECTOR"
+      ],
+      "name": "zeroSellerCreditLeg",
+      "requesterSide": "BUY",
+      "skippedAdapterLegs": [
+        "SETTLEMENT_TO_SELLER"
+      ]
+    },
+    {
+      "amounts": {
+        "buyerDebit": "1000000",
+        "buyerFee": "0",
+        "cashPrincipal": "1000000",
+        "collectorCredit": "0",
+        "sellerCredit": "1000000",
+        "sellerFee": "0"
+      },
+      "expected": "success",
+      "expectedTransferLegs": [
+        "ASSET",
+        "SETTLEMENT_BUYER_DEBIT",
+        "SETTLEMENT_TO_SELLER"
+      ],
+      "name": "zeroCollectorCreditLeg",
+      "requesterSide": "SELL",
+      "skippedAdapterLegs": [
+        "SETTLEMENT_TO_COLLECTOR"
+      ]
+    }
+  ],
+  "permits": [
+    {
+      "expected": "skip",
+      "input": {
+        "deadline": "0",
+        "owner": "0x0000000000000000000000000000000000000000",
+        "r": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "s": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "token": "0x0000000000000000000000000000000000000000",
+        "usePermit": false,
+        "v": 0,
+        "value": "0"
+      },
+      "name": "disabledCanonical"
+    },
+    {
+      "expected": "error",
+      "expectedError": "PermitFieldMismatch",
+      "input": {
+        "owner": "0x000000000000000000000000000000000000dead",
+        "token": "0x000000000000000000000000000000000000c001",
+        "usePermit": true,
+        "value": "1002000"
+      },
+      "name": "ownerMismatch",
+      "signatureMaterial": "intentionally omitted"
+    },
+    {
+      "expected": "field-validation-success",
+      "input": {
+        "capability": "EIP2612",
+        "deadline": "1784900000",
+        "owner": "0x000000000000000000000000000000000000b002",
+        "token": "0x000000000000000000000000000000000000c001",
+        "usePermit": true,
+        "value": "1002000"
+      },
+      "name": "enabledExactFields",
+      "signatureMaterial": "intentionally omitted"
+    },
+    {
+      "expected": "error",
+      "expectedError": "PermitUnsupported",
+      "input": {
+        "owner": "0x000000000000000000000000000000000000b002",
+        "token": "0x000000000000000000000000000000000000c001",
+        "usePermit": true,
+        "value": "1002000"
+      },
+      "name": "unsupportedCapability",
+      "signatureMaterial": "intentionally omitted"
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "candidate"
+}

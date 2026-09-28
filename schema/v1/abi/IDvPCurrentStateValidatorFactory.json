@@ -1,0 +1,21 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      }
+    ],
+    "name": "deployValidator",
+    "outputs": [
+      {
+        "internalType": "contract IDvPCurrentStateValidator",
+        "name": "validator",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

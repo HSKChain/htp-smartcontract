@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "layouts": [
+    {
+      "namespace": "htp.storage.AdapterRegistry",
+      "source": "src/registry/AdapterRegistry.sol",
+      "struct": "AdapterRegistryStorage",
+      "slot": "0x5690ed5754e0f5716bc670645aa45ded6dcddb9460f99672476d24dab8a9b400",
+      "members": [
+        {
+          "label": "configs",
+          "type": "mapping(bytes32=>struct AdapterConfig{schemaVersion:uint32;adapterConfigId:bytes32;revision:uint32;chainId:uint256;adapter:address;interfaceVersion:bytes32;codeHash:bytes32;capabilities:struct AdapterCapabilities{tokenStandard:enum TokenStandard;restrictionMode:enum RestrictionMode;precheckMethod:enum PrecheckMethod;transferLegMask:uint256};capabilityHash:bytes32;providerHash:bytes32;replacesId:bytes32;configHash:bytes32})"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.AssetVersionRegistry",
+      "source": "src/registry/AssetVersionRegistry.sol",
+      "struct": "AssetVersionRegistryStorage",
+      "slot": "0xfdb037db09caf56f4088d97b678789f28e0851d4dc6c2b67c09fd14bb56c3100",
+      "members": [
+        {
+          "label": "settlementTokenRegistry",
+          "type": "contract ISettlementTokenRegistry"
+        },
+        {
+          "label": "adapterRegistry",
+          "type": "contract IAdapterRegistry"
+        },
+        {
+          "label": "principalCalculatorRegistry",
+          "type": "contract IPrincipalCalculatorRegistry"
+        },
+        {
+          "label": "configs",
+          "type": "mapping(bytes32=>struct AssetVersionConfig{schemaVersion:uint32;economicAssetIdHash:bytes32;assetVersionId:bytes32;chainId:uint256;versionNo:uint32;assetToken:address;tokenStandard:enum TokenStandard;tokenDeploymentKind:enum TokenDeploymentKind;assetDecimals:uint8;tokenCodeHash:bytes32;implementation:address;implementationCodeHash:bytes32;assetPermitCapability:enum PermitCapability;assetClass:enum AssetClass;principalCalculatorConfigId:bytes32;principalCalculatorConfigHash:bytes32;adapterConfigId:bytes32;adapterConfigHash:bytes32;restrictionMode:enum RestrictionMode;settlementToken:address;settlementTokenConfigId:bytes32;settlementTokenConfigHash:bytes32;dvpContract:address;deploymentVersionHash:bytes32;replacesAssetVersionId:bytes32;configHash:bytes32})"
+        },
+        {
+          "label": "economicAssetIds",
+          "type": "mapping(address=>bytes32)"
+        },
+        {
+          "label": "implementationChangedPauses",
+          "type": "mapping(bytes32=>bool)"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.EligibilityRegistry",
+      "source": "src/registry/EligibilityRegistry.sol",
+      "struct": "EligibilityRegistryStorage",
+      "slot": "0x9791a9a8b9b8a2a73ceb19cc363f529ce15153a98f0f97ddc320a85ca4ba1a00",
+      "members": [
+        {
+          "label": "eligibilities",
+          "type": "mapping(bytes32=>struct EligibilityRecord{eligibilityKey:bytes32;wallet:address;assetVersionId:bytes32;decision:enum Decision;validFrom:uint64;validUntil:uint64;kycDecisionVersion:bytes32;permissionVersion:bytes32;recordVersion:uint64;paused:bool;revoked:bool;evidenceHash:bytes32})"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.FeeRegistry",
+      "source": "src/registry/FeeRegistry.sol",
+      "struct": "FeeRegistryStorage",
+      "slot": "0xd5f91eebe3c9b6fa2817be8e91330e55c686945f9635944b031ba5309bdb9900",
+      "members": [
+        {
+          "label": "assetVersionRegistry",
+          "type": "contract IAssetVersionRegistry"
+        },
+        {
+          "label": "settlementTokenRegistry",
+          "type": "contract ISettlementTokenRegistry"
+        },
+        {
+          "label": "epochs",
+          "type": "mapping(uint64=>struct FeePolicyEpochRecord{config:struct FeePolicyEpochConfig{schemaVersion:uint32;feePolicyEpoch:uint64;chainId:uint256;quoteValidFrom:uint64;quoteValidUntil:uint64;settlementValidUntil:uint64;configHash:bytes32};status:enum FeePolicyEpochStatus;isSealed:bool;exists:bool})"
+        },
+        {
+          "label": "latestFeePolicyEpoch",
+          "type": "uint64"
+        },
+        {
+          "label": "currentActiveEpoch",
+          "type": "uint64"
+        },
+        {
+          "label": "feeVersions",
+          "type": "mapping(bytes32=>struct FeeVersionRecord{config:struct FeeConfig{schemaVersion:uint32;feeVersionId:bytes32;revision:uint32;chainId:uint256;feePolicyEpoch:uint64;scopeType:enum ScopeType;scopeKeyHash:bytes32;matchedScopeHash:bytes32;investorRateBps:uint16;investorHasCap:bool;investorCapAmount:uint256;makerRateBps:uint16;makerHasCap:bool;makerCapAmount:uint256;roundingMode:enum RoundingMode;settlementToken:address;settlementTokenConfigId:bytes32;settlementTokenConfigHash:bytes32;collector:address;validFrom:uint64;validUntil:uint64;feeConstraintHash:bytes32;replacesFeeVersionId:bytes32;configHash:bytes32};status:enum FeeVersionStatus;exists:bool})"
+        },
+        {
+          "label": "scopeFeeVersionIds",
+          "type": "mapping(bytes32=>bytes32)"
+        },
+        {
+          "label": "scopeServingFeeVersionIds",
+          "type": "mapping(bytes32=>bytes32)"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.LinearConfigRegistryBase",
+      "source": "src/registry/LinearConfigRegistryBase.sol",
+      "struct": "LinearConfigRegistryStorage",
+      "slot": "0x1d8e22faa80e1ae99c8b9340263952c288f12f756260a3c991daf97e855c7c00",
+      "members": [
+        {
+          "label": "configs",
+          "type": "mapping(bytes32=>struct LinearConfigMetadata{subject:bytes32;revision:uint32;replacesId:bytes32;configHash:bytes32;status:uint8;exists:bool})"
+        },
+        {
+          "label": "currentConfigIds",
+          "type": "mapping(bytes32=>bytes32)"
+        },
+        {
+          "label": "configIdsByRevision",
+          "type": "mapping(bytes32=>mapping(uint32=>bytes32))"
+        },
+        {
+          "label": "latestConfigIds",
+          "type": "mapping(bytes32=>bytes32)"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.MarketRuleRegistry",
+      "source": "src/registry/MarketRuleRegistry.sol",
+      "struct": "MarketRuleRegistryStorage",
+      "slot": "0xeb21d333001ce399c618e2cbf5ecd60ed16938a2f6e71320d97155b0ce947f00",
+      "members": [
+        {
+          "label": "assetVersionRegistry",
+          "type": "contract IAssetVersionRegistry"
+        },
+        {
+          "label": "settlementTokenRegistry",
+          "type": "contract ISettlementTokenRegistry"
+        },
+        {
+          "label": "records",
+          "type": "mapping(bytes32=>struct MarketRuleRecord{config:struct MarketRuleConfig{schemaVersion:uint32;marketRuleConfigId:bytes32;revision:uint32;chainId:uint256;assetVersionId:bytes32;settlementToken:address;settlementTokenConfigId:bytes32;settlementTokenConfigHash:bytes32;minCashPrincipal:uint256;minExecutableQuantity:uint256;quantityStep:uint256;priceTick:uint256;priceDecimals:uint8;quantityDecimals:uint8;quoteValidFrom:uint64;quoteValidUntil:uint64;settlementValidUntil:uint64;replacesConfigId:bytes32;configHash:bytes32};status:enum MarketRuleStatus;isSealed:bool;paused:bool;exists:bool})"
+        },
+        {
+          "label": "latestConfigIds",
+          "type": "mapping(bytes32=>bytes32)"
+        },
+        {
+          "label": "currentConfigIds",
+          "type": "mapping(bytes32=>bytes32)"
+        },
+        {
+          "label": "configIdsByRevision",
+          "type": "mapping(bytes32=>mapping(uint32=>bytes32))"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.ParticipantRegistry",
+      "source": "src/registry/ParticipantRegistry.sol",
+      "struct": "ParticipantRegistryStorage",
+      "slot": "0x32f888f469726dc3bc7f8a2fba96525072e5836aa02a6633ea10b07558070e00",
+      "members": [
+        {
+          "label": "participants",
+          "type": "mapping(address=>struct ParticipantRecord{wallet:address;participantIdHash:bytes32;participantType:enum ParticipantType;status:enum ParticipantStatus;validUntil:uint64;version:uint64;evidenceHash:bytes32})"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.PrincipalCalculatorRegistry",
+      "source": "src/registry/PrincipalCalculatorRegistry.sol",
+      "struct": "PrincipalCalculatorRegistryStorage",
+      "slot": "0x20464761bfb922242712a952d932f3bfd3a65e14b981242aad7e96247b149b00",
+      "members": [
+        {
+          "label": "configs",
+          "type": "mapping(bytes32=>struct PrincipalCalculatorConfig{schemaVersion:uint32;calculatorConfigId:bytes32;revision:uint32;chainId:uint256;assetClass:enum AssetClass;calculator:address;interfaceVersion:bytes32;codeHash:bytes32;replacesId:bytes32;configHash:bytes32})"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.SettlementTokenRegistry",
+      "source": "src/registry/SettlementTokenRegistry.sol",
+      "struct": "SettlementTokenRegistryStorage",
+      "slot": "0xaec168487638ceefac70663f44a41a76c887a35cdd0b990075d67f46370d8900",
+      "members": [
+        {
+          "label": "adapterRegistry",
+          "type": "contract IAdapterRegistry"
+        },
+        {
+          "label": "configs",
+          "type": "mapping(bytes32=>struct SettlementTokenConfig{schemaVersion:uint32;configId:bytes32;revision:uint32;chainId:uint256;settlementToken:address;tokenDeploymentKind:enum TokenDeploymentKind;settlementTokenDecimals:uint8;tokenCodeHash:bytes32;implementation:address;implementationCodeHash:bytes32;adapterConfigId:bytes32;adapterConfigHash:bytes32;permitCapability:enum PermitCapability;replacesConfigId:bytes32;configHash:bytes32})"
+        },
+        {
+          "label": "implementationChangedPauses",
+          "type": "mapping(bytes32=>bool)"
+        }
+      ]
+    },
+    {
+      "namespace": "htp.storage.UUPSRegistryBase",
+      "source": "src/registry/UUPSRegistryBase.sol",
+      "struct": "RegistryBaseStorage",
+      "slot": "0xafc6c3037b45832d571ada43a3f4e8693ce68a356d2fb4fa4bab4b27cdca1f00",
+      "members": [
+        {
+          "label": "dependentDvps",
+          "type": "address[]"
+        },
+        {
+          "label": "dependentDvpRegistered",
+          "type": "mapping(address=>bool)"
+        },
+        {
+          "label": "dependentDvpRetiredExempt",
+          "type": "mapping(address=>bool)"
+        },
+        {
+          "label": "defaultAdminCount",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

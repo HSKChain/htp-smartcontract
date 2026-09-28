@@ -1,0 +1,705 @@
+{
+  "enums": [
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "STOCK",
+          "value": 1
+        },
+        {
+          "name": "FUND",
+          "value": 2
+        },
+        {
+          "name": "BOND",
+          "value": 3
+        }
+      ],
+      "name": "AssetClass",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "ERC20",
+          "value": 1
+        },
+        {
+          "name": "ERC1404",
+          "value": 2
+        }
+      ],
+      "name": "TokenStandard",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "DIRECT",
+          "value": 1
+        },
+        {
+          "name": "ERC1967_PROXY",
+          "value": 2
+        }
+      ],
+      "name": "TokenDeploymentKind",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "INVESTOR",
+          "value": 1
+        },
+        {
+          "name": "MAKER",
+          "value": 2
+        }
+      ],
+      "name": "ParticipantType",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "BUY",
+          "value": 1
+        },
+        {
+          "name": "SELL",
+          "value": 2
+        }
+      ],
+      "name": "RequesterSide",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "UNRESTRICTED",
+          "value": 1
+        },
+        {
+          "name": "PLATFORM",
+          "value": 2
+        },
+        {
+          "name": "ISSUER_EXTERNAL",
+          "value": 3
+        },
+        {
+          "name": "TOKEN_ENFORCED",
+          "value": 4
+        }
+      ],
+      "name": "RestrictionMode",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "NO_PRECHECK",
+          "value": 1
+        },
+        {
+          "name": "ERC1404_CHECK",
+          "value": 2
+        },
+        {
+          "name": "TOKEN_SPECIFIC_CHECK",
+          "value": 3
+        }
+      ],
+      "name": "PrecheckMethod",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "ASSET",
+          "value": 1
+        },
+        {
+          "name": "SETTLEMENT_TO_SELLER",
+          "value": 2
+        },
+        {
+          "name": "SETTLEMENT_TO_COLLECTOR",
+          "value": 3
+        }
+      ],
+      "name": "TransferLeg",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "PASS",
+          "value": 1
+        },
+        {
+          "name": "BLOCK",
+          "value": 2
+        },
+        {
+          "name": "UNKNOWN",
+          "value": 3
+        }
+      ],
+      "name": "Decision",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "MAKER_QUOTE",
+          "value": 1
+        },
+        {
+          "name": "REQUESTER_TRADE",
+          "value": 2
+        }
+      ],
+      "name": "NonceType",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "UNUSED",
+          "value": 1
+        },
+        {
+          "name": "USED",
+          "value": 2
+        },
+        {
+          "name": "CANCELLED",
+          "value": 3
+        }
+      ],
+      "name": "NonceStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "UNSUPPORTED",
+          "value": 1
+        },
+        {
+          "name": "EIP2612",
+          "value": 2
+        }
+      ],
+      "name": "PermitCapability",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "DOWN",
+          "value": 1
+        }
+      ],
+      "name": "RoundingMode",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "ACTIVE",
+          "value": 1
+        },
+        {
+          "name": "PAUSED",
+          "value": 2
+        },
+        {
+          "name": "REVOKED",
+          "value": 3
+        }
+      ],
+      "name": "ParticipantStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "REGISTERED",
+          "value": 1
+        },
+        {
+          "name": "ACTIVE",
+          "value": 2
+        },
+        {
+          "name": "PAUSED",
+          "value": 3
+        },
+        {
+          "name": "DEPRECATED",
+          "value": 4
+        }
+      ],
+      "name": "AssetVersionStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "REGISTERED",
+          "value": 1
+        },
+        {
+          "name": "ACTIVE",
+          "value": 2
+        },
+        {
+          "name": "PAUSED",
+          "value": 3
+        },
+        {
+          "name": "DEPRECATED",
+          "value": 4
+        }
+      ],
+      "name": "FeeVersionStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "REGISTERED",
+          "value": 1
+        },
+        {
+          "name": "ACTIVE",
+          "value": 2
+        },
+        {
+          "name": "PAUSED",
+          "value": 3
+        },
+        {
+          "name": "DEPRECATED",
+          "value": 4
+        }
+      ],
+      "name": "SettlementTokenStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "REGISTERED",
+          "value": 1
+        },
+        {
+          "name": "ACTIVE",
+          "value": 2
+        },
+        {
+          "name": "PAUSED",
+          "value": 3
+        },
+        {
+          "name": "DEPRECATED",
+          "value": 4
+        }
+      ],
+      "name": "AdapterStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "REGISTERED",
+          "value": 1
+        },
+        {
+          "name": "ACTIVE",
+          "value": 2
+        },
+        {
+          "name": "PAUSED",
+          "value": 3
+        },
+        {
+          "name": "DEPRECATED",
+          "value": 4
+        }
+      ],
+      "name": "CalculatorStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "DRAFT",
+          "value": 1
+        },
+        {
+          "name": "ACTIVE",
+          "value": 2
+        },
+        {
+          "name": "LEGACY_SERVING",
+          "value": 3
+        },
+        {
+          "name": "CLOSED",
+          "value": 4
+        }
+      ],
+      "name": "FeePolicyEpochStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "DRAFT",
+          "value": 1
+        },
+        {
+          "name": "ACTIVE",
+          "value": 2
+        },
+        {
+          "name": "LEGACY_SERVING",
+          "value": 3
+        },
+        {
+          "name": "CLOSED",
+          "value": 4
+        }
+      ],
+      "name": "MarketRuleStatus",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "GLOBAL",
+          "value": 1
+        },
+        {
+          "name": "CHAIN",
+          "value": 2
+        },
+        {
+          "name": "ASSET_CLASS",
+          "value": 3
+        },
+        {
+          "name": "INSTRUMENT",
+          "value": 4
+        },
+        {
+          "name": "ASSET_VERSION",
+          "value": 5
+        }
+      ],
+      "name": "ScopeType",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    },
+    {
+      "deprecatedAliases": [],
+      "members": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "SECURITY_INCIDENT",
+          "value": 1
+        },
+        {
+          "name": "CONFIG_MISMATCH",
+          "value": 2
+        },
+        {
+          "name": "TOKEN_BEHAVIOR_CHANGED",
+          "value": 3
+        },
+        {
+          "name": "IMPLEMENTATION_CHANGED",
+          "value": 4
+        },
+        {
+          "name": "ELIGIBILITY_INCIDENT",
+          "value": 5
+        },
+        {
+          "name": "RECONCILIATION_EXCEPTION",
+          "value": 6
+        },
+        {
+          "name": "RPC_OR_FINALITY_INCIDENT",
+          "value": 7
+        },
+        {
+          "name": "PLANNED_MIGRATION",
+          "value": 8
+        },
+        {
+          "name": "GOVERNANCE_ACTION",
+          "value": 9
+        }
+      ],
+      "name": "ReasonCode",
+      "ownership": {
+        "canonicalDefinition": "onchain",
+        "consumers": [
+          "onchain",
+          "offchain"
+        ]
+      }
+    }
+  ],
+  "generatedFrom": "contracts/src/types/HTPTypes.sol AST",
+  "schemaVersion": 1
+}

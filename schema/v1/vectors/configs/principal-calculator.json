@@ -1,0 +1,27 @@
+{
+  "typeString": "PrincipalCalculatorConfig(uint32 schemaVersion,bytes32 calculatorConfigId,uint32 revision,uint256 chainId,uint8 assetClass,address calculator,bytes32 interfaceVersion,bytes32 codeHash,bytes32 replacesId)",
+  "typeHash": "0x99b2a3b7ae4def80a995e60eceade6fc181ff8f440d658cfc1c092d12b794fd6",
+  "input": {
+    "schemaVersion": 1,
+    "calculatorConfigId": "0xb01a2f54f4e1dd8b1a05725f2ce09ebcc2ba38546cf712b66ebe69722c923f62",
+    "revision": 1,
+    "chainId": "31337",
+    "assetClass": 2,
+    "calculator": "0x000000000000000000000000000000000000f001",
+    "interfaceVersion": "0x79b97198c84fbb044cdda584716b22b5f0da3a199307ca0dea63b2e03e72f10f",
+    "codeHash": "0x0000000000000000000000000000000000000000000000000000000000000902",
+    "replacesId": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "hash": "0x0d48648641518cff54ae8fd6b8041502587b3102d9fa56c96e63e4ba121d49aa",
+  "mutations": {
+    "schemaVersion": "0x9e42347b10c3c540ebc4cdefd54df7cc49a4b537fdb98be85822b586f73567db",
+    "calculatorConfigId": "0xf259b31c878b97977eb2a0db24b794a5cca03e581618c5482113bec6fd244ec1",
+    "revision": "0xed71e450fad0120c58b8f64b12bc447b2c5fb5fffb346f897b7ad326505bba09",
+    "chainId": "0xe3351113beb211b7c34c2242fa233860a89781b7cdc44602cf10cf51bae53bdf",
+    "assetClass": "0xe2a3064cb44b4ce3a2b8314f789e03c9a2ed9e974f507f3c276b163f6b0214e5",
+    "calculator": "0x26fe8408fe5bd013b33c53efa947e98de2d311d8de72cd477735fe67dcd53e09",
+    "interfaceVersion": "0xc94253b037e80d3cb1e76c3ced20f073617e61edfc5da56609ad7bfc14355980",
+    "codeHash": "0xb574e05b552033c0124397209e4d65a6c917f53f3426a87378ffbeb5d70ab63e",
+    "replacesId": "0x88ea1d4c0a5fbcb9fdd75ec126144647aec711cf023f68a5ccbbbe5f7240509c"
+  }
+}

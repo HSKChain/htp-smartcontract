@@ -1,0 +1,169 @@
+{
+  "deploymentVersion": {
+    "format": "canonical ASCII numeric SemVer MAJOR.MINOR.PATCH",
+    "formula": "keccak256(abi.encode(keccak256(\"HTP_DEPLOYMENT_VERSION\"),keccak256(asciiVersion)))",
+    "negative": [
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": "v1.2.3"
+      },
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": "01.2.3"
+      },
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": "1.02.3"
+      },
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": "1.2.03"
+      },
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": "1.2"
+      },
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": "1.2.3-beta"
+      },
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": "1.2.3+build"
+      },
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": "Café"
+      },
+      {
+        "expectedError": "INVALID_DEPLOYMENT_VERSION",
+        "input": ""
+      }
+    ],
+    "positive": [
+      {
+        "deploymentVersionHash": "0x6529b8820a9588560ca6cd206010d473502e1a86a7519c35582dd782ae129b53",
+        "input": "0.0.0"
+      },
+      {
+        "deploymentVersionHash": "0x51c5fe1d20ac02d40c1a23e4c9231429cf03867d0158f3cb9ecc7277cb8cef42",
+        "input": "1.2.3"
+      }
+    ]
+  },
+  "distinct": {
+    "case": {
+      "hashes": [
+        {
+          "economicAsset": "0x43bbca39b59f86eff8fcab795d873945334dc8fdc50a5d6dd96d596a95265ffe",
+          "quote": "0x81a5a62e90de584bfe8031d1267fe1587a406fa823b34d0593dba39c207479ca",
+          "rfq": "0xf0ce9c21be9ffcb6f4775b9ae9c1b6a7fea296582ec2a58a04cc6abe1c03bfc6",
+          "trade": "0xa7b3e99f3725a1f25dfa6c2a3255f02ec126cf6020fd40dad41edb77930616e8"
+        },
+        {
+          "economicAsset": "0x489e26d7ebf199f789347e00f4037727ceccbec09df1ef5bd418e82ed54feddf",
+          "quote": "0x6de9295a94eddc5e34f7925912f011307389d5be8bb6f6467c92a05f5561ac2c",
+          "rfq": "0x6b4ebe0af24ca25ef51d1b872a4926b70803e28a8afd9e1e9149395e9b219cb5",
+          "trade": "0x3d5d83f2fd98b0e321f0eb06aaf011f2238dd3a0747cd58b8060f8f9b8156cd6"
+        }
+      ],
+      "inputs": [
+        "RFQ-001",
+        "rfq-001"
+      ]
+    },
+    "whitespace": {
+      "hashes": [
+        {
+          "economicAsset": "0x43bbca39b59f86eff8fcab795d873945334dc8fdc50a5d6dd96d596a95265ffe",
+          "quote": "0x81a5a62e90de584bfe8031d1267fe1587a406fa823b34d0593dba39c207479ca",
+          "rfq": "0xf0ce9c21be9ffcb6f4775b9ae9c1b6a7fea296582ec2a58a04cc6abe1c03bfc6",
+          "trade": "0xa7b3e99f3725a1f25dfa6c2a3255f02ec126cf6020fd40dad41edb77930616e8"
+        },
+        {
+          "economicAsset": "0x8e3e4efc7d2fb6d18b3801e5345ceaba575cc01076ae688c6774a8a0afbe9e50",
+          "quote": "0x8108647be19880575bb3418dc14980273257b4280e07892c43c9176eefe2ecbd",
+          "rfq": "0x2ceebc02dba15a6ca6ae786c6f2d6c9206f3670962aef1c00f6e20122526a82e",
+          "trade": "0x76d5304699ce251ae3e012809a70b9581910744ca002332c8f855a9a07ade1cb"
+        }
+      ],
+      "inputs": [
+        "RFQ-001",
+        " RFQ-001 "
+      ]
+    }
+  },
+  "formula": "keccak256(abi.encode(domainHash,schemaVersion,keccak256(canonicalNfcUtf8)))",
+  "negative": [
+    {
+      "expectedError": "INVALID_UTF8",
+      "inputHex": "0xc328",
+      "name": "invalidUtf8"
+    },
+    {
+      "expectedError": "CONTROL_CHARACTER",
+      "inputEscaped": "RFQ\\u0000",
+      "name": "controlCharacterCc"
+    },
+    {
+      "expectedError": "LENGTH_OUT_OF_RANGE",
+      "input": "",
+      "name": "zeroBytes"
+    },
+    {
+      "byteLength": 257,
+      "expectedError": "LENGTH_OUT_OF_RANGE",
+      "name": "257Bytes"
+    },
+    {
+      "byteLength": 15,
+      "expectedError": "PARTICIPANT_REF_TOO_SHORT",
+      "name": "shortParticipantRef"
+    }
+  ],
+  "positive": {
+    "max256Bytes": {
+      "hashes": {
+        "economicAsset": "0x03bc3000337ea963e96ca942fcbb6feb3d57ec64722165538b31750e40d48378",
+        "quote": "0x23dbc4a34c25d6911717dd6ab5d1f1a3ecef02e8678d94d2a0ac7d2ab0e6021d",
+        "rfq": "0x8af4282fb090bc0ef6f246b4ab730c18aff412469b855abb9df49d784490bf84",
+        "trade": "0x2b3469bc60c7490ffc75f3176009f9acb781781f21616d82200705187c2c5b7e"
+      },
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "nfcEquivalent": {
+      "canonicalUtf8Hex": "0x436166c3a92de59fbae987912d303031",
+      "equivalentHashes": {
+        "economicAsset": "0x77a9d544ffc26a07d7f508455eacf0b923b74f4819342fe44cadb38133a5d894",
+        "quote": "0x773eda7a4d7ff15f6c157119e92d6c4a23acf5d73f8ac10d9c5efa2e8bcf67fc",
+        "rfq": "0x146770288ea29aa0902b281fb75c28bed81160c5894568c930b1e7489fc4b90e",
+        "trade": "0xddb11409c7ba833d7621aff958dfde2378b820f70c1dec87abe1ff042fa5f718"
+      },
+      "hashes": {
+        "economicAsset": "0x77a9d544ffc26a07d7f508455eacf0b923b74f4819342fe44cadb38133a5d894",
+        "quote": "0x773eda7a4d7ff15f6c157119e92d6c4a23acf5d73f8ac10d9c5efa2e8bcf67fc",
+        "rfq": "0x146770288ea29aa0902b281fb75c28bed81160c5894568c930b1e7489fc4b90e",
+        "trade": "0xddb11409c7ba833d7621aff958dfde2378b820f70c1dec87abe1ff042fa5f718"
+      },
+      "inputs": [
+        "Café-基金-001",
+        "Café-基金-001"
+      ]
+    },
+    "oneByte": {
+      "hashes": {
+        "economicAsset": "0x8c4a1c27dce61d3711c9be6b3a98656162b25994197c8b06523fe701157979b3",
+        "quote": "0x84ae1a4e68dd3042111df888bcba8ea2e43af8edab2e3430cc2b43651c593027",
+        "rfq": "0x477c192967058386a2c09898abbd6cc9f4fe25d69d0bd35ee3207d51a4f7507e",
+        "trade": "0x6cd332ffe60b51a3a5c933cdadef3c112e837de55aa16a78d2f94ac783475099"
+      },
+      "input": "A"
+    },
+    "participant": {
+      "participantIdHash": "0x79ab60d25a6a5f4254ded7b12752b91bdf768edccc1466d3b2205227cfd9e46d",
+      "participantRefHex": "0x0102030405060708090a0b0c0d0e0f10"
+    }
+  },
+  "schemaVersion": 1,
+  "status": "candidate"
+}

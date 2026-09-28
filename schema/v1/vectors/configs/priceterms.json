@@ -1,0 +1,51 @@
+{
+  "stock": {
+    "typeString": "StockPriceTerms(uint256 unitPrice,uint64 priceAsOf,bytes32 referenceMarketHash,bytes32 priceSourceHash)",
+    "typeHash": "0xf4d5447f90e676867c589973879c33e8d31e6f3033a06a00335ea6598550ed69",
+    "input": {
+      "unitPrice": "2345678",
+      "priceAsOf": "1780000000",
+      "referenceMarketHash": "0x0000000000000000000000000000000000000000000000000000000000000701",
+      "priceSourceHash": "0x0000000000000000000000000000000000000000000000000000000000000702"
+    },
+    "hash": "0x5cb821f6c2dccfaae82edcd379059433b9985de79ccbd1dc5da0e21bbd2a767d",
+    "mutations": {
+      "unitPrice": "0x632d4cd8fa36fe587def5fcf57ef85154bc12fdf7bd6a3002ae0528c94e9dc30",
+      "priceAsOf": "0x2207b2f5719e3d7b9608b1949165742ce0b436b66b2aba75f764a163eb8cd6c5",
+      "referenceMarketHash": "0x2cf8e8810c80590e5dc2042ff601e6c79751756f62f387cadaf78bef15e456db",
+      "priceSourceHash": "0x05dca6b048e295ff68a18fbd9d494fcd76ae068a9abf906941c8d6462d01059c"
+    }
+  },
+  "fund": {
+    "typeString": "FundPriceTerms(uint256 navPerUnit,uint32 navDate,bytes32 navSourceHash)",
+    "typeHash": "0x3cad5c0c52f9264aebf7f021f282daea6b397d8a2bf08f5e2e2db302cbe47475",
+    "input": {
+      "navPerUnit": "1140000",
+      "navDate": 20260810,
+      "navSourceHash": "0x0000000000000000000000000000000000000000000000000000000000000201"
+    },
+    "hash": "0x43dd8313df1b71f18f367e8a41d0af124cb97d0297aae168e2d9a0132a7dd439",
+    "mutations": {
+      "navPerUnit": "0xd20e37161ad0eb4516eed30b23c1f7b0143372a5f902490d229a20f02308d26a",
+      "navDate": "0x138b6ab7095a36a40aff88c415243c45e3110c38f3960883ecd0b06fbf245494",
+      "navSourceHash": "0xe8b626cf7f8d9b84d52b867c4a3f2a12b2ce10191a09b843f8bca66aa5be9495"
+    }
+  },
+  "bond": {
+    "typeString": "BondPriceTerms(uint256 cleanPricePerUnit,uint256 accruedInterestPerUnit,uint32 settlementDate,bytes32 sourceHash)",
+    "typeHash": "0x2b3b200285045106f88588668bd156dd1fe26cc1153336e622f6cda2ac759365",
+    "input": {
+      "cleanPricePerUnit": "980000",
+      "accruedInterestPerUnit": "12500",
+      "settlementDate": 20260812,
+      "sourceHash": "0x0000000000000000000000000000000000000000000000000000000000000703"
+    },
+    "hash": "0xd0ef1df61af5833f5bf30eab0e447a60118f6b8525cf0c63954a1ad5cd2182cb",
+    "mutations": {
+      "cleanPricePerUnit": "0x984877dff3922ded3ce13249aac99ea3d6739b585b567713cf1a3d45884665e3",
+      "accruedInterestPerUnit": "0xf69ef924e5487396b3177a935bebc19b86e69a6ec75a727c95a81cba0407611f",
+      "settlementDate": "0x1d2eaf63eac9d7b65255a8f41a190ede93bd0a9a16609cd09699341e91ddec63",
+      "sourceHash": "0xc6385525db5fd99261548ded7bee96f119f3068a83c036d397bbb15bb1ea2f8d"
+    }
+  }
+}

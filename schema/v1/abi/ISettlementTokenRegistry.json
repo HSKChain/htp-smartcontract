@@ -1,0 +1,807 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "activateSettlementToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "deprecateSettlementToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "exemptRetiredDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "name": "getCurrentSettlementToken",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "enum TokenDeploymentKind",
+                "name": "tokenDeploymentKind",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "settlementTokenDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tokenCodeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "implementation",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "implementationCodeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum PermitCapability",
+                "name": "permitCapability",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct SettlementTokenConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum SettlementTokenStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct SettlementTokenRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDependentDvp",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "retiredExempt",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDependentDvpCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getSettlementToken",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "enum TokenDeploymentKind",
+                "name": "tokenDeploymentKind",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "settlementTokenDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tokenCodeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "implementation",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "implementationCodeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum PermitCapability",
+                "name": "permitCapability",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct SettlementTokenConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum SettlementTokenStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct SettlementTokenRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "isSettlementTokenConfigActive",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "isSettlementTokenConfigRegisterable",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "pauseSettlementToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "registerDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "schemaVersion",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "configId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "revision",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "settlementToken",
+            "type": "address"
+          },
+          {
+            "internalType": "enum TokenDeploymentKind",
+            "name": "tokenDeploymentKind",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "settlementTokenDecimals",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "tokenCodeHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "implementation",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "implementationCodeHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "adapterConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "adapterConfigHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "enum PermitCapability",
+            "name": "permitCapability",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "replacesConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "configHash",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct SettlementTokenConfig",
+        "name": "config",
+        "type": "tuple"
+      }
+    ],
+    "name": "registerSettlementToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "unpauseSettlementToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "settlementToken",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "oldConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "CurrentSettlementTokenChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRetiredExempted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "settlementToken",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "schemaVersion",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "revision",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum TokenDeploymentKind",
+        "name": "tokenDeploymentKind",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "settlementTokenDecimals",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "tokenCodeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "implementationCodeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "adapterConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum PermitCapability",
+        "name": "permitCapability",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "replacesConfigId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "SettlementTokenRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "configId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum SettlementTokenStatus",
+        "name": "oldStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum SettlementTokenStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "SettlementTokenStatusChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "boundaryOnly": true,
+  "confirmationThreshold": "64",
+  "negative": [
+    {
+      "confirmations": "1",
+      "expectedError": "CANONICAL_RECEIPT_REQUIRED",
+      "name": "nonCanonicalReceiptAccepted",
+      "receiptCanonical": false,
+      "requestedState": "CONFIRMING",
+      "subgraphState": "SYNCED"
+    },
+    {
+      "confirmations": "63",
+      "expectedError": "CONFIRMATION_THRESHOLD_NOT_MET",
+      "name": "belowThresholdFinal",
+      "receiptCanonical": true,
+      "requestedState": "FINAL",
+      "subgraphState": "SYNCED"
+    },
+    {
+      "confirmations": "0",
+      "expectedError": "SUBGRAPH_NOT_FINALITY_AUTHORITY",
+      "name": "subgraphOnlyFinality",
+      "receiptCanonical": false,
+      "requestedState": "FINAL_FROM_SUBGRAPH",
+      "subgraphState": "SYNCED"
+    },
+    {
+      "confirmations": "12",
+      "expectedError": "SHALLOW_REORG_REQUIRES_ROLLBACK",
+      "name": "shallowReorgWithoutRollback",
+      "receiptCanonical": false,
+      "requestedState": "KEEP_FINAL",
+      "subgraphState": "SYNCED"
+    }
+  ],
+  "positive": [
+    {
+      "confirmations": "1",
+      "expectedState": "CONFIRMING",
+      "name": "canonicalReceipt",
+      "receiptCanonical": true,
+      "requestedState": "CONFIRMING",
+      "subgraphState": "DELAYED"
+    },
+    {
+      "confirmations": "64",
+      "expectedState": "FINAL",
+      "name": "confirmationThresholdReached",
+      "receiptCanonical": true,
+      "requestedState": "FINAL",
+      "subgraphState": "SYNCED"
+    },
+    {
+      "confirmations": "80",
+      "expectedState": "FINAL",
+      "name": "subgraphDelayDoesNotChangeFinality",
+      "receiptCanonical": true,
+      "requestedState": "FINAL",
+      "subgraphState": "DELAYED"
+    },
+    {
+      "confirmations": "12",
+      "expectedState": "CONFIRMING",
+      "name": "shallowReorgRollback",
+      "receiptCanonical": false,
+      "requestedState": "ROLLBACK_CONFIRMING",
+      "subgraphState": "SYNCED"
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "candidate"
+}

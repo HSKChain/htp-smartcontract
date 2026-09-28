@@ -1,0 +1,72 @@
+[
+  {
+    "inputs": [],
+    "name": "assetClass",
+    "outputs": [
+      {
+        "internalType": "enum AssetClass",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "priceData",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint256",
+        "name": "executedQuantity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "assetDecimals",
+        "type": "uint8"
+      }
+    ],
+    "name": "calculate",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "calculatedPriceTermsHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "quotedPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "unitCashPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "cashPrincipal",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "interfaceVersion",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  }
+]

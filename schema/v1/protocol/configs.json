@@ -1,0 +1,158 @@
+{
+  "feeScope": {
+    "priority": [
+      "ASSET_VERSION",
+      "INSTRUMENT",
+      "ASSET_CLASS",
+      "CHAIN",
+      "GLOBAL"
+    ],
+    "sourceConstant": "TYPEHASH"
+  },
+  "generatedFrom": [
+    "contracts/src/libraries/HTPHashing.sol",
+    "contracts/src/libraries/ConfigId.sol",
+    "contracts/src/libraries/FeeScope.sol"
+  ],
+  "hashFormula": "keccak256(abi.encode(TYPEHASH, canonical fields excluding stored configHash))",
+  "idFormulas": [
+    {
+      "formula": "keccak256(abi.encode(schemaVersion,economicAssetIdHash,chainId,assetToken,versionNo))",
+      "name": "AssetVersion",
+      "namespaceConstant": null,
+      "subject": "economicAssetIdHash + assetToken + versionNo"
+    },
+    {
+      "formula": "keccak256(abi.encode(namespaceHash,schemaVersion,chainId,subjectKey,revision))",
+      "name": "SettlementTokenConfig",
+      "namespaceConstant": "SETTLEMENT_TOKEN_NAMESPACE",
+      "subject": "bytes32(uint256(uint160(settlementToken)))"
+    },
+    {
+      "formula": "keccak256(abi.encode(namespaceHash,schemaVersion,chainId,subjectKey,revision))",
+      "name": "AdapterConfig",
+      "namespaceConstant": "ADAPTER_NAMESPACE",
+      "subject": "capabilityHash"
+    },
+    {
+      "formula": "keccak256(abi.encode(namespaceHash,schemaVersion,chainId,subjectKey,revision))",
+      "name": "PrincipalCalculatorConfig",
+      "namespaceConstant": "PRINCIPAL_CALCULATOR_NAMESPACE",
+      "subject": "bytes32(uint256(assetClass))"
+    },
+    {
+      "formula": "keccak256(abi.encode(namespaceHash,schemaVersion,chainId,subjectKey,revision))",
+      "name": "MarketRuleConfig",
+      "namespaceConstant": "MARKET_RULE_NAMESPACE",
+      "subject": "assetVersionId"
+    },
+    {
+      "formula": "keccak256(abi.encode(namespaceHash,schemaVersion,chainId,subjectKey,revision))",
+      "name": "FeeConfig",
+      "namespaceConstant": "FEE_NAMESPACE",
+      "subject": "matchedScopeHash"
+    }
+  ],
+  "schemaVersion": 1,
+  "sourceConstants": {
+    "configIdNamespaces": {
+      "ADAPTER_NAMESPACE": {
+        "namespaceHash": "0x1ddd691b249dfd498a2002dc6f4504d3095f681e22b0b660e21ad2923d06fd35",
+        "preimage": "HTP_ADAPTER_CONFIG"
+      },
+      "FEE_NAMESPACE": {
+        "namespaceHash": "0xef00a977514fea00aa612945fdad6ee77e6a300346e98ab4828776bc268f86ec",
+        "preimage": "HTP_FEE_CONFIG"
+      },
+      "MARKET_RULE_NAMESPACE": {
+        "namespaceHash": "0xe027475c4cbc70b1834d9fa089bcda6c78335796c80b6cde967c951cec39dd1f",
+        "preimage": "HTP_MARKET_RULE_CONFIG"
+      },
+      "PRINCIPAL_CALCULATOR_NAMESPACE": {
+        "namespaceHash": "0x9ecec5654a8d6d90d3e0bf991030ef79b3ea0ab0d92b0b84ba1427bf85ccb02e",
+        "preimage": "HTP_PRINCIPAL_CALCULATOR_CONFIG"
+      },
+      "SETTLEMENT_TOKEN_NAMESPACE": {
+        "namespaceHash": "0x26df9a5f5da6233548369cf9827723cdf762fcbcbb04016a169ce8018164f7fe",
+        "preimage": "HTP_SETTLEMENT_TOKEN_CONFIG"
+      }
+    },
+    "feeScope": {
+      "constant": "TYPEHASH",
+      "typeHash": "0x3e68b714359796c92f052a4b03965163c93aef8ea11a90b1f1a29d10be2ea88f",
+      "typeString": "FeeScope(uint64 feePolicyEpoch,uint8 scopeType,bytes32 scopeKeyHash)"
+    }
+  },
+  "types": [
+    {
+      "constant": "STOCK_PRICE_TERMS_TYPEHASH",
+      "typeHash": "0xf4d5447f90e676867c589973879c33e8d31e6f3033a06a00335ea6598550ed69",
+      "typeString": "StockPriceTerms(uint256 unitPrice,uint64 priceAsOf,bytes32 referenceMarketHash,bytes32 priceSourceHash)"
+    },
+    {
+      "constant": "FUND_PRICE_TERMS_TYPEHASH",
+      "typeHash": "0x3cad5c0c52f9264aebf7f021f282daea6b397d8a2bf08f5e2e2db302cbe47475",
+      "typeString": "FundPriceTerms(uint256 navPerUnit,uint32 navDate,bytes32 navSourceHash)"
+    },
+    {
+      "constant": "BOND_PRICE_TERMS_TYPEHASH",
+      "typeHash": "0x2b3b200285045106f88588668bd156dd1fe26cc1153336e622f6cda2ac759365",
+      "typeString": "BondPriceTerms(uint256 cleanPricePerUnit,uint256 accruedInterestPerUnit,uint32 settlementDate,bytes32 sourceHash)"
+    },
+    {
+      "constant": "ASSET_VERSION_CONFIG_TYPEHASH",
+      "typeHash": "0xebadae8df222a4975664ad0288cc4e0d225ee3cc201873e4f6c40dbfec649f90",
+      "typeString": "AssetVersionConfig(uint32 schemaVersion,bytes32 economicAssetIdHash,bytes32 assetVersionId,uint256 chainId,uint32 versionNo,address assetToken,uint8 tokenStandard,uint8 tokenDeploymentKind,uint8 assetDecimals,bytes32 tokenCodeHash,address implementation,bytes32 implementationCodeHash,uint8 assetPermitCapability,uint8 assetClass,bytes32 principalCalculatorConfigId,bytes32 principalCalculatorConfigHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,uint8 restrictionMode,address settlementToken,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,address dvpContract,bytes32 deploymentVersionHash,bytes32 replacesAssetVersionId)"
+    },
+    {
+      "constant": "SETTLEMENT_TOKEN_CONFIG_TYPEHASH",
+      "typeHash": "0xe09fa6312d5216a62ad15e65f0e06c0e85af11ebba4329ea78f4b33599b92240",
+      "typeString": "SettlementTokenConfig(uint32 schemaVersion,bytes32 configId,uint32 revision,uint256 chainId,address settlementToken,uint8 tokenDeploymentKind,uint8 settlementTokenDecimals,bytes32 tokenCodeHash,address implementation,bytes32 implementationCodeHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,uint8 permitCapability,bytes32 replacesConfigId)"
+    },
+    {
+      "constant": "ADAPTER_CAPABILITIES_TYPEHASH",
+      "typeHash": "0xf85baca9ce5e4101f103b6fa00c9b13964ae97b89f0c7452f251d704d66f2a23",
+      "typeString": "AdapterCapabilities(uint8 tokenStandard,uint8 restrictionMode,uint8 precheckMethod,uint256 transferLegMask)"
+    },
+    {
+      "constant": "RESTRICTION_PROVIDER_TYPEHASH",
+      "typeHash": "0xfed65558b3104621542c722ab4350971fc401cdeca1c2b3f95d1893c9ef9b61f",
+      "typeString": "RestrictionProvider(address provider,bytes4 selector,bytes32 codeHash)"
+    },
+    {
+      "constant": "RESTRICTION_PROVIDER_SET_TYPEHASH",
+      "typeHash": "0x2b7b25b133d1be94d38cd4782d4278e95dc256384c5c241670c6b5387c4e76c5",
+      "typeString": "RestrictionProviderSet(RestrictionProvider[] providers)RestrictionProvider(address provider,bytes4 selector,bytes32 codeHash)"
+    },
+    {
+      "constant": "ADAPTER_CONFIG_TYPEHASH",
+      "typeHash": "0xba944c8340e5a1a26aaa234ff1eabe41a59efdefcb5252c64736e09813b63d24",
+      "typeString": "AdapterConfig(uint32 schemaVersion,bytes32 adapterConfigId,uint32 revision,uint256 chainId,address adapter,bytes32 interfaceVersion,bytes32 codeHash,AdapterCapabilities capabilities,bytes32 capabilityHash,bytes32 providerHash,bytes32 replacesId)AdapterCapabilities(uint8 tokenStandard,uint8 restrictionMode,uint8 precheckMethod,uint256 transferLegMask)"
+    },
+    {
+      "constant": "PRINCIPAL_CALCULATOR_CONFIG_TYPEHASH",
+      "typeHash": "0x99b2a3b7ae4def80a995e60eceade6fc181ff8f440d658cfc1c092d12b794fd6",
+      "typeString": "PrincipalCalculatorConfig(uint32 schemaVersion,bytes32 calculatorConfigId,uint32 revision,uint256 chainId,uint8 assetClass,address calculator,bytes32 interfaceVersion,bytes32 codeHash,bytes32 replacesId)"
+    },
+    {
+      "constant": "MARKET_RULE_CONFIG_TYPEHASH",
+      "typeHash": "0x77eb53a589e09d73fff12da83b7eadb957f99400d365228293f8432cb02d6289",
+      "typeString": "MarketRuleConfig(uint32 schemaVersion,bytes32 marketRuleConfigId,uint32 revision,uint256 chainId,bytes32 assetVersionId,address settlementToken,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,uint256 minCashPrincipal,uint256 minExecutableQuantity,uint256 quantityStep,uint256 priceTick,uint8 priceDecimals,uint8 quantityDecimals,uint64 quoteValidFrom,uint64 quoteValidUntil,uint64 settlementValidUntil,bytes32 replacesConfigId)"
+    },
+    {
+      "constant": "FEE_CONSTRAINT_TYPEHASH",
+      "typeHash": "0xa20a2ee9f590334ee560dc9b8f2412b7f54c6f7317b6f298200528266ef49de9",
+      "typeString": "FeeConstraint(uint64 feePolicyEpoch,bytes32 feeVersionId,bytes32 matchedScopeHash,uint16 investorRateBps,bool investorHasCap,uint256 investorCapAmount,uint16 makerRateBps,bool makerHasCap,uint256 makerCapAmount,uint8 roundingMode,address settlementToken,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,address collector,uint64 validFrom,uint64 validUntil)"
+    },
+    {
+      "constant": "FEE_POLICY_EPOCH_CONFIG_TYPEHASH",
+      "typeHash": "0xff01851a59c7556dd6d663608c035f9f69d90fa7d1ac1086b30fabb1b2fd39a0",
+      "typeString": "FeePolicyEpochConfig(uint32 schemaVersion,uint64 feePolicyEpoch,uint256 chainId,uint64 quoteValidFrom,uint64 quoteValidUntil,uint64 settlementValidUntil)"
+    },
+    {
+      "constant": "FEE_CONFIG_TYPEHASH",
+      "typeHash": "0xa1f0af4ced8f84c0b8dbf9794344fbcf54683fab2b6e9e8ae343999eb2329827",
+      "typeString": "FeeConfig(uint32 schemaVersion,bytes32 feeVersionId,uint32 revision,uint256 chainId,uint64 feePolicyEpoch,uint8 scopeType,bytes32 scopeKeyHash,bytes32 matchedScopeHash,uint16 investorRateBps,bool investorHasCap,uint256 investorCapAmount,uint16 makerRateBps,bool makerHasCap,uint256 makerCapAmount,uint8 roundingMode,address settlementToken,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,address collector,uint64 validFrom,uint64 validUntil,bytes32 feeConstraintHash,bytes32 replacesFeeVersionId)"
+    }
+  ]
+}

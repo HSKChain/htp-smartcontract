@@ -1,0 +1,873 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://htp.invalid/schemas/deploy-config.schema.json",
+  "title": "HTP deployment configuration",
+  "description": "Fail-closed LOCAL_TEST input or non-deployable chain placeholder. It never represents production approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "configVersion",
+    "deploymentVersion",
+    "expectedFirstCreateNonce",
+    "mode",
+    "usage",
+    "environment",
+    "network",
+    "securityLimits",
+    "roles",
+    "deploymentInputs",
+    "externalPolicy"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "pattern": "(^|/)config\\.schema\\.json$"
+    },
+    "configVersion": {
+      "$ref": "#/$defs/numericSemVer"
+    },
+    "deploymentVersion": {
+      "$ref": "#/$defs/numericSemVer"
+    },
+    "expectedFirstCreateNonce": {
+      "$ref": "#/$defs/nonNegativeSafeIntegerOrNull"
+    },
+    "mode": {
+      "enum": [
+        "LOCAL_TEST",
+        "CHAIN_PLACEHOLDER"
+      ]
+    },
+    "usage": {
+      "enum": [
+        "LOCAL_ONLY",
+        "NOT_DEPLOYABLE"
+      ]
+    },
+    "environment": {
+      "enum": [
+        "LOCAL",
+        "TESTNET",
+        "PLACEHOLDER"
+      ]
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "chainId"
+      ],
+      "properties": {
+        "name": {
+          "enum": [
+            "LOCAL",
+            "Ethereum",
+            "BSC",
+            "HSK"
+          ]
+        },
+        "chainId": {
+          "$ref": "#/$defs/positiveIntegerOrNull"
+        }
+      }
+    },
+    "securityLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapterProviderCallGasMax",
+        "calculatorStaticcallGas",
+        "registryImplementationStaticcallGas",
+        "registryReadStaticcallGas",
+        "tokenViewStaticcallGas",
+        "tokenWriteCallGas",
+        "eip1271MaxChecksPerSettlement",
+        "eip1271GasPolicy",
+        "maxDependentDvps"
+      ],
+      "properties": {
+        "adapterProviderCallGasMax": {
+          "const": 100000
+        },
+        "calculatorStaticcallGas": {
+          "const": 100000
+        },
+        "registryImplementationStaticcallGas": {
+          "const": 200000
+        },
+        "registryReadStaticcallGas": {
+          "const": 300000
+        },
+        "tokenViewStaticcallGas": {
+          "const": 30000
+        },
+        "tokenWriteCallGas": {
+          "const": 100000
+        },
+        "eip1271MaxChecksPerSettlement": {
+          "const": 2
+        },
+        "eip1271GasPolicy": {
+          "const": "FORWARD_REMAINING_GAS_EIP150"
+        },
+        "maxDependentDvps": {
+          "const": 32
+        }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deployer",
+        "defaultAdmin",
+        "governance",
+        "upgrader",
+        "pauser",
+        "executor",
+        "configurer"
+      ],
+      "properties": {
+        "deployer": {
+          "$ref": "#/$defs/addressOrNull"
+        },
+        "defaultAdmin": {
+          "$ref": "#/$defs/addressOrNull"
+        },
+        "governance": {
+          "$ref": "#/$defs/addressOrNull"
+        },
+        "upgrader": {
+          "$ref": "#/$defs/addressOrNull"
+        },
+        "pauser": {
+          "$ref": "#/$defs/addressOrNull"
+        },
+        "executor": {
+          "$ref": "#/$defs/addressOrNull"
+        },
+        "configurer": {
+          "$ref": "#/$defs/addressOrNull"
+        }
+      }
+    },
+    "deploymentInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokens",
+        "providers",
+        "participants",
+        "collector",
+        "economicAssetIdHash",
+        "schedule",
+        "fee",
+        "marketRule",
+        "evidenceHash"
+      ],
+      "properties": {
+        "tokens": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetToken",
+            "assetDecimals",
+            "settlementToken",
+            "settlementTokenDecimals",
+            "erc1404Token",
+            "usdyToken"
+          ],
+          "properties": {
+            "assetToken": {
+              "$ref": "#/$defs/addressOrNull"
+            },
+            "assetDecimals": {
+              "$ref": "#/$defs/decimalsOrNull"
+            },
+            "settlementToken": {
+              "$ref": "#/$defs/addressOrNull"
+            },
+            "settlementTokenDecimals": {
+              "$ref": "#/$defs/decimalsOrNull"
+            },
+            "erc1404Token": {
+              "$ref": "#/$defs/addressOrNull"
+            },
+            "usdyToken": {
+              "$ref": "#/$defs/addressOrNull"
+            }
+          }
+        },
+        "providers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "usdyBlocklist",
+            "usdyAllowlist",
+            "usdySanctionsList",
+            "providerCallGas"
+          ],
+          "properties": {
+            "usdyBlocklist": {
+              "$ref": "#/$defs/addressOrNull"
+            },
+            "usdyAllowlist": {
+              "$ref": "#/$defs/addressOrNull"
+            },
+            "usdySanctionsList": {
+              "$ref": "#/$defs/addressOrNull"
+            },
+            "providerCallGas": {
+              "$ref": "#/$defs/positiveIntegerOrNull"
+            }
+          }
+        },
+        "participants": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "maker",
+            "requester"
+          ],
+          "properties": {
+            "maker": {
+              "$ref": "#/$defs/addressOrNull"
+            },
+            "requester": {
+              "$ref": "#/$defs/addressOrNull"
+            }
+          }
+        },
+        "collector": {
+          "$ref": "#/$defs/addressOrNull"
+        },
+        "economicAssetIdHash": {
+          "$ref": "#/$defs/bytes32OrNull"
+        },
+        "schedule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "quoteValidFrom",
+            "quoteValidUntil",
+            "settlementValidUntil"
+          ],
+          "properties": {
+            "quoteValidFrom": {
+              "$ref": "#/$defs/positiveIntegerOrNull"
+            },
+            "quoteValidUntil": {
+              "$ref": "#/$defs/positiveIntegerOrNull"
+            },
+            "settlementValidUntil": {
+              "$ref": "#/$defs/positiveIntegerOrNull"
+            }
+          }
+        },
+        "fee": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "investorRateBps",
+            "investorHasCap",
+            "investorCapAmount",
+            "makerRateBps",
+            "makerHasCap",
+            "makerCapAmount"
+          ],
+          "properties": {
+            "investorRateBps": {
+              "$ref": "#/$defs/basisPointsOrNull"
+            },
+            "investorHasCap": {
+              "$ref": "#/$defs/booleanOrNull"
+            },
+            "investorCapAmount": {
+              "$ref": "#/$defs/nonNegativeSafeIntegerOrNull"
+            },
+            "makerRateBps": {
+              "$ref": "#/$defs/basisPointsOrNull"
+            },
+            "makerHasCap": {
+              "$ref": "#/$defs/booleanOrNull"
+            },
+            "makerCapAmount": {
+              "$ref": "#/$defs/nonNegativeSafeIntegerOrNull"
+            }
+          }
+        },
+        "marketRule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "minCashPrincipal",
+            "minExecutableQuantity",
+            "quantityStep",
+            "priceTick",
+            "priceDecimals",
+            "quantityDecimals"
+          ],
+          "properties": {
+            "minCashPrincipal": {
+              "$ref": "#/$defs/positiveIntegerOrNull"
+            },
+            "minExecutableQuantity": {
+              "$ref": "#/$defs/positiveIntegerOrNull"
+            },
+            "quantityStep": {
+              "$ref": "#/$defs/positiveIntegerOrNull"
+            },
+            "priceTick": {
+              "$ref": "#/$defs/positiveIntegerOrNull"
+            },
+            "priceDecimals": {
+              "$ref": "#/$defs/decimalsOrNull"
+            },
+            "quantityDecimals": {
+              "$ref": "#/$defs/decimalsOrNull"
+            }
+          }
+        },
+        "evidenceHash": {
+          "$ref": "#/$defs/bytes32OrNull"
+        }
+      }
+    },
+    "externalPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approvalStatus",
+        "rpcUrls",
+        "finalityConfirmations",
+        "gasPolicy",
+        "transactionType"
+      ],
+      "properties": {
+        "approvalStatus": {
+          "enum": [
+            "LOCAL_ONLY",
+            "UNAPPROVED"
+          ]
+        },
+        "rpcUrls": {
+          "type": "null"
+        },
+        "finalityConfirmations": {
+          "type": "null"
+        },
+        "gasPolicy": {
+          "type": "null"
+        },
+        "transactionType": {
+          "type": "null"
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "title": "Executable local or offline test fixture",
+      "properties": {
+        "mode": {
+          "const": "LOCAL_TEST"
+        },
+        "usage": {
+          "const": "LOCAL_ONLY"
+        },
+        "environment": {
+          "enum": [
+            "LOCAL",
+            "TESTNET"
+          ]
+        },
+        "expectedFirstCreateNonce": {
+          "$ref": "#/$defs/nonNegativeSafeInteger"
+        },
+        "network": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "const": "LOCAL"
+            },
+            "chainId": {
+              "$ref": "#/$defs/positiveInteger"
+            }
+          }
+        },
+        "roles": {
+          "type": "object",
+          "properties": {
+            "deployer": {
+              "$ref": "#/$defs/nonZeroAddress"
+            },
+            "defaultAdmin": {
+              "$ref": "#/$defs/nonZeroAddress"
+            },
+            "governance": {
+              "$ref": "#/$defs/nonZeroAddress"
+            },
+            "upgrader": {
+              "$ref": "#/$defs/nonZeroAddress"
+            },
+            "pauser": {
+              "$ref": "#/$defs/nonZeroAddress"
+            },
+            "executor": {
+              "$ref": "#/$defs/nonZeroAddress"
+            },
+            "configurer": {
+              "$ref": "#/$defs/nonZeroAddress"
+            }
+          }
+        },
+        "deploymentInputs": {
+          "type": "object",
+          "properties": {
+            "tokens": {
+              "type": "object",
+              "properties": {
+                "assetToken": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                },
+                "assetDecimals": {
+                  "$ref": "#/$defs/decimals"
+                },
+                "settlementToken": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                },
+                "settlementTokenDecimals": {
+                  "$ref": "#/$defs/decimals"
+                },
+                "erc1404Token": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                },
+                "usdyToken": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                }
+              }
+            },
+            "providers": {
+              "type": "object",
+              "properties": {
+                "usdyBlocklist": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                },
+                "usdyAllowlist": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                },
+                "usdySanctionsList": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                },
+                "providerCallGas": {
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/positiveInteger"
+                    },
+                    {
+                      "type": "integer",
+                      "maximum": 100000
+                    }
+                  ]
+                }
+              }
+            },
+            "participants": {
+              "type": "object",
+              "properties": {
+                "maker": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                },
+                "requester": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                }
+              }
+            },
+            "collector": {
+              "$ref": "#/$defs/nonZeroAddress"
+            },
+            "economicAssetIdHash": {
+              "$ref": "#/$defs/nonZeroBytes32"
+            },
+            "schedule": {
+              "type": "object",
+              "properties": {
+                "quoteValidFrom": {
+                  "$ref": "#/$defs/positiveInteger"
+                },
+                "quoteValidUntil": {
+                  "$ref": "#/$defs/positiveInteger"
+                },
+                "settlementValidUntil": {
+                  "$ref": "#/$defs/positiveInteger"
+                }
+              }
+            },
+            "fee": {
+              "type": "object",
+              "properties": {
+                "investorRateBps": {
+                  "$ref": "#/$defs/basisPoints"
+                },
+                "investorHasCap": {
+                  "type": "boolean"
+                },
+                "investorCapAmount": {
+                  "$ref": "#/$defs/nonNegativeSafeInteger"
+                },
+                "makerRateBps": {
+                  "$ref": "#/$defs/basisPoints"
+                },
+                "makerHasCap": {
+                  "type": "boolean"
+                },
+                "makerCapAmount": {
+                  "$ref": "#/$defs/nonNegativeSafeInteger"
+                }
+              }
+            },
+            "marketRule": {
+              "type": "object",
+              "properties": {
+                "minCashPrincipal": {
+                  "$ref": "#/$defs/positiveInteger"
+                },
+                "minExecutableQuantity": {
+                  "$ref": "#/$defs/positiveInteger"
+                },
+                "quantityStep": {
+                  "$ref": "#/$defs/positiveInteger"
+                },
+                "priceTick": {
+                  "$ref": "#/$defs/positiveInteger"
+                },
+                "priceDecimals": {
+                  "$ref": "#/$defs/decimals"
+                },
+                "quantityDecimals": {
+                  "$ref": "#/$defs/decimals"
+                }
+              }
+            },
+            "evidenceHash": {
+              "$ref": "#/$defs/nonZeroBytes32"
+            }
+          }
+        },
+        "externalPolicy": {
+          "type": "object",
+          "properties": {
+            "approvalStatus": {
+              "const": "LOCAL_ONLY"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Non-deployable chain placeholder",
+      "properties": {
+        "mode": {
+          "const": "CHAIN_PLACEHOLDER"
+        },
+        "usage": {
+          "const": "NOT_DEPLOYABLE"
+        },
+        "environment": {
+          "const": "PLACEHOLDER"
+        },
+        "expectedFirstCreateNonce": {
+          "type": "null"
+        },
+        "network": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "enum": [
+                "Ethereum",
+                "BSC",
+                "HSK"
+              ]
+            },
+            "chainId": {
+              "type": "null"
+            }
+          }
+        },
+        "roles": {
+          "type": "object",
+          "properties": {
+            "deployer": {
+              "type": "null"
+            },
+            "defaultAdmin": {
+              "type": "null"
+            },
+            "governance": {
+              "type": "null"
+            },
+            "upgrader": {
+              "type": "null"
+            },
+            "pauser": {
+              "type": "null"
+            },
+            "executor": {
+              "type": "null"
+            },
+            "configurer": {
+              "type": "null"
+            }
+          }
+        },
+        "deploymentInputs": {
+          "type": "object",
+          "properties": {
+            "tokens": {
+              "type": "object",
+              "properties": {
+                "assetToken": {
+                  "type": "null"
+                },
+                "assetDecimals": {
+                  "type": "null"
+                },
+                "settlementToken": {
+                  "type": "null"
+                },
+                "settlementTokenDecimals": {
+                  "type": "null"
+                },
+                "erc1404Token": {
+                  "type": "null"
+                },
+                "usdyToken": {
+                  "type": "null"
+                }
+              }
+            },
+            "providers": {
+              "type": "object",
+              "properties": {
+                "usdyBlocklist": {
+                  "type": "null"
+                },
+                "usdyAllowlist": {
+                  "type": "null"
+                },
+                "usdySanctionsList": {
+                  "type": "null"
+                },
+                "providerCallGas": {
+                  "type": "null"
+                }
+              }
+            },
+            "participants": {
+              "type": "object",
+              "properties": {
+                "maker": {
+                  "type": "null"
+                },
+                "requester": {
+                  "type": "null"
+                }
+              }
+            },
+            "collector": {
+              "type": "null"
+            },
+            "economicAssetIdHash": {
+              "type": "null"
+            },
+            "schedule": {
+              "type": "object",
+              "properties": {
+                "quoteValidFrom": {
+                  "type": "null"
+                },
+                "quoteValidUntil": {
+                  "type": "null"
+                },
+                "settlementValidUntil": {
+                  "type": "null"
+                }
+              }
+            },
+            "fee": {
+              "type": "object",
+              "properties": {
+                "investorRateBps": {
+                  "type": "null"
+                },
+                "investorHasCap": {
+                  "type": "null"
+                },
+                "investorCapAmount": {
+                  "type": "null"
+                },
+                "makerRateBps": {
+                  "type": "null"
+                },
+                "makerHasCap": {
+                  "type": "null"
+                },
+                "makerCapAmount": {
+                  "type": "null"
+                }
+              }
+            },
+            "marketRule": {
+              "type": "object",
+              "properties": {
+                "minCashPrincipal": {
+                  "type": "null"
+                },
+                "minExecutableQuantity": {
+                  "type": "null"
+                },
+                "quantityStep": {
+                  "type": "null"
+                },
+                "priceTick": {
+                  "type": "null"
+                },
+                "priceDecimals": {
+                  "type": "null"
+                },
+                "quantityDecimals": {
+                  "type": "null"
+                }
+              }
+            },
+            "evidenceHash": {
+              "type": "null"
+            }
+          }
+        },
+        "externalPolicy": {
+          "type": "object",
+          "properties": {
+            "approvalStatus": {
+              "const": "UNAPPROVED"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "numericSemVer": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "nonNegativeSafeInteger": {
+      "description": "JSON-safe subset of uint64; larger integers cannot be represented without precision loss.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "nonNegativeSafeIntegerOrNull": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonNegativeSafeInteger"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "basisPoints": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "basisPointsOrNull": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/basisPoints"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "booleanOrNull": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "positiveIntegerOrNull": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/positiveInteger"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "decimals": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 36
+    },
+    "decimalsOrNull": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/decimals"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nonZeroAddress": {
+      "type": "string",
+      "pattern": "^0x(?!0{40}$)[0-9a-fA-F]{40}$"
+    },
+    "addressOrNull": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonZeroAddress"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "addressIncludingZeroOrNull": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nonZeroBytes32": {
+      "type": "string",
+      "pattern": "^0x(?!0{64}$)[0-9a-fA-F]{64}$"
+    },
+    "bytes32OrNull": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonZeroBytes32"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

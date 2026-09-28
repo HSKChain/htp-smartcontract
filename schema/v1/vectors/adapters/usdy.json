@@ -1,0 +1,119 @@
+{
+  "approval": "NOT_PRODUCTION_APPROVED",
+  "candidateAddresses": {
+    "allowlist": "0x0000000000000000000000000000000000001003",
+    "blocklist": "0x0000000000000000000000000000000000001002",
+    "sanctionsList": "0x0000000000000000000000000000000000001004",
+    "token": "0x0000000000000000000000000000000000001001"
+  },
+  "capabilities": {
+    "capabilityHash": "0x63df51d7ce7afbc051e26124274639b57b65a7c685c4f186fda9027d53ca630d",
+    "coveredLegs": [
+      "ASSET"
+    ],
+    "precheckMethod": {
+      "name": "TOKEN_SPECIFIC_CHECK",
+      "value": 3
+    },
+    "restrictionMode": {
+      "name": "TOKEN_ENFORCED",
+      "value": 4
+    },
+    "tokenStandard": {
+      "name": "ERC20",
+      "value": 1
+    },
+    "transferLegMask": "2"
+  },
+  "evidenceBlock": null,
+  "negative": [
+    "provider address drift",
+    "provider code hash drift",
+    "provider call failure",
+    "token paused",
+    "blocked account",
+    "not allowlisted",
+    "sanctioned account",
+    "unapproved DvP caller"
+  ],
+  "network": "ethereum-candidate",
+  "providerEntries": [
+    {
+      "codeHash": "0x0000000000000000000000000000000000000000000000000000000000001101",
+      "deploymentKind": "ERC1967_PROXY",
+      "implementation": "0x0000000000000000000000000000000000001005",
+      "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000001105",
+      "provider": "0x0000000000000000000000000000000000001001",
+      "selector": "0x2b47da52",
+      "selectorSignature": "allowlist()",
+      "target": "token"
+    },
+    {
+      "codeHash": "0x0000000000000000000000000000000000000000000000000000000000001101",
+      "deploymentKind": "ERC1967_PROXY",
+      "implementation": "0x0000000000000000000000000000000000001005",
+      "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000001105",
+      "provider": "0x0000000000000000000000000000000000001001",
+      "selector": "0x5c975abb",
+      "selectorSignature": "paused()",
+      "target": "token"
+    },
+    {
+      "codeHash": "0x0000000000000000000000000000000000000000000000000000000000001101",
+      "deploymentKind": "ERC1967_PROXY",
+      "implementation": "0x0000000000000000000000000000000000001005",
+      "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000001105",
+      "provider": "0x0000000000000000000000000000000000001001",
+      "selector": "0xd64e5396",
+      "selectorSignature": "blocklist()",
+      "target": "token"
+    },
+    {
+      "codeHash": "0x0000000000000000000000000000000000000000000000000000000000001101",
+      "deploymentKind": "ERC1967_PROXY",
+      "implementation": "0x0000000000000000000000000000000000001005",
+      "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000001105",
+      "provider": "0x0000000000000000000000000000000000001001",
+      "selector": "0xec571c6a",
+      "selectorSignature": "sanctionsList()",
+      "target": "token"
+    },
+    {
+      "codeHash": "0x0000000000000000000000000000000000000000000000000000000000001102",
+      "deploymentKind": "DIRECT",
+      "provider": "0x0000000000000000000000000000000000001002",
+      "selector": "0xfbac3951",
+      "selectorSignature": "isBlocked(address)",
+      "target": "blocklist"
+    },
+    {
+      "codeHash": "0x0000000000000000000000000000000000000000000000000000000000001103",
+      "deploymentKind": "ERC1967_PROXY",
+      "implementation": "0x0000000000000000000000000000000000001006",
+      "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000001106",
+      "provider": "0x0000000000000000000000000000000000001003",
+      "selector": "0xbabcc539",
+      "selectorSignature": "isAllowed(address)",
+      "target": "allowlist"
+    },
+    {
+      "codeHash": "0x0000000000000000000000000000000000000000000000000000000000001104",
+      "deploymentKind": "DIRECT",
+      "provider": "0x0000000000000000000000000000000000001004",
+      "selector": "0xdf592f7d",
+      "selectorSignature": "isSanctioned(address)",
+      "target": "sanctionsList"
+    }
+  ],
+  "providerHash": "0x189cccc57adc23871cb62f46f7bbcd8fc2929cbc984eeab48c559bfcc8c3ef0b",
+  "schemaVersion": 1,
+  "status": "candidate",
+  "tokenBaseline": {
+    "decimals": 18,
+    "deploymentKind": "ERC1967_PROXY",
+    "implementation": "0x0000000000000000000000000000000000001005",
+    "implementationCodeHash": "0x0000000000000000000000000000000000000000000000000000000000001105",
+    "tokenCodeHash": "0x0000000000000000000000000000000000000000000000000000000000001101"
+  },
+  "warning": "Addresses, code hashes, provider set and transferLegMask require a fixed-block approval package."
+}

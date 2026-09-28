@@ -1,0 +1,84 @@
+{
+  "$schema": "./config.schema.json",
+  "configVersion": "1.0.0",
+  "deploymentVersion": "0.0.0",
+  "expectedFirstCreateNonce": 0,
+  "mode": "LOCAL_TEST",
+  "usage": "LOCAL_ONLY",
+  "environment": "LOCAL",
+  "network": {
+    "name": "LOCAL",
+    "chainId": 31337
+  },
+  "securityLimits": {
+    "adapterProviderCallGasMax": 100000,
+    "calculatorStaticcallGas": 100000,
+    "registryImplementationStaticcallGas": 200000,
+    "registryReadStaticcallGas": 300000,
+    "tokenViewStaticcallGas": 30000,
+    "tokenWriteCallGas": 100000,
+    "eip1271MaxChecksPerSettlement": 2,
+    "eip1271GasPolicy": "FORWARD_REMAINING_GAS_EIP150",
+    "maxDependentDvps": 32
+  },
+  "roles": {
+    "deployer": "0x0000000000000000000000000000000000001001",
+    "defaultAdmin": "0x0000000000000000000000000000000000001002",
+    "governance": "0x0000000000000000000000000000000000001002",
+    "upgrader": "0x0000000000000000000000000000000000001002",
+    "pauser": "0x0000000000000000000000000000000000001003",
+    "executor": "0x0000000000000000000000000000000000001004",
+    "configurer": "0x0000000000000000000000000000000000001005"
+  },
+  "deploymentInputs": {
+    "tokens": {
+      "assetToken": "0x0000000000000000000000000000000000002001",
+      "assetDecimals": 18,
+      "settlementToken": "0x0000000000000000000000000000000000002002",
+      "settlementTokenDecimals": 6,
+      "erc1404Token": "0x0000000000000000000000000000000000002003",
+      "usdyToken": "0x0000000000000000000000000000000000002004"
+    },
+    "providers": {
+      "usdyBlocklist": "0x0000000000000000000000000000000000002101",
+      "usdyAllowlist": "0x0000000000000000000000000000000000002102",
+      "usdySanctionsList": "0x0000000000000000000000000000000000002103",
+      "providerCallGas": 100000
+    },
+    "participants": {
+      "maker": "0x0000000000000000000000000000000000002201",
+      "requester": "0x0000000000000000000000000000000000002202"
+    },
+    "collector": "0x0000000000000000000000000000000000002203",
+    "economicAssetIdHash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+    "schedule": {
+      "quoteValidFrom": 1,
+      "quoteValidUntil": 2,
+      "settlementValidUntil": 3
+    },
+    "fee": {
+      "investorRateBps": 25,
+      "investorHasCap": true,
+      "investorCapAmount": 50000,
+      "makerRateBps": 15,
+      "makerHasCap": false,
+      "makerCapAmount": 0
+    },
+    "marketRule": {
+      "minCashPrincipal": 1,
+      "minExecutableQuantity": 1,
+      "quantityStep": 1,
+      "priceTick": 1,
+      "priceDecimals": 6,
+      "quantityDecimals": 18
+    },
+    "evidenceHash": "0x2222222222222222222222222222222222222222222222222222222222222222"
+  },
+  "externalPolicy": {
+    "approvalStatus": "LOCAL_ONLY",
+    "rpcUrls": null,
+    "finalityConfirmations": null,
+    "gasPolicy": null,
+    "transactionType": null
+  }
+}

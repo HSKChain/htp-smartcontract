@@ -1,0 +1,87 @@
+{
+  "boundaryOnly": true,
+  "negative": [
+    {
+      "actions": [],
+      "availableQuantity": "100",
+      "concurrentHolds": [
+        "70",
+        "40"
+      ],
+      "expectedError": "CONCURRENT_HOLD_EXCEEDS_AVAILABLE",
+      "expectedReleaseQuantity": "0",
+      "finalQuantity": "110",
+      "initialState": "HELD",
+      "maxQuantity": "110",
+      "name": "concurrentOverReservation",
+      "tradeStatus": "UNSIGNED"
+    },
+    {
+      "actions": [
+        "RELEASE"
+      ],
+      "availableQuantity": "100",
+      "concurrentHolds": [
+        "100"
+      ],
+      "expectedError": "SIGNED_INVENTORY_EARLY_RELEASE",
+      "expectedReleaseQuantity": "20",
+      "finalQuantity": "80",
+      "initialState": "HELD",
+      "maxQuantity": "100",
+      "name": "signedEarlyRelease",
+      "tradeStatus": "SIGNED"
+    }
+  ],
+  "positive": [
+    {
+      "actions": [
+        "COMMIT",
+        "RELEASE_FINALIZED"
+      ],
+      "availableQuantity": "200",
+      "concurrentHolds": [
+        "60",
+        "40"
+      ],
+      "expectedReleaseQuantity": "20",
+      "expectedState": "RELEASED",
+      "finalQuantity": "80",
+      "initialState": "HELD",
+      "maxQuantity": "100",
+      "name": "heldCommittedReleased",
+      "tradeStatus": "FINALIZED"
+    },
+    {
+      "actions": [
+        "RELEASE_FINALIZED"
+      ],
+      "availableQuantity": "1000",
+      "concurrentHolds": [],
+      "expectedReleaseQuantity": "125",
+      "expectedState": "RELEASED",
+      "finalQuantity": "875",
+      "initialState": "COMMITTED",
+      "maxQuantity": "1000",
+      "name": "maxFinalDifference",
+      "tradeStatus": "FINALIZED"
+    },
+    {
+      "actions": [],
+      "availableQuantity": "100",
+      "concurrentHolds": [
+        "70",
+        "30"
+      ],
+      "expectedReleaseQuantity": "0",
+      "expectedState": "HELD",
+      "finalQuantity": "100",
+      "initialState": "HELD",
+      "maxQuantity": "100",
+      "name": "heldCapacityBoundary",
+      "tradeStatus": "UNSIGNED"
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "candidate"
+}

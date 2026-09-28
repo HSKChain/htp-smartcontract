@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate",
+  "primaryType": "EIP712Domain",
+  "deploymentVersion": "1.2.3",
+  "deploymentVersionDomain": "0x258a6b79327f18a1cb6a4eba0ca2984c9758b7e10947c16f5d405e0ba551728b",
+  "deploymentVersionHash": "0x51c5fe1d20ac02d40c1a23e4c9231429cf03867d0158f3cb9ecc7277cb8cef42",
+  "typeString": "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)",
+  "typeHash": "0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f",
+  "input": {
+    "name": "HTP DvP Settlement",
+    "version": "1",
+    "chainId": "31337",
+    "verifyingContract": "0x000000000000000000000000000000000000d001"
+  },
+  "separator": "0xc0f20d1f3e9bd185d5fe9e24b1822d7657e7c83dd337727af1fad04d7c26cac3",
+  "mutations": {
+    "name": "0x30d41ad4589ed55b36832d1a2d09e31b74ec9e9d3f792f7cbf82b3be8b508938",
+    "version": "0xaea4c8ce81af46ecfbfdd3f104b74a22f4e89d8eec0d9e390bd93280994c8e67",
+    "chainId": "0xf07df2743e3a62948c545efdb92620421348e8e7aa5bf07bf8ea121e40a8cc70",
+    "verifyingContract": "0x94a0ee3661a4adfabf64501d34598f16bd8f3295a97ba3d10988ae12267905bd"
+  }
+}

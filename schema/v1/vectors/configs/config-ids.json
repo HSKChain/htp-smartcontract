@@ -1,0 +1,24 @@
+{
+  "input": {
+    "schemaVersion": 1,
+    "chainId": "31337",
+    "assetToken": "0x000000000000000000000000000000000000a001",
+    "economicAssetIdHash": "0x0000000000000000000000000000000000000000000000000000000000000101",
+    "versionNo": 1
+  },
+  "namespaces": {
+    "fee": "0xef00a977514fea00aa612945fdad6ee77e6a300346e98ab4828776bc268f86ec",
+    "settlementToken": "0x26df9a5f5da6233548369cf9827723cdf762fcbcbb04016a169ce8018164f7fe",
+    "adapter": "0x1ddd691b249dfd498a2002dc6f4504d3095f681e22b0b660e21ad2923d06fd35",
+    "principalCalculator": "0x9ecec5654a8d6d90d3e0bf991030ef79b3ea0ab0d92b0b84ba1427bf85ccb02e",
+    "marketRule": "0xe027475c4cbc70b1834d9fa089bcda6c78335796c80b6cde967c951cec39dd1f"
+  },
+  "ids": {
+    "assetVersion": "0xa1421a5caa47ea05360cbc0daf6605b6316cb7d099be0e5fee8e69ad6fe25ab2",
+    "fee": "0x57f01ad65f5298cf3b333b2d1c4302ea6285f78353c2058b734a4f1fbddb684e",
+    "settlementToken": "0x93a9f7e8cc087fd5094f4e896464b19fc0eb27f721df6ed7946a19a38dc8139b",
+    "adapter": "0x3432fb32089eac8af610b2a9f6f6fa6cc95f1f9baca25badc2cbd7a611c1d49b",
+    "principalCalculator": "0xb01a2f54f4e1dd8b1a05725f2ce09ebcc2ba38546cf712b66ebe69722c923f62",
+    "marketRule": "0x9e5e9f8f126c16a513f05f4f409d388199e11ee1397380ec944c8f38eed581f6"
+  }
+}

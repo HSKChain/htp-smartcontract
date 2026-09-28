@@ -1,0 +1,239 @@
+{
+  "boundaryOnly": true,
+  "negative": [
+    {
+      "accessList": [
+        {
+          "address": "0x000000000000000000000000000000000000d002",
+          "storageKeys": []
+        }
+      ],
+      "envelope": {
+        "accessList": [
+          {
+            "address": "0x000000000000000000000000000000000000d002",
+            "storageKeys": []
+          }
+        ],
+        "chainId": "31337",
+        "data": "0x12345678",
+        "gasLimit": "300000",
+        "maxFeePerGas": "2000000000",
+        "maxPriorityFeePerGas": "100000000",
+        "nonce": "8",
+        "to": "0x000000000000000000000000000000000000d001",
+        "value": "0"
+      },
+      "expectedError": "TYPE2_ACCESS_LIST_MUST_BE_EMPTY",
+      "expectedHash": "0xd807cfc03b487b4f4e3f1a41ee7f8771a1811e728b6a805a3710c59ded5a305d",
+      "kind": "UNSIGNED_PREIMAGE",
+      "name": "type2NonEmptyAccessList",
+      "transactionType": "TYPE2",
+      "unsignedPreimage": "0x02ee827a69088405f5e1008477359400830493e094000000000000000000000000000000000000d001808412345678c0"
+    },
+    {
+      "expectedError": "DIGEST_MUST_BE_SINGLE_KECCAK",
+      "intent": {
+        "digest": "0xd807cfc03b487b4f4e3f1a41ee7f8771a1811e728b6a805a3710c59ded5a305d",
+        "digestSource": "LOCAL_UNSIGNED_PREIMAGE",
+        "expectedRawTransactionHash": "0x0000000000000000000000000000000000000000000000000000000000000c03",
+        "hashPasses": 2,
+        "messageType": "DIGEST",
+        "opaqueRawReference": "opaque-ref:executor/type2/003",
+        "prehashed": true,
+        "rawMaterialStored": false,
+        "transactionType": "TYPE2"
+      },
+      "kind": "SIGNING_INTENT",
+      "name": "doubleKeccak"
+    },
+    {
+      "expectedError": "UNTRUSTED_EXTERNAL_DIGEST",
+      "intent": {
+        "digest": "0x1fed4dd270f3f5c846c4d1c5c50ffa1bac99972a785cba67f0d47f6ac6feea22",
+        "digestSource": "EXTERNAL_CALLER",
+        "expectedRawTransactionHash": "0x0000000000000000000000000000000000000000000000000000000000000c04",
+        "hashPasses": 1,
+        "messageType": "DIGEST",
+        "opaqueRawReference": "opaque-ref:executor/legacy/004",
+        "prehashed": true,
+        "rawMaterialStored": false,
+        "transactionType": "LEGACY"
+      },
+      "kind": "SIGNING_INTENT",
+      "name": "untrustedExternalDigest"
+    },
+    {
+      "expectedError": "REPLACEMENT_GENERATION_MISMATCH",
+      "kind": "REPLACEMENT",
+      "name": "replacementChangedGeneration",
+      "previous": {
+        "generation": "4",
+        "maxFeePerGas": "2000000000",
+        "nonce": "9"
+      },
+      "replacement": {
+        "generation": "5",
+        "maxFeePerGas": "2500000000",
+        "nonce": "9"
+      }
+    },
+    {
+      "expectedError": "REPLACEMENT_NONCE_MISMATCH",
+      "kind": "REPLACEMENT",
+      "name": "replacementChangedNonce",
+      "previous": {
+        "generation": "4",
+        "maxFeePerGas": "2000000000",
+        "nonce": "9"
+      },
+      "replacement": {
+        "generation": "4",
+        "maxFeePerGas": "2500000000",
+        "nonce": "10"
+      }
+    },
+    {
+      "expectedError": "REVERT_RETRY_REQUIRES_NEW_GENERATION_NONCE",
+      "kind": "CANONICAL_REVERT_RETRY",
+      "name": "canonicalRevertReusesGenerationNonce",
+      "previous": {
+        "generation": "4",
+        "nonce": "9"
+      },
+      "retry": {
+        "generation": "4",
+        "nonce": "9"
+      }
+    },
+    {
+      "active": {
+        "generation": "5",
+        "nonce": "10"
+      },
+      "cancellation": {
+        "generation": "5",
+        "nonce": "11",
+        "toSelf": true,
+        "value": "0"
+      },
+      "expectedError": "CANCELLATION_NONCE_MISMATCH",
+      "kind": "CANCELLATION",
+      "name": "cancellationWrongNonce"
+    },
+    {
+      "expectedError": "FORBIDDEN_SIGNING_MATERIAL",
+      "expectedRawTransactionHash": "0x0000000000000000000000000000000000000000000000000000000000000c05",
+      "kind": "RAW_REFERENCE",
+      "mutation": {
+        "addField": "privateKey",
+        "valueKind": "non-empty-sensitive-placeholder"
+      },
+      "name": "forbiddenRawOrKeyMaterial",
+      "opaqueRawReference": "opaque-ref:executor/raw/005",
+      "rawMaterialStored": false
+    }
+  ],
+  "positive": [
+    {
+      "accessList": null,
+      "envelope": {
+        "chainId": "31337",
+        "data": "0x",
+        "gasLimit": "21000",
+        "gasPrice": "1000000000",
+        "nonce": "7",
+        "to": "0x000000000000000000000000000000000000d001",
+        "value": "0"
+      },
+      "expectedHash": "0x1fed4dd270f3f5c846c4d1c5c50ffa1bac99972a785cba67f0d47f6ac6feea22",
+      "kind": "UNSIGNED_PREIMAGE",
+      "name": "legacyUnsignedPreimage",
+      "transactionType": "LEGACY",
+      "unsignedPreimage": "0xe507843b9aca0082520894000000000000000000000000000000000000d0018080827a698080"
+    },
+    {
+      "accessList": [],
+      "envelope": {
+        "accessList": [],
+        "chainId": "31337",
+        "data": "0x12345678",
+        "gasLimit": "300000",
+        "maxFeePerGas": "2000000000",
+        "maxPriorityFeePerGas": "100000000",
+        "nonce": "8",
+        "to": "0x000000000000000000000000000000000000d001",
+        "value": "0"
+      },
+      "expectedHash": "0xd807cfc03b487b4f4e3f1a41ee7f8771a1811e728b6a805a3710c59ded5a305d",
+      "kind": "UNSIGNED_PREIMAGE",
+      "name": "type2EmptyAccessListPreimage",
+      "transactionType": "TYPE2",
+      "unsignedPreimage": "0x02ee827a69088405f5e1008477359400830493e094000000000000000000000000000000000000d001808412345678c0"
+    },
+    {
+      "intent": {
+        "digest": "0xd807cfc03b487b4f4e3f1a41ee7f8771a1811e728b6a805a3710c59ded5a305d",
+        "digestSource": "LOCAL_UNSIGNED_PREIMAGE",
+        "expectedRawTransactionHash": "0x0000000000000000000000000000000000000000000000000000000000000c01",
+        "hashPasses": 1,
+        "messageType": "DIGEST",
+        "opaqueRawReference": "opaque-ref:executor/type2/001",
+        "prehashed": true,
+        "rawMaterialStored": false,
+        "transactionType": "TYPE2"
+      },
+      "kind": "SIGNING_INTENT",
+      "name": "singleKeccakDigestSigningIntent"
+    },
+    {
+      "expectedRawTransactionHash": "0x0000000000000000000000000000000000000000000000000000000000000c02",
+      "kind": "RAW_REFERENCE",
+      "name": "exactRawHashOpaqueReference",
+      "opaqueRawReference": "opaque-ref:executor/raw/002",
+      "rawMaterialStored": false
+    },
+    {
+      "kind": "REPLACEMENT",
+      "name": "replacementSameGenerationNonce",
+      "previous": {
+        "generation": "4",
+        "maxFeePerGas": "2000000000",
+        "nonce": "9"
+      },
+      "replacement": {
+        "generation": "4",
+        "maxFeePerGas": "2500000000",
+        "nonce": "9"
+      }
+    },
+    {
+      "kind": "CANONICAL_REVERT_RETRY",
+      "name": "canonicalRevertNewGenerationNonce",
+      "previous": {
+        "generation": "4",
+        "nonce": "9"
+      },
+      "retry": {
+        "generation": "5",
+        "nonce": "10"
+      }
+    },
+    {
+      "active": {
+        "generation": "5",
+        "nonce": "10"
+      },
+      "cancellation": {
+        "generation": "5",
+        "nonce": "10",
+        "toSelf": true,
+        "value": "0"
+      },
+      "kind": "CANCELLATION",
+      "name": "sameNonceCancellation"
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "candidate"
+}

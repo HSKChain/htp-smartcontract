@@ -1,0 +1,1150 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "activateFeePolicyEpoch",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "activateFeeVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "closeFeePolicyEpoch",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "schemaVersion",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint64",
+            "name": "feePolicyEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint64",
+            "name": "quoteValidFrom",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "quoteValidUntil",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "settlementValidUntil",
+            "type": "uint64"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "configHash",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct FeePolicyEpochConfig",
+        "name": "config",
+        "type": "tuple"
+      }
+    ],
+    "name": "createFeePolicyEpoch",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "deprecateFeeVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "exemptRetiredDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDependentDvp",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "retiredExempt",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDependentDvpCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      }
+    ],
+    "name": "getFeePolicyEpoch",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint64",
+                "name": "feePolicyEpoch",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "quoteValidFrom",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "quoteValidUntil",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "settlementValidUntil",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct FeePolicyEpochConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum FeePolicyEpochStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "isSealed",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct FeePolicyEpochRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getFeeVersion",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint32",
+                "name": "revision",
+                "type": "uint32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "feePolicyEpoch",
+                "type": "uint64"
+              },
+              {
+                "internalType": "enum ScopeType",
+                "name": "scopeType",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "scopeKeyHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "matchedScopeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint16",
+                "name": "investorRateBps",
+                "type": "uint16"
+              },
+              {
+                "internalType": "bool",
+                "name": "investorHasCap",
+                "type": "bool"
+              },
+              {
+                "internalType": "uint256",
+                "name": "investorCapAmount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint16",
+                "name": "makerRateBps",
+                "type": "uint16"
+              },
+              {
+                "internalType": "bool",
+                "name": "makerHasCap",
+                "type": "bool"
+              },
+              {
+                "internalType": "uint256",
+                "name": "makerCapAmount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum RoundingMode",
+                "name": "roundingMode",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "collector",
+                "type": "address"
+              },
+              {
+                "internalType": "uint64",
+                "name": "validFrom",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "validUntil",
+                "type": "uint64"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "feeConstraintHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesFeeVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct FeeConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum FeeVersionStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct FeeVersionRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "matchedScopeHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "feeConstraintHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "isFeeVersionExecutable",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "moveFeePolicyEpochToLegacyServing",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "pauseFeeVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "registerDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "schemaVersion",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "feeVersionId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "revision",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint64",
+            "name": "feePolicyEpoch",
+            "type": "uint64"
+          },
+          {
+            "internalType": "enum ScopeType",
+            "name": "scopeType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "scopeKeyHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "matchedScopeHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint16",
+            "name": "investorRateBps",
+            "type": "uint16"
+          },
+          {
+            "internalType": "bool",
+            "name": "investorHasCap",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "investorCapAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint16",
+            "name": "makerRateBps",
+            "type": "uint16"
+          },
+          {
+            "internalType": "bool",
+            "name": "makerHasCap",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "makerCapAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum RoundingMode",
+            "name": "roundingMode",
+            "type": "uint8"
+          },
+          {
+            "internalType": "address",
+            "name": "settlementToken",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "settlementTokenConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "settlementTokenConfigHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "collector",
+            "type": "address"
+          },
+          {
+            "internalType": "uint64",
+            "name": "validFrom",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "validUntil",
+            "type": "uint64"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "feeConstraintHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "replacesFeeVersionId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "configHash",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct FeeConfig",
+        "name": "config",
+        "type": "tuple"
+      }
+    ],
+    "name": "registerFeeVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "resolveApplicableFee",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "matchedScopeHash",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "sealFeePolicyEpoch",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "unpauseFeeVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRetiredExempted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "quoteValidFrom",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "quoteValidUntil",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "settlementValidUntil",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "FeePolicyEpochCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "FeePolicyEpochSealed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum FeePolicyEpochStatus",
+        "name": "oldStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum FeePolicyEpochStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "FeePolicyEpochStatusChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "matchedScopeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "schemaVersion",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "revision",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ScopeType",
+        "name": "scopeType",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "scopeKeyHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint16",
+        "name": "investorRateBps",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "investorHasCap",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "investorCapAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint16",
+        "name": "makerRateBps",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "makerHasCap",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "makerCapAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum RoundingMode",
+        "name": "roundingMode",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "settlementToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "settlementTokenConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "settlementTokenConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "collector",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "validFrom",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "validUntil",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "feeConstraintHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "replacesFeeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "FeeVersionRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "feeVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint64",
+        "name": "feePolicyEpoch",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum FeeVersionStatus",
+        "name": "oldStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum FeeVersionStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "FeeVersionStatusChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  }
+]

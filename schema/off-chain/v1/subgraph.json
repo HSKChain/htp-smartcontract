@@ -1,0 +1,97 @@
+{
+  "boundaryOnly": true,
+  "negative": [
+    {
+      "eventKind": "PROJECT",
+      "expectedError": "PROJECT_EVENT_CHAIN_ID_REQUIRED",
+      "inputs": [
+        {
+          "name": "tradeIdHash",
+          "type": "bytes32",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000e01"
+        }
+      ],
+      "name": "projectEventMissingChainId",
+      "networkContextChainId": "31337"
+    },
+    {
+      "eventKind": "PROJECT",
+      "expectedError": "PROJECT_EVENT_CHAIN_ID_MUST_BE_FIRST",
+      "inputs": [
+        {
+          "name": "tradeIdHash",
+          "type": "bytes32",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000e01"
+        },
+        {
+          "name": "chainId",
+          "type": "uint256",
+          "value": "31337"
+        }
+      ],
+      "name": "projectEventChainIdNotFirst",
+      "networkContextChainId": "31337"
+    },
+    {
+      "eventKind": "PROJECT",
+      "expectedError": "PROJECT_EVENT_CHAIN_ID_MISMATCH",
+      "inputs": [
+        {
+          "name": "chainId",
+          "type": "uint256",
+          "value": "1"
+        }
+      ],
+      "name": "projectEventChainIdMismatch",
+      "networkContextChainId": "31337"
+    },
+    {
+      "eventKind": "OZ_STANDARD",
+      "expectedError": "OZ_EVENT_NETWORK_CHAIN_ID_REQUIRED",
+      "inputs": [
+        {
+          "name": "implementation",
+          "type": "address",
+          "value": "0x000000000000000000000000000000000000e001"
+        }
+      ],
+      "name": "ozEventMissingNetworkContext",
+      "networkContextChainId": null
+    }
+  ],
+  "positive": [
+    {
+      "eventKind": "PROJECT",
+      "expectedChainId": "31337",
+      "inputs": [
+        {
+          "name": "chainId",
+          "type": "uint256",
+          "value": "31337"
+        },
+        {
+          "name": "tradeIdHash",
+          "type": "bytes32",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000e01"
+        }
+      ],
+      "name": "projectEventExplicitChainId",
+      "networkContextChainId": "31337"
+    },
+    {
+      "eventKind": "OZ_STANDARD",
+      "expectedChainId": "31337",
+      "inputs": [
+        {
+          "name": "implementation",
+          "type": "address",
+          "value": "0x000000000000000000000000000000000000e001"
+        }
+      ],
+      "name": "ozEventUsesNetworkContext",
+      "networkContextChainId": "31337"
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "candidate"
+}

@@ -1,0 +1,90 @@
+{
+  "boundaryOnly": true,
+  "negative": [
+    {
+      "actions": [
+        "RESERVE"
+      ],
+      "canonicalSnapshotHash": null,
+      "canonicalSnapshotSignatureVerified": false,
+      "expectedError": "SECOND_PROPOSED_HASH_FORBIDDEN",
+      "initialState": "ACTIVE_FIRM",
+      "name": "secondProposedHash",
+      "proposedHashes": [
+        "0x0000000000000000000000000000000000000000000000000000000000000a01",
+        "0x0000000000000000000000000000000000000000000000000000000000000a03"
+      ]
+    },
+    {
+      "actions": [
+        "CANCEL"
+      ],
+      "canonicalSnapshotHash": null,
+      "canonicalSnapshotSignatureVerified": false,
+      "expectedError": "RESERVED_CANNOT_CANCEL",
+      "initialState": "RESERVED",
+      "name": "reservedCancellation",
+      "proposedHashes": [
+        "0x0000000000000000000000000000000000000000000000000000000000000a01"
+      ]
+    },
+    {
+      "actions": [
+        "ROLLBACK_ACTIVE_FIRM"
+      ],
+      "canonicalSnapshotHash": null,
+      "canonicalSnapshotSignatureVerified": false,
+      "expectedError": "RESERVED_CANNOT_ROLLBACK",
+      "initialState": "RESERVED",
+      "name": "reservedRollback",
+      "proposedHashes": [
+        "0x0000000000000000000000000000000000000000000000000000000000000a01"
+      ]
+    },
+    {
+      "actions": [
+        "CONSUME"
+      ],
+      "canonicalSnapshotHash": "0x0000000000000000000000000000000000000000000000000000000000000a02",
+      "canonicalSnapshotSignatureVerified": false,
+      "expectedError": "CANONICAL_SNAPSHOT_SIGNATURE_REQUIRED",
+      "initialState": "RESERVED",
+      "name": "unverifiedCanonicalSnapshot",
+      "proposedHashes": [
+        "0x0000000000000000000000000000000000000000000000000000000000000a01"
+      ]
+    }
+  ],
+  "positive": [
+    {
+      "actions": [
+        "RESERVE",
+        "CONSUME"
+      ],
+      "canonicalSnapshotHash": "0x0000000000000000000000000000000000000000000000000000000000000a02",
+      "canonicalSnapshotSignatureVerified": true,
+      "expectedState": "CONSUMED",
+      "initialState": "ACTIVE_FIRM",
+      "name": "activeFirmReservedConsumed",
+      "proposedHashes": [
+        "0x0000000000000000000000000000000000000000000000000000000000000a01"
+      ]
+    },
+    {
+      "actions": [
+        "RESERVE",
+        "EXPIRE"
+      ],
+      "canonicalSnapshotHash": null,
+      "canonicalSnapshotSignatureVerified": false,
+      "expectedState": "EXPIRED",
+      "initialState": "ACTIVE_FIRM",
+      "name": "activeFirmReservedExpired",
+      "proposedHashes": [
+        "0x0000000000000000000000000000000000000000000000000000000000000a01"
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "candidate"
+}

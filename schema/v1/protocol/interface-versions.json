@@ -1,0 +1,16 @@
+{
+  "generatedFrom": "contracts/src/interfaces/InterfaceVersions.sol",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "name": "ASSET_ADAPTER_V1",
+      "preimage": "HTP_IASSET_ADAPTER_V1",
+      "value": "0xcf9367d3ea4eeeafb16085ddb317f5531635ff94317ed7bf61d9dbb13cc3b152"
+    },
+    {
+      "name": "PRINCIPAL_CALCULATOR_V1",
+      "preimage": "HTP_IPRINCIPAL_CALCULATOR_V1",
+      "value": "0x79b97198c84fbb044cdda584716b22b5f0da3a199307ca0dea63b2e03e72f10f"
+    }
+  ]
+}

@@ -1,0 +1,1009 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "activateAssetVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "deprecateAssetVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "exemptRetiredDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getAssetVersion",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "economicAssetIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint32",
+                "name": "versionNo",
+                "type": "uint32"
+              },
+              {
+                "internalType": "address",
+                "name": "assetToken",
+                "type": "address"
+              },
+              {
+                "internalType": "enum TokenStandard",
+                "name": "tokenStandard",
+                "type": "uint8"
+              },
+              {
+                "internalType": "enum TokenDeploymentKind",
+                "name": "tokenDeploymentKind",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "assetDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tokenCodeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "implementation",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "implementationCodeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum PermitCapability",
+                "name": "assetPermitCapability",
+                "type": "uint8"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RestrictionMode",
+                "name": "restrictionMode",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "dvpContract",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "deploymentVersionHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesAssetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct AssetVersionConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum AssetVersionStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct AssetVersionRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "assetToken",
+        "type": "address"
+      }
+    ],
+    "name": "getCurrentAssetVersion",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint32",
+                "name": "schemaVersion",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "economicAssetIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "assetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "uint256",
+                "name": "chainId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint32",
+                "name": "versionNo",
+                "type": "uint32"
+              },
+              {
+                "internalType": "address",
+                "name": "assetToken",
+                "type": "address"
+              },
+              {
+                "internalType": "enum TokenStandard",
+                "name": "tokenStandard",
+                "type": "uint8"
+              },
+              {
+                "internalType": "enum TokenDeploymentKind",
+                "name": "tokenDeploymentKind",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "assetDecimals",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tokenCodeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "implementation",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "implementationCodeHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum PermitCapability",
+                "name": "assetPermitCapability",
+                "type": "uint8"
+              },
+              {
+                "internalType": "enum AssetClass",
+                "name": "assetClass",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "principalCalculatorConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "adapterConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "enum RestrictionMode",
+                "name": "restrictionMode",
+                "type": "uint8"
+              },
+              {
+                "internalType": "address",
+                "name": "settlementToken",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "settlementTokenConfigHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "address",
+                "name": "dvpContract",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "deploymentVersionHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "replacesAssetVersionId",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "configHash",
+                "type": "bytes32"
+              }
+            ],
+            "internalType": "struct AssetVersionConfig",
+            "name": "config",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum AssetVersionStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct AssetVersionRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDependentDvp",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "retiredExempt",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDependentDvpCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "assetToken",
+        "type": "address"
+      }
+    ],
+    "name": "getEconomicAssetIdHash",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "pauseAssetVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint32",
+            "name": "schemaVersion",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "economicAssetIdHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "assetVersionId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint32",
+            "name": "versionNo",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "assetToken",
+            "type": "address"
+          },
+          {
+            "internalType": "enum TokenStandard",
+            "name": "tokenStandard",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum TokenDeploymentKind",
+            "name": "tokenDeploymentKind",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "assetDecimals",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "tokenCodeHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "implementation",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "implementationCodeHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "enum PermitCapability",
+            "name": "assetPermitCapability",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum AssetClass",
+            "name": "assetClass",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "principalCalculatorConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "principalCalculatorConfigHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "adapterConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "adapterConfigHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "enum RestrictionMode",
+            "name": "restrictionMode",
+            "type": "uint8"
+          },
+          {
+            "internalType": "address",
+            "name": "settlementToken",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "settlementTokenConfigId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "settlementTokenConfigHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "dvpContract",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "deploymentVersionHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "replacesAssetVersionId",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "configHash",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct AssetVersionConfig",
+        "name": "config",
+        "type": "tuple"
+      }
+    ],
+    "name": "registerAssetVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "registerDependentDvp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "unpauseAssetVersion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "economicAssetIdHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "assetToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "schemaVersion",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "versionNo",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum TokenStandard",
+        "name": "tokenStandard",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum TokenDeploymentKind",
+        "name": "tokenDeploymentKind",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "assetDecimals",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "tokenCodeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "implementationCodeHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum PermitCapability",
+        "name": "assetPermitCapability",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum AssetClass",
+        "name": "assetClass",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "principalCalculatorConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "principalCalculatorConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "adapterConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "adapterConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum RestrictionMode",
+        "name": "restrictionMode",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "settlementToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "settlementTokenConfigId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "settlementTokenConfigHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "dvpContract",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "deploymentVersionHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "replacesAssetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "configHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "AssetVersionRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "assetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum AssetVersionStatus",
+        "name": "oldStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum AssetVersionStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum ReasonCode",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "AssetVersionStatusChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "assetToken",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "oldAssetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAssetVersionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "CurrentAssetVersionChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "dvp",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "evidenceHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "actor",
+        "type": "address"
+      }
+    ],
+    "name": "DependentDvpRetiredExempted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  }
+]
