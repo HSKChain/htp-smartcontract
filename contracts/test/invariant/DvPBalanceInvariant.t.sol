@@ -296,6 +296,7 @@ contract DvPSettlementStateHandler is Test {
         params.firmQuote.quoteIdHash = keccak256(abi.encode("invariant-quote", identity));
         params.firmQuote.quoteNonce = identity;
         params.tradeIntent.tradeIdHash = keccak256(abi.encode("invariant-trade", identity));
+        params.firmQuote.tradeIdHash = params.tradeIntent.tradeIdHash;
         params.tradeIntent.tradeNonce = identity;
         params.snapshot.tradeIdHash = params.tradeIntent.tradeIdHash;
         params.snapshot.makerQuoteNonce = identity;

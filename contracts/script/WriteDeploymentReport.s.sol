@@ -145,6 +145,7 @@ struct TrustedConfigurationEntry {
 contract WriteDeploymentReport is Script {
     bytes32 private constant ERC1967_IMPLEMENTATION_SLOT =
         0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;
+    uint64 private constant CURRENT_STATE_VALIDATOR_CREATE_NONCE = 3;
 
     error InvalidReportPath(bytes32 pathHash);
     error ConfigBindingMismatch(bytes32 field);
@@ -464,7 +465,8 @@ contract WriteDeploymentReport is Script {
         returns (DvpReportFacts memory facts)
     {
         facts.signedPayloadValidator = _computeCreateAddress(core.dvp, 1);
-        facts.currentStateValidator = _computeCreateAddress(core.currentStateValidatorFactory, 1);
+        facts.currentStateValidator =
+            _computeCreateAddress(core.currentStateValidatorFactory, CURRENT_STATE_VALIDATOR_CREATE_NONCE);
         facts.defaultAdminValid = IAccessControl(core.dvp).hasRole(Roles.DEFAULT_ADMIN_ROLE, config.roles.defaultAdmin);
         facts.governanceValid = IAccessControl(core.dvp).hasRole(Roles.GOVERNANCE_ROLE, config.roles.governance);
         facts.pauserValid = IAccessControl(core.dvp).hasRole(Roles.PAUSER_ROLE, config.roles.pauser);
@@ -594,7 +596,7 @@ contract WriteDeploymentReport is Script {
     }
 
     function _exampleConfigurationJson(CoreDeployment memory core, ExampleConfigs memory configs)
-        private
+        internal
         view
         returns (string memory json, bool ready)
     {
@@ -605,7 +607,7 @@ contract WriteDeploymentReport is Script {
             json = _appendJsonEntry(json, entry);
             if (!valid) ready = false;
         }
-        for (uint256 i = 0; i < 3; ++i) {
+        for (uint256 i = 0; i < configs.adapters.length; ++i) {
             (string memory entry, bool valid) = _adapterEntry(core, configs, i);
             json = _appendJsonEntry(json, entry);
             if (!valid) ready = false;
@@ -685,8 +687,9 @@ contract WriteDeploymentReport is Script {
         entry.idValid = record.exists && entry.id == configs.adapters[index].adapterConfigId;
         entry.configHashValid = entry.configHash == configs.adapters[index].configHash
             && entry.configHash == HTPHashing.hashAdapterConfig(record.config);
-        entry.statusValid = entry.statusCode == (index < 2 ? 2 : 1);
-        entry.currentValid = entry.current == (index < 2);
+        bool superseded = index == 2;
+        entry.statusValid = entry.statusCode == 2;
+        entry.currentValid = entry.current != superseded;
         entry.codeHashValid = entry.subject.codehash == entry.subjectCodeHash && entry.subject.code.length != 0;
         entry.collectorValid = true;
         entry.dependentDvpValid = _containsDependentDvp(IDeploymentReportRegistry(core.adapterRegistry.proxy), core.dvp);
@@ -1138,7 +1141,8 @@ contract WriteDeploymentReport is Script {
     function _dvpOverall(CoreDeployment memory core, DeploymentConfig memory config) private view returns (bool) {
         return core.dvp.code.length != 0 && core.currentStateValidatorFactory.code.length != 0
             && _computeCreateAddress(core.dvp, 1).code.length != 0
-            && _computeCreateAddress(core.currentStateValidatorFactory, 1).code.length != 0
+            && _computeCreateAddress(core.currentStateValidatorFactory, CURRENT_STATE_VALIDATOR_CREATE_NONCE).code
+                    .length != 0
             && IAccessControl(core.dvp).hasRole(Roles.DEFAULT_ADMIN_ROLE, config.roles.defaultAdmin)
             && IAccessControl(core.dvp).hasRole(Roles.GOVERNANCE_ROLE, config.roles.governance)
             && IAccessControl(core.dvp).hasRole(Roles.PAUSER_ROLE, config.roles.pauser)
@@ -1197,7 +1201,7 @@ contract WriteDeploymentReport is Script {
         return "ELIGIBILITY";
     }
 
-    function _statusLabel(ConfigurationKind kind, uint256 statusCode) private pure returns (string memory) {
+    function _statusLabel(ConfigurationKind kind, uint256 statusCode) internal pure returns (string memory) {
         if (kind == ConfigurationKind.FEE_POLICY_EPOCH || kind == ConfigurationKind.MARKET_RULE) {
             if (statusCode == 0) return "NONE";
             if (statusCode == 1) return "DRAFT";
@@ -1225,6 +1229,7 @@ contract WriteDeploymentReport is Script {
         if (statusCode == 2) return "ACTIVE";
         if (statusCode == 3) return "PAUSED";
         if (statusCode == 4) return "DEPRECATED";
+        if (kind == ConfigurationKind.FEE_VERSION && statusCode == 5) return "DEPRECATED_PAUSED";
         return "UNKNOWN";
     }
 

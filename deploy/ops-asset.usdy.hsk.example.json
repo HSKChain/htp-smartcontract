@@ -1,0 +1,22 @@
+{
+  "expectedChainId": 133,
+  "economicAssetIdHash": "0x3333333333333333333333333333333333333333333333333333333333333333",
+  "assetToken": "0x0000000000000000000000000000000000003001",
+  "deploymentKind": "ERC1967_PROXY",
+  "implementation": "0x0000000000000000000000000000000000005001",
+  "permitCapability": "UNSUPPORTED",
+  "assetClass": "FUND",
+  "adapter": "usdyRestricted",
+  "calculator": "FUND",
+  "marketRule": {
+    "minCashPrincipal": "1",
+    "minExecutableQuantity": "1",
+    "quantityStep": "1",
+    "priceTick": "1",
+    "priceDecimals": 6,
+    "quantityDecimals": 18,
+    "quoteValidFrom": null,
+    "quoteValidUntil": null,
+    "settlementValidUntil": null
+  }
+}

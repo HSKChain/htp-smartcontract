@@ -70,7 +70,10 @@ interface ISettlementTokenRegistry {
     function isSettlementTokenConfigActive(bytes32 configId, bytes32 expectedConfigHash) external view returns (bool);
 
     /// @notice Whether config may be referenced at registration time (hash and lifecycle gates).
-    function isSettlementTokenConfigRegisterable(bytes32 configId, bytes32 expectedConfigHash) external view returns (bool);
+    function isSettlementTokenConfigRegisterable(bytes32 configId, bytes32 expectedConfigHash)
+        external
+        view
+        returns (bool);
 
     function registerDependentDvp(address dvp, bytes32 evidenceHash) external;
     function exemptRetiredDependentDvp(address dvp, bytes32 evidenceHash) external;

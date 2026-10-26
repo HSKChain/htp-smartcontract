@@ -53,6 +53,8 @@ abstract contract UUPSRegistryBase is AccessControlUpgradeable, UUPSUpgradeable 
     }
 
     function _grantRole(bytes32 role, address account) internal override returns (bool granted) {
+        // N3: A zero address cannot be the actionable successor counted by the last-admin guard.
+        if (role == Roles.DEFAULT_ADMIN_ROLE) _requireRoleHolder(role, account);
         granted = super._grantRole(role, account);
         if (granted && role == Roles.DEFAULT_ADMIN_ROLE) ++_getRegistryBaseStorage().defaultAdminCount;
     }

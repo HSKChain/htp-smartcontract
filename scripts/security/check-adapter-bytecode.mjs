@@ -65,6 +65,16 @@ const forbiddenSelectors = new Map([
 /** @type {Record<string, string[]>} */
 const providerSelectors = {
   ERC1404Adapter: ["d4ce1415"],
+  OndoGmTokenAdapter: [
+    "6290865d", // compliance()
+    "461ad792", // tokenPauseManager()
+    "03cad645", // gmIdentifier()
+    "fed5f4b3", // rwaTokenToBlocklist(address)
+    "efdc8834", // rwaTokenToSanctionsList(address)
+    "5e76ad54", // isTokenPaused(address)
+    "fbac3951", // isBlocked(address)
+    "df592f7d", // isSanctioned(address)
+  ],
   UnrestrictedERC20Adapter: [],
   UsdyRestrictedAdapter: [
     "5c975abb", // paused()
@@ -78,31 +88,35 @@ const providerSelectors = {
 };
 
 const approvedSourceSha256 = new Map([
-  ["adapters/ERC1404Adapter.sol", "3819fb43fc5903067c39b26b39d4b464b0c7b55298bb71121b67927db1cb1688"],
+  ["adapters/ERC1404Adapter.sol", "4cc8b8ffd2bd828670b5d18bb3d0e754c814f28b411326d569141c1e3da13e4c"],
+  [
+    "adapters/OndoGmTokenAdapter.sol",
+    "c2f58c2639aa5112637dc18f92a5e82d610ba6d9e34ed5a3c0dcc40a9cdc2f70",
+  ],
   [
     "adapters/UnrestrictedERC20Adapter.sol",
-    "fa15e0e06c8b3a8b7ec45589ad6f88e9c44e85f7dbb66577ca23eb40850a5353",
+    "85f366c3d52ccc277f92cb3cf69bcc8976cec0c0456a02fbf2af0bc6326678cf",
   ],
   [
     "adapters/UsdyRestrictedAdapter.sol",
-    "9b489f5e74f09b9e7589145acf0daae878d69c8a6ee3f7ec818a368dc01ef8e9",
+    "28794a8c564c3a51f38a4e5c97cc21958ab7852e6df8585bd4306ce7fa504653",
   ],
-  ["interfaces/IAssetAdapter.sol", "7244183db3d8a806a44e317fb3c8edd496e6a8b313786383b99068ca7d1e4b0a"],
+  ["interfaces/IAssetAdapter.sol", "684fbabb824215a85d650d25f5f65c7f83a8365f91705e95461dac5f768fa238"],
   [
     "libraries/AdapterInputValidation.sol",
-    "60c61c48a34d6a52304c58895d5d9e0788c0c2313312a8e6fb404d17a664d4fd",
+    "fa1eb67e1d2fd40779471bacf6c512a83271a4b561a7bd64d5e1a7077ac4dd87",
   ],
   [
     "libraries/AdapterReasonCodes.sol",
-    "62eb0ff6ad3a5993ddf3836ade8c18b4955bea38466aec94cb1304851448bc86",
+    "a63c1afe6447e95d484cd08b3e0c71c90c6f8d9e15d5941532ac8050b4acc1f4",
   ],
   [
     "libraries/BoundedStaticCall.sol",
-    "6825db924e19d162b22b9f10cc334b695209d84c742d88e596d66a5b5698e42f",
+    "bd65e5b360d957211ae7d184397e5fc6c63b1be09b1d66166a67545a43c8d717",
   ],
   [
     "libraries/RestrictionProviderLib.sol",
-    "6e36ca845045ab6b62851acf0f24ea17db17ddc493388b632a04ce2869d49153",
+    "b12ca4d5ecd007bca6ff6a136ed62120cb85e778dd163d93d0f246430a4b1b18",
   ],
 ]);
 
@@ -270,6 +284,7 @@ function analyze(artifact, approvedProviderSelectors) {
 /** @type {Array<[string, string]>} */
 const production = [
   ["ERC1404Adapter.sol", "ERC1404Adapter"],
+  ["OndoGmTokenAdapter.sol", "OndoGmTokenAdapter"],
   ["UnrestrictedERC20Adapter.sol", "UnrestrictedERC20Adapter"],
   ["UsdyRestrictedAdapter.sol", "UsdyRestrictedAdapter"],
 ];
@@ -310,6 +325,14 @@ for (const [sourceName, contractName] of production) {
     if (typeof runtimeObject === "string") {
       const runtime = executableRuntime(runtimeObject).toString("hex");
       if (runtime.includes("d4ce1415")) issues.push("USDY adapter embeds ERC-1404 selector");
+    }
+  } else if (contractName === "OndoGmTokenAdapter") {
+    const runtimeObject = artifact.deployedBytecode?.object;
+    if (typeof runtimeObject === "string") {
+      const runtime = executableRuntime(runtimeObject).toString("hex");
+      for (const selector of ["5c975abb", "2b47da52", "babcc539", "d4ce1415"]) {
+        if (runtime.includes(selector)) issues.push(`Ondo GM adapter embeds unrelated selector ${selector}`);
+      }
     }
   }
   if (issues.length === 0) {

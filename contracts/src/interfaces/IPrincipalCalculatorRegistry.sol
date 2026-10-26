@@ -2,7 +2,11 @@
 pragma solidity 0.8.36;
 
 import {
-    AssetClass, CalculatorStatus, PrincipalCalculatorConfig, PrincipalCalculatorRecord, ReasonCode
+    AssetClass,
+    CalculatorStatus,
+    PrincipalCalculatorConfig,
+    PrincipalCalculatorRecord,
+    ReasonCode
 } from "../types/HTPTypes.sol";
 
 interface IPrincipalCalculatorRegistry {

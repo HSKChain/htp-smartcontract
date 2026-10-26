@@ -6,7 +6,7 @@
   "description": "Build-time schema, vector, and reproducibility tooling for HTP DvP contracts.",
   "packageManager": "npm@11.11.0",
   "engines": {
-    "node": "22.14.0",
+    "node": "22.23.4",
     "npm": "11.11.0"
   },
   "scripts": {
@@ -19,6 +19,7 @@
     "contracts:integration": "forge test --root contracts --match-path 'test/integration/**/*.t.sol'",
     "contracts:fuzz": "forge test --root contracts --match-path 'test/fuzz/**/*.t.sol'",
     "contracts:invariant": "forge test --root contracts --match-path 'test/invariant/**/*.t.sol'",
+    "contracts:slowmist": "forge test --root contracts --match-path 'test/slowmist_audit/**/*.t.sol'",
     "contracts:e2e": "cd contracts && forge script script/e2e/UsdyOperatorPipeline.s.sol:UsdyOperatorPipeline -vvv",
     "contracts:size": "forge build --root contracts --sizes",
     "contracts:coverage": "node scripts/phase19-coverage.mjs",
@@ -62,7 +63,12 @@
     "phase18:config": "npm run deploy:config:test && npm run deploy:config:check && npm run deploy:config:secrets",
     "phase18:tooling:test": "node --test scripts/test/*.test.mjs",
     "phase18:fork:usdy": "node scripts/fork/verify-usdy-fixed-block.mjs",
-    "phase18:test": "npm run phase18:config && npm run phase18:tooling:test && npm run phase18:fork:usdy",
+    "phase18:fork:ondo-gm": "node scripts/fork/verify-ondo-gm-fixed-block.mjs",
+    "phase18:test": "npm run phase18:config && npm run phase18:tooling:test && npm run phase18:fork:usdy && npm run phase18:fork:ondo-gm",
+    "ops:test": "node --test scripts/ops/*.test.mjs",
+    "ops:platform:self-test": "node scripts/ops/deploy-platform.mjs --self-test",
+    "ops:adapter:self-test": "node scripts/ops/deploy-adapter.mjs --self-test",
+    "ops:asset:self-test": "node scripts/ops/list-asset.mjs --self-test",
     "reproducible:check": "node scripts/reproducible-build.mjs",
     "reproducible:self-test": "node scripts/reproducible-build.mjs --self-test"
   },

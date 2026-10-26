@@ -26,7 +26,7 @@ contract FeeResolverTest is FeeRegistryTestBase {
         _activateFee(assetClass);
         _activateFee(instrument);
         _activateFee(assetVersion);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, assetVersion.feeVersionId);
 
         (bytes32 feeVersionId, bytes32 matchedScopeHash) =
             feeRegistry.resolveApplicableFee(1, assetVersionConfig.assetVersionId);
@@ -45,7 +45,7 @@ contract FeeResolverTest is FeeRegistryTestBase {
         _sealEpoch(epoch);
         _activateFee(global);
         _activateFee(assetVersion);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, assetVersion.feeVersionId);
 
         vm.prank(PAUSER);
         feeRegistry.pauseFeeVersion(assetVersion.feeVersionId, ReasonCode.SECURITY_INCIDENT, bytes32(uint256(0xE324)));
@@ -84,7 +84,7 @@ contract FeeResolverTest is FeeRegistryTestBase {
         _sealEpoch(epoch);
         vm.prank(address(timelock));
         feeRegistry.activateFeeVersion(config.feeVersionId, config.configHash);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, config.feeVersionId);
 
         assertTrue(
             feeRegistry.isFeeVersionExecutable(
@@ -208,8 +208,11 @@ contract FeeResolverTest is FeeRegistryTestBase {
 
     function testResolverFailsClosedForUnknownAssetAndNoConfiguredScope() public {
         FeePolicyEpochConfig memory epoch = _createEpoch(1);
+        FeeConfig memory unrelated = _feeConfig(1, ScopeType.ASSET_VERSION, bytes32(uint256(0xBEEF)), 1, bytes32(0));
+        _registerFee(unrelated);
         _sealEpoch(epoch);
-        _activateEpoch(epoch);
+        _activateFee(unrelated);
+        _activateEpoch(epoch, unrelated.feeVersionId);
 
         bytes32 unknownAsset = bytes32(uint256(0xBAD));
         vm.expectRevert(abi.encodeWithSelector(HTPErrors.ConfigNotFound.selector, unknownAsset));
@@ -230,7 +233,7 @@ contract FeeResolverTest is FeeRegistryTestBase {
         _registerFee(config);
         _sealEpoch(epoch);
         _activateFee(config);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, config.feeVersionId);
     }
 
     function _activateFee(FeeConfig memory config) private {

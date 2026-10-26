@@ -2,7 +2,11 @@
 pragma solidity 0.8.36;
 
 import {
-    ParticipantInput, ParticipantRecord, ParticipantStatus, ParticipantType, ReasonCode
+    ParticipantInput,
+    ParticipantRecord,
+    ParticipantStatus,
+    ParticipantType,
+    ReasonCode
 } from "../types/HTPTypes.sol";
 
 interface IParticipantRegistry {
@@ -39,7 +43,8 @@ interface IParticipantRegistry {
 
     function pauseParticipant(address wallet, uint64 expectedVersion, ReasonCode reason, bytes32 evidenceHash) external;
 
-    function unpauseParticipant(address wallet, uint64 expectedVersion, ReasonCode reason, bytes32 evidenceHash) external;
+    function unpauseParticipant(address wallet, uint64 expectedVersion, ReasonCode reason, bytes32 evidenceHash)
+        external;
 
     function revokeParticipant(address wallet, uint64 expectedVersion, bytes32 evidenceHash) external;
 

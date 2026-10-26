@@ -23,9 +23,11 @@ contract DvPPhase14ErrorsTest is Test {
         assertEq(bytes32(HTPErrors.ConfigReferenceMismatch.selector), bytes32(bytes4(0x231c19ee)));
         assertEq(bytes32(HTPErrors.ConfigIdMismatch.selector), bytes32(bytes4(0x48993d10)));
         assertEq(bytes32(HTPErrors.UnauthorizedStateTransition.selector), bytes32(bytes4(0x797ae61e)));
+        assertEq(bytes32(HTPErrors.FeePolicyEpochFeeNotReady.selector), bytes32(bytes4(0x660709bc)));
         assertEq(bytes32(HTPErrors.TokenCodeHashMismatch.selector), bytes32(bytes4(0xdb03a16e)));
         assertEq(bytes32(HTPErrors.AssetDecimalsMismatch.selector), bytes32(bytes4(0x8e3054e6)));
         assertEq(bytes32(HTPErrors.SettlementTokenDecimalsMismatch.selector), bytes32(bytes4(0xd23275cf)));
+        assertEq(bytes32(HTPErrors.SettlementTokenDecimalsOutOfRange.selector), bytes32(bytes4(0x307a156e)));
         assertEq(bytes32(HTPErrors.TokenImplementationBaselineInvalid.selector), bytes32(bytes4(0x21dd509c)));
         assertEq(bytes32(HTPErrors.AssetVersionImplementationChanged.selector), bytes32(bytes4(0xd0e7c4e0)));
         assertEq(bytes32(HTPErrors.SettlementTokenImplementationChanged.selector), bytes32(bytes4(0x76b8511a)));

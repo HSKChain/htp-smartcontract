@@ -12,6 +12,7 @@ import {
     ExampleImplementations
 } from "./DeployTypes.sol";
 import {ERC1404Adapter} from "../src/adapters/ERC1404Adapter.sol";
+import {OndoGmTokenAdapter} from "../src/adapters/OndoGmTokenAdapter.sol";
 import {UnrestrictedERC20Adapter} from "../src/adapters/UnrestrictedERC20Adapter.sol";
 import {UsdyRestrictedAdapter} from "../src/adapters/UsdyRestrictedAdapter.sol";
 import {BondPrincipalCalculator} from "../src/calculators/BondPrincipalCalculator.sol";
@@ -33,7 +34,10 @@ contract DeployHTP is Script, CoreDeploymentTopology {
 
     event CoreDeployed(address indexed dvp, address indexed currentStateValidatorFactory);
     event ExampleImplementationsDeployed(
-        address indexed unrestrictedAdapter, address indexed erc1404Adapter, address indexed usdyAdapter
+        address indexed unrestrictedAdapter,
+        address indexed erc1404Adapter,
+        address indexed usdyAdapter,
+        address ondoGmAdapter
     );
 
     function deployCore(DeploymentConfig calldata config, uint64 expectedFirstCreateNonce)
@@ -195,7 +199,7 @@ contract DeployHTP is Script, CoreDeploymentTopology {
         if (
             dvp.code.length == 0 || inputs.erc1404Token.code.length == 0 || inputs.usdyToken.code.length == 0
                 || inputs.usdyBlocklist.code.length == 0 || inputs.usdyAllowlist.code.length == 0
-                || inputs.usdySanctionsList.code.length == 0
+                || inputs.usdySanctionsList.code.length == 0 || inputs.gmToken.code.length == 0
         ) {
             revert InvalidDeploymentRole(address(0));
         }
@@ -220,8 +224,13 @@ contract DeployHTP is Script, CoreDeploymentTopology {
                 inputs.providerCallGas
             )
         );
+        implementations.ondoGmAdapter =
+            address(new OndoGmTokenAdapter(dvp, inputs.gmToken, inputs.gmToken.codehash, inputs.providerCallGas));
         emit ExampleImplementationsDeployed(
-            implementations.unrestrictedAdapter, implementations.erc1404Adapter, implementations.usdyAdapter
+            implementations.unrestrictedAdapter,
+            implementations.erc1404Adapter,
+            implementations.usdyAdapter,
+            implementations.ondoGmAdapter
         );
     }
 

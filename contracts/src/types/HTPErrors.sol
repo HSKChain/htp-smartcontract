@@ -40,6 +40,7 @@ library HTPErrors {
     error InvalidCalendarDate(uint32 date);
     error PriceDataMalformed(AssetClass assetClass);
     error AssetDecimalsOutOfRange(uint8 assetDecimals);
+    error SettlementTokenDecimalsOutOfRange(uint8 settlementTokenDecimals);
     error CashPrincipalZero();
     error BondFullPriceOverflow(uint256 cleanPrice, uint256 accruedInterest);
     error InvalidDeploymentVersion();
@@ -137,6 +138,7 @@ library HTPErrors {
     error FeePolicyEpochOutsideQuoteWindow(uint64 feePolicyEpoch, uint64 currentTime);
     error FeePolicyEpochTransitionTooEarly(uint64 feePolicyEpoch, uint64 earliestTime, uint64 currentTime);
     error FeePolicyEpochExpectedHashMismatch(bytes32 expected, bytes32 stored, bytes32 recomputed);
+    error FeePolicyEpochFeeNotReady(uint64 feePolicyEpoch, bytes32 feeVersionId);
     error InvalidFeeConfig();
     error InvalidFeeParticipantType(ParticipantType participantType);
     error InvalidFeeScopeKey(ScopeType scopeType, bytes32 scopeKeyHash);

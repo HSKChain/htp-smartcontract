@@ -55,6 +55,7 @@ contract P17_ExecutorTradeIdHashGriefingTest is UsdySettlementFixture {
         grief.snapshot.requesterTradeNonce = grief.tradeIntent.tradeNonce;
         // 故意钉回已消费的 tradeIdHash（签名会覆盖该字段）
         grief.tradeIntent.tradeIdHash = consumedTradeIdHash;
+        grief.firmQuote.tradeIdHash = consumedTradeIdHash;
         grief.snapshot.tradeIdHash = consumedTradeIdHash;
         // 略改 quote 身份字段，避免与已用 quote 内容完全重合（nonce 已不同，digest 本就会变）
         grief.firmQuote.quoteIdHash = bytes32(uint256(first.firmQuote.quoteIdHash) + 1);

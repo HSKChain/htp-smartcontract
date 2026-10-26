@@ -149,10 +149,10 @@ abstract contract FeeRegistryTestBase is RegistryTestBase, RegistryDeploymentPri
         feeRegistry.sealFeePolicyEpoch(config.feePolicyEpoch, config.configHash);
     }
 
-    function _activateEpoch(FeePolicyEpochConfig memory config) internal {
+    function _activateEpoch(FeePolicyEpochConfig memory config, bytes32 readinessFeeVersionId) internal {
         vm.warp(config.quoteValidFrom);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(config.feePolicyEpoch, config.configHash);
+        feeRegistry.activateFeePolicyEpoch(config.feePolicyEpoch, config.configHash, readinessFeeVersionId);
     }
 
     function _feeConfig(

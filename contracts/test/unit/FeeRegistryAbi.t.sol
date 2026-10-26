@@ -8,7 +8,7 @@ contract FeeRegistryAbiTest is Test {
     function testCompletePublicBehaviorSelectorsMatchReviewedLiterals() public pure {
         _assertSelector(IFeeRegistry.createFeePolicyEpoch.selector, 0x2a54a300);
         _assertSelector(IFeeRegistry.sealFeePolicyEpoch.selector, 0x4f38e1b8);
-        _assertSelector(IFeeRegistry.activateFeePolicyEpoch.selector, 0xc7cd351e);
+        _assertSelector(IFeeRegistry.activateFeePolicyEpoch.selector, 0xd17bcc17);
         _assertSelector(IFeeRegistry.moveFeePolicyEpochToLegacyServing.selector, 0x4e5a0df5);
         _assertSelector(IFeeRegistry.closeFeePolicyEpoch.selector, 0x290bdffc);
         _assertSelector(IFeeRegistry.getFeePolicyEpoch.selector, 0x185b117e);

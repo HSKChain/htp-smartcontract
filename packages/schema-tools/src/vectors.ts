@@ -261,6 +261,8 @@ export function buildBootstrapVectors(repositoryRoot: string): VectorMap {
     schemaVersion: 1,
     rfqIdHash: word(0x601),
     quoteIdHash: word(0x602),
+    // N10: Maker signs the same canonical trade ID carried by the intent and snapshot.
+    tradeIdHash,
     quoteVersion: 1,
     quotingMaker: address(0xb001),
     requester: address(0xb002),

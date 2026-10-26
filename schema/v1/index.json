@@ -18,7 +18,7 @@
     {
       "kind": "abi",
       "path": "abi/IDvPCurrentStateValidator.json",
-      "sha256": "83a7aa550ce2682bd63a3b23d47b64aa1a782712892f983318f078cd34ab7af6"
+      "sha256": "c0805337596a3f2315c445f099f67561dcecc5b2066e8a5d78debb293cce7edf"
     },
     {
       "kind": "abi",
@@ -33,12 +33,12 @@
     {
       "kind": "abi",
       "path": "abi/IDvPSettlement.json",
-      "sha256": "4a74643b6c8635ae96e51c8ad5502629a7056c8e757f0ba31bc7f70ebf7844a8"
+      "sha256": "568dc50ab100f27c48c3dc79317c60514bc5036a0c9f10578194603fcaa5a367"
     },
     {
       "kind": "abi",
       "path": "abi/IDvPSignedPayloadValidator.json",
-      "sha256": "dab8e2a8486aff6883a84fb3fc727f6320c2d18dfb783a738f97a8cb9f0e5163"
+      "sha256": "843644b43b30d95aa5ab4b0215eeb9fd1dc1da8e48808512e6f9c3f9a56dd736"
     },
     {
       "kind": "abi",
@@ -48,7 +48,7 @@
     {
       "kind": "abi",
       "path": "abi/IFeeRegistry.json",
-      "sha256": "4355e214c9e72cf1b9e0b3e2911410dfd179b2fbc28d89c9a5437c2fe8a48b43"
+      "sha256": "219a5ef7ef60cc0475fe918db5f2bad1fd93edb82b6cded62470769556f24db1"
     },
     {
       "kind": "abi",
@@ -78,7 +78,7 @@
     {
       "kind": "manifest",
       "path": "manifest.json",
-      "sha256": "997957a9b74868efb4fc8964bb43f44636917000462ca8f1709cfc9cb005a3d0"
+      "sha256": "d43d4e680617877f2e7b6c3ccd3d997c090084d4ba6af0633be4e8cd361294fb"
     },
     {
       "kind": "document",
@@ -88,12 +88,12 @@
     {
       "kind": "document",
       "path": "protocol/eip712.json",
-      "sha256": "28070a87df4849f2df0601e904984a13c4f79ed0f3d7780c2e607d5b6e9db43b"
+      "sha256": "c8895bc33320c8122762d898f38db80f1ddea75ecd67042b4b14ba89543bcdbc"
     },
     {
       "kind": "document",
       "path": "protocol/errors.json",
-      "sha256": "af4c33ad75b15e3a0378a98157677940ca2488f7e28d9ffb5146bcee94493cb4"
+      "sha256": "f69f958b6ca636ca7e42626b1b7e6fff34c1e3c7b9bbed52402c7c75b38bb739"
     },
     {
       "kind": "document",
@@ -113,17 +113,17 @@
     {
       "kind": "document",
       "path": "types/enums.json",
-      "sha256": "85136f9b1714f55352f7df59a331c9a25c96326fbf996629e9126da013108025"
+      "sha256": "5fca2dc334d9eb625f6d29c76a266658b021e6c40c6f2f5688b40f0098d19fbc"
     },
     {
       "kind": "document",
       "path": "types/layouts.json",
-      "sha256": "1036f1ba96cd2da22fdb07039fc27b280b45cdf98b6ea70d3703500b6ad13c79"
+      "sha256": "7636d2412889a8ec0f0ab3a7b14cd916f5ad352ff879f0f1271af4827ad7e77a"
     },
     {
       "kind": "document",
       "path": "types/structs.json",
-      "sha256": "5b57700a58276741ca679990c3be8f14203a14321e76248a9797d8df54efe189"
+      "sha256": "fde62fc2d32a55786de602383e2f072f18870c219e618ad88117d4344174dcf7"
     }
   ],
   "generatedFrom": "packages/schema-tools SchemaModel",

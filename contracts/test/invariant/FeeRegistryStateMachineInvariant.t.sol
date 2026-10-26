@@ -72,6 +72,7 @@ contract FeeRegistryStateMachineHandler {
     mapping(uint64 epoch => uint256 positionPlusOne) private epochPositions;
     mapping(bytes32 feeVersionId => uint256 positionPlusOne) private feePositions;
     mapping(uint64 epoch => mapping(uint8 scope => bytes32 feeVersionId)) private latestByScope;
+    mapping(bytes32 matchedScopeHash => bytes32 feeVersionId) private servingByScopeHash;
 
     uint256 public unexpectedSuccesses;
     uint256 public unexpectedReverts;
@@ -104,6 +105,7 @@ contract FeeRegistryStateMachineHandler {
         );
         epochPositions[initialEpoch.feePolicyEpoch] = 1;
         _recordFee(initialFee, FeeVersionStatus.ACTIVE);
+        servingByScopeHash[initialFee.matchedScopeHash] = initialFee.feeVersionId;
     }
 
     function createEpoch(uint8 mode) external {
@@ -200,19 +202,26 @@ contract FeeRegistryStateMachineHandler {
                 if (expectedValid) ++unexpectedReverts;
             }
         } else if (selectedAction == 1) {
-            bool expectedValid = known && epochIsSealed && status == FeeVersionStatus.ACTIVE && validEvidence;
+            // N2: Both executable lifecycle states can be emergency-paused.
+            bool expectedValid = known && epochIsSealed
+                && (status == FeeVersionStatus.ACTIVE || status == FeeVersionStatus.DEPRECATED) && validEvidence;
+            FeeVersionStatus newStatus =
+                status == FeeVersionStatus.ACTIVE ? FeeVersionStatus.PAUSED : FeeVersionStatus.DEPRECATED_PAUSED;
             _prank(PAUSER);
             try REGISTRY.pauseFeeVersion(feeVersionId, reason, evidence) {
-                _finishFeeTransition(expectedValid, index, FeeVersionStatus.PAUSED);
+                _finishFeeTransition(expectedValid, index, newStatus);
             } catch {
                 if (expectedValid) ++unexpectedReverts;
             }
         } else if (selectedAction == 2) {
-            bool expectedValid =
-                known && epochIsSealed && status == FeeVersionStatus.PAUSED && correctHash && validEvidence;
+            bool expectedValid = known && epochIsSealed
+                && (status == FeeVersionStatus.PAUSED || status == FeeVersionStatus.DEPRECATED_PAUSED) && correctHash
+                && validEvidence;
+            FeeVersionStatus newStatus =
+                status == FeeVersionStatus.PAUSED ? FeeVersionStatus.ACTIVE : FeeVersionStatus.DEPRECATED;
             _prank(GOVERNANCE);
             try REGISTRY.unpauseFeeVersion(feeVersionId, expectedHash, reason, evidence) {
-                _finishFeeTransition(expectedValid, index, FeeVersionStatus.ACTIVE);
+                _finishFeeTransition(expectedValid, index, newStatus);
             } catch {
                 if (expectedValid) ++unexpectedReverts;
             }
@@ -236,13 +245,15 @@ contract FeeRegistryStateMachineHandler {
         }
         bytes32 expectedHash = known ? epochs[index].config.configHash : bytes32(uint256(0xBAD3));
         if (!correctHash) expectedHash = bytes32(uint256(expectedHash) ^ 1);
+        bytes32 readinessFeeVersionId = known ? _activeServingFee(epochNumber) : bytes32(uint256(0xBAD4));
         bool inWindow = known && block.timestamp >= epochs[index].config.quoteValidFrom
             && block.timestamp <= epochs[index].config.quoteValidUntil;
+        // N1: the model mirrors the contract's ACTIVE serving readiness gate.
         bool expectedValid = known && epochs[index].isSealed && epochs[index].status == FeePolicyEpochStatus.DRAFT
-            && correctHash && inWindow;
+            && correctHash && inWindow && readinessFeeVersionId != bytes32(0);
 
         _prank(GOVERNANCE);
-        try REGISTRY.activateFeePolicyEpoch(epochNumber, expectedHash) {
+        try REGISTRY.activateFeePolicyEpoch(epochNumber, expectedHash, readinessFeeVersionId) {
             if (!expectedValid) {
                 ++unexpectedSuccesses;
                 return;
@@ -345,12 +356,25 @@ contract FeeRegistryStateMachineHandler {
     }
 
     function _recordServingFee(uint256 epochIndex, FeeConfig memory config) private {
+        servingByScopeHash[config.matchedScopeHash] = config.feeVersionId;
         EpochShadow storage shadow = epochs[epochIndex];
         if (uint8(config.scopeType) >= uint8(shadow.resolvedScopeType)) {
             shadow.resolvedFeeVersionId = config.feeVersionId;
             shadow.resolvedScopeHash = config.matchedScopeHash;
             shadow.resolvedScopeType = config.scopeType;
         }
+    }
+
+    function _activeServingFee(uint64 epochNumber) private view returns (bytes32) {
+        for (uint256 i = 0; i < fees.length; ++i) {
+            if (
+                fees[i].feePolicyEpoch == epochNumber && feeStatuses[i] == FeeVersionStatus.ACTIVE
+                    && servingByScopeHash[fees[i].matchedScopeHash] == fees[i].feeVersionId
+            ) {
+                return fees[i].feeVersionId;
+            }
+        }
+        return bytes32(0);
     }
 
     function _selectedEpoch(uint256 seed) private view returns (bool known, uint256 index, uint64 epochNumber) {
@@ -501,7 +525,7 @@ contract FeeRegistryStateMachineInvariantTest is FeeRegistryTestBase {
         _sealEpoch(epoch);
         vm.prank(address(timelock));
         feeRegistry.activateFeeVersion(fee.feeVersionId, fee.configHash);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, fee.feeVersionId);
 
         FeeInvariantContext memory context = FeeInvariantContext({
             registry: feeRegistry,

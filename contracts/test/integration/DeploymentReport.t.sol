@@ -3,8 +3,14 @@ pragma solidity 0.8.36;
 
 import {Test} from "forge-std/Test.sol";
 import {DeployHTP} from "script/DeployHTP.s.sol";
-import {CoreReportInput, WriteDeploymentReport} from "script/WriteDeploymentReport.s.sol";
+import {ConfigurationKind, CoreReportInput, WriteDeploymentReport} from "script/WriteDeploymentReport.s.sol";
 import {CoreDeployment, DeploymentConfig, DeploymentRoles} from "script/DeployTypes.sol";
+
+contract WriteDeploymentReportHarness is WriteDeploymentReport {
+    function statusLabel(ConfigurationKind kind, uint256 statusCode) external pure returns (string memory) {
+        return _statusLabel(kind, statusCode);
+    }
+}
 
 contract DeploymentReportTest is Test {
     address private constant ADMIN = address(0x7101);
@@ -17,6 +23,12 @@ contract DeploymentReportTest is Test {
     string private constant SOURCE_CONFIG_PATH = "deploy/config.example.json";
     string private constant CONFIG_PATH = "deploy/out/deployment-report-config.json";
     string private constant REPORT_PATH = "deploy/out/deployment-report-integration.json";
+
+    function testLabelsDeprecatedPausedFeeVersion() public {
+        WriteDeploymentReportHarness writer = new WriteDeploymentReportHarness();
+        assertEq(writer.statusLabel(ConfigurationKind.FEE_VERSION, 5), "DEPRECATED_PAUSED");
+        assertEq(writer.statusLabel(ConfigurationKind.ADAPTER, 5), "UNKNOWN");
+    }
 
     function testWritesDirectRoleReportWithoutLegacyGovernanceFields() public {
         DeployHTP deployer = new DeployHTP();
@@ -40,6 +52,15 @@ contract DeploymentReportTest is Test {
         assertEq(vm.parseJsonAddress(json, ".registries.adapter.roles.upgrader.account"), UPGRADER);
         assertEq(vm.parseJsonAddress(json, ".dvp.roles.defaultAdmin.account"), ADMIN);
         assertEq(vm.parseJsonAddress(json, ".dvp.roles.governance.account"), GOVERNANCE);
+        address currentStateValidator = vm.parseJsonAddress(json, ".dvp.validators.currentState.address");
+        address expectedCurrentStateValidator = vm.computeCreateAddress(core.currentStateValidatorFactory, 3);
+        assertEq(currentStateValidator, expectedCurrentStateValidator);
+        assertNotEq(currentStateValidator, vm.computeCreateAddress(core.currentStateValidatorFactory, 1));
+        assertNotEq(currentStateValidator, vm.computeCreateAddress(core.currentStateValidatorFactory, 2));
+        assertEq(
+            vm.parseJsonBytes32(json, ".dvp.validators.currentState.codeHash"), expectedCurrentStateValidator.codehash
+        );
+        assertTrue(vm.parseJsonBool(json, ".dvp.validators.currentState.verified"));
         assertTrue(vm.parseJsonBool(json, ".metadata.governanceReady"));
         assertTrue(vm.parseJsonBool(json, ".verification.governanceReady"));
         assertFalse(_contains(bytes(json), bytes("\"timelock\"")));

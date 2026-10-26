@@ -120,6 +120,7 @@ library SchemaFixtures {
             schemaVersion: ${uintLiteral(firmQuote.schemaVersion)},
             rfqIdHash: ${bytes32Literal(firmQuote.rfqIdHash)},
             quoteIdHash: ${bytes32Literal(firmQuote.quoteIdHash)},
+            tradeIdHash: ${bytes32Literal(firmQuote.tradeIdHash)},
             quoteVersion: ${uintLiteral(firmQuote.quoteVersion)},
             quotingMaker: ${addressLiteral(firmQuote.quotingMaker)},
             requester: ${addressLiteral(firmQuote.requester)},

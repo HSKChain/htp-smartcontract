@@ -125,13 +125,20 @@ contract ConfigurationReferenceIntegrity {
     function loadAdapters(address dvp, AdapterReferences calldata expected)
         external
         view
-        returns (AdapterRecord memory assetAdapter, AdapterRecord memory settlementAdapter, bool serviceable)
+        returns (
+            AdapterRecord memory assetAdapter,
+            AdapterRecord memory settlementAdapter,
+            bool assetServiceable,
+            bool settlementServiceable
+        )
     {
         assetAdapter = IDvPSettlement(dvp).adapterRegistry().getAdapter{gas: REGISTRY_GAS_LIMIT}(expected.assetConfigId);
         settlementAdapter =
             IDvPSettlement(dvp).adapterRegistry().getAdapter{gas: REGISTRY_GAS_LIMIT}(expected.settlementConfigId);
-        serviceable = _adapterActive(assetAdapter, expected.assetConfigId, expected.assetConfigHash)
-            && _adapterActive(settlementAdapter, expected.settlementConfigId, expected.settlementConfigHash);
+        // N9: Preserve which adapter side failed so strict settlement reports its actual config ID.
+        assetServiceable = _adapterActive(assetAdapter, expected.assetConfigId, expected.assetConfigHash);
+        settlementServiceable =
+            _adapterActive(settlementAdapter, expected.settlementConfigId, expected.settlementConfigHash);
     }
 
     function loadCalculator(address dvp, CalculatorReference calldata expected)
@@ -232,6 +239,7 @@ contract ConfigurationReferenceIntegrity {
     ) private view returns (bool) {
         bool epochServiceable = epoch.exists && epoch.isSealed
             && (epoch.status == FeePolicyEpochStatus.ACTIVE || epoch.status == FeePolicyEpochStatus.LEGACY_SERVING);
+        // N2: DEPRECATED remains serviceable for historical quotes; both paused states fail closed.
         bool feeServiceable =
             fee.exists && (fee.status == FeeVersionStatus.ACTIVE || fee.status == FeeVersionStatus.DEPRECATED);
         return epochServiceable && feeServiceable && epoch.config.feePolicyEpoch == expected.policyEpoch

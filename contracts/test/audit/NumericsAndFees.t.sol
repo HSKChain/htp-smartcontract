@@ -792,7 +792,7 @@ contract TmpAuditModuleDSettleTest is DvPPreCheckTestBase {
         feeRegistry.activateFeeVersion(audited.feeVersionId, audited.configHash);
         vm.warp(validFrom);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(AUDIT_EPOCH, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(AUDIT_EPOCH, epoch.configHash, audited.feeVersionId);
 
         params = _validPreCheckParams();
         params.firmQuote.feePolicyEpoch = AUDIT_EPOCH;

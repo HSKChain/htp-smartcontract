@@ -201,8 +201,15 @@ contract MarketRuleRegistry is UUPSRegistryBase {
             );
         }
         MarketRuleStatus oldStatus = record.status;
+        bool wasPaused = record.paused;
         record.status = MarketRuleStatus.CLOSED;
         record.paused = false;
+        // N8: Keep independently replayed pause state consistent with storage on close.
+        if (wasPaused) {
+            emit IMarketRuleRegistry.MarketRulePauseChanged(
+                block.chainid, configId, false, ReasonCode.GOVERNANCE_ACTION, evidenceHash, _msgSender()
+            );
+        }
         if ($.currentConfigIds[record.config.assetVersionId] == configId) {
             $.currentConfigIds[record.config.assetVersionId] = bytes32(0);
             emit IMarketRuleRegistry.CurrentMarketRuleChanged(

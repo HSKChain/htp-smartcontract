@@ -31,8 +31,9 @@ library HTPHashing {
     bytes32 internal constant EIP712_DOMAIN_TYPEHASH =
         keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
 
+    // N10: Include tradeIdHash so the maker authorizes the settlement identity.
     bytes32 internal constant FIRM_QUOTE_TYPEHASH = keccak256(
-        "FirmQuote(uint32 schemaVersion,bytes32 rfqIdHash,bytes32 quoteIdHash,uint32 quoteVersion,address quotingMaker,address requester,uint8 requesterType,bytes32 assetVersionId,uint8 requesterSide,address assetToken,address settlementToken,uint8 assetClass,bytes32 priceTermsHash,bytes priceData,bytes32 principalCalculatorConfigId,bytes32 principalCalculatorConfigHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,bytes32 marketRuleConfigId,bytes32 marketRuleConfigHash,uint256 minExecutableQuantity,uint256 maxExecutableQuantity,uint256 stepQuantity,uint64 feePolicyEpoch,bytes32 feeVersionId,bytes32 matchedScopeHash,bytes32 feeConstraintHash,uint256 quoteNonce,uint64 expiresAt)"
+        "FirmQuote(uint32 schemaVersion,bytes32 rfqIdHash,bytes32 quoteIdHash,bytes32 tradeIdHash,uint32 quoteVersion,address quotingMaker,address requester,uint8 requesterType,bytes32 assetVersionId,uint8 requesterSide,address assetToken,address settlementToken,uint8 assetClass,bytes32 priceTermsHash,bytes priceData,bytes32 principalCalculatorConfigId,bytes32 principalCalculatorConfigHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,bytes32 marketRuleConfigId,bytes32 marketRuleConfigHash,uint256 minExecutableQuantity,uint256 maxExecutableQuantity,uint256 stepQuantity,uint64 feePolicyEpoch,bytes32 feeVersionId,bytes32 matchedScopeHash,bytes32 feeConstraintHash,uint256 quoteNonce,uint64 expiresAt)"
     );
 
     bytes32 internal constant TRADE_INTENT_TYPEHASH = keccak256(
@@ -118,39 +119,40 @@ library HTPHashing {
     }
 
     function hashFirmQuote(FirmQuote memory quote) internal pure returns (bytes32) {
-        bytes32[] memory words = new bytes32[](32);
+        bytes32[] memory words = new bytes32[](33);
         words[0] = FIRM_QUOTE_TYPEHASH;
         words[1] = bytes32(uint256(quote.schemaVersion));
         words[2] = quote.rfqIdHash;
         words[3] = quote.quoteIdHash;
-        words[4] = bytes32(uint256(quote.quoteVersion));
-        words[5] = _addressWord(quote.quotingMaker);
-        words[6] = _addressWord(quote.requester);
-        words[7] = bytes32(uint256(quote.requesterType));
-        words[8] = quote.assetVersionId;
-        words[9] = bytes32(uint256(quote.requesterSide));
-        words[10] = _addressWord(quote.assetToken);
-        words[11] = _addressWord(quote.settlementToken);
-        words[12] = bytes32(uint256(quote.assetClass));
-        words[13] = quote.priceTermsHash;
-        words[14] = keccak256(quote.priceData);
-        words[15] = quote.principalCalculatorConfigId;
-        words[16] = quote.principalCalculatorConfigHash;
-        words[17] = quote.adapterConfigId;
-        words[18] = quote.adapterConfigHash;
-        words[19] = quote.settlementTokenConfigId;
-        words[20] = quote.settlementTokenConfigHash;
-        words[21] = quote.marketRuleConfigId;
-        words[22] = quote.marketRuleConfigHash;
-        words[23] = bytes32(quote.minExecutableQuantity);
-        words[24] = bytes32(quote.maxExecutableQuantity);
-        words[25] = bytes32(quote.stepQuantity);
-        words[26] = bytes32(uint256(quote.feePolicyEpoch));
-        words[27] = quote.feeVersionId;
-        words[28] = quote.matchedScopeHash;
-        words[29] = quote.feeConstraintHash;
-        words[30] = bytes32(quote.quoteNonce);
-        words[31] = bytes32(uint256(quote.expiresAt));
+        words[4] = quote.tradeIdHash;
+        words[5] = bytes32(uint256(quote.quoteVersion));
+        words[6] = _addressWord(quote.quotingMaker);
+        words[7] = _addressWord(quote.requester);
+        words[8] = bytes32(uint256(quote.requesterType));
+        words[9] = quote.assetVersionId;
+        words[10] = bytes32(uint256(quote.requesterSide));
+        words[11] = _addressWord(quote.assetToken);
+        words[12] = _addressWord(quote.settlementToken);
+        words[13] = bytes32(uint256(quote.assetClass));
+        words[14] = quote.priceTermsHash;
+        words[15] = keccak256(quote.priceData);
+        words[16] = quote.principalCalculatorConfigId;
+        words[17] = quote.principalCalculatorConfigHash;
+        words[18] = quote.adapterConfigId;
+        words[19] = quote.adapterConfigHash;
+        words[20] = quote.settlementTokenConfigId;
+        words[21] = quote.settlementTokenConfigHash;
+        words[22] = quote.marketRuleConfigId;
+        words[23] = quote.marketRuleConfigHash;
+        words[24] = bytes32(quote.minExecutableQuantity);
+        words[25] = bytes32(quote.maxExecutableQuantity);
+        words[26] = bytes32(quote.stepQuantity);
+        words[27] = bytes32(uint256(quote.feePolicyEpoch));
+        words[28] = quote.feeVersionId;
+        words[29] = quote.matchedScopeHash;
+        words[30] = quote.feeConstraintHash;
+        words[31] = bytes32(quote.quoteNonce);
+        words[32] = bytes32(uint256(quote.expiresAt));
         return _hashWords(words);
     }
 

@@ -360,6 +360,71 @@ function usdyVector() {
   };
 }
 
+function ondoGmAaplonVector() {
+  const capabilities = {
+    tokenStandard: 1,
+    restrictionMode: 4,
+    precheckMethod: 3,
+    transferLegMask: 2n,
+  };
+  return {
+    schemaVersion: 1,
+    status: "candidate",
+    approval: "NOT_PRODUCTION_APPROVED",
+    evidenceBlock: null,
+    evidenceBlockHash: null,
+    network: "ethereum-candidate",
+    asset: {
+      name: "Ondo Global Markets Apple Inc.",
+      symbol: "AAPLon",
+    },
+    decimals: 18,
+    gmIdentifier: "0x428ecb70e90d1527a5f5e177789f51747b883f34",
+    capabilities: {
+      tokenStandard: { name: "ERC20", value: capabilities.tokenStandard },
+      restrictionMode: { name: "TOKEN_ENFORCED", value: capabilities.restrictionMode },
+      precheckMethod: { name: "TOKEN_SPECIFIC_CHECK", value: capabilities.precheckMethod },
+      transferLegMask: "2",
+      coveredLegs: ["ASSET"],
+      capabilityHash: hashStruct({
+        data: capabilities,
+        primaryType: "AdapterCapabilities",
+        types: {
+          AdapterCapabilities: [
+            { name: "tokenStandard", type: "uint8" },
+            { name: "restrictionMode", type: "uint8" },
+            { name: "precheckMethod", type: "uint8" },
+            { name: "transferLegMask", type: "uint256" },
+          ],
+        },
+      }),
+    },
+    candidateAddresses: {
+      token: "0x14c3abf95cb9c93a8b82c1cdcb76d72cb87b2d4c",
+      complianceView: null,
+      compliance: null,
+      pauseManager: null,
+      blocklist: null,
+      sanctionsList: null,
+    },
+    runtimeCodeHashes: {
+      token: null,
+      complianceView: null,
+      compliance: null,
+      pauseManager: null,
+      blocklist: null,
+      sanctionsList: null,
+    },
+    providerHash: null,
+    verificationPolicy: {
+      allowedReads: ["public getters", "runtime bytecode", "eth_call"],
+      forbiddenReads: ["beacon storage", "ERC1967 storage"],
+    },
+    warning:
+      "AAPLon is only a candidate until a finalized block/hash, all provider addresses/runtime code hashes, providerHash, and explicit human approval are pinned.",
+  };
+}
+
 const boundaryHeader = { schemaVersion: 1, status: "candidate", boundaryOnly: true };
 
 function quoteBoundary() {
@@ -942,6 +1007,7 @@ export function writeOrCheckPhase17(targetRoot: string, write: boolean): void {
     [VECTOR_PATHS.fees]: feeVectors(),
     [VECTOR_PATHS.settlement]: settlementVectors(),
     [VECTOR_PATHS.adapters]: usdyVector(),
+    [VECTOR_PATHS.ondoGmAdapter]: ondoGmAaplonVector(),
   };
   const offchainOutputs: Record<string, unknown> = {
     "quote.json": quoteBoundary(),

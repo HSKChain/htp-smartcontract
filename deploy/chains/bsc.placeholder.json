@@ -37,7 +37,8 @@
       "settlementToken": null,
       "settlementTokenDecimals": null,
       "erc1404Token": null,
-      "usdyToken": null
+      "usdyToken": null,
+      "gmToken": null
     },
     "providers": {
       "usdyBlocklist": null,

@@ -1,0 +1,52 @@
+{
+  "expectedChainId": 1,
+  "finalityConfirmations": 64,
+  "deploymentVersion": "1.0.0",
+  "evidenceHash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+  "roles": {
+    "defaultAdmin": "0x0000000000000000000000000000000000001001",
+    "governance": "0x0000000000000000000000000000000000001002",
+    "upgrader": "0x0000000000000000000000000000000000001003",
+    "pauser": "0x0000000000000000000000000000000000001004",
+    "executor": "0x0000000000000000000000000000000000001005",
+    "configurer": "0x0000000000000000000000000000000000001006"
+  },
+  "settlementToken": {
+    "address": "0x0000000000000000000000000000000000002001",
+    "decimals": 6,
+    "permitCapability": "UNSUPPORTED",
+    "deploymentKind": "DIRECT",
+    "implementation": null
+  },
+  "calculators": [
+    "FUND",
+    "STOCK"
+  ],
+  "assetAdapters": {
+    "usdyRestricted": {
+      "token": "0x96F6eF951840721AdBF46Ac996b59E0235CB985C",
+      "providerCallGas": 100000
+    },
+    "ondoGm": {
+      "token": "0x14c3abf95cb9c93a8b82c1cdcb76d72cb87b2d4c",
+      "providerCallGas": 100000
+    },
+    "erc1404": null
+  },
+  "feeEpoch": {
+    "quoteValidFrom": 1790524800,
+    "quoteValidUntil": 1822060800,
+    "settlementValidUntil": 1824652800
+  },
+  "globalFee": {
+    "investorRateBps": 25,
+    "investorHasCap": false,
+    "investorCapAmount": "0",
+    "makerRateBps": 15,
+    "makerHasCap": false,
+    "makerCapAmount": "0",
+    "collector": "0x0000000000000000000000000000000000004001",
+    "validFrom": 1790524800,
+    "validUntil": 1824652800
+  }
+}

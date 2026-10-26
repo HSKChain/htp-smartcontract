@@ -243,6 +243,11 @@
                 "type": "bytes32"
               },
               {
+                "internalType": "bytes32",
+                "name": "tradeIdHash",
+                "type": "bytes32"
+              },
+              {
                 "internalType": "uint32",
                 "name": "quoteVersion",
                 "type": "uint32"
@@ -1010,6 +1015,11 @@
               {
                 "internalType": "bytes32",
                 "name": "quoteIdHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes32",
+                "name": "tradeIdHash",
                 "type": "bytes32"
               },
               {

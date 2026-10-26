@@ -376,8 +376,10 @@ contract DvPMigrationRunbookTest is DeployFixture {
         feePayloads[1] =
             abi.encodeCall(IFeeRegistry.activateFeeVersion, (nextFeeConfig.feeVersionId, nextFeeConfig.configHash));
         feeTargets[2] = address(feeRegistry);
-        feePayloads[2] =
-            abi.encodeCall(IFeeRegistry.activateFeePolicyEpoch, (nextEpoch.feePolicyEpoch, nextEpoch.configHash));
+        feePayloads[2] = abi.encodeCall(
+            IFeeRegistry.activateFeePolicyEpoch,
+            (nextEpoch.feePolicyEpoch, nextEpoch.configHash, nextFeeConfig.feeVersionId)
+        );
         _execute(_batch(feeTargets, feePayloads, keccak256("finalize-migration-fees")));
         address[] memory marketRuleTargets = new address[](2);
         bytes[] memory marketRulePayloads = new bytes[](2);

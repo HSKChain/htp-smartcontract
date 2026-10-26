@@ -54,6 +54,7 @@ struct ExampleAdapterInputs {
     address usdyBlocklist;
     address usdyAllowlist;
     address usdySanctionsList;
+    address gmToken;
     uint256 providerCallGas;
 }
 
@@ -64,6 +65,7 @@ struct ExampleImplementations {
     address unrestrictedAdapter;
     address erc1404Adapter;
     address usdyAdapter;
+    address ondoGmAdapter;
 }
 
 struct ExampleBusinessInputs {
@@ -83,7 +85,7 @@ struct ExampleBusinessInputs {
 
 struct ExampleConfigs {
     PrincipalCalculatorConfig[3] calculators;
-    AdapterConfig[3] adapters;
+    AdapterConfig[4] adapters;
     SettlementTokenConfig settlementToken;
     AssetVersionConfig assetVersion;
     ParticipantInput[2] participants;

@@ -2,6 +2,7 @@
 pragma solidity 0.8.36;
 
 import {BoundedStaticCall} from "./BoundedStaticCall.sol";
+import {PrincipalMath} from "./PrincipalMath.sol";
 import {RegistryImplementationValidation} from "./RegistryImplementationValidation.sol";
 import {HTPErrors} from "../types/HTPErrors.sol";
 import {TokenDeploymentKind} from "../types/HTPTypes.sol";
@@ -27,8 +28,17 @@ library TokenMetadataValidation {
         if (!valid || actual != expected) revert HTPErrors.AssetDecimalsMismatch(token, expected, actual);
     }
 
+    /// @notice Whether settlement-token decimals are supported by market-rule principal math.
+    function isSettlementTokenDecimalsSupported(uint8 decimals) internal pure returns (bool) {
+        // N5: Reject configurations that can never satisfy market-rule price precision.
+        return decimals != 0 && decimals <= PrincipalMath.MAX_ASSET_DECIMALS;
+    }
+
     /// @notice Reverts if on-chain decimals differ from the expected settlement token decimals.
     function requireSettlementTokenDecimals(address token, uint8 expected) internal view {
+        if (!isSettlementTokenDecimalsSupported(expected)) {
+            revert HTPErrors.SettlementTokenDecimalsOutOfRange(expected);
+        }
         (bool valid, uint256 actual) = readDecimals(token);
 
         if (!valid || actual != expected) {

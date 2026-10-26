@@ -16,6 +16,7 @@ test("SchemaModel reads FirmQuote fields and ABI layout from the HTPTypes AST", 
       "schemaVersion",
       "rfqIdHash",
       "quoteIdHash",
+      "tradeIdHash",
       "quoteVersion",
       "quotingMaker",
       "requester",
@@ -46,14 +47,14 @@ test("SchemaModel reads FirmQuote fields and ABI layout from the HTPTypes AST", 
       "expiresAt",
     ],
   );
-  assert.equal(firmQuote.fields[6]?.abiType, "uint8");
-  assert.equal(firmQuote.fields[6]?.solidityType, "ParticipantType");
-  assert.equal(firmQuote.fields[6]?.kind, "enum");
-  assert.equal(firmQuote.fields[13]?.abiType, "bytes");
-  assert.equal(firmQuote.fields[13]?.dynamic, true);
-  assert.equal(firmQuote.fields[13]?.headOffset, 13 * 32);
+  assert.equal(firmQuote.fields[7]?.abiType, "uint8");
+  assert.equal(firmQuote.fields[7]?.solidityType, "ParticipantType");
+  assert.equal(firmQuote.fields[7]?.kind, "enum");
+  assert.equal(firmQuote.fields[14]?.abiType, "bytes");
+  assert.equal(firmQuote.fields[14]?.dynamic, true);
+  assert.equal(firmQuote.fields[14]?.headOffset, 14 * 32);
   assert.equal(firmQuote.dynamic, true);
-  assert.equal(firmQuote.headByteLength, 31 * 32);
+  assert.equal(firmQuote.headByteLength, 32 * 32);
   assert.equal(model.schemaVersion, 1);
 });
 
@@ -62,11 +63,11 @@ test("SchemaModel extracts EIP-712 type strings from HTPHashing AST constants", 
   const firmQuote = model.typehashes.FIRM_QUOTE_TYPEHASH;
   assert.equal(
     firmQuote?.typeString,
-    "FirmQuote(uint32 schemaVersion,bytes32 rfqIdHash,bytes32 quoteIdHash,uint32 quoteVersion,address quotingMaker,address requester,uint8 requesterType,bytes32 assetVersionId,uint8 requesterSide,address assetToken,address settlementToken,uint8 assetClass,bytes32 priceTermsHash,bytes priceData,bytes32 principalCalculatorConfigId,bytes32 principalCalculatorConfigHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,bytes32 marketRuleConfigId,bytes32 marketRuleConfigHash,uint256 minExecutableQuantity,uint256 maxExecutableQuantity,uint256 stepQuantity,uint64 feePolicyEpoch,bytes32 feeVersionId,bytes32 matchedScopeHash,bytes32 feeConstraintHash,uint256 quoteNonce,uint64 expiresAt)",
+    "FirmQuote(uint32 schemaVersion,bytes32 rfqIdHash,bytes32 quoteIdHash,bytes32 tradeIdHash,uint32 quoteVersion,address quotingMaker,address requester,uint8 requesterType,bytes32 assetVersionId,uint8 requesterSide,address assetToken,address settlementToken,uint8 assetClass,bytes32 priceTermsHash,bytes priceData,bytes32 principalCalculatorConfigId,bytes32 principalCalculatorConfigHash,bytes32 adapterConfigId,bytes32 adapterConfigHash,bytes32 settlementTokenConfigId,bytes32 settlementTokenConfigHash,bytes32 marketRuleConfigId,bytes32 marketRuleConfigHash,uint256 minExecutableQuantity,uint256 maxExecutableQuantity,uint256 stepQuantity,uint64 feePolicyEpoch,bytes32 feeVersionId,bytes32 matchedScopeHash,bytes32 feeConstraintHash,uint256 quoteNonce,uint64 expiresAt)",
   );
   assert.equal(
     firmQuote?.typeHash,
-    "0x79db216dea763a9d67ad7df5570a388d4055c6ac896752086982d5db82bb597b",
+    "0xf576cd55e29ca3b3f9054376d57902bbfd1c065cadbaadc855180836f3f06ee5",
   );
   assert.equal(model.domain.name, "HTP DvP Settlement");
 });

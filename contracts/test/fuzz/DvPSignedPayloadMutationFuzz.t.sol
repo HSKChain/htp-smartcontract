@@ -16,17 +16,22 @@ import {DvPPreCheckTestBase} from "test/helpers/DvPPreCheckTestBase.sol";
 
 contract DvPSignedPayloadMutationFuzzTest is DvPPreCheckTestBase {
     uint256 private constant SECP256K1_N = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141;
+    uint256 private constant FIRM_QUOTE_FIELD_COUNT = 32;
+    uint256 private constant TRADE_INTENT_FIELD_COUNT = 39;
+    uint256 private constant SNAPSHOT_FIELD_COUNT = 45;
+    uint256 private constant SIGNED_FIELD_COUNT =
+        FIRM_QUOTE_FIELD_COUNT + TRADE_INTENT_FIELD_COUNT + SNAPSHOT_FIELD_COUNT;
 
     function testFuzzSingleFieldMutationNeverReachesValidatedSettlementStage(uint8 fieldSeed, bytes32 mutationSeed)
         public
     {
         bytes32 mutation = mutationSeed == bytes32(0) ? bytes32(uint256(1)) : mutationSeed;
-        uint256 field = bound(fieldSeed, 0, 108);
+        uint256 field = bound(fieldSeed, 0, SIGNED_FIELD_COUNT - 1);
         _assertMutationRejected(field, mutation);
     }
 
     function testEverySignedFieldMutationIsRejected() public {
-        for (uint256 field; field < 109; ++field) {
+        for (uint256 field; field < SIGNED_FIELD_COUNT; ++field) {
             _assertMutationRejected(field, bytes32(field + 1));
         }
     }
@@ -73,12 +78,12 @@ contract DvPSignedPayloadMutationFuzzTest is DvPPreCheckTestBase {
 
     function _assertMutationRejected(uint256 field, bytes32 mutation) private {
         SettlementParams memory params = _validPreCheckParams();
-        if (field < 29) {
+        if (field < FIRM_QUOTE_FIELD_COUNT) {
             _mutateFirmQuote(params, field, mutation);
-        } else if (field < 66) {
-            _mutateTradeIntent(params, field - 29, mutation);
+        } else if (field < FIRM_QUOTE_FIELD_COUNT + TRADE_INTENT_FIELD_COUNT) {
+            _mutateTradeIntent(params, field - FIRM_QUOTE_FIELD_COUNT, mutation);
         } else {
-            _mutateSnapshot(params, field - 66, mutation);
+            _mutateSnapshot(params, field - FIRM_QUOTE_FIELD_COUNT - TRADE_INTENT_FIELD_COUNT, mutation);
         }
 
         vm.prank(EXECUTOR);
@@ -131,54 +136,61 @@ contract DvPSignedPayloadMutationFuzzTest is DvPPreCheckTestBase {
         } else if (field == 2) {
             params.firmQuote.quoteIdHash ^= mutation;
         } else if (field == 3) {
-            params.firmQuote.quoteVersion ^= _uint32Mutation(mutation);
+            // N10: Exercise the maker-signed trade identity itself.
+            params.firmQuote.tradeIdHash ^= mutation;
         } else if (field == 4) {
-            params.firmQuote.quotingMaker = _mutateAddress(params.firmQuote.quotingMaker, mutation);
+            params.firmQuote.quoteVersion ^= _uint32Mutation(mutation);
         } else if (field == 5) {
-            params.firmQuote.requester = _mutateAddress(params.firmQuote.requester, mutation);
+            params.firmQuote.quotingMaker = _mutateAddress(params.firmQuote.quotingMaker, mutation);
         } else if (field == 6) {
-            params.firmQuote.requesterType = ParticipantType.MAKER;
+            params.firmQuote.requester = _mutateAddress(params.firmQuote.requester, mutation);
         } else if (field == 7) {
-            params.firmQuote.assetVersionId ^= mutation;
+            params.firmQuote.requesterType = ParticipantType.MAKER;
         } else if (field == 8) {
-            params.firmQuote.requesterSide = RequesterSide.SELL;
+            params.firmQuote.assetVersionId ^= mutation;
         } else if (field == 9) {
-            params.firmQuote.assetToken = _mutateAddress(params.firmQuote.assetToken, mutation);
+            params.firmQuote.requesterSide = RequesterSide.SELL;
         } else if (field == 10) {
-            params.firmQuote.settlementToken = _mutateAddress(params.firmQuote.settlementToken, mutation);
+            params.firmQuote.assetToken = _mutateAddress(params.firmQuote.assetToken, mutation);
         } else if (field == 11) {
-            params.firmQuote.assetClass = AssetClass.STOCK;
+            params.firmQuote.settlementToken = _mutateAddress(params.firmQuote.settlementToken, mutation);
         } else if (field == 12) {
-            params.firmQuote.priceTermsHash ^= mutation;
+            params.firmQuote.assetClass = AssetClass.STOCK;
         } else if (field == 13) {
-            params.firmQuote.priceData = bytes.concat(params.firmQuote.priceData, mutation);
+            params.firmQuote.priceTermsHash ^= mutation;
         } else if (field == 14) {
-            params.firmQuote.principalCalculatorConfigId ^= mutation;
+            params.firmQuote.priceData = bytes.concat(params.firmQuote.priceData, mutation);
         } else if (field == 15) {
-            params.firmQuote.principalCalculatorConfigHash ^= mutation;
+            params.firmQuote.principalCalculatorConfigId ^= mutation;
         } else if (field == 16) {
-            params.firmQuote.adapterConfigId ^= mutation;
+            params.firmQuote.principalCalculatorConfigHash ^= mutation;
         } else if (field == 17) {
-            params.firmQuote.adapterConfigHash ^= mutation;
+            params.firmQuote.adapterConfigId ^= mutation;
         } else if (field == 18) {
-            params.firmQuote.settlementTokenConfigId ^= mutation;
+            params.firmQuote.adapterConfigHash ^= mutation;
         } else if (field == 19) {
-            params.firmQuote.settlementTokenConfigHash ^= mutation;
+            params.firmQuote.settlementTokenConfigId ^= mutation;
         } else if (field == 20) {
-            params.firmQuote.minExecutableQuantity ^= uint256(mutation);
+            params.firmQuote.settlementTokenConfigHash ^= mutation;
         } else if (field == 21) {
-            params.firmQuote.maxExecutableQuantity ^= uint256(mutation);
+            params.firmQuote.marketRuleConfigId ^= mutation;
         } else if (field == 22) {
-            params.firmQuote.stepQuantity ^= uint256(mutation);
+            params.firmQuote.marketRuleConfigHash ^= mutation;
         } else if (field == 23) {
-            params.firmQuote.feePolicyEpoch ^= _uint64Mutation(mutation);
+            params.firmQuote.minExecutableQuantity ^= uint256(mutation);
         } else if (field == 24) {
-            params.firmQuote.feeVersionId ^= mutation;
+            params.firmQuote.maxExecutableQuantity ^= uint256(mutation);
         } else if (field == 25) {
-            params.firmQuote.matchedScopeHash ^= mutation;
+            params.firmQuote.stepQuantity ^= uint256(mutation);
         } else if (field == 26) {
-            params.firmQuote.feeConstraintHash ^= mutation;
+            params.firmQuote.feePolicyEpoch ^= _uint64Mutation(mutation);
         } else if (field == 27) {
+            params.firmQuote.feeVersionId ^= mutation;
+        } else if (field == 28) {
+            params.firmQuote.matchedScopeHash ^= mutation;
+        } else if (field == 29) {
+            params.firmQuote.feeConstraintHash ^= mutation;
+        } else if (field == 30) {
             params.firmQuote.quoteNonce ^= uint256(mutation);
         } else {
             params.firmQuote.expiresAt ^= _uint64Mutation(mutation);
@@ -233,30 +245,34 @@ contract DvPSignedPayloadMutationFuzzTest is DvPPreCheckTestBase {
         } else if (field == 22) {
             params.tradeIntent.settlementTokenConfigHash ^= mutation;
         } else if (field == 23) {
-            params.tradeIntent.cashPrincipal ^= uint256(mutation);
+            params.tradeIntent.marketRuleConfigId ^= mutation;
         } else if (field == 24) {
-            params.tradeIntent.buyerFee ^= uint256(mutation);
+            params.tradeIntent.marketRuleConfigHash ^= mutation;
         } else if (field == 25) {
-            params.tradeIntent.sellerFee ^= uint256(mutation);
+            params.tradeIntent.cashPrincipal ^= uint256(mutation);
         } else if (field == 26) {
-            params.tradeIntent.buyerDebit ^= uint256(mutation);
+            params.tradeIntent.buyerFee ^= uint256(mutation);
         } else if (field == 27) {
-            params.tradeIntent.sellerCredit ^= uint256(mutation);
+            params.tradeIntent.sellerFee ^= uint256(mutation);
         } else if (field == 28) {
-            params.tradeIntent.collectorCredit ^= uint256(mutation);
+            params.tradeIntent.buyerDebit ^= uint256(mutation);
         } else if (field == 29) {
-            params.tradeIntent.collector = _mutateAddress(params.tradeIntent.collector, mutation);
+            params.tradeIntent.sellerCredit ^= uint256(mutation);
         } else if (field == 30) {
-            params.tradeIntent.feePolicyEpoch ^= _uint64Mutation(mutation);
+            params.tradeIntent.collectorCredit ^= uint256(mutation);
         } else if (field == 31) {
-            params.tradeIntent.feeVersionId ^= mutation;
+            params.tradeIntent.collector = _mutateAddress(params.tradeIntent.collector, mutation);
         } else if (field == 32) {
-            params.tradeIntent.matchedScopeHash ^= mutation;
+            params.tradeIntent.feePolicyEpoch ^= _uint64Mutation(mutation);
         } else if (field == 33) {
-            params.tradeIntent.feeConstraintHash ^= mutation;
+            params.tradeIntent.feeVersionId ^= mutation;
         } else if (field == 34) {
-            params.tradeIntent.roundingMode = RoundingMode.NONE;
+            params.tradeIntent.matchedScopeHash ^= mutation;
         } else if (field == 35) {
+            params.tradeIntent.feeConstraintHash ^= mutation;
+        } else if (field == 36) {
+            params.tradeIntent.roundingMode = RoundingMode.NONE;
+        } else if (field == 37) {
             params.tradeIntent.tradeNonce ^= uint256(mutation);
         } else {
             params.tradeIntent.deadline ^= _uint64Mutation(mutation);
@@ -317,36 +333,40 @@ contract DvPSignedPayloadMutationFuzzTest is DvPPreCheckTestBase {
         } else if (field == 25) {
             params.snapshot.settlementTokenConfigHash ^= mutation;
         } else if (field == 26) {
-            params.snapshot.cashPrincipal ^= uint256(mutation);
+            params.snapshot.marketRuleConfigId ^= mutation;
         } else if (field == 27) {
-            params.snapshot.buyerFee ^= uint256(mutation);
+            params.snapshot.marketRuleConfigHash ^= mutation;
         } else if (field == 28) {
-            params.snapshot.sellerFee ^= uint256(mutation);
+            params.snapshot.cashPrincipal ^= uint256(mutation);
         } else if (field == 29) {
-            params.snapshot.buyerDebit ^= uint256(mutation);
+            params.snapshot.buyerFee ^= uint256(mutation);
         } else if (field == 30) {
-            params.snapshot.sellerCredit ^= uint256(mutation);
+            params.snapshot.sellerFee ^= uint256(mutation);
         } else if (field == 31) {
-            params.snapshot.collectorCredit ^= uint256(mutation);
+            params.snapshot.buyerDebit ^= uint256(mutation);
         } else if (field == 32) {
-            params.snapshot.collector = _mutateAddress(params.snapshot.collector, mutation);
+            params.snapshot.sellerCredit ^= uint256(mutation);
         } else if (field == 33) {
-            params.snapshot.feePolicyEpoch ^= _uint64Mutation(mutation);
+            params.snapshot.collectorCredit ^= uint256(mutation);
         } else if (field == 34) {
-            params.snapshot.feeVersionId ^= mutation;
+            params.snapshot.collector = _mutateAddress(params.snapshot.collector, mutation);
         } else if (field == 35) {
-            params.snapshot.matchedScopeHash ^= mutation;
+            params.snapshot.feePolicyEpoch ^= _uint64Mutation(mutation);
         } else if (field == 36) {
-            params.snapshot.feeConstraintHash ^= mutation;
+            params.snapshot.feeVersionId ^= mutation;
         } else if (field == 37) {
-            params.snapshot.roundingMode = RoundingMode.NONE;
+            params.snapshot.matchedScopeHash ^= mutation;
         } else if (field == 38) {
-            params.snapshot.makerQuoteNonce ^= uint256(mutation);
+            params.snapshot.feeConstraintHash ^= mutation;
         } else if (field == 39) {
-            params.snapshot.requesterTradeNonce ^= uint256(mutation);
+            params.snapshot.roundingMode = RoundingMode.NONE;
         } else if (field == 40) {
-            params.snapshot.quoteExpiresAt ^= _uint64Mutation(mutation);
+            params.snapshot.makerQuoteNonce ^= uint256(mutation);
         } else if (field == 41) {
+            params.snapshot.requesterTradeNonce ^= uint256(mutation);
+        } else if (field == 42) {
+            params.snapshot.quoteExpiresAt ^= _uint64Mutation(mutation);
+        } else if (field == 43) {
             params.snapshot.tradeDeadline ^= _uint64Mutation(mutation);
         } else {
             params.snapshot.createdAt ^= _uint64Mutation(mutation);

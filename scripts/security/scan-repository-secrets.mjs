@@ -1,21 +1,11 @@
-import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { dirname, extname, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const excludedDirectories = new Set([
-  ".git",
-  "node_modules",
-  "contracts/lib",
-  "contracts/out",
-  "contracts/cache",
-  "contracts/broadcast",
-  "contracts/coverage",
-  "coverage",
-  "deploy/out",
-]);
 const acceptedCanaryFindings = new Map([
   [
     "scripts/deploy/validate-config.test.mjs",
@@ -23,12 +13,7 @@ const acceptedCanaryFindings = new Map([
   ],
   ["scripts/security/scan-schema-secrets.mjs", new Set(["PEM private key"])],
 ]);
-const approvedBinaryDigests = new Map([
-  [
-    "03-HTP链上DvP合约_PRD_V3.2.pdf",
-    "cc6bdc2107b98c2f65b4afd8265a7abf9881c71f53462483495e9abda289179a",
-  ],
-]);
+const approvedBinaryDigests = new Map();
 const allowedEmailDomains = new Set(["example.com", "example.org", "example.net"]);
 
 /** @param {string} path */
@@ -36,32 +21,21 @@ function normalizedRelative(path) {
   return relative(repositoryRoot, path).split(sep).join("/");
 }
 
-/** @param {string} relativePath */
-function isExcludedDirectory(relativePath) {
-  const segments = relativePath.split("/");
-  return (
-    segments.includes(".git") ||
-    segments.includes("node_modules") ||
-    segments.includes(".venv") ||
-    segments.includes("__pycache__") ||
-    [...excludedDirectories].some(
-      (excluded) => relativePath === excluded || relativePath.startsWith(`${excluded}/`),
-    )
+/**
+ * 扫描所有 tracked 和可提交的 untracked 文件；ignored 本地密钥不属于仓库内容。
+ * @param {string} root
+ */
+function collectRepositoryFiles(root) {
+  const output = execFileSync(
+    "git",
+    ["ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+    { cwd: root, encoding: "utf8" },
   );
-}
-
-/** @param {string} directory @param {string[]} [files] */
-function collectFiles(directory, files = []) {
-  for (const entry of readdirSync(directory, { withFileTypes: true })) {
-    const path = resolve(directory, entry.name);
-    const relativePath = normalizedRelative(path);
-    if (entry.isDirectory()) {
-      if (!isExcludedDirectory(relativePath)) collectFiles(path, files);
-      continue;
-    }
-    if (entry.isFile()) files.push(path);
-  }
-  return files;
+  return output
+    .split("\0")
+    .filter(Boolean)
+    .map((path) => resolve(root, path))
+    .filter((path) => existsSync(path) && lstatSync(path).isFile());
 }
 
 /** @param {string} relativePath */
@@ -90,7 +64,7 @@ export function contentFindings(content) {
     ],
     [
       "private key assignment",
-      /\b(?:PRIVATE_KEY|privateKey)\b\s*[:=]\s*["']?(?:0x)?[0-9a-f]{64}["']?/iu,
+      /\b(?:PRIVATE_KEY|privateKey|HTP_[A-Z0-9_]*_KEY)\b\s*[:=]\s*["']?(?:0x)?[0-9a-f]{64}["']?/iu,
     ],
     [
       "plaintext raw transaction",
@@ -125,6 +99,9 @@ function runSelfTest() {
   for (const expected of ["private key assignment", "AWS KMS key ARN", "plaintext raw transaction"]) {
     if (!findings.includes(expected)) throw new Error(`Repository scan self-test missed ${expected}`);
   }
+  if (!contentFindings(`HTP_DEPLOYER_KEY=0x${key}`).includes("private key assignment")) {
+    throw new Error("Repository scan self-test missed HTP private key assignment");
+  }
   if (contentFindings("security@example.com").length !== 0) {
     throw new Error("Repository scan self-test rejected an example email");
   }
@@ -132,13 +109,18 @@ function runSelfTest() {
   const temporaryRoot = mkdtempSync(resolve(tmpdir(), "htp-secret-scan-self-test-"));
   try {
     mkdirSync(resolve(temporaryRoot, "visible"), { recursive: true });
-    mkdirSync(resolve(temporaryRoot, "node_modules", "hidden"), { recursive: true });
+    mkdirSync(resolve(temporaryRoot, "ignored"), { recursive: true });
+    writeFileSync(resolve(temporaryRoot, ".gitignore"), "ignored/\n");
     writeFileSync(resolve(temporaryRoot, "visible", "checked.txt"), "checked");
-    writeFileSync(resolve(temporaryRoot, "node_modules", "hidden", "ignored.txt"), "ignored");
-    const collected = collectFiles(temporaryRoot).map((path) => relative(temporaryRoot, path));
+    writeFileSync(resolve(temporaryRoot, "ignored", "local.env"), "ignored");
+    writeFileSync(resolve(temporaryRoot, "ignored", "forced.env"), "forced");
+    execFileSync("git", ["init", "--quiet"], { cwd: temporaryRoot });
+    execFileSync("git", ["add", "--force", "ignored/forced.env"], { cwd: temporaryRoot });
+    const collected = collectRepositoryFiles(temporaryRoot).map((path) => relative(temporaryRoot, path));
     if (
       !collected.includes("visible/checked.txt") ||
-      collected.some((path) => path.includes("node_modules"))
+      !collected.includes("ignored/forced.env") ||
+      collected.includes("ignored/local.env")
     ) {
       throw new Error("Repository traversal self-test failed");
     }
@@ -159,18 +141,23 @@ function main() {
     [...acceptedCanaryFindings].map(([path]) => [path, new Set()]),
   );
   const seenApprovedBinaries = new Set();
-  for (const path of collectFiles(repositoryRoot)) {
+  for (const path of collectRepositoryFiles(repositoryRoot)) {
     const relativePath = normalizedRelative(path);
     for (const finding of pathFindings(relativePath)) findings.push(`${relativePath}: ${finding}`);
     const bytes = readFileSync(path);
-    if (bytes.includes(0)) {
+    const approvedDigest = approvedBinaryDigests.get(relativePath);
+    if (approvedDigest !== undefined) {
       const digest = createHash("sha256").update(bytes).digest("hex");
-      const approvedDigest = approvedBinaryDigests.get(relativePath);
       if (approvedDigest !== digest) {
         findings.push(`${relativePath}: unapproved binary sha256=${digest}`);
       } else {
         seenApprovedBinaries.add(relativePath);
       }
+      continue;
+    }
+    if (bytes.includes(0)) {
+      const digest = createHash("sha256").update(bytes).digest("hex");
+      findings.push(`${relativePath}: unapproved binary sha256=${digest}`);
       continue;
     }
     const content = bytes.toString("utf8");

@@ -37,6 +37,7 @@ npm run contracts:unit
 npm run contracts:integration
 npm run contracts:fuzz
 npm run contracts:invariant
+npm run contracts:slowmist
 ```
 
 Phase 0 documentation and Phase 1 tooling do not require a fabricated Red.
@@ -53,6 +54,7 @@ test/integration/   cross-contract and deployment behavior
 test/fuzz/          bounded property exploration
 test/invariant/     stateful invariants
 test/fork/          optional fixed-block external integration
+test/slowmist_audit/ external-audit regression tests
 ```
 
 Absent directories are created when their first Red test is introduced. An
@@ -81,6 +83,7 @@ npm run typecheck
 npm run contracts:fmt
 npm run contracts:build
 npm run contracts:size
+npm run contracts:slowmist
 npm run phase4:test
 npm run calculator:bytecode
 npm run adapter:bytecode
@@ -89,6 +92,10 @@ npm run schema:check
 npm run schema:python
 npm run schema:secrets
 npm run phase18:test
+npm run ops:test
+npm run ops:platform:self-test
+npm run ops:adapter:self-test
+npm run ops:asset:self-test
 npm run reproducible:check
 npm run reproducible:self-test
 ```
@@ -278,3 +285,12 @@ implementation/proxy, role, Config and readiness check while preventing
 local/unapproved inputs from claiming production readiness. Upgrade and
 migration tests keep DvPs paused until all checks pass; USDY fork remains an
 explicit non-evidence skip until an approved block package and RPC exist.
+
+Ondo GM coverage uses a clean-room public-ABI mock graph and the production
+`OndoGmTokenAdapter`. Unit and integration tests cover pause, blocklist,
+sanctions, provider drift/malformed calls/gas exhaustion, shared capability
+revisions, reuse by a second token with the same runtime/provider graph, stock
+settlement through the shared adapter config, and atomic rollback when an issuer
+rule rejects a transfer after precheck. Different runtime or provider graphs
+fail closed. AAPLon fixed-block tests use only public getters, runtime bytecode
+and `eth_call`; candidate or skipped runs are not production evidence.

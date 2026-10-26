@@ -64,6 +64,7 @@ export const VECTOR_PATHS = {
   feeAmounts: "vectors/fees/amounts-v1.json",
   settlement: "vectors/settlement/buy-sell-permit.json",
   adapters: "vectors/adapters/usdy.json",
+  ondoGmAdapter: "vectors/adapters/ondo-gm-aaplon.json",
 } as const;
 
 export function schemaRepoPath(relativeToV1: string): string {

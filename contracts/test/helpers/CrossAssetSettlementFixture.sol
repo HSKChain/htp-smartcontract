@@ -193,7 +193,7 @@ abstract contract CrossAssetSettlementFixture is UsdySettlementFixture {
         feeRegistry.activateFeeVersion(config.feeVersionId, config.configHash);
         vm.warp(validFrom);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(feeEpoch, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(feeEpoch, epoch.configHash, config.feeVersionId);
     }
 
     function _registerMarketRule(AssetVersionConfig memory asset) private returns (MarketRuleConfig memory config) {

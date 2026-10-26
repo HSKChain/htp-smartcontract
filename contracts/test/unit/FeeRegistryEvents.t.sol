@@ -80,7 +80,7 @@ contract FeeRegistryEventsTest is FeeRegistryTestBase {
         vm.warp(epoch.quoteValidFrom);
         vm.recordLogs();
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(1, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(1, epoch.configHash, config.feeVersionId);
         logs = vm.getRecordedLogs();
         _assertEpochActivated(logs);
     }

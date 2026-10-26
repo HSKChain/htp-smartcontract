@@ -1,0 +1,62 @@
+{
+  "approval": "NOT_PRODUCTION_APPROVED",
+  "asset": {
+    "name": "Ondo Global Markets Apple Inc.",
+    "symbol": "AAPLon"
+  },
+  "candidateAddresses": {
+    "blocklist": null,
+    "compliance": null,
+    "complianceView": null,
+    "pauseManager": null,
+    "sanctionsList": null,
+    "token": "0x14c3abf95cb9c93a8b82c1cdcb76d72cb87b2d4c"
+  },
+  "capabilities": {
+    "capabilityHash": "0x63df51d7ce7afbc051e26124274639b57b65a7c685c4f186fda9027d53ca630d",
+    "coveredLegs": [
+      "ASSET"
+    ],
+    "precheckMethod": {
+      "name": "TOKEN_SPECIFIC_CHECK",
+      "value": 3
+    },
+    "restrictionMode": {
+      "name": "TOKEN_ENFORCED",
+      "value": 4
+    },
+    "tokenStandard": {
+      "name": "ERC20",
+      "value": 1
+    },
+    "transferLegMask": "2"
+  },
+  "decimals": 18,
+  "evidenceBlock": null,
+  "evidenceBlockHash": null,
+  "gmIdentifier": "0x428ecb70e90d1527a5f5e177789f51747b883f34",
+  "network": "ethereum-candidate",
+  "providerHash": null,
+  "runtimeCodeHashes": {
+    "blocklist": null,
+    "compliance": null,
+    "complianceView": null,
+    "pauseManager": null,
+    "sanctionsList": null,
+    "token": null
+  },
+  "schemaVersion": 1,
+  "status": "candidate",
+  "verificationPolicy": {
+    "allowedReads": [
+      "public getters",
+      "runtime bytecode",
+      "eth_call"
+    ],
+    "forbiddenReads": [
+      "beacon storage",
+      "ERC1967 storage"
+    ]
+  },
+  "warning": "AAPLon is only a candidate until a finalized block/hash, all provider addresses/runtime code hashes, providerHash, and explicit human approval are pinned."
+}

@@ -40,7 +40,7 @@ contract P01_FeeScopePinTest is FeeRegistryTestBase {
         _sealEpoch(epoch);
         vm.prank(address(timelock));
         feeRegistry.activateFeeVersion(globalFee.feeVersionId, globalFee.configHash);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, globalFee.feeVersionId);
 
         // 5) rogue 没有 serving 指针，解析继续回落并命中已激活的 GLOBAL
         (bytes32 resolvedId, bytes32 resolvedScope) =
@@ -92,19 +92,21 @@ contract P01_FeeScopePinTest is FeeRegistryTestBase {
         assertEq(uint8(feeRegistry.getFeeVersion(rogue.feeVersionId).status), uint8(FeeVersionStatus.REGISTERED));
     }
 
-    /// @notice 只有 REGISTERED、没有 serving 时，解析与执行均 fail-closed
-    function test_registeredVersionIsNotResolvableOrExecutable() public {
+    /// @notice N1: 只有 REGISTERED、没有 ACTIVE serving 时，Epoch 不能激活
+    function test_registeredVersionCannotMakeEpochActive() public {
         FeePolicyEpochConfig memory epoch = _createEpoch(1);
         FeeConfig memory globalFee = _feeConfig(1, ScopeType.GLOBAL, bytes32(0), 1, bytes32(0));
         _registerFee(globalFee);
-        // 封存并激活 Epoch，但故意不激活 FeeVersion
         _sealEpoch(epoch);
-        _activateEpoch(epoch);
 
+        vm.warp(epoch.quoteValidFrom);
         vm.expectRevert(
-            abi.encodeWithSelector(HTPErrors.FeeResolverNoMatch.selector, uint64(1), assetVersionConfig.assetVersionId)
+            abi.encodeWithSelector(HTPErrors.FeePolicyEpochFeeNotReady.selector, uint64(1), globalFee.feeVersionId)
         );
-        feeRegistry.resolveApplicableFee(1, assetVersionConfig.assetVersionId);
+        vm.prank(address(timelock));
+        feeRegistry.activateFeePolicyEpoch(1, epoch.configHash, globalFee.feeVersionId);
+
+        assertEq(uint8(feeRegistry.getFeePolicyEpoch(1).status), uint8(FeePolicyEpochStatus.DRAFT));
         assertEq(uint8(feeRegistry.getFeeVersion(globalFee.feeVersionId).status), uint8(FeeVersionStatus.REGISTERED));
         assertFalse(
             feeRegistry.isFeeVersionExecutable(

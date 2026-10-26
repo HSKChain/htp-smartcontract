@@ -816,7 +816,7 @@ contract UsdyOperatorPipeline is Test {
         marketRuleRegistry.activateMarketRule(marketRuleConfig.marketRuleConfigId, marketRuleConfig.configHash);
         feeRegistry.sealFeePolicyEpoch(FEE_EPOCH, feeEpochConfig.configHash);
         feeRegistry.activateFeeVersion(feeConfig.feeVersionId, feeConfig.configHash);
-        feeRegistry.activateFeePolicyEpoch(FEE_EPOCH, feeEpochConfig.configHash);
+        feeRegistry.activateFeePolicyEpoch(FEE_EPOCH, feeEpochConfig.configHash, feeConfig.feeVersionId);
 
         assertEq(
             uint8(adapterRegistry.getAdapter(usdyAdapterConfig.adapterConfigId).status), uint8(AdapterStatus.ACTIVE)
@@ -1173,6 +1173,8 @@ contract UsdyOperatorPipeline is Test {
             schemaVersion: 1,
             rfqIdHash: bytes32(uint256(0x601) + sequence),
             quoteIdHash: bytes32(uint256(0x602) + sequence),
+            // N10: Allocate the trade ID before quoting so the maker signature binds it.
+            tradeIdHash: bytes32(uint256(0x501) + sequence),
             quoteVersion: 1,
             quotingMaker: quotingMaker,
             requester: requester,
@@ -1205,7 +1207,7 @@ contract UsdyOperatorPipeline is Test {
 
         params.snapshot = TradeTermsSnapshot({
             schemaVersion: 1,
-            tradeIdHash: bytes32(uint256(0x501) + sequence),
+            tradeIdHash: params.firmQuote.tradeIdHash,
             quoteHash: bytes32(0),
             chainId: block.chainid,
             dvpContract: address(dvp),

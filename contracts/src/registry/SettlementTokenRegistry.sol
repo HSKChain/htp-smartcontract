@@ -235,13 +235,16 @@ contract SettlementTokenRegistry is LinearConfigRegistryBase {
     }
 
     function _isTokenValid(SettlementTokenConfig storage config) private view returns (bool) {
-        if (!TokenMetadataValidation.deploymentBaselineMatches(
-                config.settlementToken,
-                config.tokenDeploymentKind,
-                config.tokenCodeHash,
-                config.implementation,
-                config.implementationCodeHash
-            )) {
+        if (
+            !TokenMetadataValidation.isSettlementTokenDecimalsSupported(config.settlementTokenDecimals)
+                || !TokenMetadataValidation.deploymentBaselineMatches(
+                    config.settlementToken,
+                    config.tokenDeploymentKind,
+                    config.tokenCodeHash,
+                    config.implementation,
+                    config.implementationCodeHash
+                )
+        ) {
             return false;
         }
         (bool validDecimals, uint256 actualDecimals) = TokenMetadataValidation.readDecimals(config.settlementToken);

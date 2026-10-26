@@ -171,7 +171,7 @@ contract FeeSettlementTest is UsdySettlementFixture {
         feeRegistry.activateFeeVersion(config.feeVersionId, config.configHash);
         vm.warp(TEST_CREATED_AT);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(TEST_EPOCH, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(TEST_EPOCH, epoch.configHash, config.feeVersionId);
     }
 
     function _bindFee(SettlementParams memory params, FeeConfig memory config) private pure {

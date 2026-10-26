@@ -19,6 +19,7 @@ test("EIP-712 types come from HTPHashing type strings, not storage structs", () 
       "schemaVersion",
       "rfqIdHash",
       "quoteIdHash",
+      "tradeIdHash",
       "quoteVersion",
       "quotingMaker",
       "requester",

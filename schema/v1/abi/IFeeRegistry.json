@@ -10,6 +10,11 @@
         "internalType": "bytes32",
         "name": "expectedConfigHash",
         "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "readinessFeeVersionId",
+        "type": "bytes32"
       }
     ],
     "name": "activateFeePolicyEpoch",

@@ -184,7 +184,7 @@ contract FeeRegistry is UUPSRegistryBase {
         emit FeePolicyEpochSealed(block.chainid, feePolicyEpoch, record.config.configHash, _msgSender());
     }
 
-    function activateFeePolicyEpoch(uint64 feePolicyEpoch, bytes32 expectedConfigHash)
+    function activateFeePolicyEpoch(uint64 feePolicyEpoch, bytes32 expectedConfigHash, bytes32 readinessFeeVersionId)
         external
         onlyRole(Roles.GOVERNANCE_ROLE)
     {
@@ -201,6 +201,7 @@ contract FeeRegistry is UUPSRegistryBase {
             revert HTPErrors.FeePolicyEpochOutsideQuoteWindow(feePolicyEpoch, uint64(block.timestamp));
         }
         _requireEpochConfigHashes(record.config, expectedConfigHash);
+        _requireFeeVersionReadyForEpoch(feePolicyEpoch, readinessFeeVersionId);
 
         uint64 oldActiveEpoch = $.currentActiveEpoch;
         if (oldActiveEpoch != 0) {
@@ -305,15 +306,17 @@ contract FeeRegistry is UUPSRegistryBase {
     {
         FeeVersionRecord storage record = _requireFeeVersionInMutableEpoch(feeVersionId);
         _requireReasonAndEvidence(reason, evidenceHash);
-        if (record.status != FeeVersionStatus.ACTIVE) {
-            revert HTPErrors.UnauthorizedStateTransition(
-                feeVersionId, uint8(record.status), uint8(FeeVersionStatus.PAUSED)
-            );
+        FeeVersionStatus oldStatus = record.status;
+        // N2: Preserve the lifecycle-specific target in both events and transition errors.
+        FeeVersionStatus newStatus = oldStatus == FeeVersionStatus.DEPRECATED
+            || oldStatus == FeeVersionStatus.DEPRECATED_PAUSED
+            ? FeeVersionStatus.DEPRECATED_PAUSED
+            : FeeVersionStatus.PAUSED;
+        if (oldStatus != FeeVersionStatus.ACTIVE && oldStatus != FeeVersionStatus.DEPRECATED) {
+            revert HTPErrors.UnauthorizedStateTransition(feeVersionId, uint8(oldStatus), uint8(newStatus));
         }
-        record.status = FeeVersionStatus.PAUSED;
-        _emitFeeVersionStatusChanged(
-            record.config, FeeVersionStatus.ACTIVE, FeeVersionStatus.PAUSED, reason, evidenceHash
-        );
+        record.status = newStatus;
+        _emitFeeVersionStatusChanged(record.config, oldStatus, newStatus, reason, evidenceHash);
     }
 
     function unpauseFeeVersion(
@@ -331,15 +334,17 @@ contract FeeRegistry is UUPSRegistryBase {
             true
         );
         _requireStoredFeeConfigHash(record.config, expectedConfigHash);
-        if (record.status != FeeVersionStatus.PAUSED) {
-            revert HTPErrors.UnauthorizedStateTransition(
-                feeVersionId, uint8(record.status), uint8(FeeVersionStatus.ACTIVE)
-            );
+        FeeVersionStatus oldStatus = record.status;
+        // N2: A paused deprecated version returns to DEPRECATED, never ACTIVE.
+        FeeVersionStatus newStatus = oldStatus == FeeVersionStatus.DEPRECATED
+            || oldStatus == FeeVersionStatus.DEPRECATED_PAUSED
+            ? FeeVersionStatus.DEPRECATED
+            : FeeVersionStatus.ACTIVE;
+        if (oldStatus != FeeVersionStatus.PAUSED && oldStatus != FeeVersionStatus.DEPRECATED_PAUSED) {
+            revert HTPErrors.UnauthorizedStateTransition(feeVersionId, uint8(oldStatus), uint8(newStatus));
         }
-        record.status = FeeVersionStatus.ACTIVE;
-        _emitFeeVersionStatusChanged(
-            record.config, FeeVersionStatus.PAUSED, FeeVersionStatus.ACTIVE, reason, evidenceHash
-        );
+        record.status = newStatus;
+        _emitFeeVersionStatusChanged(record.config, oldStatus, newStatus, reason, evidenceHash);
     }
 
     function deprecateFeeVersion(bytes32 feeVersionId, ReasonCode reason, bytes32 evidenceHash)
@@ -414,6 +419,7 @@ contract FeeRegistry is UUPSRegistryBase {
         }
 
         FeeVersionRecord storage record = $.feeVersions[feeVersionId];
+        // N2: Only unpaused lifecycle states are executable.
         if (record.status != FeeVersionStatus.ACTIVE && record.status != FeeVersionStatus.DEPRECATED) {
             return false;
         }
@@ -569,6 +575,23 @@ contract FeeRegistry is UUPSRegistryBase {
         if (!record.exists) revert HTPErrors.ConfigNotFound(feeVersionId);
         FeePolicyEpochRecord storage epoch = $.epochs[record.config.feePolicyEpoch];
         if (!epoch.isSealed) revert HTPErrors.FeePolicyEpochNotSealed(record.config.feePolicyEpoch);
+    }
+
+    function _requireFeeVersionReadyForEpoch(uint64 feePolicyEpoch, bytes32 feeVersionId) private view {
+        FeeRegistryStorage storage $ = _getFeeRegistryStorage();
+        FeeVersionRecord storage record = $.feeVersions[feeVersionId];
+        FeeConfig storage config = record.config;
+        // N1: Recheck the selected serving fee and its runtime dependency before committing the epoch.
+        if (
+            !record.exists || config.feePolicyEpoch != feePolicyEpoch || record.status != FeeVersionStatus.ACTIVE
+                || $.scopeServingFeeVersionIds[config.matchedScopeHash] != feeVersionId
+                || block.timestamp < config.validFrom || block.timestamp > config.validUntil
+                || !_isSettlementTokenValid(
+                    config.settlementTokenConfigId, config.settlementTokenConfigHash, config.settlementToken, true
+                )
+        ) {
+            revert HTPErrors.FeePolicyEpochFeeNotReady(feePolicyEpoch, feeVersionId);
+        }
     }
 
     function _requireStoredFeeConfigHash(FeeConfig storage config, bytes32 expectedConfigHash) private view {

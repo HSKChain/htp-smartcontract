@@ -156,6 +156,8 @@ contract ParticipantRegistry is UUPSRegistryBase {
         if (input.validUntil <= block.timestamp) {
             revert HTPErrors.InvalidParticipantValidity(input.validUntil, uint64(block.timestamp));
         }
+        // N13: Every participant create/update must retain an auditable evidence anchor.
+        if (input.evidenceHash == bytes32(0)) revert HTPErrors.EvidenceHashRequired();
     }
 
     function _requireParticipantVersion(address wallet, uint64 expectedVersion)

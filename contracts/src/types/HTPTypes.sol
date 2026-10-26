@@ -107,7 +107,9 @@ enum FeeVersionStatus {
     REGISTERED,
     ACTIVE,
     PAUSED,
-    DEPRECATED
+    DEPRECATED,
+    // N2: Emergency stop that preserves the deprecated lifecycle provenance.
+    DEPRECATED_PAUSED
 }
 
 enum SettlementTokenStatus {
@@ -198,6 +200,9 @@ struct FirmQuote {
     uint32 schemaVersion;
     bytes32 rfqIdHash;
     bytes32 quoteIdHash;
+    // N10: Bind the canonical trade ID to the maker-signed quote.
+    bytes32 tradeIdHash;
+    // N16: Revision identifier only; does not invalidate or supersede prior quote versions.
     uint32 quoteVersion;
     address quotingMaker;
     address requester;

@@ -43,8 +43,8 @@ library SchemaFixtures {
     bytes32 internal constant FEE_VERSION_ID = 0x57f01ad65f5298cf3b333b2d1c4302ea6285f78353c2058b734a4f1fbddb684e;
     bytes32 internal constant MATCHED_SCOPE_HASH = 0xf3b89e35fb08387e5b0aec59820139c4570d7a1e89bd9807e0f2e2cd294c69ce;
     bytes32 internal constant FEE_CONSTRAINT_HASH = 0x96fd3a47b56b27d4bf98c87953437d926ac54b6da606e58bcf17cc646793488a;
-    bytes32 internal constant QUOTE_HASH = 0xca1cdab2f6412c367f4fb06ca8f52a5b73092e4ddc20a798d4e9e3f0ede0d1f9;
-    bytes32 internal constant SNAPSHOT_HASH = 0x3054e216b8a539459e5a24e6e2b037321c19817fe68ef060289332328b5050ad;
+    bytes32 internal constant QUOTE_HASH = 0xc2b38ad8616829b7dd6eb761130f83f955c460c5b93608bbea086c1aa7a17104;
+    bytes32 internal constant SNAPSHOT_HASH = 0x8f21d2562a755fffbca93d82bf27bc3ec4aa4ac1879211220984b8faf447ecaf;
     bytes32 internal constant ADAPTER_CONFIG_ID = 0x3432fb32089eac8af610b2a9f6f6fa6cc95f1f9baca25badc2cbd7a611c1d49b;
     bytes32 internal constant PRINCIPAL_CONFIG_ID = 0xb01a2f54f4e1dd8b1a05725f2ce09ebcc2ba38546cf712b66ebe69722c923f62;
     bytes32 internal constant MARKET_RULE_CONFIG_ID =
@@ -62,6 +62,7 @@ library SchemaFixtures {
             schemaVersion: 1,
             rfqIdHash: bytes32(uint256(0x601)),
             quoteIdHash: bytes32(uint256(0x602)),
+            tradeIdHash: bytes32(uint256(0x501)),
             quoteVersion: 1,
             quotingMaker: address(0xb001),
             requester: address(0xb002),

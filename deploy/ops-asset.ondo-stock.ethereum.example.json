@@ -1,0 +1,22 @@
+{
+  "expectedChainId": 1,
+  "economicAssetIdHash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+  "assetToken": "0x14c3abf95cb9c93a8b82c1cdcb76d72cb87b2d4c",
+  "deploymentKind": "DIRECT",
+  "implementation": null,
+  "permitCapability": "UNSUPPORTED",
+  "assetClass": "STOCK",
+  "adapter": "ondoGm",
+  "calculator": "STOCK",
+  "marketRule": {
+    "minCashPrincipal": "1",
+    "minExecutableQuantity": "1",
+    "quantityStep": "1",
+    "priceTick": "1",
+    "priceDecimals": 6,
+    "quantityDecimals": 18,
+    "quoteValidFrom": null,
+    "quoteValidUntil": null,
+    "settlementValidUntil": null
+  }
+}

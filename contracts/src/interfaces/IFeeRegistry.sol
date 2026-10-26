@@ -81,7 +81,8 @@ interface IFeeRegistry {
     function createFeePolicyEpoch(FeePolicyEpochConfig calldata config) external;
 
     function sealFeePolicyEpoch(uint64 feePolicyEpoch, bytes32 expectedConfigHash) external;
-    function activateFeePolicyEpoch(uint64 feePolicyEpoch, bytes32 expectedConfigHash) external;
+    function activateFeePolicyEpoch(uint64 feePolicyEpoch, bytes32 expectedConfigHash, bytes32 readinessFeeVersionId)
+        external;
     function moveFeePolicyEpochToLegacyServing(uint64 feePolicyEpoch, bytes32 evidenceHash) external;
     function closeFeePolicyEpoch(uint64 feePolicyEpoch, bytes32 evidenceHash) external;
 

@@ -51,6 +51,8 @@ contract DeploymentOperationBuilder {
         pure
         returns (DirectOperation[] memory operations)
     {
+        // Ondo GM shares USDY's capability chain and must be registered only
+        // after USDY revision 1 has been activated.
         operations = new DirectOperation[](3);
         for (uint256 i = 0; i < operations.length; ++i) {
             operations[i] = _operation(
@@ -58,6 +60,33 @@ contract DeploymentOperationBuilder {
                 abi.encodeWithSelector(IAdapterRegistry.registerAdapter.selector, configs.adapters[i])
             );
         }
+    }
+
+    function ondoGmAdapterRegistration(CoreDeployment memory core, ExampleConfigs memory configs)
+        public
+        pure
+        returns (DirectOperation memory)
+    {
+        return _operation(
+            core.adapterRegistry.proxy,
+            abi.encodeWithSelector(IAdapterRegistry.registerAdapter.selector, configs.adapters[3])
+        );
+    }
+
+    function usdyAdapterActivation(CoreDeployment memory core, ExampleConfigs memory configs)
+        public
+        pure
+        returns (DirectOperation memory)
+    {
+        return _adapterActivation(core, configs.adapters[2].adapterConfigId, configs.adapters[2].configHash);
+    }
+
+    function ondoGmAdapterActivation(CoreDeployment memory core, ExampleConfigs memory configs)
+        public
+        pure
+        returns (DirectOperation memory)
+    {
+        return _adapterActivation(core, configs.adapters[3].adapterConfigId, configs.adapters[3].configHash);
     }
 
     function calculatorAdapterActivations(CoreDeployment memory core, ExampleConfigs memory configs)
@@ -210,12 +239,14 @@ contract DeploymentOperationBuilder {
                 IFeeRegistry.activateFeeVersion.selector, configs.fee.feeVersionId, configs.fee.configHash
             )
         );
+        // N1: Multi-scope deployments must activate every intended fee before using this readiness witness.
         operations[2] = _operation(
             core.feeRegistry.proxy,
             abi.encodeWithSelector(
                 IFeeRegistry.activateFeePolicyEpoch.selector,
                 configs.feeEpoch.feePolicyEpoch,
-                configs.feeEpoch.configHash
+                configs.feeEpoch.configHash,
+                configs.fee.feeVersionId
             )
         );
     }
@@ -257,5 +288,16 @@ contract DeploymentOperationBuilder {
 
     function _operation(address target, bytes memory data) private pure returns (DirectOperation memory) {
         return DirectOperation({target: target, data: data});
+    }
+
+    function _adapterActivation(CoreDeployment memory core, bytes32 configId, bytes32 configHash)
+        private
+        pure
+        returns (DirectOperation memory)
+    {
+        return _operation(
+            core.adapterRegistry.proxy,
+            abi.encodeWithSelector(IAdapterRegistry.activateAdapter.selector, configId, configHash)
+        );
     }
 }

@@ -27,6 +27,11 @@ struct SettlementFailureContext {
     bytes32 principalCalculatorConfigId;
     bytes32 feeVersionId;
     bytes32 marketRuleConfigId;
+    // N11: Values required to preserve deterministic market-rule reverts.
+    uint256 marketRuleQuotedPrice;
+    uint256 marketRulePriceTick;
+    uint256 cashPrincipal;
+    uint256 marketRuleMinCashPrincipal;
 }
 
 /// @notice Maps validator failures to structured reverts and enforces participant/nonce gates.
@@ -71,6 +76,17 @@ contract StrictSettlementFailureMapper {
         }
         if (reason == HTPErrors.MarketRuleQuantityViolation.selector) {
             revert HTPErrors.MarketRuleQuantityViolation(context.marketRuleConfigId);
+        }
+        // N11: Do not misreport deterministic market-rule violations as calculator failures.
+        if (reason == HTPErrors.MarketRulePriceTickViolation.selector) {
+            revert HTPErrors.MarketRulePriceTickViolation(
+                context.marketRuleConfigId, context.marketRuleQuotedPrice, context.marketRulePriceTick
+            );
+        }
+        if (reason == HTPErrors.MarketRuleMinimumPrincipalViolation.selector) {
+            revert HTPErrors.MarketRuleMinimumPrincipalViolation(
+                context.marketRuleConfigId, context.cashPrincipal, context.marketRuleMinCashPrincipal
+            );
         }
         if (reason == HTPErrors.FeeResolverNoMatch.selector) {
             revert HTPErrors.FeeResolverNoMatch(context.feePolicyEpoch, context.assetVersionId);
@@ -187,6 +203,10 @@ contract StrictSettlementFailureMapper {
         view
         returns (Decision, bytes4, address inactiveWallet)
     {
+        // N12: Reject an invalid relationship type before registry state can mask it as inactivity.
+        if (requesterType != ParticipantType.INVESTOR && requesterType != ParticipantType.MAKER) {
+            return (Decision.BLOCK, HTPErrors.ParticipantRelationshipInvalid.selector, address(0));
+        }
         IParticipantRegistry registry = IDvPSettlement(dvp).participantRegistry();
         ParticipantRecord memory maker;
         ParticipantRecord memory requesterRecord;
@@ -205,9 +225,6 @@ contract StrictSettlementFailureMapper {
         }
         if (!_participantActive(requesterRecord, requester, requesterType)) {
             return (Decision.BLOCK, HTPErrors.ParticipantInactive.selector, requester);
-        }
-        if (requesterType != ParticipantType.INVESTOR && requesterType != ParticipantType.MAKER) {
-            return (Decision.BLOCK, HTPErrors.ParticipantRelationshipInvalid.selector, address(0));
         }
         return (Decision.PASS, bytes4(0), address(0));
     }

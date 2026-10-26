@@ -52,7 +52,7 @@ struct DvPRegistries {
 /// @notice On-chain DvP settlement orchestrator (signatures, state, adapter transfers).
 contract DvPSettlement is AccessControl, ReentrancyGuard, IDvPSettlement {
     bytes32 private constant CURRENT_STATE_VALIDATOR_FACTORY_CODE_HASH =
-        0xce284db0d0ff97364fb3455f66c07ce33efa22d454b92d5a85fcc4d6a9ec32f9;
+        0x890fee98fba1a49d554379f71bf4711d00d0caf2e46974ec9a428c6d9d43f17b;
     bytes4 private constant ALLOWANCE_SELECTOR = 0xdd62ed3e;
     bytes4 private constant BALANCE_OF_SELECTOR = 0x70a08231;
     bytes4 private constant TRANSFER_FROM_SELECTOR = 0x23b872dd;
@@ -231,6 +231,8 @@ contract DvPSettlement is AccessControl, ReentrancyGuard, IDvPSettlement {
     }
 
     function _grantRole(bytes32 role, address account) internal override returns (bool granted) {
+        // N3: A zero address cannot be the actionable successor counted by the last-admin guard.
+        if (role == Roles.DEFAULT_ADMIN_ROLE) _requireRoleHolder(role, account);
         granted = super._grantRole(role, account);
         if (granted && role == Roles.DEFAULT_ADMIN_ROLE) ++_defaultAdminCount;
     }

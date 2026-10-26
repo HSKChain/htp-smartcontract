@@ -3,7 +3,10 @@ pragma solidity 0.8.36;
 
 import {HTPErrors} from "../types/HTPErrors.sol";
 
-/// @notice Reject proxy-shaped bytecode when registering implementation dependencies.
+/// @notice Reject bytecode matching known proxy patterns when registering implementation dependencies.
+/// @dev N4: This heuristic does not prove that accepted bytecode has no proxy or upgrade mechanism.
+/// @dev N14: ERC-1967 slot substring matching is intentionally fail-closed and may reject non-proxy bytecode
+///      containing either slot constant; integrations must preflight runtime bytecode before registration.
 library RegistryImplementationValidation {
     uint256 internal constant VALIDATION_GAS_LIMIT = 200_000;
 
@@ -15,7 +18,7 @@ library RegistryImplementationValidation {
     bytes32 private constant EIP1167_PREFIX = 0x363d3d373d3d3d363d7300000000000000000000000000000000000000000000;
     bytes32 private constant EIP1167_SUFFIX = 0x5af43d82803e903d91602b57fd5bf30000000000000000000000000000000000;
 
-    /// @notice Require non-proxy contract code and return its codehash.
+    /// @notice Require contract code without a known EIP-1167 or ERC-1967 proxy shape and return its codehash.
     function requireDirectCode(address implementation) internal view returns (bytes32 codeHash) {
         uint256 codeSize = implementation.code.length;
 

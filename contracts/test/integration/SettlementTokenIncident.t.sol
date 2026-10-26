@@ -224,7 +224,7 @@ contract SettlementTokenIncidentTest is UsdySettlementFixture {
         feeRegistry.activateFeeVersion(config.feeVersionId, config.configHash);
         vm.warp(RECOVERY_CREATED_AT);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(RECOVERY_EPOCH, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(RECOVERY_EPOCH, epoch.configHash, config.feeVersionId);
     }
 
     function _bindSettlementToken(SettlementParams memory params, SettlementTokenConfig memory config) private pure {

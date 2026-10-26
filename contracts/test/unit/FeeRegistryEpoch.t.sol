@@ -1,39 +1,24 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity 0.8.36;
 
-import {AssetVersionRegistry} from "src/registry/AssetVersionRegistry.sol";
 import {FeeRegistry} from "src/registry/FeeRegistry.sol";
-import {SettlementTokenRegistry} from "src/registry/SettlementTokenRegistry.sol";
 import {HTPHashing} from "src/libraries/HTPHashing.sol";
 import {HTPErrors} from "src/types/HTPErrors.sol";
-import {FeePolicyEpochConfig, FeePolicyEpochRecord, FeePolicyEpochStatus} from "src/types/HTPTypes.sol";
-import {RegistryTestBase} from "test/helpers/RegistryTestBase.sol";
+import {
+    FeeConfig,
+    FeePolicyEpochConfig,
+    FeePolicyEpochRecord,
+    FeePolicyEpochStatus,
+    ScopeType
+} from "src/types/HTPTypes.sol";
+import {FeeRegistryTestBase} from "test/helpers/FeeRegistryTestBase.sol";
 
-contract FeeRegistryEpochTest is RegistryTestBase {
-    address internal constant PAUSER = address(0x2301);
-    address internal constant CONFIGURER = address(0x3301);
-
+contract FeeRegistryEpochTest is FeeRegistryTestBase {
     FeeRegistry internal registry;
 
     function setUp() public override {
         super.setUp();
-        registry = FeeRegistry(
-            _deployProxy(
-                address(new FeeRegistry()),
-                abi.encodeCall(
-                    FeeRegistry.initialize,
-                    (
-                        address(timelock),
-                        address(timelock),
-                        address(timelock),
-                        PAUSER,
-                        CONFIGURER,
-                        address(new AssetVersionRegistry()),
-                        address(new SettlementTokenRegistry())
-                    )
-                )
-            )
-        );
+        registry = feeRegistry;
     }
 
     function testGovernanceCreatesCanonicalDraftEpoch() public {
@@ -66,39 +51,24 @@ contract FeeRegistryEpochTest is RegistryTestBase {
     }
 
     function testActivatingNewSealedEpochAtomicallyMovesOldActiveToLegacyServing() public {
-        FeePolicyEpochConfig memory first = _epoch(1);
-        vm.startPrank(address(timelock));
-        registry.createFeePolicyEpoch(first);
-        registry.sealFeePolicyEpoch(1, first.configHash);
-        vm.warp(first.quoteValidFrom);
-        registry.activateFeePolicyEpoch(1, first.configHash);
-
-        FeePolicyEpochConfig memory second = _epoch(2);
-        registry.createFeePolicyEpoch(second);
-        registry.sealFeePolicyEpoch(2, second.configHash);
-        vm.warp(second.quoteValidFrom);
-        registry.activateFeePolicyEpoch(2, second.configHash);
-        vm.stopPrank();
+        _publishGlobalFeeEpoch(1);
+        _publishGlobalFeeEpoch(2);
 
         assertEq(uint8(registry.getFeePolicyEpoch(1).status), uint8(FeePolicyEpochStatus.LEGACY_SERVING));
         assertEq(uint8(registry.getFeePolicyEpoch(2).status), uint8(FeePolicyEpochStatus.ACTIVE));
     }
 
     function testGovernanceMovesExpiredActiveEpochToLegacyThenClosesAfterSettlementWindow() public {
-        FeePolicyEpochConfig memory config = _epoch(1);
-        vm.startPrank(address(timelock));
-        registry.createFeePolicyEpoch(config);
-        registry.sealFeePolicyEpoch(1, config.configHash);
-        vm.warp(config.quoteValidFrom);
-        registry.activateFeePolicyEpoch(1, config.configHash);
+        FeePolicyEpochConfig memory config = _publishGlobalFeeEpoch(1);
 
         vm.warp(config.quoteValidUntil + 1);
+        vm.prank(address(timelock));
         registry.moveFeePolicyEpochToLegacyServing(1, bytes32(uint256(0xE301)));
         assertEq(uint8(registry.getFeePolicyEpoch(1).status), uint8(FeePolicyEpochStatus.LEGACY_SERVING));
 
         vm.warp(config.settlementValidUntil + 1);
+        vm.prank(address(timelock));
         registry.closeFeePolicyEpoch(1, bytes32(uint256(0xE302)));
-        vm.stopPrank();
 
         assertEq(uint8(registry.getFeePolicyEpoch(1).status), uint8(FeePolicyEpochStatus.CLOSED));
     }
@@ -154,7 +124,7 @@ contract FeeRegistryEpochTest is RegistryTestBase {
 
         vm.expectRevert(abi.encodeWithSelector(HTPErrors.FeePolicyEpochNotSealed.selector, uint64(1)));
         vm.prank(address(timelock));
-        registry.activateFeePolicyEpoch(1, config.configHash);
+        registry.activateFeePolicyEpoch(1, config.configHash, bytes32(0));
 
         bytes32 wrongHash = bytes32(uint256(config.configHash) ^ 1);
         vm.expectRevert(
@@ -173,11 +143,21 @@ contract FeeRegistryEpochTest is RegistryTestBase {
             )
         );
         vm.prank(address(timelock));
-        registry.activateFeePolicyEpoch(1, config.configHash);
+        registry.activateFeePolicyEpoch(1, config.configHash, bytes32(0));
 
         FeePolicyEpochRecord memory unchanged = registry.getFeePolicyEpoch(1);
         assertTrue(unchanged.isSealed);
         assertEq(uint8(unchanged.status), uint8(FeePolicyEpochStatus.DRAFT));
+    }
+
+    function _publishGlobalFeeEpoch(uint64 epochNumber) private returns (FeePolicyEpochConfig memory epoch) {
+        epoch = _createEpoch(epochNumber);
+        FeeConfig memory fee = _feeConfig(epochNumber, ScopeType.GLOBAL, bytes32(0), 1, bytes32(0));
+        _registerFee(fee);
+        _sealEpoch(epoch);
+        vm.prank(address(timelock));
+        registry.activateFeeVersion(fee.feeVersionId, fee.configHash);
+        _activateEpoch(epoch, fee.feeVersionId);
     }
 
     function _epoch(uint64 epoch) private view returns (FeePolicyEpochConfig memory config) {

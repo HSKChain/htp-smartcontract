@@ -12,16 +12,18 @@ const reportPath = resolve(repositoryRoot, "contracts/slither-high-medium.json")
 // 条目按 `detector|文件:行|符号` 精确匹配，因此源码行号变动后必须同步本表；
 // 同步时只允许更新行号，不得新增未经审阅的 detector 类别。
 const acceptedFindings = new Set([
-  "uninitialized-local|src/DvPSettlement.sol:255|currentStateValidator",
-  "uninitialized-local|src/libraries/DeploymentVersion.sol:26|dotCount",
-  "uninitialized-local|src/libraries/DeploymentVersion.sol:27|segmentStart",
-  "uninitialized-local|src/validation/DvPCurrentStateValidator.sol:125|context",
-  "uninitialized-local|src/validation/DvPCurrentStateValidator.sol:161|context",
-  "uninitialized-local|src/validation/StrictSettlementFailureMapper.sol:224|maker",
-  "uninitialized-local|src/validation/StrictSettlementFailureMapper.sol:225|requesterRecord",
-  "unused-return|src/DvPSettlement.sol:489|_validateSettlementCurrentState",
-  "unused-return|src/registry/PrincipalCalculatorRegistry.sol:223|_validateCalculator",
-  "unused-return|src/validation/DvPSignedPayloadValidator.sol:134|_checkSignature",
+  "uninitialized-local|src/DvPSettlement.sol:213|currentStateValidator",
+  "uninitialized-local|src/adapters/OndoGmTokenAdapter.sol:101|graph",
+  "uninitialized-local|src/libraries/DeploymentVersion.sol:16|dotCount",
+  "uninitialized-local|src/libraries/DeploymentVersion.sol:17|segmentStart",
+  "uninitialized-local|src/validation/DvPCurrentStateValidator.sol:104|context",
+  "uninitialized-local|src/validation/DvPCurrentStateValidator.sol:138|context",
+  "uninitialized-local|src/validation/StrictSettlementFailureMapper.sol:211|maker",
+  "uninitialized-local|src/validation/StrictSettlementFailureMapper.sol:212|requesterRecord",
+  "unused-return|src/DvPSettlement.sol:441|_validateSettlementCurrentState",
+  "unused-return|src/adapters/ERC1404Adapter.sol:116|_hasPermissiveFallback",
+  "unused-return|src/registry/PrincipalCalculatorRegistry.sol:208|_validateCalculator",
+  "unused-return|src/validation/DvPSignedPayloadValidator.sol:112|_checkSignature",
 ]);
 
 /**

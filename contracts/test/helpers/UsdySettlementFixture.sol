@@ -159,7 +159,7 @@ abstract contract UsdySettlementFixture is DeployFixture {
         feeRegistry.activateFeeVersion(usdyFeeConfig.feeVersionId, usdyFeeConfig.configHash);
         vm.warp(USDY_CREATED_AT);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(USDY_FEE_EPOCH, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(USDY_FEE_EPOCH, epoch.configHash, usdyFeeConfig.feeVersionId);
     }
 
     function _activateUsdyEligibility() private {

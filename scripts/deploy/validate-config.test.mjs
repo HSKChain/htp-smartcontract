@@ -45,7 +45,7 @@ const roleNames = [
 const operatorRoleNames = roleNames.slice(5);
 const frozenSecurityLimits = {
   adapterProviderCallGasMax: soliditySecurityLimits.adapterProviderCallGasMax,
-  calculatorStaticcallGas: 100_000,
+  calculatorStaticcallGas: soliditySecurityLimits.calculatorStaticcallGas,
   registryImplementationStaticcallGas: 200_000,
   registryReadStaticcallGas: 300_000,
   tokenViewStaticcallGas: 30_000,
@@ -228,13 +228,23 @@ test("LOCAL_TEST requires all Token, Asset, Adapter provider, participant, and c
   }
 });
 
-test("Token decimals must stay within the production-supported 0..36 range", () => {
+test("Token and MarketRule decimals match production ranges", () => {
   for (const field of ["assetDecimals", "settlementTokenDecimals"]) {
     for (const value of [-1, 37, 77, 1.5, "18"]) {
       const config = example();
       config.deploymentInputs.tokens[field] = value;
       assert.match(errors(config), new RegExp(field, "u"), `${field} accepted ${String(value)}`);
     }
+  }
+
+  for (const field of ["settlementTokenDecimals", "priceDecimals", "quantityDecimals"]) {
+    const config = example();
+    if (field === "settlementTokenDecimals") {
+      config.deploymentInputs.tokens[field] = 0;
+    } else {
+      config.deploymentInputs.marketRule[field] = 0;
+    }
+    assert.match(errors(config), new RegExp(field, "u"), `${field} accepted zero`);
   }
 });
 

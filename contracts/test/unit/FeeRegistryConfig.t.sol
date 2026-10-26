@@ -83,7 +83,7 @@ contract FeeRegistryConfigTest is FeeRegistryTestBase {
         // Configurer 的 latest 是 second，但 Governance 可选择已审核的 first 进入 serving。
         vm.prank(address(timelock));
         feeRegistry.activateFeeVersion(first.feeVersionId, first.configHash);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, first.feeVersionId);
 
         (bytes32 resolvedId, bytes32 resolvedScope) =
             feeRegistry.resolveApplicableFee(1, assetVersionConfig.assetVersionId);
@@ -384,7 +384,7 @@ contract FeeRegistryConfigTest is FeeRegistryTestBase {
         _sealEpoch(epoch);
         vm.prank(address(timelock));
         feeRegistry.activateFeeVersion(config.feeVersionId, config.configHash);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, config.feeVersionId);
         vm.prank(address(timelock));
         feeRegistry.registerDependentDvp(address(dependentDvp), EVIDENCE_HASH);
         dependentDvp.setGlobalPaused(true);
@@ -405,8 +405,12 @@ contract FeeRegistryConfigTest is FeeRegistryTestBase {
         assertTrue(feeRegistry.hasRole(Roles.GOVERNANCE_ROLE, address(timelock)));
 
         FeePolicyEpochConfig memory secondEpoch = _createEpoch(2);
+        FeeConfig memory secondFee = _feeConfig(2, ScopeType.GLOBAL, bytes32(0), 1, bytes32(0));
+        _registerFee(secondFee);
         _sealEpoch(secondEpoch);
-        _activateEpoch(secondEpoch);
+        vm.prank(address(timelock));
+        feeRegistry.activateFeeVersion(secondFee.feeVersionId, secondFee.configHash);
+        _activateEpoch(secondEpoch, secondFee.feeVersionId);
         assertEq(uint8(feeRegistry.getFeePolicyEpoch(1).status), uint8(FeePolicyEpochStatus.LEGACY_SERVING));
         assertEq(uint8(feeRegistry.getFeePolicyEpoch(2).status), uint8(FeePolicyEpochStatus.ACTIVE));
     }

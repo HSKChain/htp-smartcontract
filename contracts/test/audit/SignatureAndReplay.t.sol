@@ -28,7 +28,7 @@ import {DvPPreCheckTestBase} from "test/helpers/DvPPreCheckTestBase.sol";
 // ---------------------------------------------------------------------------
 library AuditReferenceHashing {
     string internal constant FIRM_QUOTE_TYPE = "FirmQuote("
-        "uint32 schemaVersion,bytes32 rfqIdHash,bytes32 quoteIdHash,uint32 quoteVersion,"
+        "uint32 schemaVersion,bytes32 rfqIdHash,bytes32 quoteIdHash,bytes32 tradeIdHash,uint32 quoteVersion,"
         "address quotingMaker,address requester,uint8 requesterType,bytes32 assetVersionId,"
         "uint8 requesterSide,address assetToken,address settlementToken,uint8 assetClass,"
         "bytes32 priceTermsHash,bytes priceData,bytes32 principalCalculatorConfigId,"
@@ -72,6 +72,7 @@ library AuditReferenceHashing {
             q.schemaVersion,
             q.rfqIdHash,
             q.quoteIdHash,
+            q.tradeIdHash,
             q.quoteVersion,
             q.quotingMaker,
             q.requester,
@@ -474,11 +475,12 @@ contract TmpAuditModuleBTest is DvPPreCheckTestBase {
         assertFalse(dvp.usedTradeIdHash(params.tradeIntent.tradeIdHash));
     }
 
-    // tradeIdHash is a free off-chain value: burning it blocks any future trade
-    // that reuses it, and nothing on-chain constrains how it is generated.
-    function testTradeIdHashIsAFreeOffChainValueAndBurningItBlocksReuse() public {
+    // N10: The maker now authorizes tradeIdHash, while the global replay lock
+    // still blocks a second maker-authorized trade from reusing that identity.
+    function testMakerAuthorizedTradeIdHashCannotBeReused() public {
         SettlementParams memory first = _validPreCheckParams();
         bytes32 chosenTradeId = keccak256("attacker chosen trade id");
+        first.firmQuote.tradeIdHash = chosenTradeId;
         first.tradeIntent.tradeIdHash = chosenTradeId;
         first.snapshot.tradeIdHash = chosenTradeId;
         _resign(first);
@@ -489,6 +491,7 @@ contract TmpAuditModuleBTest is DvPPreCheckTestBase {
         // A later, economically unrelated trade that happens to carry the same
         // off-chain trade id is permanently unsettleable.
         SettlementParams memory second = _validPreCheckParams();
+        second.firmQuote.tradeIdHash = chosenTradeId;
         second.tradeIntent.tradeIdHash = chosenTradeId;
         second.snapshot.tradeIdHash = chosenTradeId;
         second.firmQuote.quoteNonce = first.firmQuote.quoteNonce + 1;

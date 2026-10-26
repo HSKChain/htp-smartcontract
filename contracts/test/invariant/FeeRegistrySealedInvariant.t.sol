@@ -92,10 +92,15 @@ contract FeeRegistrySealedInvariantTest is FeeRegistryTestBase {
         _sealEpoch(epoch);
         vm.prank(address(timelock));
         feeRegistry.activateFeeVersion(originalFee.feeVersionId, originalFee.configHash);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, originalFee.feeVersionId);
         FeePolicyEpochConfig memory nextEpoch = _createEpoch(2);
+        FeeConfig memory nextFee =
+            _feeConfig(2, ScopeType.ASSET_VERSION, assetVersionConfig.assetVersionId, 1, bytes32(0));
+        _registerFee(nextFee);
         _sealEpoch(nextEpoch);
-        _activateEpoch(nextEpoch);
+        vm.prank(address(timelock));
+        feeRegistry.activateFeeVersion(nextFee.feeVersionId, nextFee.configHash);
+        _activateEpoch(nextEpoch, nextFee.feeVersionId);
 
         handler = new FeeRegistrySealedHandler(feeRegistry, CONFIGURER, PAUSER, address(timelock), originalFee);
         targetContract(address(handler));

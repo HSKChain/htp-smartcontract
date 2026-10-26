@@ -433,6 +433,10 @@
         {
           "name": "DEPRECATED",
           "value": 4
+        },
+        {
+          "name": "DEPRECATED_PAUSED",
+          "value": 5
         }
       ],
       "name": "FeeVersionStatus",

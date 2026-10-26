@@ -7,6 +7,7 @@ import {IPrincipalCalculatorRegistry} from "../interfaces/IPrincipalCalculatorRe
 import {BoundedStaticCall} from "../libraries/BoundedStaticCall.sol";
 import {ConfigId} from "../libraries/ConfigId.sol";
 import {HTPHashing} from "../libraries/HTPHashing.sol";
+import {ProtocolSecurityLimits} from "../libraries/ProtocolSecurityLimits.sol";
 import {RegistryImplementationValidation} from "../libraries/RegistryImplementationValidation.sol";
 import {Roles} from "../libraries/Roles.sol";
 import {HTPErrors} from "../types/HTPErrors.sol";
@@ -242,7 +243,7 @@ contract PrincipalCalculatorRegistry is LinearConfigRegistryBase {
         (bool calculateCallSucceeded, bool calculateReturnWellFormed,,,,) = BoundedStaticCall.staticCallFourWordsStatus(
             config.calculator,
             abi.encodeCall(IPrincipalCalculator.calculate, (_probePriceData(config.assetClass), uint256(1), uint8(0))),
-            RegistryImplementationValidation.VALIDATION_GAS_LIMIT
+            ProtocolSecurityLimits.PRINCIPAL_CALCULATOR_CALL_GAS
         );
         _requireCalculatorCallResult(config.calculatorConfigId, calculateCallSucceeded, calculateReturnWellFormed);
     }

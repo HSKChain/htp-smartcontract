@@ -40,7 +40,6 @@ import {SettlementFailureContext, StrictSettlementFailureMapper} from "./StrictS
 
 /// @notice Validates live registry state, economics, and balances for settlement.
 contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
-    uint256 private constant CALCULATOR_GAS_LIMIT = 100_000;
     uint256 private constant TOKEN_GAS_LIMIT = 30_000;
     // IERC20.allowance(owner, spender)
     bytes4 private constant ALLOWANCE_SELECTOR = 0xdd62ed3e;
@@ -58,6 +57,9 @@ contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
         AdapterRecord settlementAdapter;
         PrincipalCalculatorRecord calculator;
         FeeVersionRecord feeVersion;
+        bytes32 inactiveAdapterConfigId;
+        // N11: Preserve calculator output for strict market-rule diagnostics.
+        uint256 marketRuleQuotedPrice;
         uint256 marketRulePriceTick;
         uint256 marketRuleMinCashPrincipal;
     }
@@ -135,7 +137,9 @@ contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
     {
         ValidationContext memory context;
         (Decision decision, bytes4 reason) = _validateInputs(params, context);
-        if (decision != Decision.PASS) _revertFailure(reason, bytes4(0), params);
+        if (decision != Decision.PASS) {
+            _revertFailure(reason, bytes4(0), params, params.snapshot.adapterConfigId, context);
+        }
         STRICT_FAILURE_MAPPER.requireNonces(
             DVP,
             params.firmQuote.quotingMaker,
@@ -148,7 +152,13 @@ contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
         );
         (decision, reason) = _loadAndValidateConfiguration(params, context);
         if (decision != Decision.PASS) {
-            _revertFailure(reason, IDvPCurrentStateValidator.validateForSettlement.selector, params);
+            _revertFailure(
+                reason,
+                IDvPCurrentStateValidator.validateForSettlement.selector,
+                params,
+                context.inactiveAdapterConfigId,
+                context
+            );
         }
         (decision, reason) = _validateTokenMetadata(params, context, false);
         if (decision != Decision.PASS) {
@@ -168,7 +178,9 @@ contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
                     params.snapshot.feeConstraintHash, HTPHashing.hashFeeConstraint(context.feeVersion.config)
                 );
             }
-            _revertFailure(reason, IPrincipalCalculator.calculate.selector, params);
+            _revertFailure(
+                reason, IPrincipalCalculator.calculate.selector, params, params.snapshot.adapterConfigId, context
+            );
         }
 
         STRICT_FAILURE_MAPPER.requireEligibility(DVP, context.seller, context.buyer, params.snapshot.assetVersionId);
@@ -305,9 +317,19 @@ contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
             settlementConfigHash: context.settlementToken.config.adapterConfigHash
         });
         try REFERENCE_INTEGRITY.loadAdapters(DVP, adapterReferences) returns (
-            AdapterRecord memory assetAdapter, AdapterRecord memory settlementAdapter, bool serviceable
+            AdapterRecord memory assetAdapter,
+            AdapterRecord memory settlementAdapter,
+            bool assetServiceable,
+            bool settlementServiceable
         ) {
-            if (!serviceable) return _block(HTPErrors.AdapterInactive.selector);
+            if (!assetServiceable) {
+                context.inactiveAdapterConfigId = adapterReferences.assetConfigId;
+                return _block(HTPErrors.AdapterInactive.selector);
+            }
+            if (!settlementServiceable) {
+                context.inactiveAdapterConfigId = adapterReferences.settlementConfigId;
+                return _block(HTPErrors.AdapterInactive.selector);
+            }
             context.assetAdapter = assetAdapter;
             context.settlementAdapter = settlementAdapter;
         } catch {
@@ -462,11 +484,12 @@ contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
                 params.snapshot.executedQuantity,
                 params.snapshot.assetDecimals
             ),
-            CALCULATOR_GAS_LIMIT
+            ProtocolSecurityLimits.PRINCIPAL_CALCULATOR_CALL_GAS
         );
         if (!calculatorCallSucceeded || !calculatorReturnWellFormed) {
             return _externalUnknown();
         }
+        context.marketRuleQuotedPrice = uint256(quotedPriceWord);
         if (
             calculatedPriceTermsHash != params.snapshot.priceTermsHash || uint256(quotedPriceWord) == 0
                 || uint256(unitCashPriceWord) == 0 || uint256(cashPrincipalWord) == 0
@@ -540,7 +563,13 @@ contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
         return (Decision.UNKNOWN, HTPErrors.PermitSimulationRequired.selector);
     }
 
-    function _revertFailure(bytes4 reason, bytes4 externalSelector, SettlementParams calldata params) private view {
+    function _revertFailure(
+        bytes4 reason,
+        bytes4 externalSelector,
+        SettlementParams calldata params,
+        bytes32 inactiveAdapterConfigId,
+        ValidationContext memory validationContext
+    ) private view {
         STRICT_FAILURE_MAPPER.revertFailure(
             reason,
             externalSelector,
@@ -550,10 +579,14 @@ contract DvPCurrentStateValidator is IDvPCurrentStateValidator {
                 feePolicyEpoch: params.snapshot.feePolicyEpoch,
                 assetVersionId: params.snapshot.assetVersionId,
                 settlementTokenConfigId: params.snapshot.settlementTokenConfigId,
-                adapterConfigId: params.snapshot.adapterConfigId,
+                adapterConfigId: inactiveAdapterConfigId,
                 principalCalculatorConfigId: params.snapshot.principalCalculatorConfigId,
                 feeVersionId: params.snapshot.feeVersionId,
-                marketRuleConfigId: params.snapshot.marketRuleConfigId
+                marketRuleConfigId: params.snapshot.marketRuleConfigId,
+                marketRuleQuotedPrice: validationContext.marketRuleQuotedPrice,
+                marketRulePriceTick: validationContext.marketRulePriceTick,
+                cashPrincipal: params.snapshot.cashPrincipal,
+                marketRuleMinCashPrincipal: validationContext.marketRuleMinCashPrincipal
             })
         );
         revert HTPErrors.InvalidDvpValidator(address(STRICT_FAILURE_MAPPER));

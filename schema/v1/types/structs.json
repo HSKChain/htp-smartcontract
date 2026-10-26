@@ -748,6 +748,12 @@
           "solidityType": "bytes32"
         },
         {
+          "abiType": "bytes32",
+          "kind": "elementary",
+          "name": "tradeIdHash",
+          "solidityType": "bytes32"
+        },
+        {
           "abiType": "uint32",
           "kind": "elementary",
           "name": "quoteVersion",

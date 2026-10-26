@@ -156,6 +156,10 @@
       {
         "name": "DEPRECATED",
         "value": 4
+      },
+      {
+        "name": "DEPRECATED_PAUSED",
+        "value": 5
       }
     ],
     "MarketRuleStatus": [
@@ -461,8 +465,8 @@
   },
   "generatedFrom": {
     "solcLongVersion": "0.8.36",
-    "soliditySourcesSha256": "71669a9f2362c93d25193a1d2671ef472222c2907a455038368027088c95d48e",
-    "typesSourceSha256": "6265831d97274c0341133eb64b2de041a559018f1a5870082c2ea2d5dfa6dbe4"
+    "soliditySourcesSha256": "323fd0f3c39517590218baf0508386b43fa1b2efef6b1fb2556360c1cdaff90c",
+    "typesSourceSha256": "edeec4e8e856b5f989df9131b50e263144e2ac52e3cdacb9cc7ec4ed71a2bd93"
   },
   "interfaces": {
     "IAdapterRegistry": {
@@ -2436,6 +2440,11 @@
                       "type": "bytes32"
                     },
                     {
+                      "internalType": "bytes32",
+                      "name": "tradeIdHash",
+                      "type": "bytes32"
+                    },
+                    {
                       "internalType": "uint32",
                       "name": "quoteVersion",
                       "type": "uint32"
@@ -3169,6 +3178,11 @@
                     {
                       "internalType": "bytes32",
                       "name": "quoteIdHash",
+                      "type": "bytes32"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "tradeIdHash",
                       "type": "bytes32"
                     },
                     {
@@ -4198,6 +4212,11 @@
                       "type": "bytes32"
                     },
                     {
+                      "internalType": "bytes32",
+                      "name": "tradeIdHash",
+                      "type": "bytes32"
+                    },
+                    {
                       "internalType": "uint32",
                       "name": "quoteVersion",
                       "type": "uint32"
@@ -4965,6 +4984,11 @@
                     {
                       "internalType": "bytes32",
                       "name": "quoteIdHash",
+                      "type": "bytes32"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "tradeIdHash",
                       "type": "bytes32"
                     },
                     {
@@ -6233,6 +6257,11 @@
                       "type": "bytes32"
                     },
                     {
+                      "internalType": "bytes32",
+                      "name": "tradeIdHash",
+                      "type": "bytes32"
+                    },
+                    {
                       "internalType": "uint32",
                       "name": "quoteVersion",
                       "type": "uint32"
@@ -6956,6 +6985,11 @@
                     {
                       "internalType": "bytes32",
                       "name": "quoteIdHash",
+                      "type": "bytes32"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "tradeIdHash",
                       "type": "bytes32"
                     },
                     {
@@ -8273,6 +8307,11 @@
             {
               "internalType": "bytes32",
               "name": "expectedConfigHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "readinessFeeVersionId",
               "type": "bytes32"
             }
           ],

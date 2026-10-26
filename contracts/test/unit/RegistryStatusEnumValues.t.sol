@@ -23,6 +23,7 @@ contract RegistryStatusEnumValuesTest is Test {
     function testVersionedConfigStatusValues() public pure {
         assertEq(uint8(AssetVersionStatus.DEPRECATED), 4);
         assertEq(uint8(FeeVersionStatus.DEPRECATED), 4);
+        assertEq(uint8(FeeVersionStatus.DEPRECATED_PAUSED), 5); // N2
         assertEq(uint8(SettlementTokenStatus.DEPRECATED), 4);
         assertEq(uint8(AdapterStatus.DEPRECATED), 4);
         assertEq(uint8(CalculatorStatus.DEPRECATED), 4);

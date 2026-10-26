@@ -12,14 +12,15 @@ struct SettlementCoherenceResult {
 library SettlementParamsValidation {
     /// @notice Returns true when settlement params contain required non-zero fields and schema version.
     function hasRequiredStructure(SettlementParams calldata params) internal pure returns (bool) {
+        // N10: The maker-signed copy is the canonical non-zero trade identity.
         return params.firmQuote.schemaVersion == HTPTypes.SCHEMA_VERSION
             && params.tradeIntent.schemaVersion == HTPTypes.SCHEMA_VERSION
             && params.snapshot.schemaVersion == HTPTypes.SCHEMA_VERSION && params.firmQuote.quotingMaker != address(0)
             && params.firmQuote.requester != address(0) && params.firmQuote.assetToken != address(0)
             && params.firmQuote.settlementToken != address(0) && params.firmQuote.assetVersionId != bytes32(0)
-            && params.tradeIntent.tradeIdHash != bytes32(0) && params.tradeIntent.buyer != address(0)
-            && params.tradeIntent.seller != address(0) && params.tradeIntent.collector != address(0)
-            && params.snapshot.principalCalculatorConfigId != bytes32(0)
+            && params.firmQuote.tradeIdHash != bytes32(0) && params.tradeIntent.tradeIdHash != bytes32(0)
+            && params.tradeIntent.buyer != address(0) && params.tradeIntent.seller != address(0)
+            && params.tradeIntent.collector != address(0) && params.snapshot.principalCalculatorConfigId != bytes32(0)
             && params.snapshot.principalCalculatorConfigHash != bytes32(0)
             && params.snapshot.adapterConfigId != bytes32(0) && params.snapshot.adapterConfigHash != bytes32(0)
             && params.snapshot.settlementTokenConfigId != bytes32(0)
@@ -81,7 +82,11 @@ library SettlementParamsValidation {
             params.firmQuote.schemaVersion != params.tradeIntent.schemaVersion
                 || params.tradeIntent.schemaVersion != params.snapshot.schemaVersion
         ) return bytes32("schemaVersion");
-        if (params.tradeIntent.tradeIdHash != params.snapshot.tradeIdHash) return bytes32("tradeIdHash");
+        // N10: Requester-controlled payloads cannot replace the maker-authorized trade ID.
+        if (
+            params.firmQuote.tradeIdHash != params.tradeIntent.tradeIdHash
+                || params.tradeIntent.tradeIdHash != params.snapshot.tradeIdHash
+        ) return bytes32("tradeIdHash");
         if (
             params.firmQuote.requester != params.tradeIntent.requester
                 || params.tradeIntent.requester != params.snapshot.requester

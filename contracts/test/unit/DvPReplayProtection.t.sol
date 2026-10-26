@@ -192,6 +192,7 @@ contract DvPReplayProtectionTest is DvPPreCheckTestBase {
         params.firmQuote.rfqIdHash = bytes32(uint256(0xF001));
         params.firmQuote.quoteIdHash = bytes32(uint256(0xF002));
         params.tradeIntent.tradeIdHash = bytes32(uint256(0xF003));
+        params.firmQuote.tradeIdHash = params.tradeIntent.tradeIdHash;
         params.snapshot.tradeIdHash = params.tradeIntent.tradeIdHash;
         if (!keepMakerNonce) {
             params.firmQuote.quoteNonce += 100;

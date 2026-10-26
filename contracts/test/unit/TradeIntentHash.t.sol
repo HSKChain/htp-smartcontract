@@ -22,13 +22,14 @@ contract TradeIntentHashHarness {
 
 contract TradeIntentHashTest is Test {
     bytes32 private constant DOMAIN_SEPARATOR = 0xc0f20d1f3e9bd185d5fe9e24b1822d7657e7c83dd337727af1fad04d7c26cac3;
-    bytes32 private constant DIGEST = 0x0e1c94d53ca46252a421e72a179ac87970cb03803d4951321a28da379886b371;
+    // N10: FirmQuote tradeIdHash binding changes the embedded quote and snapshot hashes.
+    bytes32 private constant DIGEST = 0x4ecfbcd7aafe6447481cd19afe54d46490a06a7920271c3c527d93d549850703;
     TradeIntentHashHarness private immutable HARNESS = new TradeIntentHashHarness();
 
     function testTypeHashStructHashAndDigestMatchBootstrapLiterals() public view {
         TradeIntent memory intent = SchemaFixtures.tradeIntent();
         assertEq(HARNESS.typeHash(), 0x429c13810b4c3568e1aefcbe3de0f4e734fc4b55b80765dd6098d9938edea269);
-        assertEq(HARNESS.hash(intent), 0x90ad3c19f5b794936560501054d00b4c0c17f7866a0cd45bcef35b8cf44c2d82);
+        assertEq(HARNESS.hash(intent), 0x4410d3b872181d8f26d8b44ca67465a33d4e0254507c533e3ef99e0c26e18a53);
         assertEq(HARNESS.digest(DOMAIN_SEPARATOR, intent), DIGEST);
     }
 
@@ -167,7 +168,7 @@ contract TradeIntentHashTest is Test {
         TradeIntent memory intent = SchemaFixtures.tradeIntent();
         intent.priceData = bytes.concat(intent.priceData, hex"00");
         assertEq(
-            HARNESS.digest(DOMAIN_SEPARATOR, intent), 0x57ce6a753198fca83f599ffaef48165acf42561cb7fa0f4685fdf46f3db38fd2
+            HARNESS.digest(DOMAIN_SEPARATOR, intent), 0x5564d800b23a7dc808324023626f7d87f1ef901da52bc88be7a2914df13afb9e
         );
         assertNotEq(HARNESS.digest(DOMAIN_SEPARATOR, intent), DIGEST);
     }

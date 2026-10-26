@@ -258,6 +258,6 @@ contract HistoricalConfigurationSettlementTest is UsdySettlementFixture {
         feeRegistry.activateFeeVersion(config.feeVersionId, config.configHash);
         vm.warp(REPLACEMENT_CREATED_AT);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(REPLACEMENT_EPOCH, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(REPLACEMENT_EPOCH, epoch.configHash, config.feeVersionId);
     }
 }

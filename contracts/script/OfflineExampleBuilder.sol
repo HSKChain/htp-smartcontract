@@ -85,18 +85,25 @@ contract OfflineExampleBuilder {
     function _adapterConfigs(ExampleImplementations calldata implementations)
         private
         view
-        returns (AdapterConfig[3] memory configs)
+        returns (AdapterConfig[4] memory configs)
     {
-        address[3] memory adapters =
-            [implementations.unrestrictedAdapter, implementations.erc1404Adapter, implementations.usdyAdapter];
+        address[4] memory adapters = [
+            implementations.unrestrictedAdapter,
+            implementations.erc1404Adapter,
+            implementations.usdyAdapter,
+            implementations.ondoGmAdapter
+        ];
         for (uint256 i = 0; i < adapters.length; ++i) {
             IAssetAdapter adapter = IAssetAdapter(adapters[i]);
             AdapterCapabilities memory capabilities = adapter.capabilities();
             bytes32 capabilityHash = HTPHashing.hashAdapterCapabilities(capabilities);
+            uint32 revision = i == 3 ? 2 : 1;
             configs[i] = AdapterConfig({
                 schemaVersion: 1,
-                adapterConfigId: ConfigId.derive(ConfigId.ADAPTER_NAMESPACE, 1, block.chainid, capabilityHash, 1),
-                revision: 1,
+                adapterConfigId: ConfigId.derive(
+                    ConfigId.ADAPTER_NAMESPACE, 1, block.chainid, capabilityHash, revision
+                ),
+                revision: revision,
                 chainId: block.chainid,
                 adapter: adapters[i],
                 interfaceVersion: InterfaceVersions.ASSET_ADAPTER_V1,
@@ -104,7 +111,7 @@ contract OfflineExampleBuilder {
                 capabilities: capabilities,
                 capabilityHash: capabilityHash,
                 providerHash: adapter.providerHash(),
-                replacesId: bytes32(0),
+                replacesId: i == 3 ? configs[2].adapterConfigId : bytes32(0),
                 configHash: bytes32(0)
             });
             configs[i].configHash = HTPHashing.hashAdapterConfig(configs[i]);

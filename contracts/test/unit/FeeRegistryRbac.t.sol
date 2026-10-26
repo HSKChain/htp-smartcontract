@@ -15,7 +15,7 @@ contract FeeRegistryRbacTest is FeeRegistryTestBase {
 
         _assertGovernanceOnly(abi.encodeCall(IFeeRegistry.createFeePolicyEpoch, (epoch)));
         _assertGovernanceOnly(abi.encodeCall(IFeeRegistry.sealFeePolicyEpoch, (uint64(1), bytes32(0))));
-        _assertGovernanceOnly(abi.encodeCall(IFeeRegistry.activateFeePolicyEpoch, (uint64(1), bytes32(0))));
+        _assertGovernanceOnly(abi.encodeCall(IFeeRegistry.activateFeePolicyEpoch, (uint64(1), bytes32(0), bytes32(0))));
         _assertGovernanceOnly(abi.encodeCall(IFeeRegistry.moveFeePolicyEpochToLegacyServing, (uint64(1), evidenceHash)));
         _assertGovernanceOnly(abi.encodeCall(IFeeRegistry.closeFeePolicyEpoch, (uint64(1), evidenceHash)));
         _assertGovernanceOnly(abi.encodeCall(IFeeRegistry.activateFeeVersion, (bytes32(0), bytes32(0))));

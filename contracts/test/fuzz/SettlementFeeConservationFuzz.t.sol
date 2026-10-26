@@ -226,7 +226,7 @@ contract SettlementFeeConservationFuzzTest is DvPPreCheckTestBase {
         feeRegistry.activateFeeVersion(config.feeVersionId, config.configHash);
         vm.warp(validFrom);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(FUZZ_EPOCH, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(FUZZ_EPOCH, epoch.configHash, config.feeVersionId);
     }
 
     function _bindFeeAndAmounts(

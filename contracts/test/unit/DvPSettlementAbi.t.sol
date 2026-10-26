@@ -6,8 +6,9 @@ import {IDvPSettlement} from "src/interfaces/IDvPSettlement.sol";
 
 contract DvPSettlementAbiTest is Test {
     function testCompletePublicBehaviorSelectorsMatchReviewedLiterals() public pure {
-        _assertSelector(IDvPSettlement.settle.selector, 0x8ad987e6);
-        _assertSelector(IDvPSettlement.preCheck.selector, 0xc196d265);
+        // N10: FirmQuote.tradeIdHash changes SettlementParams' canonical tuple signature.
+        _assertSelector(IDvPSettlement.settle.selector, 0x2c632e38);
+        _assertSelector(IDvPSettlement.preCheck.selector, 0x99d133f3);
         _assertSelector(IDvPSettlement.cancelNonce.selector, 0x03c7e1f2);
         _assertSelector(IDvPSettlement.cancelNonceBySig.selector, 0xaddb767e);
         _assertSelector(IDvPSettlement.getNonceStatus.selector, 0x0e5d841a);

@@ -5,16 +5,43 @@ import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol"
 import {Test} from "forge-std/Test.sol";
 import {DeployHTP} from "script/DeployHTP.s.sol";
 import {DeploymentOperationBuilder} from "script/DeploymentOperationBuilder.sol";
+import {OfflineExampleBuilder} from "script/OfflineExampleBuilder.sol";
+import {WriteDeploymentReport} from "script/WriteDeploymentReport.s.sol";
 import {
     CoreDeployment,
     DeploymentConfig,
     DeploymentRoles,
     DirectOperation,
+    ExampleAdapterInputs,
+    ExampleBusinessInputs,
+    ExampleConfigs,
+    ExampleImplementations,
     RegistryDeployment
 } from "script/DeployTypes.sol";
 import {DvPSettlement} from "src/DvPSettlement.sol";
+import {IAdapterRegistry} from "src/interfaces/IAdapterRegistry.sol";
 import {Roles} from "src/libraries/Roles.sol";
 import {UUPSRegistryBase} from "src/registry/UUPSRegistryBase.sol";
+import {AdapterRecord, AdapterStatus} from "src/types/HTPTypes.sol";
+import {AddressListMock, ERC1404TokenMock, UsdyTokenMock} from "test/fixtures/AdapterMocks.sol";
+import {
+    IntegrationOndoGmToken,
+    OndoComplianceMock,
+    OndoComplianceViewMock,
+    OndoGmListMock,
+    OndoGmPauseManagerMock
+} from "test/fixtures/OndoGmMocks.sol";
+import {IntegrationERC20Token} from "test/fixtures/IntegrationTokens.sol";
+
+contract ExampleConfigurationReportHarness is WriteDeploymentReport {
+    function exampleConfigurationJson(CoreDeployment memory core, ExampleConfigs memory configs)
+        external
+        view
+        returns (string memory json, bool ready)
+    {
+        return _exampleConfigurationJson(core, configs);
+    }
+}
 
 contract DeploymentScriptTest is Test {
     bytes32 private constant ERC1967_IMPLEMENTATION_SLOT =
@@ -119,6 +146,144 @@ contract DeploymentScriptTest is Test {
         assertEq(config.roles.upgrader, address(0x1002));
         assertEq(config.roles.pauser, address(0x1003));
         assertEq(config.roles.executor, address(0x1004));
+    }
+
+    function testDeployExampleImplementationsIncludesOndoGmAdapter() public {
+        uint64 firstNonce = uint64(vm.getNonce(address(orchestrator)));
+        CoreDeployment memory core = orchestrator.deployCore(_config(), firstNonce);
+        IntegrationOndoGmToken gmToken = _deployGmToken();
+        ExampleImplementations memory implementations =
+            orchestrator.deployExampleImplementations(core.dvp, _exampleAdapterInputs(gmToken));
+
+        assertTrue(implementations.ondoGmAdapter.code.length != 0);
+    }
+
+    function testFoundryOperationsActivateUsdyBeforeOndoGmRevision() public {
+        uint64 firstNonce = uint64(vm.getNonce(address(orchestrator)));
+        CoreDeployment memory core = orchestrator.deployCore(_config(), firstNonce);
+        IntegrationOndoGmToken gmToken = _deployGmToken();
+        ExampleImplementations memory implementations =
+            orchestrator.deployExampleImplementations(core.dvp, _exampleAdapterInputs(gmToken));
+        OfflineExampleBuilder configBuilder = new OfflineExampleBuilder();
+        ExampleConfigs memory configs = configBuilder.buildConfigs(core, implementations, _exampleBusinessInputs());
+        DeploymentOperationBuilder operationBuilder = new DeploymentOperationBuilder();
+
+        DirectOperation[] memory dependencies =
+            operationBuilder.dependentDvpRegistration(core, keccak256("DEPLOYMENT_SCRIPT_DEPENDENCY"));
+        _executeAllAs(GOVERNANCE, dependencies);
+        _executeAllAs(OPERATOR, operationBuilder.calculatorRegistrations(core, configs));
+        _executeAllAs(OPERATOR, operationBuilder.adapterRegistrations(core, configs));
+        DirectOperation[] memory baseActivations = operationBuilder.calculatorAdapterActivations(core, configs);
+        _executeAllAs(GOVERNANCE, baseActivations);
+        _executeAs(GOVERNANCE, operationBuilder.usdyAdapterActivation(core, configs));
+        _executeAs(OPERATOR, operationBuilder.ondoGmAdapterRegistration(core, configs));
+        _executeAs(GOVERNANCE, operationBuilder.ondoGmAdapterActivation(core, configs));
+        _executeAs(OPERATOR, operationBuilder.settlementTokenRegistration(core, configs));
+        _executeAs(GOVERNANCE, operationBuilder.settlementTokenActivation(core, configs));
+        _executeAs(OPERATOR, operationBuilder.assetVersionRegistration(core, configs));
+        _executeAs(GOVERNANCE, operationBuilder.assetVersionActivation(core, configs));
+        _executeAllAs(OPERATOR, operationBuilder.participantRegistrations(core, configs));
+        _executeAllAs(OPERATOR, operationBuilder.eligibilityUpdates(core, configs));
+        _executeAs(GOVERNANCE, operationBuilder.feeEpochCreation(core, configs));
+        _executeAs(OPERATOR, operationBuilder.feeVersionRegistration(core, configs));
+        _executeAllAs(GOVERNANCE, operationBuilder.feeFinalization(core, configs));
+        _executeAs(OPERATOR, operationBuilder.marketRuleRegistration(core, configs));
+        _executeAllAs(GOVERNANCE, operationBuilder.marketRuleFinalization(core, configs));
+
+        IAdapterRegistry registry = IAdapterRegistry(core.adapterRegistry.proxy);
+        AdapterRecord memory usdy = registry.getAdapter(configs.adapters[2].adapterConfigId);
+        AdapterRecord memory ondoGm = registry.getAdapter(configs.adapters[3].adapterConfigId);
+        assertEq(uint8(usdy.status), uint8(AdapterStatus.ACTIVE));
+        assertEq(uint8(ondoGm.status), uint8(AdapterStatus.ACTIVE));
+        assertEq(ondoGm.config.revision, 2);
+        assertEq(ondoGm.config.replacesId, usdy.config.adapterConfigId);
+        assertEq(
+            registry.getCurrentAdapter(ondoGm.config.capabilityHash).config.adapterConfigId,
+            ondoGm.config.adapterConfigId
+        );
+
+        (string memory configurationJson, bool configurationReady) =
+            new ExampleConfigurationReportHarness().exampleConfigurationJson(core, configs);
+        assertTrue(configurationReady);
+        assertEq(_countOccurrences(bytes(configurationJson), bytes('"kind":"ADAPTER"')), 4);
+    }
+
+    function _exampleAdapterInputs(IntegrationOndoGmToken gmToken)
+        private
+        returns (ExampleAdapterInputs memory inputs)
+    {
+        AddressListMock blocklist = new AddressListMock();
+        AddressListMock allowlist = new AddressListMock();
+        AddressListMock sanctions = new AddressListMock();
+        UsdyTokenMock usdy = new UsdyTokenMock();
+        usdy.configure(address(blocklist), address(allowlist), address(sanctions));
+        inputs = ExampleAdapterInputs({
+            erc1404Token: address(new ERC1404TokenMock()),
+            usdyToken: address(usdy),
+            usdyBlocklist: address(blocklist),
+            usdyAllowlist: address(allowlist),
+            usdySanctionsList: address(sanctions),
+            gmToken: address(gmToken),
+            providerCallGas: 100_000
+        });
+    }
+
+    function _deployGmToken() private returns (IntegrationOndoGmToken gmToken) {
+        address gmIdentifier = address(uint160(uint256(keccak256("global_markets"))));
+        OndoGmListMock gmBlocklist = new OndoGmListMock();
+        OndoGmListMock gmSanctions = new OndoGmListMock();
+        OndoGmPauseManagerMock pauseManager = new OndoGmPauseManagerMock();
+        OndoComplianceMock compliance = new OndoComplianceMock();
+        OndoComplianceViewMock complianceView = new OndoComplianceViewMock(address(compliance), gmIdentifier);
+        gmToken = new IntegrationOndoGmToken(address(complianceView), address(pauseManager));
+        compliance.configure(gmIdentifier, address(gmBlocklist), address(gmSanctions));
+    }
+
+    function _exampleBusinessInputs() private returns (ExampleBusinessInputs memory inputs) {
+        inputs = ExampleBusinessInputs({
+            assetToken: address(new IntegrationERC20Token(18)),
+            assetDecimals: 18,
+            settlementToken: address(new IntegrationERC20Token(6)),
+            settlementTokenDecimals: 6,
+            economicAssetIdHash: keccak256("DEPLOYMENT_SCRIPT_ASSET"),
+            maker: address(0xA001),
+            requester: address(0xA002),
+            collector: address(0xA003),
+            quoteValidFrom: uint64(block.timestamp),
+            quoteValidUntil: uint64(block.timestamp + 2 days),
+            settlementValidUntil: uint64(block.timestamp + 3 days),
+            evidenceHash: keccak256("DEPLOYMENT_SCRIPT_EVIDENCE")
+        });
+    }
+
+    function _executeAs(address actor, DirectOperation memory operation) private {
+        vm.prank(actor);
+        (bool success, bytes memory returnData) = operation.target.call(operation.data);
+        if (!success) {
+            assembly ("memory-safe") {
+                revert(add(returnData, 0x20), mload(returnData))
+            }
+        }
+    }
+
+    function _executeAllAs(address actor, DirectOperation[] memory operations) private {
+        for (uint256 i = 0; i < operations.length; ++i) {
+            _executeAs(actor, operations[i]);
+        }
+    }
+
+    function _countOccurrences(bytes memory haystack, bytes memory needle) private pure returns (uint256 count) {
+        if (needle.length == 0 || needle.length > haystack.length) return 0;
+        for (uint256 i = 0; i <= haystack.length - needle.length; ++i) {
+            bool matches = true;
+            for (uint256 j = 0; j < needle.length; ++j) {
+                if (haystack[i + j] != needle[j]) {
+                    matches = false;
+                    break;
+                }
+            }
+            if (matches) ++count;
+        }
     }
 
     function testRejectsZeroRoleAddress() public {

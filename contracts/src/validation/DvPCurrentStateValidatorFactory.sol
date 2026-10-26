@@ -10,9 +10,9 @@ import {StrictSettlementFailureMapper} from "./StrictSettlementFailureMapper.sol
 
 contract DvPCurrentStateValidatorFactory is IDvPCurrentStateValidatorFactory {
     bytes32 private constant REFERENCE_INTEGRITY_CODE_HASH =
-        0xde202537a4ce39d21eb536c4d61dfca34da1ea3ac747b3a1a381a6862061cce5;
+        0x114181354ab1dd58bcb5cde1665da547d659d177215e42cfacaa8f1eeb1608bf;
     bytes32 private constant STRICT_FAILURE_MAPPER_CODE_HASH =
-        0xf5d19d60dd027bef3ab96820bd9f00cbcfe26aa8821314b5b501d42d63db60ee;
+        0x8b5e04167aa4e9ff9669108e0423144f56f57cc988c3b134b73fe53307a88a4e;
 
     ConfigurationReferenceIntegrity private referenceIntegrity;
     StrictSettlementFailureMapper private strictFailureMapper;

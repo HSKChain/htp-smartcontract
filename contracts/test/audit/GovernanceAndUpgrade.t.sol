@@ -313,7 +313,7 @@ contract TmpAuditFeeStateMachineTest is FeeRegistryTestBase {
         // Governance activates the fee version it knows about, then the epoch.
         vm.prank(address(timelock));
         feeRegistry.activateFeeVersion(globalFee.feeVersionId, globalFee.configHash);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, globalFee.feeVersionId);
 
         // Resolver 只读 serving；未激活的高优先级候选不会遮挡 GLOBAL。
         (bytes32 resolvedId, bytes32 resolvedScope) =
@@ -373,7 +373,7 @@ contract TmpAuditFeeStateMachineTest is FeeRegistryTestBase {
         _sealEpoch(epoch);
         vm.prank(address(timelock));
         feeRegistry.activateFeeVersion(fee.feeVersionId, fee.configHash);
-        _activateEpoch(epoch);
+        _activateEpoch(epoch, fee.feeVersionId);
 
         assertTrue(_executable(fee));
 

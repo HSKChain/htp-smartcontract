@@ -142,7 +142,7 @@ contract UsdyConfigurationDriftTest is UsdySettlementFixture {
         feeRegistry.activateFeeVersion(config.feeVersionId, config.configHash);
         vm.warp(REPLACEMENT_CREATED_AT);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(REPLACEMENT_FEE_EPOCH, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(REPLACEMENT_FEE_EPOCH, epoch.configHash, config.feeVersionId);
     }
 
     function _activateReplacementMarketRule(AssetVersionConfig memory assetConfig)

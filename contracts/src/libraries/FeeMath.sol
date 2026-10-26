@@ -126,9 +126,15 @@ library FeeMath {
         }
 
         if (buyerDebit != conservedCash) {
-            return (
-                CalculationStatus.CONSERVATION_MISMATCH, buyerFee, sellerFee, buyerDebit, sellerCredit, collectorCredit
-            );
+            return
+                (
+                    CalculationStatus.CONSERVATION_MISMATCH,
+                    buyerFee,
+                    sellerFee,
+                    buyerDebit,
+                    sellerCredit,
+                    collectorCredit
+                );
         }
         status = CalculationStatus.SUCCESS;
     }

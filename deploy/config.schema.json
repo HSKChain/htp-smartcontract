@@ -177,7 +177,8 @@
             "settlementToken",
             "settlementTokenDecimals",
             "erc1404Token",
-            "usdyToken"
+            "usdyToken",
+            "gmToken"
           ],
           "properties": {
             "assetToken": {
@@ -196,6 +197,9 @@
               "$ref": "#/$defs/addressOrNull"
             },
             "usdyToken": {
+              "$ref": "#/$defs/addressOrNull"
+            },
+            "gmToken": {
               "$ref": "#/$defs/addressOrNull"
             }
           }
@@ -439,12 +443,15 @@
                   "$ref": "#/$defs/nonZeroAddress"
                 },
                 "settlementTokenDecimals": {
-                  "$ref": "#/$defs/decimals"
+                  "$ref": "#/$defs/positiveDecimals"
                 },
                 "erc1404Token": {
                   "$ref": "#/$defs/nonZeroAddress"
                 },
                 "usdyToken": {
+                  "$ref": "#/$defs/nonZeroAddress"
+                },
+                "gmToken": {
                   "$ref": "#/$defs/nonZeroAddress"
                 }
               }
@@ -544,10 +551,10 @@
                   "$ref": "#/$defs/positiveInteger"
                 },
                 "priceDecimals": {
-                  "$ref": "#/$defs/decimals"
+                  "$ref": "#/$defs/positiveDecimals"
                 },
                 "quantityDecimals": {
-                  "$ref": "#/$defs/decimals"
+                  "$ref": "#/$defs/positiveDecimals"
                 }
               }
             },
@@ -644,6 +651,9 @@
                   "type": "null"
                 },
                 "usdyToken": {
+                  "type": "null"
+                },
+                "gmToken": {
                   "type": "null"
                 }
               }
@@ -818,6 +828,11 @@
     "decimals": {
       "type": "integer",
       "minimum": 0,
+      "maximum": 36
+    },
+    "positiveDecimals": {
+      "type": "integer",
+      "minimum": 1,
       "maximum": 36
     },
     "decimalsOrNull": {

@@ -128,6 +128,7 @@ abstract contract UsdyMultiPartyE2EFixture is UsdySettlementFixture {
         params.firmQuote.requesterSide = side;
 
         params.tradeIntent.tradeIdHash = bytes32(uint256(params.tradeIntent.tradeIdHash) + sequence);
+        params.firmQuote.tradeIdHash = params.tradeIntent.tradeIdHash;
         params.tradeIntent.tradeNonce = params.tradeIntent.tradeNonce + sequence;
         params.tradeIntent.quotingMaker = quotingMaker;
         params.tradeIntent.requester = requester;

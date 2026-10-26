@@ -15,17 +15,30 @@ const securityLimitsSource = readFileSync(securityLimitsSourcePath, "utf8");
 const providerGasMatch = securityLimitsSource.match(
   /ADAPTER_PROVIDER_CALL_GAS_MAX\s*=\s*([0-9][0-9_]*)\s*;/u,
 );
+const calculatorGasMatch = securityLimitsSource.match(
+  /PRINCIPAL_CALCULATOR_CALL_GAS\s*=\s*([0-9][0-9_]*)\s*;/u,
+);
 if (!providerGasMatch?.[1]) {
   throw new Error("Unable to extract ADAPTER_PROVIDER_CALL_GAS_MAX from Solidity");
 }
+if (!calculatorGasMatch?.[1]) {
+  throw new Error("Unable to extract PRINCIPAL_CALCULATOR_CALL_GAS from Solidity");
+}
 export const soliditySecurityLimits = Object.freeze({
   adapterProviderCallGasMax: Number(providerGasMatch[1].replaceAll("_", "")),
+  calculatorStaticcallGas: Number(calculatorGasMatch[1].replaceAll("_", "")),
 });
 if (
   schema.properties?.securityLimits?.properties?.adapterProviderCallGasMax?.const !==
   soliditySecurityLimits.adapterProviderCallGasMax
 ) {
   throw new Error("deploy/config.schema.json provider Gas maximum differs from Solidity authority");
+}
+if (
+  schema.properties?.securityLimits?.properties?.calculatorStaticcallGas?.const !==
+  soliditySecurityLimits.calculatorStaticcallGas
+) {
+  throw new Error("deploy/config.schema.json calculator Gas budget differs from Solidity authority");
 }
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 const validateSchema = ajv.compile(schema);

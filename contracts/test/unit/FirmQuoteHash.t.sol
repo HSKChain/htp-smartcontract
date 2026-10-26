@@ -34,10 +34,11 @@ contract FirmQuoteHashTest is Test {
 
     function testTypeHashStructHashAndQuoteDigestMatchBootstrapLiterals() public view {
         FirmQuote memory quote = SchemaFixtures.firmQuote();
-        assertEq(HARNESS.typeHash(), 0x79db216dea763a9d67ad7df5570a388d4055c6ac896752086982d5db82bb597b);
-        assertEq(HARNESS.hash(quote), 0xa653341502027d21f3a0b7fbb97d8244eee201852dfc31025e0d1dcf2975a787);
+        // N10: Bootstrap literals include the maker-bound tradeIdHash field.
+        assertEq(HARNESS.typeHash(), 0xf576cd55e29ca3b3f9054376d57902bbfd1c065cadbaadc855180836f3f06ee5);
+        assertEq(HARNESS.hash(quote), 0x11c0b44a90d83e9368086d1a8b9ce5a8828ece1404f4c7d7dafef127b0eed170);
         assertEq(
-            HARNESS.digest(DOMAIN_SEPARATOR, quote), 0xca1cdab2f6412c367f4fb06ca8f52a5b73092e4ddc20a798d4e9e3f0ede0d1f9
+            HARNESS.digest(DOMAIN_SEPARATOR, quote), 0xc2b38ad8616829b7dd6eb761130f83f955c460c5b93608bbea086c1aa7a17104
         );
     }
 
@@ -45,7 +46,7 @@ contract FirmQuoteHashTest is Test {
         FirmQuote memory quote = SchemaFixtures.firmQuote();
         quote.priceData = bytes.concat(quote.priceData, hex"00");
         assertEq(
-            HARNESS.digest(DOMAIN_SEPARATOR, quote), 0x75e4303ae7c80d99ba938dc05eceaecfeb56997d1063001f129c053b24204b44
+            HARNESS.digest(DOMAIN_SEPARATOR, quote), 0xb1a36694689dd3e0a35e60a3086bffe8208aff6d1820c58cb9192f801c8a14cf
         );
     }
 

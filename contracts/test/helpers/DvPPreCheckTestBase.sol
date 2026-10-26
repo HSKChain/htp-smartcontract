@@ -358,7 +358,7 @@ abstract contract DvPPreCheckTestBase is RegistryTestBase, CoreDeploymentTopolog
         feeRegistry.activateFeeVersion(alternateFee.feeVersionId, alternateFee.configHash);
         vm.warp(validFrom);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(epochNumber, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(epochNumber, epoch.configHash, alternateFee.feeVersionId);
 
         params = _validPreCheckParams();
         params.firmQuote.feePolicyEpoch = epochNumber;
@@ -496,7 +496,7 @@ abstract contract DvPPreCheckTestBase is RegistryTestBase, CoreDeploymentTopolog
         feeRegistry.activateFeeVersion(feeConfig.feeVersionId, feeConfig.configHash);
         vm.warp(QUOTE_VALID_FROM);
         vm.prank(address(timelock));
-        feeRegistry.activateFeePolicyEpoch(FEE_EPOCH, epoch.configHash);
+        feeRegistry.activateFeePolicyEpoch(FEE_EPOCH, epoch.configHash, feeConfig.feeVersionId);
     }
 
     function _activateParticipantsAndEligibility() private {

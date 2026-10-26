@@ -30,12 +30,12 @@ test("generated layouts encode FirmQuote ABI head offsets from the AST", () => {
   const bundle = buildSchemaBundle(repositoryRoot);
   const firmQuote = layoutOf(bundle, "FirmQuote");
   assert.equal(firmQuote.dynamic, true);
-  assert.equal(firmQuote.headByteLength, 31 * 32);
-  assert.equal(firmQuote.fields[13]?.name, "priceData");
-  assert.equal(firmQuote.fields[13]?.dynamic, true);
-  assert.equal(firmQuote.fields[13]?.headOffset, 13 * 32);
-  assert.equal(firmQuote.fields[9]?.name, "assetToken");
-  assert.equal(firmQuote.fields[9]?.headOffset, 9 * 32);
+  assert.equal(firmQuote.headByteLength, 32 * 32);
+  assert.equal(firmQuote.fields[14]?.name, "priceData");
+  assert.equal(firmQuote.fields[14]?.dynamic, true);
+  assert.equal(firmQuote.fields[14]?.headOffset, 14 * 32);
+  assert.equal(firmQuote.fields[10]?.name, "assetToken");
+  assert.equal(firmQuote.fields[10]?.headOffset, 10 * 32);
 });
 
 test("generated layouts encode TradeIntent, Snapshot, FeeConfig, and SettlementParams heads", () => {
@@ -70,7 +70,7 @@ test("generated layouts encode TradeIntent, Snapshot, FeeConfig, and SettlementP
 
 test("empty dynamic encodings place the first tail at the ABI head length", () => {
   const model = buildSchemaModel(repositoryRoot);
-  assert.equal(emptyEncodingSize(model.structs.FirmQuote!, model.structs), 31 * 32 + 32);
+  assert.equal(emptyEncodingSize(model.structs.FirmQuote!, model.structs), 32 * 32 + 32);
   assert.equal(emptyEncodingSize(model.structs.TradeIntent!, model.structs), 39 * 32 + 32);
   assert.equal(emptyEncodingSize(model.structs.FeeConfig!, model.structs), 24 * 32);
 });
